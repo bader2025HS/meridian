@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+/* =========================
+   MERIDIAN
+   Visual Identity
+   ========================= */
+
 :root {
   --cream: #F3F0E8;
   --ink: #171717;
@@ -7,12 +14,15 @@
   --line: #D8D3C9;
   --dark: #242321;
 
-  --serif: Cambria, Georgia, "Times New Roman", serif;
-  --sans: "Century Gothic", CenturyGothic, AppleGothic, Arial, sans-serif;
+  --brand: "Century Gothic", CenturyGothic, AppleGothic, Arial, sans-serif;
+  --display: "Cormorant Infant", Georgia, serif;
+  --body: "Inter", Arial, sans-serif;
 }
 
 
-/* RESET */
+/* =========================
+   RESET
+   ========================= */
 
 * {
   margin: 0;
@@ -27,11 +37,9 @@ html {
 body {
   background: var(--cream);
   color: var(--ink);
-  font-family: var(--serif);
+  font-family: var(--body);
+  min-height: 100vh;
 }
-
-
-/* GLOBAL */
 
 a {
   color: inherit;
@@ -39,15 +47,17 @@ a {
 }
 
 img {
-  display: block;
   max-width: 100%;
+  display: block;
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+   ========================= */
 
 .site-header {
-  height: 84px;
+  height: 82px;
   padding: 0 5vw;
 
   display: flex;
@@ -58,11 +68,11 @@ img {
 }
 
 .wordmark {
-  font-family: var(--serif);
-  font-size: 1.45rem;
+  font-family: var(--brand);
+  font-size: 1.35rem;
   font-weight: 400;
 
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
@@ -72,10 +82,10 @@ img {
 }
 
 .site-header nav a {
-  font-family: var(--sans);
-  font-size: 0.68rem;
+  font-family: var(--brand);
+  font-size: 0.66rem;
 
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 
   transition: color 0.2s ease;
@@ -86,18 +96,17 @@ img {
 }
 
 
-/* HERO */
+/* =========================
+   HERO
+   ========================= */
 
 .hero {
-  min-height: calc(100vh - 84px);
+  min-height: calc(100vh - 82px);
 
   padding: 6vw 5vw 5vw;
 
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-
-  position: relative;
 
   border-bottom: 1px solid var(--line);
 }
@@ -105,13 +114,13 @@ img {
 .hero-coordinates {
   justify-self: end;
 
-  font-family: var(--sans);
-  font-size: 0.65rem;
+  font-family: var(--brand);
+  font-size: 0.62rem;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 
   color: var(--grey);
-
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .hero-content {
@@ -119,28 +128,33 @@ img {
 }
 
 .hero h1 {
-  font-family: var(--serif);
+  font-family: var(--brand);
 
-  font-size: clamp(4.5rem, 13vw, 11rem);
+  font-size: clamp(4.8rem, 12vw, 10.5rem);
 
   font-weight: 400;
-  line-height: 0.86;
+  line-height: 0.88;
 
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .tagline {
   margin-top: 28px;
 
-  font-family: var(--sans);
+  font-family: var(--brand);
 
-  font-size: clamp(0.72rem, 1vw, 0.9rem);
+  font-size: 0.72rem;
+  font-weight: 400;
 
   letter-spacing: 0.28em;
   text-transform: uppercase;
 
   color: var(--grey);
 }
+
+
+/* subtle meridian line */
 
 .hero-line {
   width: 100%;
@@ -155,8 +169,7 @@ img {
   content: "";
 
   position: absolute;
-
-  right: 20%;
+  right: 22%;
   top: -4px;
 
   width: 9px;
@@ -167,15 +180,16 @@ img {
 }
 
 
-/* SECTIONS */
+/* =========================
+   SECTIONS
+   ========================= */
 
 .intro,
 .explore {
   display: grid;
+  grid-template-columns: 90px 1fr;
 
-  grid-template-columns: 100px 1fr;
-
-  gap: 40px;
+  gap: 45px;
 
   padding: 110px 5vw;
 
@@ -183,74 +197,77 @@ img {
 }
 
 .section-number {
-  font-family: var(--sans);
+  font-family: var(--brand);
 
-  font-size: 0.7rem;
+  font-size: 0.64rem;
+
+  letter-spacing: 0.16em;
 
   color: var(--grey);
-
-  letter-spacing: 0.15em;
 }
 
 .eyebrow {
-  font-family: var(--sans);
+  margin-bottom: 28px;
 
-  font-size: 0.68rem;
+  font-family: var(--brand);
 
-  letter-spacing: 0.16em;
+  font-size: 0.64rem;
+
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 
   color: var(--brick);
-
-  margin-bottom: 28px;
 }
 
 
-/* INTRO */
+/* =========================
+   INTRO
+   ========================= */
 
 .intro-content {
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 .intro h2 {
-  font-family: var(--serif);
+  font-family: var(--display);
 
-  font-size: clamp(3rem, 6vw, 6rem);
+  font-size: clamp(3.4rem, 6.5vw, 6.6rem);
 
-  font-weight: 400;
+  font-weight: 500;
+  line-height: 0.94;
 
-  line-height: 0.98;
+  letter-spacing: -0.025em;
 
   max-width: 900px;
 }
 
 .intro-text {
-  margin-top: 40px;
+  margin-top: 42px;
 
-  max-width: 650px;
+  max-width: 660px;
 
-  font-size: 1.25rem;
+  font-family: var(--body);
 
-  line-height: 1.7;
+  font-size: 1.08rem;
+  line-height: 1.75;
 
   color: #4A4843;
 }
 
 
-/* EXPLORE */
+/* =========================
+   EXPLORE
+   ========================= */
 
 .explore-grid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
-  gap: 0;
 
   border-top: 1px solid var(--ink);
 }
 
 .explore-grid article {
-  padding: 28px 28px 40px 0;
+  padding: 28px 28px 42px 0;
 
   border-right: 1px solid var(--line);
 }
@@ -266,30 +283,80 @@ img {
 .meta {
   display: block;
 
-  font-family: var(--sans);
+  margin-bottom: 22px;
 
-  font-size: 0.65rem;
+  font-family: var(--brand);
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+
+  color: var(--brick);
+}
+
+.explore-grid h3 {
+  font-family: var(--display);
+
+  font-size: clamp(2rem, 2.8vw, 3.1rem);
+
+  font-weight: 500;
+  line-height: 1.04;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* =========================
+   GENERAL TYPOGRAPHY
+   ========================= */
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+p {
+  font-family: var(--body);
+}
+
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.button {
+  display: inline-block;
+
+  margin-top: 28px;
+
+  padding: 12px 18px;
+
+  border: 1px solid var(--ink);
+
+  font-family: var(--brand);
+
+  font-size: 0.64rem;
 
   letter-spacing: 0.15em;
   text-transform: uppercase;
 
-  color: var(--brick);
-
-  margin-bottom: 20px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
-.explore-grid h3 {
-  font-family: var(--serif);
-
-  font-size: clamp(1.8rem, 2.6vw, 3rem);
-
-  font-weight: 400;
-
-  line-height: 1.08;
+.button:hover {
+  background: var(--ink);
+  color: var(--cream);
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+   ========================= */
 
 footer {
   background: var(--dark);
@@ -303,20 +370,22 @@ footer {
 }
 
 .footer-wordmark {
-  font-family: var(--serif);
+  font-family: var(--brand);
 
-  font-size: clamp(3rem, 7vw, 6rem);
+  font-size: clamp(2.8rem, 7vw, 6rem);
 
-  letter-spacing: 0.12em;
+  font-weight: 400;
+
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .footer-tagline {
-  margin-top: 14px;
+  margin-top: 16px;
 
-  font-family: var(--sans);
+  font-family: var(--brand);
 
-  font-size: 0.7rem;
+  font-size: 0.66rem;
 
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -332,18 +401,20 @@ footer {
   display: flex;
   justify-content: space-between;
 
-  font-family: var(--sans);
+  font-family: var(--brand);
 
-  font-size: 0.62rem;
+  font-size: 0.6rem;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 
   color: var(--sand);
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+   ========================= */
 
 @media (max-width: 800px) {
 
@@ -355,21 +426,27 @@ footer {
     align-items: flex-start;
   }
 
+  .wordmark {
+    font-size: 1.05rem;
+  }
+
   .site-header nav {
     gap: 16px;
   }
 
   .hero {
-    min-height: 78vh;
+    min-height: 75vh;
 
     padding: 8vw 6vw;
   }
 
   .hero h1 {
-    font-size: clamp(4rem, 20vw, 7rem);
+    font-size: clamp(3.7rem, 19vw, 6rem);
+    letter-spacing: 0.05em;
   }
 
   .tagline {
+    font-size: 0.62rem;
     letter-spacing: 0.2em;
   }
 
@@ -377,11 +454,9 @@ footer {
   .explore {
     grid-template-columns: 1fr;
 
-    padding: 75px 6vw;
-  }
+    gap: 20px;
 
-  .section-number {
-    margin-bottom: 10px;
+    padding: 75px 6vw;
   }
 
   .explore-grid {
@@ -402,8 +477,6 @@ footer {
 
   .footer-bottom {
     flex-direction: column;
-
     gap: 10px;
   }
-
 }
