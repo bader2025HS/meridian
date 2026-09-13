@@ -1,30 +1,27 @@
 /* =========================
-   MERIDIAN — BASE STYLE
-   Across Time and Space
+   MERIDIAN
+   Across Space and Time
    ========================= */
 
 :root {
-  --paper: #F2F0E9;
-  --ink: #171716;
-  --deep-ink: #20201E;
-  --stone: #AAA79E;
-  --mist: #D7D4CB;
-  --red: #A33B32;
-  --white: #FFFFFF;
+  --bg: #F2F0E9;
+  --text: #171716;
+  --muted: #7E7A72;
+  --line: #D7D4CB;
+  --accent: #A33B32;
+  --dark: #20201E;
 
   --serif: Cambria, Georgia, "Times New Roman", serif;
   --sans: "Century Gothic", CenturyGothic, AppleGothic, Arial, sans-serif;
 }
 
 
-/* =========================
-   RESET
-   ========================= */
+/* RESET */
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -32,16 +29,15 @@ html {
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--serif);
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 
-/* =========================
-   LINKS
-   ========================= */
+/* LINKS */
 
 a {
   color: inherit;
@@ -49,37 +45,31 @@ a {
 }
 
 a:hover {
-  color: var(--red);
+  color: var(--accent);
 }
 
 
-/* =========================
-   HEADER / NAVIGATION
-   ========================= */
+/* HEADER */
 
 header {
   width: 100%;
   padding: 24px 5%;
-  border-bottom: 1px solid var(--mist);
+  border-bottom: 1px solid var(--line);
 }
 
 .navbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 30px;
 }
 
 .logo {
   font-family: var(--serif);
-  font-size: 2rem;
+  font-size: 1.9rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-}
-
-.logo span {
-  color: var(--red);
 }
 
 nav {
@@ -89,38 +79,36 @@ nav {
 
 nav a {
   font-family: var(--sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   transition: color 0.2s ease;
 }
 
 
-/* =========================
-   HERO
-   ========================= */
+/* HERO */
 
 .hero {
-  min-height: 82vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8% 7%;
-  border-bottom: 1px solid var(--mist);
+  padding: 7%;
+  border-bottom: 1px solid var(--line);
 }
 
-.hero-kicker {
+.hero-label {
   font-family: var(--sans);
-  color: var(--red);
-  font-size: 0.8rem;
-  letter-spacing: 0.16em;
+  color: var(--accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .hero h1 {
   font-family: var(--serif);
-  font-size: clamp(4rem, 11vw, 9rem);
+  font-size: clamp(4rem, 12vw, 9rem);
   font-weight: 500;
   line-height: 0.9;
   letter-spacing: 0.03em;
@@ -129,16 +117,14 @@ nav a {
 .hero-tagline {
   margin-top: 30px;
   font-family: var(--sans);
-  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
-  letter-spacing: 0.12em;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--stone);
+  color: var(--muted);
 }
 
 
-/* =========================
-   GENERAL CONTENT
-   ========================= */
+/* MAIN */
 
 main {
   width: min(1200px, 90%);
@@ -151,11 +137,11 @@ section {
 
 .section-label {
   font-family: var(--sans);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--red);
-  margin-bottom: 14px;
+  color: var(--accent);
+  margin-bottom: 12px;
 }
 
 .section-title {
@@ -163,13 +149,11 @@ section {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 500;
   line-height: 1;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 
 
-/* =========================
-   ARTICLE GRID
-   ========================= */
+/* CARDS */
 
 .article-grid {
   display: grid;
@@ -178,7 +162,7 @@ section {
 }
 
 .article-card {
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid var(--text);
   padding-top: 18px;
 }
 
@@ -187,15 +171,15 @@ section {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .article-meta {
   font-family: var(--sans);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--stone);
+  color: var(--muted);
   margin-bottom: 10px;
 }
 
@@ -204,88 +188,49 @@ section {
   font-size: 1.8rem;
   line-height: 1.1;
   font-weight: 500;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .article-card p {
   font-size: 1rem;
-  line-height: 1.55;
-  color: #4B4A46;
+  color: #4A4945;
 }
 
 
-/* =========================
-   FEATURE ARTICLE
-   ========================= */
-
-.feature {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.feature img {
-  width: 100%;
-  display: block;
-}
-
-.feature-content h2 {
-  font-family: var(--serif);
-  font-size: clamp(3rem, 6vw, 5.5rem);
-  font-weight: 500;
-  line-height: 0.95;
-  margin: 12px 0 24px;
-}
-
-.feature-content p {
-  font-size: 1.15rem;
-  max-width: 520px;
-}
-
-
-/* =========================
-   BUTTONS
-   ========================= */
+/* BUTTONS */
 
 .button {
   display: inline-block;
-  margin-top: 28px;
-  padding: 13px 20px;
-  border: 1px solid var(--ink);
+  margin-top: 25px;
+  padding: 12px 20px;
+  border: 1px solid var(--text);
 
   font-family: var(--sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .button:hover {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
+  background: var(--text);
+  color: var(--bg);
 }
 
 
-/* =========================
-   ARTICLE PAGE
-   ========================= */
+/* ARTICLE PAGE */
 
 .article-header {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: auto;
   padding: 100px 0 60px;
 }
 
 .article-category {
   font-family: var(--sans);
-  font-size: 0.75rem;
-  color: var(--red);
+  font-size: 0.72rem;
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.15em;
 }
@@ -295,26 +240,25 @@ section {
   font-size: clamp(4rem, 8vw, 7rem);
   font-weight: 500;
   line-height: 0.95;
-  margin: 20px 0 25px;
+  margin: 18px 0 24px;
 }
 
 .article-intro {
   max-width: 760px;
-  font-size: 1.4rem;
-  line-height: 1.5;
-  color: #4B4A46;
+  font-size: 1.35rem;
+  color: #4A4945;
 }
 
 .article-body {
   max-width: 760px;
-  margin: 0 auto;
+  margin: auto;
   padding-bottom: 100px;
 }
 
 .article-body p {
   font-size: 1.15rem;
   line-height: 1.8;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 }
 
 .article-body h2 {
@@ -325,71 +269,68 @@ section {
 
 .article-body h3 {
   font-family: var(--sans);
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 1rem;
+  letter-spacing: 0.1em;
   margin: 40px 0 15px;
 }
 
 
-/* =========================
-   QUOTES
-   ========================= */
+/* QUOTES */
 
 blockquote {
-  margin: 55px 0;
-  padding-left: 28px;
-  border-left: 3px solid var(--red);
+  border-left: 3px solid var(--accent);
+  padding-left: 25px;
+  margin: 50px 0;
 
-  font-size: 1.8rem;
-  line-height: 1.35;
+  font-size: 1.7rem;
   font-style: italic;
+  line-height: 1.35;
 }
 
 
-/* =========================
-   FOOTER
-   ========================= */
+/* FOOTER */
 
 footer {
-  background: var(--deep-ink);
-  color: var(--paper);
+  background: var(--dark);
+  color: var(--bg);
   padding: 70px 5% 35px;
 }
 
 .footer-logo {
   font-family: var(--serif);
-  font-size: 2.2rem;
-  letter-spacing: 0.14em;
+  font-size: 2.1rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .footer-tagline {
-  margin-top: 10px;
   font-family: var(--sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  margin-top: 8px;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--stone);
+  color: #AAA79E;
 }
 
 .footer-bottom {
-  margin-top: 60px;
-  padding-top: 20px;
+  margin-top: 55px;
+  padding-top: 18px;
   border-top: 1px solid #44443F;
 
   font-family: var(--sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  color: var(--stone);
+  font-size: 0.68rem;
+  color: #AAA79E;
 }
 
 
-/* =========================
-   MOBILE
-   ========================= */
+/* MOBILE */
 
-@media (max-width: 850px) {
+@media (max-width: 800px) {
+
+  header {
+    padding: 20px 6%;
+  }
 
   .navbar {
     flex-direction: column;
@@ -398,27 +339,23 @@ footer {
 
   nav {
     flex-wrap: wrap;
-    gap: 15px 22px;
+    gap: 14px 20px;
   }
 
   .hero {
-    min-height: 70vh;
+    min-height: 72vh;
+    padding: 10% 6%;
+  }
+
+  main {
+    width: 88%;
   }
 
   .article-grid {
     grid-template-columns: 1fr;
   }
 
-  .feature {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
   section {
     padding: 65px 0;
-  }
-
-  .article-header {
-    padding-top: 70px;
   }
 }
