@@ -7,244 +7,154 @@
 
   <title>Meridian — Across Space and Time</title>
 
-  <link rel="stylesheet" href="/meridian/style.css?v=40">
+  <link rel="stylesheet" href="/meridian/style.css?v=50">
 </head>
 
 <body>
 
   <header class="site-header">
 
-    <a href="#" class="logo">MERIDIAN</a>
+    <div class="header-inner">
 
-    <nav>
-      <a href="#current">Current</a>
-      <a href="#archive">Archive</a>
-      <a href="#atlas">Atlas</a>
-      <a href="#about">About</a>
-    </nav>
+      <a href="#top" class="logo">MERIDIAN</a>
+
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="main-nav">
+        <a href="#explore">Explore</a>
+        <a href="#regions">Regions</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#about">About</a>
+      </nav>
+
+    </div>
 
   </header>
 
 
-  <main>
+  <main id="top">
 
-    <!-- FEATURE -->
-    <section class="feature">
+    <!-- INTRO -->
+    <section class="intro">
 
-      <div class="feature-visual">
-        <div class="map-grid"></div>
-
-        <div class="coordinate coord-one">
-          41.7151° N
-        </div>
-
-        <div class="coordinate coord-two">
-          44.8271° E
-        </div>
-
-        <div class="feature-number">
-          01
-        </div>
+      <div class="intro-meta">
+        <span>Independent project</span>
+        <span>Est. 2026</span>
       </div>
 
+      <div class="intro-main">
 
-      <div class="feature-content">
-
-        <div class="meta-row">
-          <span>Feature</span>
-          <span>September 2026</span>
-        </div>
-
-        <h1>
-          The South Caucasus
-          <em>after empire.</em>
-        </h1>
-
-        <p class="deck">
-          Georgia, Armenia and Azerbaijan through the legacies
-          of empire, shifting borders and competing national projects.
+        <p class="tagline">
+          Across Space and Time
         </p>
 
-        <a href="#" class="text-link">
-          Read dossier
-          <span>↗</span>
-        </a>
+        <h1>MERIDIAN</h1>
+
+      </div>
+
+      <div class="intro-footer">
+
+        <span>Scroll to explore</span>
+
+        <span class="intro-mark">↓</span>
 
       </div>
 
     </section>
 
 
-    <!-- CURRENT -->
-    <section class="current" id="current">
+    <!-- EXPLORE -->
+    <section class="section section-light" id="explore">
 
-      <div class="section-heading">
-
-        <span class="section-index">01</span>
-
-        <h2>Current</h2>
-
+      <div class="section-label">
+        <span>01</span>
+        <span>Explore</span>
       </div>
 
+      <div class="section-content">
 
-      <div class="current-list">
+        <h2>Explore</h2>
 
-        <a href="#" class="current-item">
-          <span class="item-number">01</span>
+        <div class="category-grid">
 
-          <div class="item-copy">
-            <span class="item-type">Geography</span>
-            <h3>The city that moved east</h3>
-          </div>
+          <a href="#" class="category-card">
+            <span>History</span>
+            <span>↗</span>
+          </a>
 
-          <span class="item-arrow">↗</span>
-        </a>
+          <a href="#" class="category-card">
+            <span>Geopolitics</span>
+            <span>↗</span>
+          </a>
 
+          <a href="#" class="category-card">
+            <span>People</span>
+            <span>↗</span>
+          </a>
 
-        <a href="#" class="current-item">
-          <span class="item-number">02</span>
+          <a href="#" class="category-card">
+            <span>Concepts</span>
+            <span>↗</span>
+          </a>
 
-          <div class="item-copy">
-            <span class="item-type">Borders</span>
-            <h3>Why some frontiers outlive the states that made them</h3>
-          </div>
-
-          <span class="item-arrow">↗</span>
-        </a>
-
-
-        <a href="#" class="current-item">
-          <span class="item-number">03</span>
-
-          <div class="item-copy">
-            <span class="item-type">Language</span>
-            <h3>The politics of naming a place</h3>
-          </div>
-
-          <span class="item-arrow">↗</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- ARCHIVE -->
-    <section class="archive" id="archive">
-
-      <div class="section-heading">
-
-        <span class="section-index">02</span>
-
-        <h2>From the archive</h2>
-
-      </div>
-
-
-      <div class="archive-grid">
-
-        <article class="archive-card red-card">
-
-          <span class="archive-meta">
-            1975–1990
-          </span>
-
-          <h3>
-            Beirut and the geography of a divided city
-          </h3>
-
-          <a href="#">Open file ↗</a>
-
-        </article>
-
-
-        <article class="archive-card blue-card">
-
-          <span class="archive-meta">
-            1918
-          </span>
-
-          <h3>
-            The year four empires disappeared
-          </h3>
-
-          <a href="#">Open file ↗</a>
-
-        </article>
-
-
-        <article class="archive-card olive-card">
-
-          <span class="archive-meta">
-            1989–1991
-          </span>
-
-          <h3>
-            When political maps stopped matching reality
-          </h3>
-
-          <a href="#">Open file ↗</a>
-
-        </article>
-
-
-        <article class="archive-card yellow-card">
-
-          <span class="archive-meta">
-            1955
-          </span>
-
-          <h3>
-            Bandung and the invention of another world order
-          </h3>
-
-          <a href="#">Open file ↗</a>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- ATLAS -->
-    <section class="atlas" id="atlas">
-
-      <div class="atlas-heading">
-
-        <div>
-          <span class="section-index light">03</span>
-          <h2>Atlas</h2>
         </div>
 
-        <p>
-          Places as entry points.
-        </p>
+      </div>
+
+    </section>
+
+
+    <!-- REGIONS -->
+    <section class="section section-dark" id="regions">
+
+      <div class="section-label">
+        <span>02</span>
+        <span>Regions</span>
+      </div>
+
+      <div class="section-content">
+
+        <h2>Regions</h2>
+
+        <div class="region-list">
+
+          <a href="#">Europe</a>
+          <a href="#">Middle East</a>
+          <a href="#">Africa</a>
+          <a href="#">Asia</a>
+          <a href="#">Americas</a>
+
+        </div>
 
       </div>
 
+    </section>
 
-      <div class="atlas-grid">
 
-        <a href="#" class="atlas-place">
-          <span class="place-name">Tbilisi</span>
-          <span class="place-coord">41.7151° N · 44.8271° E</span>
-        </a>
+    <!-- TIMELINE -->
+    <section class="section section-accent" id="timeline">
 
-        <a href="#" class="atlas-place">
-          <span class="place-name">Aleppo</span>
-          <span class="place-coord">36.2021° N · 37.1343° E</span>
-        </a>
+      <div class="section-label">
+        <span>03</span>
+        <span>Timeline</span>
+      </div>
 
-        <a href="#" class="atlas-place">
-          <span class="place-name">Sarajevo</span>
-          <span class="place-coord">43.8563° N · 18.4131° E</span>
-        </a>
+      <div class="section-content">
 
-        <a href="#" class="atlas-place">
-          <span class="place-name">Berlin</span>
-          <span class="place-coord">52.5200° N · 13.4050° E</span>
-        </a>
+        <h2>Timeline</h2>
+
+        <div class="timeline-placeholder">
+
+          <div class="timeline-line"></div>
+
+          <div class="timeline-point point-one"></div>
+          <div class="timeline-point point-two"></div>
+          <div class="timeline-point point-three"></div>
+
+        </div>
 
       </div>
 
@@ -252,23 +162,19 @@
 
 
     <!-- ABOUT -->
-    <section class="about" id="about">
+    <section class="section section-paper" id="about">
 
-      <div class="about-mark">
-        M
+      <div class="section-label">
+        <span>04</span>
+        <span>About</span>
       </div>
 
-      <div class="about-copy">
+      <div class="section-content about-content">
 
-        <span class="section-index">04</span>
-
-        <h2>
-          Meridian is an independent editorial project.
-        </h2>
+        <h2>About Meridian</h2>
 
         <p>
-          Built as a collection of dossiers, maps, profiles,
-          timelines and notes.
+          Meridian is an independent digital project.
         </p>
 
       </div>
@@ -280,23 +186,29 @@
 
   <footer>
 
-    <div class="footer-logo">
-      MERIDIAN
-    </div>
+    <div class="footer-top">
 
-    <div class="footer-nav">
-      <a href="#current">Current</a>
-      <a href="#archive">Archive</a>
-      <a href="#atlas">Atlas</a>
-      <a href="#about">About</a>
+      <div class="footer-logo">
+        MERIDIAN
+      </div>
+
+      <a href="#top" class="back-top">
+        Back to top ↑
+      </a>
+
     </div>
 
     <div class="footer-bottom">
+
       <span>Across Space and Time</span>
-      <span>© 2026</span>
+      <span>© 2026 Meridian</span>
+
     </div>
 
   </footer>
+
+
+  <script src="/meridian/script.js?v=50"></script>
 
 </body>
 
