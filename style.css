@@ -1,50 +1,424 @@
+/* =========================
+   MERIDIAN — BASE STYLE
+   Across Time and Space
+   ========================= */
+
+:root {
+  --paper: #F2F0E9;
+  --ink: #171716;
+  --deep-ink: #20201E;
+  --stone: #AAA79E;
+  --mist: #D7D4CB;
+  --red: #A33B32;
+  --white: #FFFFFF;
+
+  --serif: Cambria, Georgia, "Times New Roman", serif;
+  --sans: "Century Gothic", CenturyGothic, AppleGothic, Arial, sans-serif;
+}
+
+
+/* =========================
+   RESET
+   ========================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  background: #f4f1e8;
-  color: #151515;
-  font-family: Arial, sans-serif;
+html {
+  scroll-behavior: smooth;
 }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  line-height: 1.6;
+}
+
+
+/* =========================
+   LINKS
+   ========================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--red);
+}
+
+
+/* =========================
+   HEADER / NAVIGATION
+   ========================= */
 
 header {
-  min-height: 100vh;
+  width: 100%;
+  padding: 24px 5%;
+  border-bottom: 1px solid var(--mist);
+}
+
+.navbar {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 40px;
+  justify-content: space-between;
+  gap: 30px;
 }
 
-h1 {
-  font-size: clamp(4rem, 12vw, 10rem);
-  letter-spacing: 0.08em;
-  font-weight: 500;
-}
-
-header p {
-  margin-top: 20px;
-  font-size: 1rem;
-  letter-spacing: 0.15em;
+.logo {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-main {
-  max-width: 800px;
-  margin: auto;
-  padding: 100px 30px;
+.logo span {
+  color: var(--red);
 }
 
-h2 {
-  font-size: 2.5rem;
+nav {
+  display: flex;
+  gap: 28px;
+}
+
+nav a {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero {
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8% 7%;
+  border-bottom: 1px solid var(--mist);
+}
+
+.hero-kicker {
+  font-family: var(--sans);
+  color: var(--red);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   margin-bottom: 20px;
 }
 
-main p {
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 11vw, 9rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+}
+
+.hero-tagline {
+  margin-top: 30px;
+  font-family: var(--sans);
+  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+
+/* =========================
+   GENERAL CONTENT
+   ========================= */
+
+main {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+
+section {
+  padding: 90px 0;
+}
+
+.section-label {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 35px;
+}
+
+
+/* =========================
+   ARTICLE GRID
+   ========================= */
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.article-card {
+  border-top: 1px solid var(--ink);
+  padding-top: 18px;
+}
+
+.article-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.article-meta {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--stone);
+  margin-bottom: 10px;
+}
+
+.article-card h3 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  line-height: 1.1;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.article-card p {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #4B4A46;
+}
+
+
+/* =========================
+   FEATURE ARTICLE
+   ========================= */
+
+.feature {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.feature img {
+  width: 100%;
+  display: block;
+}
+
+.feature-content h2 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 500;
+  line-height: 0.95;
+  margin: 12px 0 24px;
+}
+
+.feature-content p {
   font-size: 1.15rem;
-  line-height: 1.7;
+  max-width: 520px;
+}
+
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.button {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 13px 20px;
+  border: 1px solid var(--ink);
+
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.button:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+
+/* =========================
+   ARTICLE PAGE
+   ========================= */
+
+.article-header {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 0 60px;
+}
+
+.article-category {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.article-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 500;
+  line-height: 0.95;
+  margin: 20px 0 25px;
+}
+
+.article-intro {
+  max-width: 760px;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #4B4A46;
+}
+
+.article-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+.article-body p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.article-body h2 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin: 60px 0 20px;
+}
+
+.article-body h3 {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1rem;
+  margin: 40px 0 15px;
+}
+
+
+/* =========================
+   QUOTES
+   ========================= */
+
+blockquote {
+  margin: 55px 0;
+  padding-left: 28px;
+  border-left: 3px solid var(--red);
+
+  font-size: 1.8rem;
+  line-height: 1.35;
+  font-style: italic;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+  background: var(--deep-ink);
+  color: var(--paper);
+  padding: 70px 5% 35px;
+}
+
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer-tagline {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.footer-bottom {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #44443F;
+
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--stone);
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 850px) {
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 15px 22px;
+  }
+
+  .hero {
+    min-height: 70vh;
+  }
+
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  section {
+    padding: 65px 0;
+  }
+
+  .article-header {
+    padding-top: 70px;
+  }
 }
