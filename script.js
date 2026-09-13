@@ -1,29 +1,36 @@
-const sections = document.querySelectorAll("main section[id]");
-const navLinks = document.querySelectorAll(".main-nav a");
+const menuButton = document.querySelector(".menu-toggle");
+const mainNav = document.querySelector(".main-nav");
 
-const observer = new IntersectionObserver(
-  entries => {
+if (menuButton && mainNav) {
 
-    entries.forEach(entry => {
+  menuButton.addEventListener("click", () => {
 
-      if (!entry.isIntersecting) return;
+    const isOpen = mainNav.classList.toggle("open");
 
-      navLinks.forEach(link => {
+    menuButton.setAttribute("aria-expanded", isOpen);
 
-        link.classList.remove("active");
+    menuButton.textContent = isOpen ? "Close" : "Menu";
 
-        if (link.getAttribute("href") === `#${entry.target.id}`) {
-          link.classList.add("active");
-        }
+  });
 
-      });
+}
 
-    });
 
-  },
-  {
-    threshold: 0.45
-  }
-);
+// Close mobile navigation after selecting a link
 
-sections.forEach(section => observer.observe(section));
+document.querySelectorAll(".main-nav a").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    if (!mainNav) return;
+
+    mainNav.classList.remove("open");
+
+    if (menuButton) {
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.textContent = "Menu";
+    }
+
+  });
+
+});
