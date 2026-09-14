@@ -1,97 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Athar — Across Space & Time</title>
+  <title>ATHAR — Across Space & Time</title>
 
+  <!-- Same modern sans-serif direction as the portfolio -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-  <header class="header">
-    <a href="index.html" class="logo">ATHAR</a>
+  <!-- ======================================
+       NAVIGATION
+  ======================================= -->
 
-    <nav>
-      <a href="history.html">History</a>
-      <a href="conflicts.html">Conflicts</a>
-      <a href="figures.html">Figures</a>
-      <a href="ideas.html">Ideas</a>
-      <a href="countries.html">Countries</a>
-      <a href="borders.html">Borders</a>
+  <header class="site-header">
+
+    <a href="index.html" class="logo">
+      ATHAR
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="#explore">Explore</a>
+      <a href="across.html">Across Space & Time</a>
       <a href="about.html">About</a>
     </nav>
+
+    <button class="menu-button" aria-label="Open menu">
+      <span></span>
+      <span></span>
+    </button>
+
   </header>
+
+
+
+  <!-- ======================================
+       MOBILE MENU
+  ======================================= -->
+
+  <div class="mobile-menu">
+
+    <div class="mobile-menu-inner">
+
+      <a href="history.html">Moments in History</a>
+      <a href="conflicts.html">Conflicts Explained</a>
+      <a href="figures.html">People Who Shaped History</a>
+      <a href="ideas.html">Ideas & Ideologies</a>
+      <a href="countries.html">Countries & Nations</a>
+      <a href="borders.html">Borders & Disputes</a>
+      <a href="years.html">Through the Years</a>
+      <a href="maps.html">Mapping History</a>
+      <a href="across.html">Across Space & Time</a>
+
+    </div>
+
+  </div>
+
 
 
   <main>
 
-    <!-- HERO -->
+
+    <!-- ======================================
+         HERO
+    ======================================= -->
+
     <section class="hero">
 
-      <div class="hero-copy">
+      <div class="hero-grid"></div>
 
-        <p class="eyebrow">
-          HISTORY · POLITICS · GEOGRAPHY
-        </p>
+      <div class="hero-glow"></div>
+
+
+      <div class="hero-content">
+
+        <div class="hero-topline">
+
+          <span>HISTORY</span>
+
+          <span class="dot"></span>
+
+          <span>POLITICS</span>
+
+          <span class="dot"></span>
+
+          <span>GEOGRAPHY</span>
+
+        </div>
+
 
         <h1>
-          Across Space<br>
-          & Time
+          ACROSS
+          <span>SPACE</span>
+          &amp; TIME
         </h1>
 
-        <p class="hero-text">
-          Exploring the events, people, ideas and borders
-          that shaped the world we live in.
-        </p>
 
-        <a href="#explore" class="hero-link">
-          Explore Athar
-          <span>↓</span>
-        </a>
+        <div class="hero-bottom">
+
+          <p>
+            Exploring the events, people, ideas and borders
+            that shaped the world — and continue to shape it.
+          </p>
+
+
+          <a href="#explore" class="circle-button">
+
+            <span>
+              Explore
+            </span>
+
+            <span class="circle-arrow">
+              ↓
+            </span>
+
+          </a>
+
+        </div>
 
       </div>
 
-      <div class="hero-symbol">
-        <div class="symbol-circle"></div>
-        <div class="symbol-vertical"></div>
-        <div class="symbol-horizontal"></div>
+
+
+      <div class="hero-index">
+
+        <span>ATHAR</span>
+
+        <span>
+          أثر
+        </span>
+
       </div>
 
     </section>
 
 
 
-    <!-- INTRO -->
-    <section class="intro">
+    <!-- ======================================
+         INTRO
+    ======================================= -->
 
-      <div class="intro-left">
-        <p class="section-label">ATHAR</p>
+    <section class="intro reveal">
+
+      <div class="intro-label">
+        <span>What is Athar?</span>
+      </div>
+
+
+      <div class="intro-content">
 
         <h2>
-          History leaves<br>
-          traces.
+          History doesn't disappear.
+          <span>It leaves traces.</span>
         </h2>
-      </div>
 
-      <div class="intro-right">
 
-        <p>
-          Athar looks at history not as a collection of isolated dates,
-          but as a network of events, ideas, conflicts and places.
-        </p>
+        <div class="intro-text">
 
-        <p>
-          From the collapse of empires to disputed borders, from political
-          ideologies to the people who transformed entire regions, the site
-          follows how the past continues to shape the present.
-        </p>
+          <p>
+            Athar follows those traces across countries,
+            conflicts, borders and ideas.
+          </p>
+
+          <p>
+            Instead of reading history as isolated events,
+            explore the connections between what happened,
+            where it happened and what came next.
+          </p>
+
+        </div>
 
       </div>
 
@@ -99,185 +187,363 @@
 
 
 
-    <!-- EXPLORE -->
+    <!-- ======================================
+         EXPLORE HEADER
+    ======================================= -->
+
     <section class="explore" id="explore">
 
-      <div class="explore-header">
+      <div class="explore-heading reveal">
 
         <div>
-          <p class="section-label">EXPLORE</p>
-          <h2>Choose a path.</h2>
+
+          <span class="section-kicker">
+            EXPLORE
+          </span>
+
+          <h2>
+            Where do you<br>
+            want to begin?
+          </h2>
+
         </div>
 
+
         <p>
-          Each section approaches history differently —
-          through events, people, ideas, territory and chronology.
+          Move through history by event, conflict,
+          person, idea, country, border or map.
         </p>
 
       </div>
 
 
-      <div class="explore-list">
+
+      <!-- ======================================
+           INTERACTIVE SECTION NAVIGATION
+      ======================================= -->
+
+      <div class="section-browser">
 
 
-        <a href="history.html" class="explore-item">
+        <!-- HISTORY -->
 
-          <div class="explore-type">
+        <a
+          href="history.html"
+          class="browser-row"
+          data-preview="history"
+        >
+
+          <span class="browser-label">
+            Historical events
+          </span>
+
+          <h3>
+            Moments in History
+          </h3>
+
+          <span class="browser-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <!-- CONFLICTS -->
+
+        <a
+          href="conflicts.html"
+          class="browser-row"
+          data-preview="conflicts"
+        >
+
+          <span class="browser-label">
+            War & power
+          </span>
+
+          <h3>
+            Conflicts Explained
+          </h3>
+
+          <span class="browser-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <!-- FIGURES -->
+
+        <a
+          href="figures.html"
+          class="browser-row"
+          data-preview="figures"
+        >
+
+          <span class="browser-label">
+            Biography
+          </span>
+
+          <h3>
+            People Who Shaped History
+          </h3>
+
+          <span class="browser-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <!-- IDEAS -->
+
+        <a
+          href="ideas.html"
+          class="browser-row"
+          data-preview="ideas"
+        >
+
+          <span class="browser-label">
+            Political thought
+          </span>
+
+          <h3>
+            Ideas &amp; Ideologies
+          </h3>
+
+          <span class="browser-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <!-- COUNTRIES -->
+
+        <a
+          href="countries.html"
+          class="browser-row"
+          data-preview="countries"
+        >
+
+          <span class="browser-label">
+            States & identity
+          </span>
+
+          <h3>
+            Countries &amp; Nations
+          </h3>
+
+          <span class="browser-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <!-- BORDERS -->
+
+        <a
+          href="borders.html"
+          class="browser-row"
+          data-preview="borders"
+        >
+
+          <span class="browser-label">
+            Territory
+          </span>
+
+          <h3>
+            Borders &amp; Disputes
+          </h3>
+
+          <span class="browser-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <!-- TIMELINES -->
+
+        <a
+          href="years.html"
+          class="browser-row"
+          data-preview="years"
+        >
+
+          <span class="browser-label">
+            Chronology
+          </span>
+
+          <h3>
+            Through the Years
+          </h3>
+
+          <span class="browser-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+
+        <!-- MAPS -->
+
+        <a
+          href="maps.html"
+          class="browser-row"
+          data-preview="maps"
+        >
+
+          <span class="browser-label">
+            Geography
+          </span>
+
+          <h3>
+            Mapping History
+          </h3>
+
+          <span class="browser-arrow">
+            ↗
+          </span>
+
+        </a>
+
+
+      </div>
+
+
+      <!-- Dynamic preview -->
+
+      <aside class="section-preview">
+
+        <div class="preview-top">
+
+          <span id="preview-category">
             HISTORICAL EVENTS
+          </span>
+
+          <span>
+            PREVIEW
+          </span>
+
+        </div>
+
+
+        <div class="preview-content">
+
+          <h3 id="preview-title">
+            Moments in History
+          </h3>
+
+
+          <p id="preview-text">
+            Discover the revolutions, treaties, partitions and
+            turning points that transformed societies and states.
+          </p>
+
+
+          <div id="preview-topics" class="preview-topics">
+
+            <span>Fall of Constantinople</span>
+            <span>Berlin Conference</span>
+            <span>Suez Crisis</span>
+
           </div>
 
-          <div class="explore-main">
-            <h3>Moments in History</h3>
-            <p>
-              Revolutions, treaties, partitions and turning points
-              that reshaped the world.
-            </p>
-          </div>
+        </div>
 
-          <div class="explore-arrow">↗</div>
+      </aside>
 
-        </a>
+
+    </section>
 
 
 
-        <a href="conflicts.html" class="explore-item">
+    <!-- ======================================
+         SIGNATURE SECTION
+    ======================================= -->
 
-          <div class="explore-type">
-            WAR & POWER
-          </div>
+    <section class="across-section reveal">
 
-          <div class="explore-main">
-            <h3>Conflicts Explained</h3>
-            <p>
-              Who fought, why conflicts began,
-              how outside powers became involved
-              and what remains unresolved.
-            </p>
-          </div>
+      <div class="across-top">
 
-          <div class="explore-arrow">↗</div>
+        <span>
+          ATHAR STORIES
+        </span>
 
-        </a>
+        <span>
+          Beyond categories
+        </span>
 
+      </div>
 
 
-        <a href="figures.html" class="explore-item">
+      <div class="across-main">
 
-          <div class="explore-type">
-            BIOGRAPHIES
-          </div>
+        <div class="across-title">
 
-          <div class="explore-main">
-            <h3>People Who Shaped History</h3>
-            <p>
-              Leaders, thinkers, revolutionaries
-              and diplomats who changed political history.
-            </p>
-          </div>
+          <h2>
+            Across Space
+            <br>
+            &amp; Time
+          </h2>
 
-          <div class="explore-arrow">↗</div>
-
-        </a>
+        </div>
 
 
+        <div class="across-description">
 
-        <a href="ideas.html" class="explore-item">
+          <p>
+            Some stories cannot be understood through
+            a single country, conflict or moment.
+          </p>
 
-          <div class="explore-type">
-            POLITICAL THOUGHT
-          </div>
+          <a href="across.html">
+            Explore the series ↗
+          </a>
 
-          <div class="explore-main">
-            <h3>Ideas & Ideologies</h3>
-            <p>
-              Nationalism, realism, imperialism,
-              self-determination and the ideas behind politics.
-            </p>
-          </div>
+        </div>
 
-          <div class="explore-arrow">↗</div>
-
-        </a>
+      </div>
 
 
 
-        <a href="countries.html" class="explore-item">
+      <div class="story-marquee">
 
-          <div class="explore-type">
-            STATES & IDENTITY
-          </div>
+        <div class="story-track">
 
-          <div class="explore-main">
-            <h3>Countries & Nations</h3>
-            <p>
-              How states formed, borders changed
-              and national identities developed.
-            </p>
-          </div>
+          <span>Countries That Disappeared</span>
+          <span>•</span>
 
-          <div class="explore-arrow">↗</div>
+          <span>Cities That Changed Hands</span>
+          <span>•</span>
 
-        </a>
+          <span>Unrecognised States</span>
+          <span>•</span>
 
+          <span>Why Does This Border Exist?</span>
+          <span>•</span>
 
+          <span>How Did We Get Here?</span>
+          <span>•</span>
 
-        <a href="borders.html" class="explore-item">
+          <span>Countries That Disappeared</span>
+          <span>•</span>
 
-          <div class="explore-type">
-            TERRITORY
-          </div>
+          <span>Cities That Changed Hands</span>
+          <span>•</span>
 
-          <div class="explore-main">
-            <h3>Borders & Disputes</h3>
-            <p>
-              Enclaves, contested territories
-              and the historical origins of unusual borders.
-            </p>
-          </div>
+          <span>Unrecognised States</span>
+          <span>•</span>
 
-          <div class="explore-arrow">↗</div>
-
-        </a>
-
-
-
-        <a href="years.html" class="explore-item">
-
-          <div class="explore-type">
-            CHRONOLOGY
-          </div>
-
-          <div class="explore-main">
-            <h3>Through the Years</h3>
-            <p>
-              Long and complex histories presented
-              through clear visual timelines.
-            </p>
-          </div>
-
-          <div class="explore-arrow">↗</div>
-
-        </a>
-
-
-
-        <a href="maps.html" class="explore-item">
-
-          <div class="explore-type">
-            GEOGRAPHY
-          </div>
-
-          <div class="explore-main">
-            <h3>Mapping History</h3>
-            <p>
-              Territorial change, empires, borders
-              and the geography of political power.
-            </p>
-          </div>
-
-          <div class="explore-arrow">↗</div>
-
-        </a>
+        </div>
 
       </div>
 
@@ -285,85 +551,97 @@
 
 
 
-    <!-- SIGNATURE SECTION -->
-    <section class="signature">
+    <!-- ======================================
+         RANDOM DISCOVERY
+    ======================================= -->
 
-      <div class="signature-heading">
+    <section class="discover reveal">
 
-        <p class="section-label light">
-          ATHAR STORIES
-        </p>
+      <div>
+
+        <span class="section-kicker">
+          DON'T KNOW WHERE TO START?
+        </span>
 
         <h2>
-          Across Space<br>
-          & Time
+          Discover something
+          <span>unexpected.</span>
         </h2>
 
       </div>
 
 
-      <div class="signature-content">
+      <button id="random-button" class="random-button">
 
-        <p>
-          Stories that do not belong to only one category.
-          Part history, part geography, part politics.
-        </p>
+        <span>
+          Surprise me
+        </span>
 
+        <span>
+          ↗
+        </span>
 
-        <div class="signature-links">
-
-          <a href="across.html">
-            Countries That Disappeared
-            <span>↗</span>
-          </a>
-
-          <a href="across.html">
-            Cities That Changed Hands
-            <span>↗</span>
-          </a>
-
-          <a href="across.html">
-            Unrecognised States
-            <span>↗</span>
-          </a>
-
-          <a href="across.html">
-            Why Does This Border Exist?
-            <span>↗</span>
-          </a>
-
-          <a href="across.html">
-            How Did We Get Here?
-            <span>↗</span>
-          </a>
-
-        </div>
-
-        <a href="across.html" class="signature-button">
-          Explore Across Space & Time
-        </a>
-
-      </div>
+      </button>
 
     </section>
+
+
 
   </main>
 
 
 
+  <!-- ======================================
+       FOOTER
+  ======================================= -->
+
   <footer>
 
-    <div>
-      <div class="footer-logo">ATHAR</div>
-      <p>Across Space & Time</p>
+    <div class="footer-name">
+
+      <span>ATHAR</span>
+
+      <small>
+        Across Space &amp; Time
+      </small>
+
     </div>
 
-    <p>
-      History · Politics · Geography · Memory
-    </p>
+
+    <div class="footer-links">
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="#explore">
+        Explore
+      </a>
+
+      <a href="#">
+        Back to top ↑
+      </a>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        HISTORY · POLITICS · GEOGRAPHY
+      </span>
+
+      <span>
+        أثر
+      </span>
+
+    </div>
 
   </footer>
 
 
+  <script src="script.js"></script>
+
 </body>
+
 </html>
