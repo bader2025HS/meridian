@@ -1,279 +1,150 @@
-/* =========================================
-   ATHAR — INTERACTIONS
-   ========================================= */
+(() => {
+  "use strict";
 
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* HEADER */
-const header = document.querySelector(".site-header");
+  /* ------------------------------------------------------------------ */
+  /* Header: solid on scroll                                            */
+  /* ------------------------------------------------------------------ */
+  const header = document.getElementById("siteHeader");
+  const setHeaderState = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 40);
+  };
+  setHeaderState();
+  window.addEventListener("scroll", setHeaderState, { passive: true });
 
-function updateHeader() {
-  if (window.scrollY > 60) {
-    header.classList.add("scrolled");
+  /* ------------------------------------------------------------------ */
+  /* Mobile nav toggle                                                   */
+  /* ------------------------------------------------------------------ */
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileNav = document.getElementById("mobileNav");
+
+  const closeMobileNav = () => {
+    menuToggle.setAttribute("aria-expanded", "false");
+    mobileNav.classList.remove("is-open");
+    mobileNav.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  const openMobileNav = () => {
+    menuToggle.setAttribute("aria-expanded", "true");
+    mobileNav.classList.add("is-open");
+    mobileNav.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+    isOpen ? closeMobileNav() : openMobileNav();
+  });
+
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMobileNav);
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMobileNav();
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* Smooth scroll for in-page links                                     */
+  /* ------------------------------------------------------------------ */
+  document.querySelectorAll("[data-scroll]").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href");
+      if (!targetId || !targetId.startsWith("#")) return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    });
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* Scroll reveal                                                       */
+  /* ------------------------------------------------------------------ */
+  const revealEls = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add("is-visible"), i * 40);
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+    );
+    revealEls.forEach((el) => io.observe(el));
   } else {
-    header.classList.remove("scrolled");
+    revealEls.forEach((el) => el.classList.add("is-visible"));
   }
-}
 
-window.addEventListener("scroll", updateHeader);
-updateHeader();
-
-
-
-/* MOBILE MENU */
-const menuButton = document.querySelector(".menu-button");
-const mobileMenu = document.querySelector(".mobile-menu");
-
-if (menuButton && mobileMenu) {
-
-  menuButton.addEventListener("click", () => {
-    mobileMenu.classList.toggle("open");
+  /* ------------------------------------------------------------------ */
+  /* Explore rows: populate hover preview from data-topics               */
+  /* ------------------------------------------------------------------ */
+  document.querySelectorAll(".explore-row").forEach((row) => {
+    const topics = row.dataset.topics;
+    const previewEl = row.querySelector(".row-preview");
+    if (!topics || !previewEl) return;
+    const first = topics.split(",").slice(0, 3).map((t) => t.trim()).join(" · ");
+    previewEl.textContent = first;
   });
 
-  document.querySelectorAll(".mobile-menu a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("open");
+  /* ------------------------------------------------------------------ */
+  /* Hero: mouse-follow parallax on contour lines                        */
+  /* ------------------------------------------------------------------ */
+  const hero = document.getElementById("hero");
+  const contours = document.querySelectorAll(".contour");
+
+  if (hero && contours.length && !reduceMotion) {
+    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+    let raf = null;
+
+    hero.addEventListener("pointermove", (e) => {
+      const rect = hero.getBoundingClientRect();
+      targetX = (e.clientX - rect.left) / rect.width - 0.5;
+      targetY = (e.clientY - rect.top) / rect.height - 0.5;
+      if (!raf) raf = requestAnimationFrame(animateContours);
     });
-  });
 
-}
+    hero.addEventListener("pointerleave", () => {
+      targetX = 0;
+      targetY = 0;
+      if (!raf) raf = requestAnimationFrame(animateContours);
+    });
 
+    function animateContours() {
+      currentX += (targetX - currentX) * 0.06;
+      currentY += (targetY - currentY) * 0.06;
 
+      contours.forEach((c, i) => {
+        const depth = (i + 1) * 10;
+        c.style.transform = `translate(${currentX * depth}px, ${currentY * depth * 0.6}px)`;
+      });
 
-/* SCROLL REVEAL */
-const revealElements = document.querySelectorAll(".reveal");
-
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
+      if (Math.abs(currentX - targetX) > 0.001 || Math.abs(currentY - targetY) > 0.001) {
+        raf = requestAnimationFrame(animateContours);
+      } else {
+        raf = null;
       }
-
-    });
-  },
-  {
-    threshold: 0.08
-  }
-);
-
-revealElements.forEach(element => {
-  observer.observe(element);
-});
-
-
-
-/* EXPLORE PREVIEWS */
-const previewData = {
-
-  history: {
-    category: "HISTORICAL EVENTS",
-    title: "Moments in History",
-    text:
-      "Revolutions, treaties, partitions and turning points that transformed societies, states and international orders.",
-    topics: [
-      "Fall of Constantinople",
-      "Berlin Conference",
-      "Suez Crisis",
-      "Iranian Revolution"
-    ]
-  },
-
-  conflicts: {
-    category: "WAR & POWER",
-    title: "Conflicts Explained",
-    text:
-      "Explore why wars began, who was involved, how they developed and the consequences they left behind.",
-    topics: [
-      "Lebanese Civil War",
-      "Iran–Iraq War",
-      "Yugoslav Wars",
-      "Western Sahara"
-    ]
-  },
-
-  figures: {
-    category: "BIOGRAPHY",
-    title: "People Who Shaped History",
-    text:
-      "Leaders, thinkers, revolutionaries and diplomats whose actions changed states, societies and political ideas.",
-    topics: [
-      "Ibn Khaldun",
-      "Emir Abdelkader",
-      "Gamal Abdel Nasser",
-      "Patrice Lumumba"
-    ]
-  },
-
-  ideas: {
-    category: "POLITICAL THOUGHT",
-    title: "Ideas & Ideologies",
-    text:
-      "The concepts and theories used to understand power, society, states and international relations.",
-    topics: [
-      "Nationalism",
-      "Realism",
-      "Security Dilemma",
-      "Self-Determination"
-    ]
-  },
-
-  countries: {
-    category: "STATES & IDENTITY",
-    title: "Countries & Nations",
-    text:
-      "Explore how states formed, disappeared and transformed, and how national identities developed.",
-    topics: [
-      "Lebanon",
-      "Georgia",
-      "Algeria",
-      "Yugoslavia"
-    ]
-  },
-
-  borders: {
-    category: "TERRITORY",
-    title: "Borders & Disputes",
-    text:
-      "Understand the historical origins of unusual borders, enclaves, corridors and contested territories.",
-    topics: [
-      "Wakhan Corridor",
-      "Caprivi Strip",
-      "The Gambia",
-      "Nagorno-Karabakh"
-    ]
-  },
-
-  years: {
-    category: "CHRONOLOGY",
-    title: "Through the Years",
-    text:
-      "Follow major historical developments through visual timelines connecting events across decades.",
-    topics: [
-      "Cold War",
-      "Modern Middle East",
-      "Post-Soviet Caucasus",
-      "Arab Uprisings"
-    ]
-  },
-
-  maps: {
-    category: "GEOGRAPHY",
-    title: "Mapping History",
-    text:
-      "Explore territorial change, empires, borders and political power through historical maps.",
-    topics: [
-      "Ottoman Empire",
-      "Partition of Africa",
-      "Breakup of Yugoslavia",
-      "Disappearing Empires"
-    ]
+    }
   }
 
-};
+  /* ------------------------------------------------------------------ */
+  /* Surprise me: jump to a random section                               */
+  /* ------------------------------------------------------------------ */
+  const destinations = Array.from(document.querySelectorAll(".explore-row")).map(
+    (row) => row.getAttribute("href")
+  );
 
+  const goSomewhereRandom = () => {
+    if (!destinations.length) return;
+    const pick = destinations[Math.floor(Math.random() * destinations.length)];
+    window.location.href = pick;
+  };
 
-const category = document.getElementById("preview-category");
-const title = document.getElementById("preview-title");
-const text = document.getElementById("preview-text");
-const topics = document.getElementById("preview-topics");
-
-
-function showPreview(key) {
-
-  const data = previewData[key];
-
-  if (!data) return;
-
-  category.textContent = data.category;
-  title.textContent = data.title;
-  text.textContent = data.text;
-
-  topics.innerHTML = "";
-
-  data.topics.forEach(topic => {
-
-    const item = document.createElement("span");
-
-    item.textContent = topic;
-
-    topics.appendChild(item);
-
-  });
-
-}
-
-
-document.querySelectorAll(".browser-row").forEach(row => {
-
-  row.addEventListener("mouseenter", () => {
-    showPreview(row.dataset.preview);
-  });
-
-  row.addEventListener("focus", () => {
-    showPreview(row.dataset.preview);
-  });
-
-});
-
-
-
-/* HERO MOUSE INTERACTION */
-const hero = document.querySelector(".hero");
-const glow = document.querySelector(".hero-glow");
-
-if (hero && glow && window.matchMedia("(pointer:fine)").matches) {
-
-  hero.addEventListener("mousemove", event => {
-
-    const bounds = hero.getBoundingClientRect();
-
-    const x =
-      (event.clientX - bounds.left) / bounds.width - 0.5;
-
-    const y =
-      (event.clientY - bounds.top) / bounds.height - 0.5;
-
-    glow.style.transform =
-      `translate(${x * 40}px, ${y * 40}px)`;
-
-  });
-
-  hero.addEventListener("mouseleave", () => {
-    glow.style.transform = "translate(0,0)";
-  });
-
-}
-
-
-
-/* SURPRISE ME */
-const randomButton = document.getElementById("random-button");
-
-const destinations = [
-  "history.html",
-  "conflicts.html",
-  "figures.html",
-  "ideas.html",
-  "countries.html",
-  "borders.html",
-  "years.html",
-  "maps.html",
-  "across.html"
-];
-
-if (randomButton) {
-
-  randomButton.addEventListener("click", () => {
-
-    const randomPage =
-      destinations[
-        Math.floor(Math.random() * destinations.length)
-      ];
-
-    window.location.href = randomPage;
-
-  });
-
-}
+  document.getElementById("surpriseBtn")?.addEventListener("click", goSomewhereRandom);
+  document.getElementById("surpriseBtn2")?.addEventListener("click", goSomewhereRandom);
+})();
