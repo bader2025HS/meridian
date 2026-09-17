@@ -3419,3 +3419,295 @@ button{
   }
 
 }
+
+
+/* ==========================================================
+   ATHAR — EXPLORE INDEX FIX
+   MUST BE AT THE VERY BOTTOM OF STYLE.CSS
+   ========================================================== */
+
+section.explore{
+  display: block !important;
+  padding: 110px var(--edge) 140px !important;
+  background: #edf2f7 !important;
+}
+
+
+/* HEADER */
+
+section.explore .explore-head{
+  display: block !important;
+  width: 100% !important;
+  max-width: var(--max) !important;
+
+  margin: 0 auto 70px !important;
+}
+
+section.explore .explore-head h2{
+  max-width: 11ch !important;
+  margin-top: 32px !important;
+}
+
+
+/* ==========================================================
+   CATEGORY LIST
+   ========================================================== */
+
+section.explore .category-index{
+  display: flex !important;
+  flex-direction: column !important;
+
+  width: 100% !important;
+  max-width: var(--max) !important;
+
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  border-top: 1px solid rgba(18,40,75,.18) !important;
+}
+
+
+/* EACH ROW */
+
+section.explore .category-index .index-item{
+  position: relative !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  width: 100% !important;
+  min-height: 145px !important;
+
+  padding: 0 22px !important;
+  margin: 0 !important;
+
+  border: 0 !important;
+  border-bottom: 1px solid rgba(18,40,75,.18) !important;
+
+  color: #12284b !important;
+  background: transparent !important;
+
+  overflow: hidden !important;
+
+  text-decoration: none !important;
+
+  transition:
+    background .35s ease,
+    padding .35s ease !important;
+}
+
+
+/* MAIN TITLE */
+
+section.explore .index-item .index-title{
+  position: relative !important;
+  z-index: 2 !important;
+
+  display: block !important;
+
+  font-family: var(--display) !important;
+
+  font-size: clamp(2.5rem, 4.2vw, 4.4rem) !important;
+  font-weight: 650 !important;
+
+  line-height: .95 !important;
+  letter-spacing: -.05em !important;
+
+  color: #12284b !important;
+
+  transition: transform .35s ease !important;
+}
+
+
+/* SMALL LABEL ON RIGHT */
+
+section.explore .index-item .index-type{
+  position: relative !important;
+  z-index: 2 !important;
+
+  display: block !important;
+
+  font-size: .7rem !important;
+  font-weight: 700 !important;
+
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+
+  color: rgba(18,40,75,.48) !important;
+
+  transition:
+    color .35s ease,
+    transform .35s ease !important;
+}
+
+
+/* ==========================================================
+   GHOST TITLE
+   ========================================================== */
+
+section.explore .index-item::before{
+  content: attr(data-ghost) !important;
+
+  display: block !important;
+
+  position: absolute !important;
+
+  left: 48% !important;
+  top: 50% !important;
+
+  transform:
+    translate(-50%, -45%)
+    scale(.97) !important;
+
+  width: auto !important;
+  height: auto !important;
+
+  white-space: nowrap !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background: transparent !important;
+
+  color: rgba(18,40,75,.035) !important;
+
+  font-family: var(--display) !important;
+
+  font-size: clamp(5rem, 9vw, 9rem) !important;
+  font-weight: 700 !important;
+
+  letter-spacing: -.07em !important;
+
+  opacity: 0 !important;
+
+  pointer-events: none !important;
+
+  transition:
+    opacity .4s ease,
+    transform .5s ease !important;
+}
+
+
+/* Make sure no old pseudo-element appears */
+
+section.explore .index-item::after{
+  display: none !important;
+  content: none !important;
+}
+
+
+/* ==========================================================
+   HOVER
+   ========================================================== */
+
+section.explore .index-item:nth-child(1):hover{
+  background: #dce6ee !important;
+}
+
+section.explore .index-item:nth-child(2):hover{
+  background: #d5e0e8 !important;
+}
+
+section.explore .index-item:nth-child(3):hover{
+  background: #e5ddd3 !important;
+}
+
+section.explore .index-item:nth-child(4):hover{
+  background: #d9e3e8 !important;
+}
+
+
+section.explore .index-item:hover{
+  padding-left: 38px !important;
+}
+
+
+section.explore .index-item:hover::before{
+  opacity: 1 !important;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1) !important;
+}
+
+
+section.explore .index-item:hover .index-title{
+  transform: translateX(7px) !important;
+}
+
+
+section.explore .index-item:hover .index-type{
+  color: #c76f67 !important;
+
+  transform: translateX(-7px) !important;
+}
+
+
+/* UNDERLINE */
+
+section.explore .index-title::after{
+  content: "" !important;
+
+  display: block !important;
+
+  position: absolute !important;
+
+  left: 0 !important;
+  bottom: -16px !important;
+
+  width: 0 !important;
+  height: 3px !important;
+
+  background: #c76f67 !important;
+
+  transition: width .35s ease !important;
+}
+
+
+section.explore .index-item:hover .index-title::after{
+  width: 46px !important;
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media (max-width: 620px){
+
+  section.explore{
+    padding:
+      85px
+      var(--edge)
+      95px !important;
+  }
+
+  section.explore .explore-head{
+    margin-bottom: 48px !important;
+  }
+
+  section.explore .category-index .index-item{
+    min-height: 115px !important;
+
+    padding:
+      0 6px !important;
+  }
+
+  section.explore .index-item:hover{
+    padding-left: 12px !important;
+  }
+
+  section.explore .index-item .index-title{
+    font-size: clamp(2rem, 10vw, 2.8rem) !important;
+  }
+
+  section.explore .index-item .index-type{
+    font-size: .6rem !important;
+  }
+
+  section.explore .index-item::before{
+    font-size: 17vw !important;
+  }
+
+}
