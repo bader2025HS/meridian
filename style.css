@@ -2028,223 +2028,7 @@ button{
 }
 
 
-/* ==========================================================
-   ATHAR — EXPLORE
-   ========================================================== */
 
-.explore{
-  padding: 120px var(--edge) 140px;
-  background: #edf2f7;
-  color: var(--navy);
-}
-
-.explore-head{
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto 70px;
-}
-
-.explore-head .section-label{
-  display: block;
-  margin-bottom: 28px;
-
-  color: var(--coral);
-
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.explore-head h2{
-  max-width: 12ch;
-
-  font-family: var(--display);
-  font-size: clamp(3.5rem, 6vw, 6rem);
-  font-weight: 620;
-
-  line-height: .93;
-  letter-spacing: -.055em;
-}
-
-
-/* INDEX */
-
-.athar-index{
-  width: 100%;
-  max-width: var(--max);
-
-  margin: 0 auto;
-
-  display: block;
-
-  border-top: 1px solid rgba(18,40,75,.18);
-}
-
-
-/* ROW */
-
-.athar-index-item{
-  position: relative;
-
-  width: 100%;
-  min-height: 145px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 10px;
-
-  border-bottom: 1px solid rgba(18,40,75,.18);
-
-  overflow: hidden;
-
-  transition:
-    padding .4s var(--ease),
-    background-color .4s var(--ease);
-}
-
-
-/* TITLE */
-
-.athar-index-title{
-  position: relative;
-  z-index: 2;
-
-  font-family: var(--display);
-
-  font-size: clamp(2.6rem, 4.5vw, 4.6rem);
-  font-weight: 620;
-
-  line-height: .95;
-  letter-spacing: -.05em;
-
-  transition:
-    transform .4s var(--ease),
-    color .4s var(--ease);
-}
-
-
-/* TYPE */
-
-.athar-index-type{
-  position: relative;
-  z-index: 2;
-
-  color: rgba(18,40,75,.42);
-
-  font-size: .68rem;
-  font-weight: 700;
-
-  letter-spacing: .14em;
-  text-transform: uppercase;
-
-  transition:
-    transform .4s var(--ease),
-    color .4s var(--ease);
-}
-
-
-/* =========================================
-   HOVER BACKGROUNDS
-   ========================================= */
-
-.athar-index-item:nth-child(1):hover{
-  background: #dce5ee;
-}
-
-.athar-index-item:nth-child(2):hover{
-  background: #c9d6e1;
-}
-
-.athar-index-item:nth-child(3):hover{
-  background: #e6ddd2;
-}
-
-.athar-index-item:nth-child(4):hover{
-  background: #d8e2e6;
-}
-
-
-/* MOVEMENT */
-
-.athar-index-item:hover{
-  padding-left: 28px;
-  padding-right: 28px;
-}
-
-.athar-index-item:hover .athar-index-title{
-  transform: translateX(6px);
-}
-
-.athar-index-item:hover .athar-index-type{
-  transform: translateX(-6px);
-  color: #c76f67;
-}
-
-
-/* CORAL LINE */
-
-.athar-index-title::after{
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: -15px;
-
-  width: 0;
-  height: 3px;
-
-  background: #c76f67;
-
-  transition: width .4s var(--ease);
-}
-
-.athar-index-item:hover .athar-index-title::after{
-  width: 48px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 620px){
-
-  .explore{
-    padding:
-      88px
-      var(--edge)
-      96px;
-  }
-
-  .explore-head{
-    margin-bottom: 48px;
-  }
-
-  .explore-head h2{
-    font-size: clamp(3rem, 13vw, 4rem);
-  }
-
-  .athar-index-item{
-    min-height: 110px;
-    padding: 0;
-  }
-
-  .athar-index-title{
-    font-size: clamp(2rem, 9vw, 2.8rem);
-  }
-
-  .athar-index-type{
-    font-size: .58rem;
-  }
-
-  .athar-index-item:hover{
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-}
 
 
 /* ATHAR LOGO */
@@ -2364,4 +2148,271 @@ button{
 .site-header.is-scrolled .logo-navy{
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+/* ==========================================================
+   EXPLORE ATHAR — COLOUR EDITORIAL
+   ========================================================== */
+
+.explore{
+  background:#f3f5f6;
+  padding:120px var(--edge) 140px;
+  color:var(--navy);
+}
+
+.explore-head{
+  max-width:var(--max);
+  margin:0 auto 72px;
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  align-items:end;
+  gap:50px;
+}
+
+.explore-head .section-label{
+  grid-column:1 / -1;
+  color:var(--coral);
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:-18px;
+}
+
+.explore-head h2{
+  font-family:var(--display);
+  font-size:clamp(3.7rem,6vw,6.3rem);
+  font-weight:620;
+  line-height:.91;
+  letter-spacing:-.055em;
+}
+
+.explore-intro{
+  max-width:390px;
+  justify-self:end;
+  margin-bottom:7px;
+  font-size:1rem;
+  line-height:1.65;
+  color:rgba(18,40,75,.58);
+}
+
+
+/* GRID */
+
+.explore-grid{
+  max-width:var(--max);
+  margin:0 auto;
+
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+
+/* PANEL */
+
+.explore-panel{
+  position:relative;
+  min-height:430px;
+
+  padding:34px 36px 38px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  overflow:hidden;
+
+  color:var(--navy);
+
+  transition:
+    transform .45s var(--ease),
+    background-color .45s var(--ease);
+}
+
+
+/* MUTED ATHAR PALETTE */
+
+.explore-panel.turning{
+  background:#d5e0e8;
+}
+
+.explore-panel.fault{
+  background:#ded2c4;
+}
+
+.explore-panel.ideas{
+  background:#c7d5d4;
+}
+
+.explore-panel.makers{
+  background:#e4c9c4;
+}
+
+
+/* TOP */
+
+.explore-panel-top{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.explore-type{
+  font-size:.67rem;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  opacity:.55;
+}
+
+.explore-arrow{
+  width:40px;
+  height:40px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid rgba(18,40,75,.18);
+  border-radius:50%;
+
+  font-size:1rem;
+
+  transition:
+    transform .4s var(--ease),
+    background .4s var(--ease),
+    color .4s var(--ease);
+}
+
+
+/* CONTENT */
+
+.explore-panel-content{
+  position:relative;
+  z-index:2;
+}
+
+.explore-panel h3{
+  margin-bottom:25px;
+
+  font-family:var(--display);
+  font-size:clamp(3.2rem,4.5vw,5rem);
+  font-weight:620;
+  line-height:.86;
+  letter-spacing:-.055em;
+}
+
+.explore-panel p{
+  max-width:390px;
+
+  font-size:.92rem;
+  line-height:1.6;
+
+  color:rgba(18,40,75,.62);
+}
+
+
+/* LARGE BACKGROUND NUMBER */
+
+.explore-ghost{
+  position:absolute;
+  right:-15px;
+  bottom:-60px;
+
+  font-family:var(--display);
+  font-size:15rem;
+  font-weight:700;
+  line-height:1;
+
+  color:rgba(255,255,255,.24);
+
+  pointer-events:none;
+
+  transition:
+    transform .5s var(--ease),
+    color .5s var(--ease);
+}
+
+
+/* HOVER */
+
+.explore-panel:hover{
+  transform:translateY(-6px);
+}
+
+.explore-panel:hover .explore-arrow{
+  transform:rotate(45deg);
+  background:var(--navy);
+  color:white;
+}
+
+.explore-panel:hover .explore-ghost{
+  transform:translate(-10px,-8px);
+  color:rgba(255,255,255,.34);
+}
+
+
+/* SMALL CORAL DETAIL */
+
+.explore-panel::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+
+  width:0;
+  height:5px;
+
+  background:var(--coral);
+
+  transition:width .5s var(--ease);
+}
+
+.explore-panel:hover::before{
+  width:100%;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .explore{
+    padding:90px var(--edge);
+  }
+
+  .explore-head{
+    display:block;
+    margin-bottom:48px;
+  }
+
+  .explore-head .section-label{
+    display:block;
+    margin-bottom:24px;
+  }
+
+  .explore-intro{
+    margin-top:25px;
+    justify-self:auto;
+  }
+
+  .explore-grid{
+    grid-template-columns:1fr;
+  }
+
+  .explore-panel{
+    min-height:360px;
+    padding:28px;
+  }
+
+  .explore-panel h3{
+    font-size:clamp(3rem,13vw,4.3rem);
+  }
+
+  .explore-ghost{
+    font-size:11rem;
+  }
 }
