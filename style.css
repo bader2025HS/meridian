@@ -1951,3 +1951,537 @@ button{
   }
 
 }
+
+/* ================================================================
+   ATHAR — HOMEPAGE POLISH OVERRIDES
+   Paste at the VERY END of style.css
+   ================================================================ */
+
+
+/* ================================================================
+   1. ABOUT — CENTER THE ARABIC "أثر" BEHIND THE CONTENT
+   ================================================================ */
+
+.intro-decoration{
+  right: auto;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 100%;
+
+  text-align: center;
+
+  font-size: clamp(15rem, 28vw, 30rem);
+
+  color: rgba(18,40,75,.032);
+
+  pointer-events: none;
+}
+
+
+/* Keep actual content above it */
+
+.intro-shell{
+  position: relative;
+  z-index: 2;
+}
+
+
+
+/* ================================================================
+   2. HERO — BUTTONS UNDER THE TEXT
+   ================================================================ */
+
+.hero-lower{
+  display: block;
+
+  max-width: 760px;
+
+  margin-top: 46px;
+}
+
+
+.hero-desc{
+  max-width: 58ch;
+}
+
+
+.hero-actions{
+  display: flex;
+
+  margin-top: 30px;
+
+  gap: 12px;
+
+  justify-content: flex-start;
+}
+
+
+
+/* ================================================================
+   3. EXPLORE — 3-COLUMN CARD GRID
+   Titles only
+   ================================================================ */
+
+.explore{
+  padding-top: 120px;
+  padding-bottom: 135px;
+}
+
+
+/* Slightly reduce empty space after heading */
+
+.explore-rows{
+  width: 100%;
+  max-width: var(--max);
+
+  margin: 58px auto 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  border-top: 0;
+}
+
+
+
+/* Card */
+
+.explore-row{
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  min-height: 235px;
+
+  padding: 28px;
+
+  border: 0;
+
+  overflow: hidden;
+
+  transition:
+    transform .35s var(--ease),
+    box-shadow .35s var(--ease);
+}
+
+
+/* REMOVE old sliding white background */
+
+.explore-row::before{
+  display: none;
+}
+
+
+/* Hide descriptions + examples */
+
+.row-desc,
+.row-preview{
+  display: none !important;
+}
+
+
+
+/* Category code */
+
+.row-code{
+  position: relative;
+
+  width: auto;
+  height: auto;
+
+  display: block;
+
+  border: 0;
+
+  background: transparent !important;
+
+  color: inherit;
+
+  font-size: .72rem;
+
+  font-weight: 750;
+
+  letter-spacing: .08em;
+
+  opacity: .62;
+}
+
+
+
+/* Titles */
+
+.row-title{
+  position: relative;
+
+  max-width: 11ch;
+
+  margin-top: auto;
+
+  color: inherit;
+
+  font-family: var(--display);
+
+  font-size: clamp(1.65rem, 2.4vw, 2.35rem);
+
+  font-weight: 650;
+
+  line-height: 1.03;
+
+  letter-spacing: -.035em;
+}
+
+
+
+/* Hover */
+
+.explore-row:hover{
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 18px 38px rgba(18,40,75,.10);
+}
+
+
+.explore-row:hover .row-code{
+  background: transparent;
+  color: inherit;
+}
+
+
+
+/* ------------------------------------------------
+   INDIVIDUAL CARD COLOURS
+
+   Muted rather than rainbow-bright.
+   ------------------------------------------------ */
+
+
+/* Moments */
+
+.explore-row:nth-child(1){
+  background: #12284b;
+  color: #ffffff;
+}
+
+
+/* Conflicts */
+
+.explore-row:nth-child(2){
+  background: #f65343;
+  color: #12284b;
+}
+
+
+/* People */
+
+.explore-row:nth-child(3){
+  background: #dbe5ee;
+  color: #12284b;
+}
+
+
+/* Ideas */
+
+.explore-row:nth-child(4){
+  background: #d9b9ad;
+  color: #12284b;
+}
+
+
+/* Countries */
+
+.explore-row:nth-child(5){
+  background: #253e63;
+  color: #ffffff;
+}
+
+
+/* Borders */
+
+.explore-row:nth-child(6){
+  background: #e9d9c8;
+  color: #12284b;
+}
+
+
+/* Through the Years */
+
+.explore-row:nth-child(7){
+  background: #b9c9d8;
+  color: #12284b;
+}
+
+
+/* Mapping */
+
+.explore-row:nth-child(8){
+  background: #ef7a6e;
+  color: #12284b;
+}
+
+
+
+/* ================================================================
+   4. SIGNATURE SERIES — REMOVE THE HUGE CORAL BLOCK
+   ================================================================ */
+
+.signature{
+  position: relative;
+
+  background: #f7f5f1;
+
+  color: var(--navy);
+
+  border-top: 1px solid rgba(18,40,75,.10);
+
+  overflow: hidden;
+}
+
+
+
+/* Give it a subtle coral brand detail instead */
+
+.signature::before{
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 5px;
+
+  background: var(--coral);
+}
+
+
+
+/* Marquee becomes navy */
+
+.signature-marquee{
+  padding: 15px 0;
+
+  background: var(--navy);
+
+  border: 0;
+}
+
+
+.marquee-track{
+  color: rgba(255,255,255,.72);
+}
+
+
+.marquee-track i{
+  color: var(--coral);
+}
+
+
+
+/* Main section */
+
+.signature-body{
+  padding-top: 110px;
+  padding-bottom: 120px;
+}
+
+
+
+/* Small label */
+
+.signature-label{
+  color: var(--coral);
+}
+
+
+
+/* Heading */
+
+.signature-head h2{
+  color: var(--navy);
+}
+
+
+
+/* Description */
+
+.signature-lede{
+  color: rgba(18,40,75,.64);
+}
+
+
+
+/* Enter series button */
+
+.signature .btn-dark-outline{
+  color: var(--navy);
+
+  border-color: rgba(18,40,75,.22);
+
+  background: transparent;
+}
+
+
+.signature .btn-dark-outline:hover{
+  background: var(--coral);
+
+  border-color: var(--coral);
+
+  color: #fff;
+}
+
+
+
+/* Story list */
+
+.signature-features{
+  border-top: 1px solid rgba(18,40,75,.14);
+}
+
+
+.feature-story{
+  border-bottom: 1px solid rgba(18,40,75,.14);
+}
+
+
+.feature-story:hover{
+  padding-left: 18px;
+
+  background: rgba(18,40,75,.035);
+}
+
+
+.feature-tag{
+  color: var(--coral);
+}
+
+
+.feature-story h3{
+  color: var(--navy);
+}
+
+
+.feature-story p{
+  color: rgba(18,40,75,.62);
+}
+
+
+
+/* ================================================================
+   TABLET
+   ================================================================ */
+
+@media (max-width: 980px){
+
+  /* Arabic word */
+
+  .intro-decoration{
+    left: 50%;
+    right: auto;
+
+    font-size: clamp(13rem, 42vw, 24rem);
+
+    opacity: 1;
+  }
+
+
+  /* Cards: 2 per row */
+
+  .explore-rows{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+
+    gap: 14px;
+  }
+
+
+  .explore-row{
+    display: flex;
+
+    min-height: 210px;
+
+    padding: 24px;
+  }
+
+
+  .row-title{
+    font-size: clamp(1.55rem,4vw,2rem);
+  }
+
+}
+
+
+
+/* ================================================================
+   MOBILE
+   ================================================================ */
+
+@media (max-width: 620px){
+
+  /* Hero buttons remain below text */
+
+  .hero-lower{
+    margin-top: 34px;
+  }
+
+
+  .hero-actions{
+    margin-top: 24px;
+  }
+
+
+  /* Arabic mark */
+
+  .intro-decoration{
+    left: 50%;
+    top: 52%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 58vw;
+  }
+
+
+  /* Cards: one per row */
+
+  .explore-rows{
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+
+  .explore-row{
+    min-height: 155px;
+
+    padding: 22px;
+  }
+
+
+  .row-title{
+    max-width: none;
+
+    font-size: 1.65rem;
+  }
+
+
+  /* Signature */
+
+  .signature-body{
+    padding-top: 78px;
+    padding-bottom: 85px;
+  }
+
+}
