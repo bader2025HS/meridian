@@ -939,252 +939,7 @@ button{
 
 
 
-/* ==========================================================================
-   EXPLORE
-   ========================================================================== */
 
-.explore{
-  padding:
-    132px
-    var(--edge)
-    145px;
-
-  background: var(--blue-mist);
-
-  color: var(--navy);
-}
-
-
-.explore-head{
-  width: 100%;
-  max-width: var(--max);
-
-  margin: 0 auto;
-}
-
-
-.section-label{
-  display: block;
-
-  margin-bottom: 22px;
-
-  color: var(--coral);
-
-  font-size: .75rem;
-  font-weight: 700;
-
-  letter-spacing: .11em;
-
-  text-transform: uppercase;
-}
-
-
-.explore-head h2{
-  max-width: 14ch;
-
-  font-family: var(--display);
-
-  font-size:
-    clamp(2.8rem,4.8vw,4.5rem);
-
-  line-height: .98;
-
-  font-weight: 620;
-
-  letter-spacing: -.045em;
-}
-
-
-
-/* Rows */
-
-.explore-rows{
-  width: 100%;
-  max-width: var(--max);
-
-  margin: 68px auto 0;
-
-  border-top:
-    1px solid var(--line-light);
-}
-
-
-.explore-row{
-  position: relative;
-
-  display: grid;
-
-  grid-template-columns:
-    64px
-    minmax(0,1fr)
-    minmax(220px,31ch);
-
-  grid-template-rows:
-    auto auto;
-
-  gap: 7px 30px;
-
-  align-items: center;
-
-  min-height: 120px;
-
-  padding: 25px 20px;
-
-  border-bottom:
-    1px solid var(--line-light);
-
-  overflow: hidden;
-}
-
-
-/* Hover fill */
-
-.explore-row::before{
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  background: rgba(255,255,255,.55);
-
-  transform: scaleX(0);
-
-  transform-origin: left;
-
-  transition:
-    transform .42s var(--ease);
-}
-
-
-.explore-row:hover::before,
-.explore-row:focus-visible::before{
-  transform: scaleX(1);
-}
-
-
-
-/* Code */
-
-.row-code{
-  position: relative;
-  z-index: 1;
-
-  grid-column: 1;
-  grid-row: 1 / 3;
-
-  width: 46px;
-  height: 46px;
-
-  display: grid;
-  place-items: center;
-
-  border:
-    1px solid rgba(246,83,67,.34);
-
-  color: var(--coral);
-
-  background:
-    rgba(255,255,255,.35);
-
-  font-family: var(--display);
-
-  font-size: .72rem;
-  font-weight: 750;
-
-  letter-spacing: .04em;
-
-  transition:
-    background-color .28s var(--ease),
-    color .28s var(--ease);
-}
-
-
-.explore-row:hover .row-code{
-  background: var(--coral);
-
-  color: var(--white);
-}
-
-
-
-/* Title */
-
-.row-title{
-  position: relative;
-  z-index: 1;
-
-  grid-column: 2;
-  grid-row: 1;
-
-  color: var(--navy);
-
-  font-family: var(--display);
-
-  font-size:
-    clamp(1.55rem,2.6vw,2.25rem);
-
-  font-weight: 580;
-
-  letter-spacing: -.025em;
-}
-
-
-/* Description */
-
-.row-desc{
-  position: relative;
-  z-index: 1;
-
-  grid-column: 2;
-  grid-row: 2;
-
-  max-width: 52ch;
-
-  color: rgba(18,40,75,.56);
-
-  font-size: .9rem;
-}
-
-
-/* Preview */
-
-.row-preview{
-  position: relative;
-  z-index: 1;
-
-  grid-column: 3;
-  grid-row: 1 / 3;
-
-  max-width: 31ch;
-
-  justify-self: end;
-
-  color: var(--coral);
-
-  font-size: .8rem;
-
-  line-height: 1.55;
-
-  text-align: right;
-
-  opacity: 0;
-
-  transform:
-    translateX(10px);
-
-  transition:
-    opacity .34s var(--ease),
-    transform .34s var(--ease);
-}
-
-
-.explore-row:hover .row-preview,
-.explore-row:focus-visible .row-preview{
-  opacity: 1;
-
-  transform:
-    translateX(0);
-}
 
 
 
@@ -2019,220 +1774,6 @@ button{
 }
 
 
-
-/* ================================================================
-   3. EXPLORE — 3-COLUMN CARD GRID
-   Titles only
-   ================================================================ */
-
-.explore{
-  padding-top: 120px;
-  padding-bottom: 135px;
-}
-
-
-/* Slightly reduce empty space after heading */
-
-.explore-rows{
-  width: 100%;
-  max-width: var(--max);
-
-  margin: 58px auto 0;
-
-  display: grid;
-
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: 18px;
-
-  border-top: 0;
-}
-
-
-
-/* Card */
-
-.explore-row{
-  position: relative;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: space-between;
-
-  align-items: flex-start;
-
-  min-height: 235px;
-
-  padding: 28px;
-
-  border: 0;
-
-  overflow: hidden;
-
-  transition:
-    transform .35s var(--ease),
-    box-shadow .35s var(--ease);
-}
-
-
-/* REMOVE old sliding white background */
-
-.explore-row::before{
-  display: none;
-}
-
-
-/* Hide descriptions + examples */
-
-.row-desc,
-.row-preview{
-  display: none !important;
-}
-
-
-
-/* Category code */
-
-.row-code{
-  position: relative;
-
-  width: auto;
-  height: auto;
-
-  display: block;
-
-  border: 0;
-
-  background: transparent !important;
-
-  color: inherit;
-
-  font-size: .72rem;
-
-  font-weight: 750;
-
-  letter-spacing: .08em;
-
-  opacity: .62;
-}
-
-
-
-/* Titles */
-
-.row-title{
-  position: relative;
-
-  max-width: 11ch;
-
-  margin-top: auto;
-
-  color: inherit;
-
-  font-family: var(--display);
-
-  font-size: clamp(1.65rem, 2.4vw, 2.35rem);
-
-  font-weight: 650;
-
-  line-height: 1.03;
-
-  letter-spacing: -.035em;
-}
-
-
-
-/* Hover */
-
-.explore-row:hover{
-  transform: translateY(-6px);
-
-  box-shadow:
-    0 18px 38px rgba(18,40,75,.10);
-}
-
-
-.explore-row:hover .row-code{
-  background: transparent;
-  color: inherit;
-}
-
-
-
-/* ------------------------------------------------
-   INDIVIDUAL CARD COLOURS
-
-   Muted rather than rainbow-bright.
-   ------------------------------------------------ */
-
-
-/* Moments */
-
-.explore-row:nth-child(1){
-  background: #12284b;
-  color: #ffffff;
-}
-
-
-/* Conflicts */
-
-.explore-row:nth-child(2){
-  background: #f65343;
-  color: #12284b;
-}
-
-
-/* People */
-
-.explore-row:nth-child(3){
-  background: #dbe5ee;
-  color: #12284b;
-}
-
-
-/* Ideas */
-
-.explore-row:nth-child(4){
-  background: #d9b9ad;
-  color: #12284b;
-}
-
-
-/* Countries */
-
-.explore-row:nth-child(5){
-  background: #253e63;
-  color: #ffffff;
-}
-
-
-/* Borders */
-
-.explore-row:nth-child(6){
-  background: #e9d9c8;
-  color: #12284b;
-}
-
-
-/* Through the Years */
-
-.explore-row:nth-child(7){
-  background: #b9c9d8;
-  color: #12284b;
-}
-
-
-/* Mapping */
-
-.explore-row:nth-child(8){
-  background: #ef7a6e;
-  color: #12284b;
-}
-
-
-
 /* ================================================================
    4. SIGNATURE SERIES — REMOVE THE HUGE CORAL BLOCK
    ================================================================ */
@@ -2487,781 +2028,96 @@ button{
 }
 
 
-/* ================================================================
-   ATHAR — FOUR MAIN CATEGORIES
-   ================================================================ */
+/* ==========================================================
+   ATHAR — EXPLORE
+   ========================================================== */
 
 .explore{
   padding: 120px var(--edge) 140px;
-  background: #edf2f7;
-}
-
-
-/* Heading */
-
-.explore-head{
-  max-width: var(--max);
-  margin: 0 auto;
-}
-
-.explore-head h2{
-  max-width: 12ch;
-}
-
-.section-label{
-  color: var(--coral);
-}
-
-
-/* ================================================================
-   2 × 2 GRID
-   ================================================================ */
-
-.explore-rows{
-  width: 100%;
-  max-width: var(--max);
-
-  margin: 64px auto 0;
-
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 18px;
-
-  border: 0;
-}
-
-
-/* Cards */
-
-.explore-row{
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  min-height: 300px;
-
-  padding: 34px 36px;
-
-  border: 0;
-
-  overflow: hidden;
-
-  transition:
-    transform .4s var(--ease),
-    box-shadow .4s var(--ease);
-}
-
-
-/* Remove old hover background */
-
-.explore-row::before{
-  display: none;
-}
-
-
-/* Number */
-
-.row-code{
-  position: relative;
-
-  width: auto;
-  height: auto;
-
-  display: block;
-
-  border: 0;
-
-  background: transparent !important;
-
-  color: inherit;
-
-  font-size: .75rem;
-  font-weight: 700;
-
-  letter-spacing: .08em;
-
-  opacity: .55;
-}
-
-
-/* Title */
-
-.row-title{
-  position: relative;
-
-  margin-top: auto;
-
-  max-width: 12ch;
-
-  color: inherit;
-
-  font-family: var(--display);
-
-  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
-
-  line-height: .98;
-
-  font-weight: 650;
-
-  letter-spacing: -.045em;
-
-  transition: transform .4s var(--ease);
-}
-
-
-/* ================================================================
-   CARD COLOURS
-   ================================================================ */
-
-
-/* 01 — deep Athar navy */
-
-.explore-row:nth-child(1){
-  background: #12284b;
-  color: #ffffff;
-}
-
-
-/* 02 — muted dusty blue */
-
-.explore-row:nth-child(2){
-  background: #9eb1c4;
-  color: #12284b;
-}
-
-
-/* 03 — warm muted terracotta */
-
-.explore-row:nth-child(3){
-  background: #d8a69a;
-  color: #12284b;
-}
-
-
-/* 04 — warm sand */
-
-.explore-row:nth-child(4){
-  background: #e4d5c2;
-  color: #12284b;
-}
-
-
-/* ================================================================
-   HOVER
-   ================================================================ */
-
-.explore-row:hover{
-  transform: translateY(-7px);
-
-  box-shadow:
-    0 22px 45px rgba(18,40,75,.11);
-}
-
-
-.explore-row:hover .row-title{
-  transform: translateX(7px);
-}
-
-
-.explore-row:hover .row-code{
-  color: inherit;
-  background: transparent;
-}
-
-
-/* Tiny coral marker */
-
-.explore-row::after{
-  content: "";
-
-  position: absolute;
-
-  top: 34px;
-  right: 34px;
-
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-
-  background: var(--coral);
-
-  opacity: 0;
-
-  transform: scale(.5);
-
-  transition:
-    opacity .3s var(--ease),
-    transform .3s var(--ease);
-}
-
-
-.explore-row:hover::after{
-  opacity: 1;
-  transform: scale(1);
-}
-
-
-/* ================================================================
-   TABLET
-   ================================================================ */
-
-@media (max-width: 980px){
-
-  .explore-rows{
-    gap: 14px;
-  }
-
-  .explore-row{
-    min-height: 250px;
-    padding: 28px;
-  }
-
-  .row-title{
-    font-size: clamp(2rem, 5vw, 3rem);
-  }
-
-}
-
-
-/* ================================================================
-   MOBILE
-   ================================================================ */
-
-@media (max-width: 620px){
-
-  .explore{
-    padding:
-      88px
-      var(--edge)
-      96px;
-  }
-
-  .explore-rows{
-    grid-template-columns: 1fr;
-
-    margin-top: 44px;
-
-    gap: 12px;
-  }
-
-  .explore-row{
-    min-height: 175px;
-
-    padding: 24px;
-  }
-
-  .row-title{
-    max-width: none;
-
-    font-size: 2rem;
-  }
-
-  .explore-row::after{
-    top: 24px;
-    right: 24px;
-  }
-
-}
-
-
-/* ================================================================
-   ATHAR — EDITORIAL CATEGORY LAYOUT
-   ================================================================ */
-
-.explore{
-  padding: 120px var(--edge) 140px;
-  background: #edf2f7;
-}
-
-.explore-head{
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto 64px;
-}
-
-.explore-head h2{
-  max-width: 12ch;
-}
-
-
-/* ------------------------------------------------
-   ASYMMETRICAL EDITORIAL GRID
-   ------------------------------------------------ */
-
-.athar-categories{
-  width: 100%;
-  max-width: var(--max);
-  margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 1.15fr)
-    minmax(0, .85fr);
-
-  grid-template-rows:
-    230px
-    230px
-    205px;
-
-  gap: 16px;
-}
-
-
-/* ------------------------------------------------
-   BASE TILE
-   ------------------------------------------------ */
-
-.category{
-  position: relative;
-
-  display: flex;
-  align-items: flex-end;
-
-  padding: 34px 36px;
-
-  overflow: hidden;
-
-  font-family: var(--display);
-
-  transition:
-    transform .4s var(--ease),
-    box-shadow .4s var(--ease);
-}
-
-
-/* subtle internal texture */
-
-.category::before{
-  content: "";
-
-  position: absolute;
-
-  width: 260px;
-  height: 260px;
-
-  right: -100px;
-  top: -110px;
-
-  border: 1px solid currentColor;
-  border-radius: 50%;
-
-  opacity: .09;
-
-  transition:
-    transform .55s var(--ease),
-    opacity .55s var(--ease);
-}
-
-
-.category::after{
-  content: "";
-
-  position: absolute;
-
-  width: 150px;
-  height: 150px;
-
-  right: -50px;
-  top: -50px;
-
-  border: 1px solid currentColor;
-  border-radius: 50%;
-
-  opacity: .07;
-
-  transition:
-    transform .55s var(--ease);
-}
-
-
-/* ------------------------------------------------
-   TYPOGRAPHY
-   ------------------------------------------------ */
-
-.category-title{
-  position: relative;
-  z-index: 2;
-
-  max-width: 9ch;
-
-  font-size: clamp(2.1rem, 3.5vw, 3.8rem);
-
-  line-height: .95;
-
-  font-weight: 650;
-
-  letter-spacing: -.05em;
-
-  transition:
-    transform .4s var(--ease);
-}
-
-
-.category-arrow{
-  position: absolute;
-
-  top: 30px;
-  right: 32px;
-
-  z-index: 2;
-
-  font-size: 1.35rem;
-  font-weight: 400;
-
-  opacity: .42;
-
-  transition:
-    transform .35s var(--ease),
-    opacity .35s var(--ease);
-}
-
-
-/* ------------------------------------------------
-   LAYOUT
-   ------------------------------------------------ */
-
-
-/* Big left tile */
-
-.category-turning{
-  grid-column: 1;
-  grid-row: 1 / 3;
-
-  background: #142c50;
-  color: #ffffff;
-}
-
-
-/* Upper right */
-
-.category-fault{
-  grid-column: 2;
-  grid-row: 1;
-
-  background: #aebdca;
-  color: #12284b;
-}
-
-
-/* Lower right */
-
-.category-ideas{
-  grid-column: 2;
-  grid-row: 2;
-
-  background: #ded2c4;
-  color: #12284b;
-}
-
-
-/* Wide bottom */
-
-.category-people{
-  grid-column: 1 / 3;
-  grid-row: 3;
-
-  background: #c9d6df;
-  color: #12284b;
-}
-
-
-/* History Makers slightly different */
-
-.category-people .category-title{
-  max-width: none;
-
-  font-size: clamp(2.3rem, 3.7vw, 4rem);
-}
-
-
-/* ------------------------------------------------
-   SMALL CORAL DETAILS — NOT A CORAL CARD
-   ------------------------------------------------ */
-
-.category-fault::after{
-  border-color: #d6786e;
-}
-
-.category-ideas::after{
-  border-color: #d6786e;
-}
-
-.category-people::after{
-  border-color: #d6786e;
-}
-
-
-/* tiny accent line */
-
-.category-title::after{
-  content: "";
-
-  display: block;
-
-  width: 0;
-  height: 3px;
-
-  margin-top: 15px;
-
-  background: #d6786e;
-
-  transition:
-    width .4s var(--ease);
-}
-
-
-.category-turning .category-title::after{
-  background: #e28b80;
-}
-
-
-/* ------------------------------------------------
-   HOVER
-   ------------------------------------------------ */
-
-.category:hover{
-  transform: translateY(-5px);
-
-  box-shadow:
-    0 20px 42px rgba(18,40,75,.10);
-}
-
-
-.category:hover::before{
-  transform: scale(1.15);
-  opacity: .14;
-}
-
-
-.category:hover::after{
-  transform: scale(1.15);
-}
-
-
-.category:hover .category-title{
-  transform: translateX(6px);
-}
-
-
-.category:hover .category-title::after{
-  width: 44px;
-}
-
-
-.category:hover .category-arrow{
-  transform: translate(4px,-4px);
-
-  opacity: 1;
-}
-
-
-/* ================================================================
-   TABLET
-   ================================================================ */
-
-@media (max-width: 900px){
-
-  .athar-categories{
-    grid-template-columns: 1fr 1fr;
-
-    grid-template-rows:
-      300px
-      220px
-      190px;
-  }
-
-  .category-turning{
-    grid-column: 1 / 3;
-    grid-row: 1;
-  }
-
-  .category-fault{
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .category-ideas{
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .category-people{
-    grid-column: 1 / 3;
-    grid-row: 3;
-  }
-
-}
-
-
-/* ================================================================
-   MOBILE
-   ================================================================ */
-
-@media (max-width: 620px){
-
-  .explore{
-    padding:
-      88px
-      var(--edge)
-      96px;
-  }
-
-  .explore-head{
-    margin-bottom: 42px;
-  }
-
-  .athar-categories{
-    display: flex;
-    flex-direction: column;
-
-    gap: 12px;
-  }
-
-  .category{
-    min-height: 175px;
-
-    padding: 24px;
-  }
-
-  .category-turning{
-    min-height: 240px;
-  }
-
-  .category-title,
-  .category-people .category-title{
-    font-size: 2rem;
-  }
-
-  .category-arrow{
-    top: 22px;
-    right: 22px;
-  }
-
-}
-
-
-
-
-/* ================================================================
-   ATHAR — EDITORIAL INDEX
-   NO CARDS / NO ICONS / NO NUMBERS
-   ================================================================ */
-
-.explore{
-  padding: 120px var(--edge) 145px;
-
   background: #edf2f7;
   color: var(--navy);
 }
 
-
 .explore-head{
   width: 100%;
   max-width: var(--max);
-
-  margin: 0 auto 75px;
+  margin: 0 auto 70px;
 }
 
+.explore-head .section-label{
+  display: block;
+  margin-bottom: 28px;
+
+  color: var(--coral);
+
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
 
 .explore-head h2{
   max-width: 12ch;
+
+  font-family: var(--display);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 620;
+
+  line-height: .93;
+  letter-spacing: -.055em;
 }
 
 
-/* ================================================================
-   INDEX
-   ================================================================ */
+/* INDEX */
 
-.category-index{
+.athar-index{
   width: 100%;
   max-width: var(--max);
 
   margin: 0 auto;
+
+  display: block;
 
   border-top: 1px solid rgba(18,40,75,.18);
 }
 
 
-.index-item{
+/* ROW */
+
+.athar-index-item{
   position: relative;
 
-  min-height: 155px;
+  width: 100%;
+  min-height: 145px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 22px;
+  padding: 0 10px;
 
   border-bottom: 1px solid rgba(18,40,75,.18);
 
   overflow: hidden;
 
   transition:
-    background-color .4s var(--ease),
-    padding .4s var(--ease);
+    padding .4s var(--ease),
+    background-color .4s var(--ease);
 }
 
 
-/* ------------------------------------------------
-   LARGE GHOST TEXT ON HOVER
-   ------------------------------------------------ */
+/* TITLE */
 
-.index-item::before{
-  content: attr(data-ghost);
-
-  position: absolute;
-
-  left: 45%;
-  top: 50%;
-
-  transform:
-    translate(-50%, -44%)
-    scale(.97);
-
-  white-space: nowrap;
-
-  color: rgba(18,40,75,.035);
-
-  font-family: var(--display);
-
-  font-size: clamp(5rem, 9vw, 9rem);
-  font-weight: 700;
-
-  letter-spacing: -.065em;
-
-  opacity: 0;
-
-  pointer-events: none;
-
-  transition:
-    opacity .45s var(--ease),
-    transform .55s var(--ease);
-}
-
-
-/* ================================================================
-   TITLE
-   ================================================================ */
-
-.index-title{
+.athar-index-title{
   position: relative;
   z-index: 2;
 
   font-family: var(--display);
 
-  font-size: clamp(2.5rem, 4.5vw, 4.6rem);
-
-  line-height: .95;
-
+  font-size: clamp(2.6rem, 4.5vw, 4.6rem);
   font-weight: 620;
 
+  line-height: .95;
   letter-spacing: -.05em;
 
   transition:
@@ -3270,83 +2126,67 @@ button{
 }
 
 
-/* ================================================================
-   SMALL CATEGORY TYPE
-   ================================================================ */
+/* TYPE */
 
-.index-type{
+.athar-index-type{
   position: relative;
   z-index: 2;
 
-  color: rgba(18,40,75,.46);
+  color: rgba(18,40,75,.42);
 
-  font-size: .72rem;
+  font-size: .68rem;
   font-weight: 700;
 
-  letter-spacing: .12em;
-
+  letter-spacing: .14em;
   text-transform: uppercase;
 
   transition:
-    color .4s var(--ease),
-    transform .4s var(--ease);
+    transform .4s var(--ease),
+    color .4s var(--ease);
 }
 
 
-/* ================================================================
-   DIFFERENT VERY SUBTLE HOVERS
-   ================================================================ */
+/* =========================================
+   HOVER BACKGROUNDS
+   ========================================= */
 
-.index-item:nth-child(1):hover{
-  background: #dfe7ef;
+.athar-index-item:nth-child(1):hover{
+  background: #dce5ee;
 }
 
-.index-item:nth-child(2):hover{
-  background: #d5e0e8;
+.athar-index-item:nth-child(2):hover{
+  background: #c9d6e1;
 }
 
-.index-item:nth-child(3):hover{
+.athar-index-item:nth-child(3):hover{
   background: #e6ddd2;
 }
 
-.index-item:nth-child(4):hover{
-  background: #d9e3e8;
+.athar-index-item:nth-child(4):hover{
+  background: #d8e2e6;
 }
 
 
-/* ================================================================
-   INTERACTION
-   ================================================================ */
+/* MOVEMENT */
 
-.index-item:hover{
-  padding-left: 38px;
+.athar-index-item:hover{
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.athar-index-item:hover .athar-index-title{
+  transform: translateX(6px);
+}
+
+.athar-index-item:hover .athar-index-type{
+  transform: translateX(-6px);
+  color: #c76f67;
 }
 
 
-.index-item:hover::before{
-  opacity: 1;
+/* CORAL LINE */
 
-  transform:
-    translate(-50%, -50%)
-    scale(1);
-}
-
-
-.index-item:hover .index-title{
-  transform: translateX(8px);
-}
-
-
-.index-item:hover .index-type{
-  color: #d4786e;
-
-  transform: translateX(-8px);
-}
-
-
-/* Small line beside title */
-
-.index-title::after{
+.athar-index-title::after{
   content: "";
 
   position: absolute;
@@ -3357,21 +2197,17 @@ button{
   width: 0;
   height: 3px;
 
-  background: #d4786e;
+  background: #c76f67;
 
-  transition:
-    width .4s var(--ease);
+  transition: width .4s var(--ease);
 }
 
-
-.index-item:hover .index-title::after{
+.athar-index-item:hover .athar-index-title::after{
   width: 48px;
 }
 
 
-/* ================================================================
-   MOBILE
-   ================================================================ */
+/* MOBILE */
 
 @media (max-width: 620px){
 
@@ -3382,332 +2218,30 @@ button{
       96px;
   }
 
-
   .explore-head{
-    margin-bottom: 52px;
+    margin-bottom: 48px;
   }
 
-
-  .index-item{
-    min-height: 120px;
-
-    padding:
-      0 5px;
+  .explore-head h2{
+    font-size: clamp(3rem, 13vw, 4rem);
   }
 
-
-  .index-item:hover{
-    padding-left: 10px;
+  .athar-index-item{
+    min-height: 110px;
+    padding: 0;
   }
 
-
-  .index-title{
-    font-size:
-      clamp(2rem, 10vw, 2.8rem);
+  .athar-index-title{
+    font-size: clamp(2rem, 9vw, 2.8rem);
   }
 
-
-  .index-type{
-    font-size: .62rem;
+  .athar-index-type{
+    font-size: .58rem;
   }
 
-
-  .index-item::before{
-    left: 50%;
-
-    font-size: 18vw;
-  }
-
-}
-
-
-/* ==========================================================
-   ATHAR — EXPLORE INDEX FIX
-   MUST BE AT THE VERY BOTTOM OF STYLE.CSS
-   ========================================================== */
-
-section.explore{
-  display: block !important;
-  padding: 110px var(--edge) 140px !important;
-  background: #edf2f7 !important;
-}
-
-
-/* HEADER */
-
-section.explore .explore-head{
-  display: block !important;
-  width: 100% !important;
-  max-width: var(--max) !important;
-
-  margin: 0 auto 70px !important;
-}
-
-section.explore .explore-head h2{
-  max-width: 11ch !important;
-  margin-top: 32px !important;
-}
-
-
-/* ==========================================================
-   CATEGORY LIST
-   ========================================================== */
-
-section.explore .category-index{
-  display: flex !important;
-  flex-direction: column !important;
-
-  width: 100% !important;
-  max-width: var(--max) !important;
-
-  margin: 0 auto !important;
-  padding: 0 !important;
-
-  border-top: 1px solid rgba(18,40,75,.18) !important;
-}
-
-
-/* EACH ROW */
-
-section.explore .category-index .index-item{
-  position: relative !important;
-
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-
-  width: 100% !important;
-  min-height: 145px !important;
-
-  padding: 0 22px !important;
-  margin: 0 !important;
-
-  border: 0 !important;
-  border-bottom: 1px solid rgba(18,40,75,.18) !important;
-
-  color: #12284b !important;
-  background: transparent !important;
-
-  overflow: hidden !important;
-
-  text-decoration: none !important;
-
-  transition:
-    background .35s ease,
-    padding .35s ease !important;
-}
-
-
-/* MAIN TITLE */
-
-section.explore .index-item .index-title{
-  position: relative !important;
-  z-index: 2 !important;
-
-  display: block !important;
-
-  font-family: var(--display) !important;
-
-  font-size: clamp(2.5rem, 4.2vw, 4.4rem) !important;
-  font-weight: 650 !important;
-
-  line-height: .95 !important;
-  letter-spacing: -.05em !important;
-
-  color: #12284b !important;
-
-  transition: transform .35s ease !important;
-}
-
-
-/* SMALL LABEL ON RIGHT */
-
-section.explore .index-item .index-type{
-  position: relative !important;
-  z-index: 2 !important;
-
-  display: block !important;
-
-  font-size: .7rem !important;
-  font-weight: 700 !important;
-
-  letter-spacing: .13em !important;
-  text-transform: uppercase !important;
-
-  color: rgba(18,40,75,.48) !important;
-
-  transition:
-    color .35s ease,
-    transform .35s ease !important;
-}
-
-
-/* ==========================================================
-   GHOST TITLE
-   ========================================================== */
-
-section.explore .index-item::before{
-  content: attr(data-ghost) !important;
-
-  display: block !important;
-
-  position: absolute !important;
-
-  left: 48% !important;
-  top: 50% !important;
-
-  transform:
-    translate(-50%, -45%)
-    scale(.97) !important;
-
-  width: auto !important;
-  height: auto !important;
-
-  white-space: nowrap !important;
-
-  border: 0 !important;
-  border-radius: 0 !important;
-
-  background: transparent !important;
-
-  color: rgba(18,40,75,.035) !important;
-
-  font-family: var(--display) !important;
-
-  font-size: clamp(5rem, 9vw, 9rem) !important;
-  font-weight: 700 !important;
-
-  letter-spacing: -.07em !important;
-
-  opacity: 0 !important;
-
-  pointer-events: none !important;
-
-  transition:
-    opacity .4s ease,
-    transform .5s ease !important;
-}
-
-
-/* Make sure no old pseudo-element appears */
-
-section.explore .index-item::after{
-  display: none !important;
-  content: none !important;
-}
-
-
-/* ==========================================================
-   HOVER
-   ========================================================== */
-
-section.explore .index-item:nth-child(1):hover{
-  background: #dce6ee !important;
-}
-
-section.explore .index-item:nth-child(2):hover{
-  background: #d5e0e8 !important;
-}
-
-section.explore .index-item:nth-child(3):hover{
-  background: #e5ddd3 !important;
-}
-
-section.explore .index-item:nth-child(4):hover{
-  background: #d9e3e8 !important;
-}
-
-
-section.explore .index-item:hover{
-  padding-left: 38px !important;
-}
-
-
-section.explore .index-item:hover::before{
-  opacity: 1 !important;
-
-  transform:
-    translate(-50%, -50%)
-    scale(1) !important;
-}
-
-
-section.explore .index-item:hover .index-title{
-  transform: translateX(7px) !important;
-}
-
-
-section.explore .index-item:hover .index-type{
-  color: #c76f67 !important;
-
-  transform: translateX(-7px) !important;
-}
-
-
-/* UNDERLINE */
-
-section.explore .index-title::after{
-  content: "" !important;
-
-  display: block !important;
-
-  position: absolute !important;
-
-  left: 0 !important;
-  bottom: -16px !important;
-
-  width: 0 !important;
-  height: 3px !important;
-
-  background: #c76f67 !important;
-
-  transition: width .35s ease !important;
-}
-
-
-section.explore .index-item:hover .index-title::after{
-  width: 46px !important;
-}
-
-
-/* ==========================================================
-   MOBILE
-   ========================================================== */
-
-@media (max-width: 620px){
-
-  section.explore{
-    padding:
-      85px
-      var(--edge)
-      95px !important;
-  }
-
-  section.explore .explore-head{
-    margin-bottom: 48px !important;
-  }
-
-  section.explore .category-index .index-item{
-    min-height: 115px !important;
-
-    padding:
-      0 6px !important;
-  }
-
-  section.explore .index-item:hover{
-    padding-left: 12px !important;
-  }
-
-  section.explore .index-item .index-title{
-    font-size: clamp(2rem, 10vw, 2.8rem) !important;
-  }
-
-  section.explore .index-item .index-type{
-    font-size: .6rem !important;
-  }
-
-  section.explore .index-item::before{
-    font-size: 17vw !important;
+  .athar-index-item:hover{
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
 }
