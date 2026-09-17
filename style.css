@@ -3144,3 +3144,278 @@ button{
   }
 
 }
+
+
+
+
+/* ================================================================
+   ATHAR — EDITORIAL INDEX
+   NO CARDS / NO ICONS / NO NUMBERS
+   ================================================================ */
+
+.explore{
+  padding: 120px var(--edge) 145px;
+
+  background: #edf2f7;
+  color: var(--navy);
+}
+
+
+.explore-head{
+  width: 100%;
+  max-width: var(--max);
+
+  margin: 0 auto 75px;
+}
+
+
+.explore-head h2{
+  max-width: 12ch;
+}
+
+
+/* ================================================================
+   INDEX
+   ================================================================ */
+
+.category-index{
+  width: 100%;
+  max-width: var(--max);
+
+  margin: 0 auto;
+
+  border-top: 1px solid rgba(18,40,75,.18);
+}
+
+
+.index-item{
+  position: relative;
+
+  min-height: 155px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 22px;
+
+  border-bottom: 1px solid rgba(18,40,75,.18);
+
+  overflow: hidden;
+
+  transition:
+    background-color .4s var(--ease),
+    padding .4s var(--ease);
+}
+
+
+/* ------------------------------------------------
+   LARGE GHOST TEXT ON HOVER
+   ------------------------------------------------ */
+
+.index-item::before{
+  content: attr(data-ghost);
+
+  position: absolute;
+
+  left: 45%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -44%)
+    scale(.97);
+
+  white-space: nowrap;
+
+  color: rgba(18,40,75,.035);
+
+  font-family: var(--display);
+
+  font-size: clamp(5rem, 9vw, 9rem);
+  font-weight: 700;
+
+  letter-spacing: -.065em;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity .45s var(--ease),
+    transform .55s var(--ease);
+}
+
+
+/* ================================================================
+   TITLE
+   ================================================================ */
+
+.index-title{
+  position: relative;
+  z-index: 2;
+
+  font-family: var(--display);
+
+  font-size: clamp(2.5rem, 4.5vw, 4.6rem);
+
+  line-height: .95;
+
+  font-weight: 620;
+
+  letter-spacing: -.05em;
+
+  transition:
+    transform .4s var(--ease),
+    color .4s var(--ease);
+}
+
+
+/* ================================================================
+   SMALL CATEGORY TYPE
+   ================================================================ */
+
+.index-type{
+  position: relative;
+  z-index: 2;
+
+  color: rgba(18,40,75,.46);
+
+  font-size: .72rem;
+  font-weight: 700;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  transition:
+    color .4s var(--ease),
+    transform .4s var(--ease);
+}
+
+
+/* ================================================================
+   DIFFERENT VERY SUBTLE HOVERS
+   ================================================================ */
+
+.index-item:nth-child(1):hover{
+  background: #dfe7ef;
+}
+
+.index-item:nth-child(2):hover{
+  background: #d5e0e8;
+}
+
+.index-item:nth-child(3):hover{
+  background: #e6ddd2;
+}
+
+.index-item:nth-child(4):hover{
+  background: #d9e3e8;
+}
+
+
+/* ================================================================
+   INTERACTION
+   ================================================================ */
+
+.index-item:hover{
+  padding-left: 38px;
+}
+
+
+.index-item:hover::before{
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+
+
+.index-item:hover .index-title{
+  transform: translateX(8px);
+}
+
+
+.index-item:hover .index-type{
+  color: #d4786e;
+
+  transform: translateX(-8px);
+}
+
+
+/* Small line beside title */
+
+.index-title::after{
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -15px;
+
+  width: 0;
+  height: 3px;
+
+  background: #d4786e;
+
+  transition:
+    width .4s var(--ease);
+}
+
+
+.index-item:hover .index-title::after{
+  width: 48px;
+}
+
+
+/* ================================================================
+   MOBILE
+   ================================================================ */
+
+@media (max-width: 620px){
+
+  .explore{
+    padding:
+      88px
+      var(--edge)
+      96px;
+  }
+
+
+  .explore-head{
+    margin-bottom: 52px;
+  }
+
+
+  .index-item{
+    min-height: 120px;
+
+    padding:
+      0 5px;
+  }
+
+
+  .index-item:hover{
+    padding-left: 10px;
+  }
+
+
+  .index-title{
+    font-size:
+      clamp(2rem, 10vw, 2.8rem);
+  }
+
+
+  .index-type{
+    font-size: .62rem;
+  }
+
+
+  .index-item::before{
+    left: 50%;
+
+    font-size: 18vw;
+  }
+
+}
