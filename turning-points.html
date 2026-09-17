@@ -957,6 +957,330 @@
 
 }
 
+    /* =========================================================
+   FINAL OVERRIDE — ARCHIVE POLISH
+   Softer palette + stronger variation between eras
+========================================================= */
+
+/* ---------------------------------------------------------
+   GLOBAL ARCHIVE
+--------------------------------------------------------- */
+
+.tp-archive{
+  padding-top:105px;
+  background:#fbfbfa;
+}
+
+/* Less empty space between eras */
+.archive-era{
+  margin-bottom:120px;
+}
+
+/* Softer dates — remove aggressive coral */
+.event-date{
+  color:#a76d68 !important;
+}
+
+/* Softer secondary information */
+.event-place{
+  color:rgba(18,40,75,.48) !important;
+}
+
+/* Remove excessive saturation effect */
+.event-card:hover{
+  filter:none !important;
+  transform:translateY(-4px);
+}
+
+
+/* =========================================================
+   ANCIENT
+   Large blue feature + two compact side stories
+========================================================= */
+
+.ancient-feature{
+  background:#c9dce8;
+}
+
+.ancient-small:first-child{
+  background:#ded1c2;
+}
+
+.ancient-small:last-child{
+  background:#c8d9d3;
+}
+
+
+/* =========================================================
+   MEDIEVAL
+   Horizontal bands — deliberately NOT cards
+========================================================= */
+
+.medieval-layout{
+  gap:0;
+  border-top:1px solid rgba(18,40,75,.13);
+}
+
+.medieval-story{
+  min-height:175px;
+  padding:30px 18px;
+
+  background:transparent !important;
+
+  border-bottom:1px solid rgba(18,40,75,.13);
+
+  transition:
+    padding .3s ease,
+    background .3s ease;
+}
+
+.medieval-story:nth-child(1),
+.medieval-story:nth-child(2),
+.medieval-story:nth-child(3){
+  background:transparent;
+}
+
+.medieval-story:hover{
+  transform:none;
+  padding-left:34px;
+  padding-right:34px;
+}
+
+.medieval-story:nth-child(1):hover{
+  background:#eee6dc !important;
+}
+
+.medieval-story:nth-child(2):hover{
+  background:#e3ebef !important;
+}
+
+.medieval-story:nth-child(3):hover{
+  background:#e1ebe7 !important;
+}
+
+
+/* =========================================================
+   EARLY MODERN
+   Two cards + wide horizontal third story
+========================================================= */
+
+.early-layout{
+  grid-template-columns:1.15fr .85fr;
+  gap:14px;
+}
+
+.early-card{
+  min-height:330px;
+}
+
+.early-card:nth-child(1){
+  background:#c8d9d3;
+}
+
+.early-card:nth-child(2){
+  background:#ddc4c0;
+}
+
+.early-card:nth-child(3){
+  grid-column:1 / -1;
+
+  min-height:185px;
+
+  display:grid;
+  grid-template-columns:1fr 1.5fr;
+  align-items:end;
+
+  background:#ded1c2;
+}
+
+.early-card:nth-child(3) .event-top{
+  align-self:start;
+}
+
+.early-card:nth-child(3) h3{
+  margin:0;
+  font-size:clamp(2.8rem,4vw,4.7rem);
+}
+
+
+/* =========================================================
+   19TH CENTURY
+   Dominant feature + compact stacked stories
+========================================================= */
+
+.nineteenth-layout{
+  grid-template-columns:1.15fr .85fr;
+}
+
+.nineteenth-feature{
+  min-height:470px;
+  background:#d9c1bd;
+}
+
+.nineteenth-small{
+  min-height:228px;
+}
+
+.nineteenth-small:first-child{
+  background:#ded3a9;
+}
+
+.nineteenth-small:last-child{
+  background:#cbdde6;
+}
+
+
+/* =========================================================
+   20TH CENTURY
+   Wide editorial feature + asymmetric lower row
+========================================================= */
+
+.twentieth-layout{
+  grid-template-columns:1.2fr .8fr;
+}
+
+.twentieth-feature{
+  min-height:330px;
+  background:#c9cadc;
+}
+
+.twentieth-small{
+  min-height:250px;
+}
+
+.twentieth-small:nth-child(2){
+  background:#c9dce8;
+}
+
+.twentieth-small:nth-child(3){
+  background:#ddd0c1;
+}
+
+/* Give the first lower card more visual weight */
+.twentieth-small:nth-child(2){
+  padding-right:60px;
+}
+
+
+/* =========================================================
+   CONTEMPORARY
+   Two horizontal editorial panels instead of tall blocks
+========================================================= */
+
+.contemporary-layout{
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.contemporary-card{
+  min-height:210px;
+
+  display:grid;
+  grid-template-columns:.7fr 1.3fr;
+  align-items:end;
+}
+
+.contemporary-card:first-child{
+  background:#ded3a9;
+}
+
+.contemporary-card:last-child{
+  background:#c7d9d2;
+}
+
+.contemporary-card .event-top{
+  align-self:start;
+}
+
+.contemporary-card h3{
+  margin:0;
+
+  font-size:clamp(3rem,4.4vw,5rem);
+}
+
+
+/* =========================================================
+   HEADINGS — slightly tighter
+========================================================= */
+
+.archive-era-head{
+  margin-bottom:28px;
+}
+
+.archive-era-head h2{
+  font-size:clamp(3.4rem,5vw,5.4rem);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+  .early-layout{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .early-card:nth-child(3){
+    grid-column:1 / -1;
+  }
+
+  .twentieth-layout{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .contemporary-card{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  .archive-era{
+    margin-bottom:85px;
+  }
+
+  /* Everything becomes readable vertically,
+     but retains its colour identity */
+
+  .early-layout,
+  .twentieth-layout,
+  .contemporary-layout{
+    grid-template-columns:1fr;
+  }
+
+  .early-card:nth-child(3),
+  .twentieth-feature{
+    grid-column:auto;
+  }
+
+  .early-card:nth-child(3),
+  .contemporary-card{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:stretch;
+  }
+
+  .early-card,
+  .contemporary-card{
+    min-height:220px;
+  }
+
+  .medieval-story{
+    padding:26px 0;
+  }
+
+  .medieval-story:hover{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
+}
+
   </style>
 </head>
 
