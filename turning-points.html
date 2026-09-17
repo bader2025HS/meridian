@@ -374,12 +374,321 @@
 
     }
 
+
+
+    /* ==========================================================
+   TURNING POINTS — HERO REDESIGN
+   ========================================================== */
+
+
+/* ---------- INNER PAGE HEADER ---------- */
+
+/* Header is sitting on a LIGHT background,
+   so use navy navigation */
+
+.inner-page .site-header .main-nav a{
+  color:#12284b !important;
+}
+
+/* Show navy logo instead of white logo */
+
+.inner-page .site-header .logo-white{
+  opacity:0 !important;
+  visibility:hidden !important;
+}
+
+.inner-page .site-header .logo-navy{
+  opacity:1 !important;
+  visibility:visible !important;
+}
+
+
+/* ---------- HERO ---------- */
+
+.tp-hero{
+  position:relative;
+
+  min-height:720px;
+
+  padding:
+    175px var(--edge)
+    65px !important;
+
+  background:#d5e0e8;
+
+  overflow:hidden;
+}
+
+
+/* CORAL EDGE */
+
+.tp-hero::before{
+  content:"";
+
+  position:absolute;
+  left:0;
+  top:0;
+
+  width:7px;
+  height:100%;
+
+  background:#f65343;
+}
+
+
+/* GIANT YEAR */
+
+.tp-hero-year{
+  position:absolute;
+
+  right:-35px;
+  top:50%;
+
+  transform:translateY(-47%);
+
+  font-family:var(--display);
+  font-size:clamp(15rem,28vw,32rem);
+  font-weight:700;
+  line-height:.7;
+
+  letter-spacing:-.08em;
+
+  color:rgba(255,255,255,.29);
+
+  pointer-events:none;
+  user-select:none;
+}
+
+
+.tp-hero-inner{
+  position:relative;
+  z-index:2;
+
+  max-width:var(--max);
+  height:100%;
+
+  margin:0 auto;
+}
+
+
+/* ---------- MAIN COMPOSITION ---------- */
+
+.tp-hero-main{
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1.5fr)
+    minmax(260px,.5fr);
+
+  gap:80px;
+
+  align-items:end;
+}
+
+
+.tp-kicker{
+  display:block;
+
+  margin-bottom:25px;
+
+  color:#f65343;
+
+  font-size:.7rem;
+  font-weight:700;
+
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+
+
+.tp-hero h1{
+  margin:0;
+
+  max-width:none;
+
+  font-family:var(--display);
+
+  font-size:clamp(5rem,8vw,8.2rem);
+  font-weight:620;
+
+  line-height:.79;
+  letter-spacing:-.065em;
+
+  color:#12284b;
+}
+
+
+/* ---------- RIGHT SIDE ---------- */
+
+.tp-hero-side{
+  padding-left:28px;
+
+  border-left:
+    1px solid rgba(18,40,75,.18);
+
+  margin-bottom:7px;
+}
+
+
+.tp-side-label{
+  display:block;
+
+  margin-bottom:24px;
+
+  color:rgba(18,40,75,.42);
+
+  font-size:.64rem;
+  font-weight:700;
+
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+
+.tp-era-list{
+  display:flex;
+  flex-direction:column;
+}
+
+
+.tp-era-list span{
+  padding:9px 0;
+
+  border-bottom:
+    1px solid rgba(18,40,75,.13);
+
+  font-family:var(--display);
+
+  font-size:1.15rem;
+  font-weight:600;
+
+  color:#12284b;
+}
+
+
+/* little coral dot */
+
+.tp-era-list span::before{
+  content:"";
+
+  display:inline-block;
+
+  width:5px;
+  height:5px;
+
+  margin-right:12px;
+
+  border-radius:50%;
+
+  background:#f65343;
+
+  vertical-align:middle;
+}
+
+
+/* ---------- BOTTOM ---------- */
+
+.tp-hero-bottom{
+  margin-top:65px !important;
+
+  padding-top:25px !important;
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:flex-end;
+
+  gap:50px;
+
+  border-top:
+    1px solid rgba(18,40,75,.20) !important;
+}
+
+
+.tp-hero-bottom p{
+  max-width:590px;
+
+  margin:0;
+
+  color:rgba(18,40,75,.68);
+
+  font-size:.95rem;
+  line-height:1.6;
+}
+
+
+.tp-count{
+  color:#12284b;
+
+  font-size:.64rem;
+  font-weight:700;
+
+  letter-spacing:.14em;
+  text-transform:uppercase;
+
+  opacity:.5;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:800px){
+
+  .tp-hero{
+    min-height:auto;
+
+    padding:
+      135px var(--edge)
+      55px !important;
+  }
+
+  .tp-hero-year{
+    right:-25px;
+    top:42%;
+
+    font-size:16rem;
+
+    opacity:.65;
+  }
+
+  .tp-hero-main{
+    display:block;
+  }
+
+  .tp-hero h1{
+    font-size:clamp(4.5rem,19vw,6.5rem);
+  }
+
+  .tp-hero-side{
+    margin-top:55px;
+    padding-left:0;
+
+    border-left:0;
+  }
+
+  .tp-era-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 25px;
+  }
+
+  .tp-hero-bottom{
+    display:block;
+    margin-top:50px !important;
+  }
+
+  .tp-count{
+    display:block;
+    margin-top:22px;
+  }
+
+}
+
   </style>
 </head>
 
 
-<body class="tp-page">
-
+<body class="tp-page inner-page">
 
   <!-- HEADER -->
 
@@ -424,36 +733,58 @@
 
     <!-- HERO -->
 
-    <section class="tp-hero">
+<section class="tp-hero">
 
-      <div class="tp-hero-inner">
+  <div class="tp-hero-year" aria-hidden="true">1789</div>
 
-        <span class="tp-kicker">
-          Events
-        </span>
+  <div class="tp-hero-inner">
+
+    <div class="tp-hero-main">
+
+      <div class="tp-hero-title">
+
+        <span class="tp-kicker">Events · Across Space & Time</span>
 
         <h1>
           Turning<br>
           Points
         </h1>
 
+      </div>
 
-        <div class="tp-hero-bottom">
 
-          <p>
-            Moments when political orders collapsed, borders moved,
-            empires disappeared and new worlds emerged.
-          </p>
+      <div class="tp-hero-side">
 
-          <span class="tp-count">
-            Explore the timeline
-          </span>
+        <span class="tp-side-label">Explore history through</span>
 
+        <div class="tp-era-list">
+          <span>Ancient</span>
+          <span>Medieval</span>
+          <span>Modern</span>
+          <span>Contemporary</span>
         </div>
 
       </div>
 
-    </section>
+    </div>
+
+
+    <div class="tp-hero-bottom">
+
+      <p>
+        Moments when political orders collapsed, borders moved,
+        empires disappeared and new worlds emerged.
+      </p>
+
+      <span class="tp-count">
+        From empires to revolutions
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
 
 
 
