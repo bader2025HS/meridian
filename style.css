@@ -2767,3 +2767,380 @@ button{
   }
 
 }
+
+
+/* ================================================================
+   ATHAR — EDITORIAL CATEGORY LAYOUT
+   ================================================================ */
+
+.explore{
+  padding: 120px var(--edge) 140px;
+  background: #edf2f7;
+}
+
+.explore-head{
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto 64px;
+}
+
+.explore-head h2{
+  max-width: 12ch;
+}
+
+
+/* ------------------------------------------------
+   ASYMMETRICAL EDITORIAL GRID
+   ------------------------------------------------ */
+
+.athar-categories{
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(0, .85fr);
+
+  grid-template-rows:
+    230px
+    230px
+    205px;
+
+  gap: 16px;
+}
+
+
+/* ------------------------------------------------
+   BASE TILE
+   ------------------------------------------------ */
+
+.category{
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 34px 36px;
+
+  overflow: hidden;
+
+  font-family: var(--display);
+
+  transition:
+    transform .4s var(--ease),
+    box-shadow .4s var(--ease);
+}
+
+
+/* subtle internal texture */
+
+.category::before{
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  right: -100px;
+  top: -110px;
+
+  border: 1px solid currentColor;
+  border-radius: 50%;
+
+  opacity: .09;
+
+  transition:
+    transform .55s var(--ease),
+    opacity .55s var(--ease);
+}
+
+
+.category::after{
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  right: -50px;
+  top: -50px;
+
+  border: 1px solid currentColor;
+  border-radius: 50%;
+
+  opacity: .07;
+
+  transition:
+    transform .55s var(--ease);
+}
+
+
+/* ------------------------------------------------
+   TYPOGRAPHY
+   ------------------------------------------------ */
+
+.category-title{
+  position: relative;
+  z-index: 2;
+
+  max-width: 9ch;
+
+  font-size: clamp(2.1rem, 3.5vw, 3.8rem);
+
+  line-height: .95;
+
+  font-weight: 650;
+
+  letter-spacing: -.05em;
+
+  transition:
+    transform .4s var(--ease);
+}
+
+
+.category-arrow{
+  position: absolute;
+
+  top: 30px;
+  right: 32px;
+
+  z-index: 2;
+
+  font-size: 1.35rem;
+  font-weight: 400;
+
+  opacity: .42;
+
+  transition:
+    transform .35s var(--ease),
+    opacity .35s var(--ease);
+}
+
+
+/* ------------------------------------------------
+   LAYOUT
+   ------------------------------------------------ */
+
+
+/* Big left tile */
+
+.category-turning{
+  grid-column: 1;
+  grid-row: 1 / 3;
+
+  background: #142c50;
+  color: #ffffff;
+}
+
+
+/* Upper right */
+
+.category-fault{
+  grid-column: 2;
+  grid-row: 1;
+
+  background: #aebdca;
+  color: #12284b;
+}
+
+
+/* Lower right */
+
+.category-ideas{
+  grid-column: 2;
+  grid-row: 2;
+
+  background: #ded2c4;
+  color: #12284b;
+}
+
+
+/* Wide bottom */
+
+.category-people{
+  grid-column: 1 / 3;
+  grid-row: 3;
+
+  background: #c9d6df;
+  color: #12284b;
+}
+
+
+/* History Makers slightly different */
+
+.category-people .category-title{
+  max-width: none;
+
+  font-size: clamp(2.3rem, 3.7vw, 4rem);
+}
+
+
+/* ------------------------------------------------
+   SMALL CORAL DETAILS — NOT A CORAL CARD
+   ------------------------------------------------ */
+
+.category-fault::after{
+  border-color: #d6786e;
+}
+
+.category-ideas::after{
+  border-color: #d6786e;
+}
+
+.category-people::after{
+  border-color: #d6786e;
+}
+
+
+/* tiny accent line */
+
+.category-title::after{
+  content: "";
+
+  display: block;
+
+  width: 0;
+  height: 3px;
+
+  margin-top: 15px;
+
+  background: #d6786e;
+
+  transition:
+    width .4s var(--ease);
+}
+
+
+.category-turning .category-title::after{
+  background: #e28b80;
+}
+
+
+/* ------------------------------------------------
+   HOVER
+   ------------------------------------------------ */
+
+.category:hover{
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 20px 42px rgba(18,40,75,.10);
+}
+
+
+.category:hover::before{
+  transform: scale(1.15);
+  opacity: .14;
+}
+
+
+.category:hover::after{
+  transform: scale(1.15);
+}
+
+
+.category:hover .category-title{
+  transform: translateX(6px);
+}
+
+
+.category:hover .category-title::after{
+  width: 44px;
+}
+
+
+.category:hover .category-arrow{
+  transform: translate(4px,-4px);
+
+  opacity: 1;
+}
+
+
+/* ================================================================
+   TABLET
+   ================================================================ */
+
+@media (max-width: 900px){
+
+  .athar-categories{
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-rows:
+      300px
+      220px
+      190px;
+  }
+
+  .category-turning{
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .category-fault{
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .category-ideas{
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .category-people{
+    grid-column: 1 / 3;
+    grid-row: 3;
+  }
+
+}
+
+
+/* ================================================================
+   MOBILE
+   ================================================================ */
+
+@media (max-width: 620px){
+
+  .explore{
+    padding:
+      88px
+      var(--edge)
+      96px;
+  }
+
+  .explore-head{
+    margin-bottom: 42px;
+  }
+
+  .athar-categories{
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .category{
+    min-height: 175px;
+
+    padding: 24px;
+  }
+
+  .category-turning{
+    min-height: 240px;
+  }
+
+  .category-title,
+  .category-people .category-title{
+    font-size: 2rem;
+  }
+
+  .category-arrow{
+    top: 22px;
+    right: 22px;
+  }
+
+}
