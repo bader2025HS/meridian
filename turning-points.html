@@ -1,1 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Turning Points — Athar</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =========================================================
+       TURNING POINTS — TEMPORARY PAGE STYLES
+       ========================================================= */
+
+    .tp-page{
+      background:#f4f6f7;
+      color:#12284b;
+      min-height:100vh;
+    }
+
+
+    /* HERO */
+
+    .tp-hero{
+      padding:180px var(--edge) 90px;
+      background:#d5e0e8;
+    }
+
+    .tp-hero-inner{
+      max-width:var(--max);
+      margin:0 auto;
+    }
+
+    .tp-kicker{
+      display:block;
+      margin-bottom:28px;
+
+      color:#f65343;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+    }
+
+    .tp-hero h1{
+      max-width:900px;
+
+      font-family:var(--display);
+      font-size:clamp(4.5rem,9vw,9rem);
+      font-weight:620;
+      line-height:.82;
+      letter-spacing:-.065em;
+    }
+
+    .tp-hero-bottom{
+      margin-top:60px;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:40px;
+
+      border-top:1px solid rgba(18,40,75,.18);
+      padding-top:30px;
+    }
+
+    .tp-hero-bottom p{
+      max-width:600px;
+      font-size:1rem;
+      line-height:1.65;
+      color:rgba(18,40,75,.65);
+    }
+
+    .tp-count{
+      font-size:.7rem;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      opacity:.5;
+    }
+
+
+    /* FILTERS */
+
+    .tp-filters{
+      padding:25px var(--edge);
+      background:#fff;
+      border-bottom:1px solid rgba(18,40,75,.12);
+    }
+
+    .tp-filters-inner{
+      max-width:var(--max);
+      margin:0 auto;
+
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .tp-filter{
+      padding:9px 15px;
+
+      border:1px solid rgba(18,40,75,.16);
+      border-radius:100px;
+
+      font-size:.68rem;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+
+      color:#12284b;
+    }
+
+    .tp-filter.active{
+      background:#12284b;
+      border-color:#12284b;
+      color:#fff;
+    }
+
+
+    /* STORIES */
+
+    .tp-stories{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:90px var(--edge) 130px;
+    }
+
+    .tp-section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+
+      margin-bottom:35px;
+    }
+
+    .tp-section-head h2{
+      font-family:var(--display);
+      font-size:clamp(2.5rem,4vw,4rem);
+      letter-spacing:-.045em;
+    }
+
+    .tp-section-head span{
+      color:#f65343;
+      font-size:.68rem;
+      font-weight:700;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+    }
+
+
+    /* FEATURED STORY */
+
+    .tp-featured{
+      position:relative;
+
+      min-height:440px;
+      padding:45px;
+
+      background:#12284b;
+      color:#fff;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+
+      overflow:hidden;
+    }
+
+    .tp-featured::after{
+      content:"1789";
+
+      position:absolute;
+      right:-20px;
+      bottom:-60px;
+
+      font-family:var(--display);
+      font-size:14rem;
+      font-weight:700;
+
+      color:rgba(255,255,255,.055);
+    }
+
+    .tp-story-meta{
+      position:relative;
+      z-index:2;
+
+      display:flex;
+      gap:20px;
+
+      font-size:.65rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+
+      opacity:.65;
+    }
+
+    .tp-featured-content{
+      position:relative;
+      z-index:2;
+    }
+
+    .tp-featured h3{
+      max-width:700px;
+
+      font-family:var(--display);
+      font-size:clamp(3.3rem,5.5vw,6rem);
+      line-height:.9;
+      letter-spacing:-.055em;
+
+      margin-bottom:25px;
+    }
+
+    .tp-featured p{
+      max-width:570px;
+
+      color:rgba(255,255,255,.67);
+      line-height:1.6;
+    }
+
+
+    /* SMALLER STORIES */
+
+    .tp-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+
+      margin-top:12px;
+      gap:12px;
+    }
+
+    .tp-card{
+      min-height:340px;
+      padding:30px;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+
+      color:#12284b;
+
+      transition:
+        transform .35s ease,
+        background-color .35s ease;
+    }
+
+    .tp-card:nth-child(1){
+      background:#ded2c4;
+    }
+
+    .tp-card:nth-child(2){
+      background:#c7d5d4;
+    }
+
+    .tp-card:nth-child(3){
+      background:#e4c9c4;
+    }
+
+    .tp-card:hover{
+      transform:translateY(-5px);
+    }
+
+    .tp-card-year{
+      font-size:.67rem;
+      font-weight:700;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      opacity:.55;
+    }
+
+    .tp-card h3{
+      font-family:var(--display);
+      font-size:clamp(2rem,3vw,3.2rem);
+      line-height:.93;
+      letter-spacing:-.045em;
+
+      margin-bottom:18px;
+    }
+
+    .tp-card p{
+      font-size:.85rem;
+      line-height:1.55;
+      color:rgba(18,40,75,.62);
+    }
+
+
+    /* MORE STORIES */
+
+    .tp-list{
+      margin-top:80px;
+      border-top:1px solid rgba(18,40,75,.17);
+    }
+
+    .tp-list-item{
+      min-height:110px;
+
+      display:grid;
+      grid-template-columns:140px 1fr auto;
+      align-items:center;
+
+      border-bottom:1px solid rgba(18,40,75,.17);
+
+      transition:
+        padding .35s ease,
+        background .35s ease;
+    }
+
+    .tp-list-item:hover{
+      padding-left:15px;
+      padding-right:15px;
+      background:#fff;
+    }
+
+    .tp-list-year{
+      font-size:.7rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      opacity:.45;
+    }
+
+    .tp-list-title{
+      font-family:var(--display);
+      font-size:clamp(1.6rem,2.5vw,2.5rem);
+      letter-spacing:-.035em;
+    }
+
+    .tp-list-region{
+      font-size:.65rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      opacity:.4;
+    }
+
+
+    /* MOBILE */
+
+    @media(max-width:800px){
+
+      .tp-hero{
+        padding-top:140px;
+      }
+
+      .tp-hero-bottom{
+        display:block;
+      }
+
+      .tp-count{
+        display:block;
+        margin-top:25px;
+      }
+
+      .tp-grid{
+        grid-template-columns:1fr;
+      }
+
+      .tp-featured{
+        min-height:390px;
+        padding:28px;
+      }
+
+      .tp-list-item{
+        grid-template-columns:75px 1fr;
+        gap:10px;
+      }
+
+      .tp-list-region{
+        display:none;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body class="tp-page">
+
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+
+    <div class="header-row">
+
+      <a href="index.html" class="wordmark" aria-label="Athar — Home">
+
+        <img
+          src="images/atharlogowhite.png"
+          alt="Athar"
+          class="logo logo-white"
+        >
+
+        <img
+          src="images/atharlogonavy.png"
+          alt=""
+          class="logo logo-navy"
+        >
+
+      </a>
+
+
+      <nav class="main-nav">
+
+        <a href="turning-points.html">Turning Points</a>
+        <a href="fault-lines.html">Fault Lines</a>
+        <a href="big-ideas.html">Big Ideas</a>
+        <a href="history-makers.html">History Makers</a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <main>
+
+
+    <!-- HERO -->
+
+    <section class="tp-hero">
+
+      <div class="tp-hero-inner">
+
+        <span class="tp-kicker">
+          Events
+        </span>
+
+        <h1>
+          Turning<br>
+          Points
+        </h1>
+
+
+        <div class="tp-hero-bottom">
+
+          <p>
+            Moments when political orders collapsed, borders moved,
+            empires disappeared and new worlds emerged.
+          </p>
+
+          <span class="tp-count">
+            Explore the timeline
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- FILTERS -->
+
+    <section class="tp-filters">
+
+      <div class="tp-filters-inner">
+
+        <a href="#" class="tp-filter active">All</a>
+        <a href="#" class="tp-filter">Ancient</a>
+        <a href="#" class="tp-filter">Medieval</a>
+        <a href="#" class="tp-filter">Early Modern</a>
+        <a href="#" class="tp-filter">19th Century</a>
+        <a href="#" class="tp-filter">20th Century</a>
+        <a href="#" class="tp-filter">Contemporary</a>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- STORIES -->
+
+    <section class="tp-stories">
+
+      <div class="tp-section-head">
+
+        <h2>Selected moments</h2>
+
+        <span>
+          Across space & time
+        </span>
+
+      </div>
+
+
+
+      <!-- MAIN STORY -->
+
+      <a href="#" class="tp-featured">
+
+        <div class="tp-story-meta">
+          <span>1789</span>
+          <span>France</span>
+          <span>Revolution</span>
+        </div>
+
+        <div class="tp-featured-content">
+
+          <h3>
+            The French<br>
+            Revolution
+          </h3>
+
+          <p>
+            The collapse of the Ancien Régime transformed France
+            and reshaped political ideas far beyond its borders.
+          </p>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- SECONDARY STORIES -->
+
+      <div class="tp-grid">
+
+
+        <a href="#" class="tp-card">
+
+          <span class="tp-card-year">
+            1453 · Constantinople
+          </span>
+
+          <div>
+
+            <h3>
+              The Fall of<br>
+              Constantinople
+            </h3>
+
+            <p>
+              The Ottoman conquest ended the Byzantine Empire
+              and transformed the balance of power.
+            </p>
+
+          </div>
+
+        </a>
+
+
+
+        <a href="#" class="tp-card">
+
+          <span class="tp-card-year">
+            1917 · Russia
+          </span>
+
+          <div>
+
+            <h3>
+              The Russian<br>
+              Revolution
+            </h3>
+
+            <p>
+              Revolution brought down the imperial order and
+              eventually produced the Soviet Union.
+            </p>
+
+          </div>
+
+        </a>
+
+
+
+        <a href="#" class="tp-card">
+
+          <span class="tp-card-year">
+            1989 · Germany
+          </span>
+
+          <div>
+
+            <h3>
+              The Fall of the<br>
+              Berlin Wall
+            </h3>
+
+            <p>
+              A defining symbol of the Cold War disappeared
+              as Europe's political map changed again.
+            </p>
+
+          </div>
+
+        </a>
+
+
+      </div>
+
+
+
+      <!-- SIMPLE ARCHIVE -->
+
+      <div class="tp-list">
+
+
+        <a href="#" class="tp-list-item">
+
+          <span class="tp-list-year">1815</span>
+
+          <span class="tp-list-title">
+            Congress of Vienna
+          </span>
+
+          <span class="tp-list-region">
+            Europe
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-list-item">
+
+          <span class="tp-list-year">1945</span>
+
+          <span class="tp-list-title">
+            End of the Second World War
+          </span>
+
+          <span class="tp-list-region">
+            Global
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-list-item">
+
+          <span class="tp-list-year">1947</span>
+
+          <span class="tp-list-title">
+            Partition of India
+          </span>
+
+          <span class="tp-list-region">
+            South Asia
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-list-item">
+
+          <span class="tp-list-year">1960</span>
+
+          <span class="tp-list-title">
+            The Year of Africa
+          </span>
+
+          <span class="tp-list-region">
+            Africa
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-list-item">
+
+          <span class="tp-list-year">1991</span>
+
+          <span class="tp-list-title">
+            Dissolution of the Soviet Union
+          </span>
+
+          <span class="tp-list-region">
+            Eurasia
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-list-item">
+
+          <span class="tp-list-year">2011</span>
+
+          <span class="tp-list-title">
+            The Arab Uprisings
+          </span>
+
+          <span class="tp-list-region">
+            Middle East & North Africa
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
