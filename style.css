@@ -2287,3 +2287,81 @@ button{
 .site-header.is-scrolled .logo-navy{
   opacity: 1;
 }
+
+
+/* ==========================================================
+   ATHAR HEADER LOGO — CORRECTED FOR CURRENT HTML
+   ========================================================== */
+
+.site-header .wordmark{
+  position: relative !important;
+
+  display: block !important;
+
+  width: 110px !important;
+  height: 42px !important;
+
+  flex: 0 0 110px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  overflow: hidden !important;
+}
+
+
+/* BOTH LOGO IMAGES */
+
+.site-header .wordmark > img.logo{
+  position: absolute !important;
+
+  top: 50% !important;
+  left: 0 !important;
+
+  display: block !important;
+
+  width: 110px !important;
+  max-width: 110px !important;
+
+  height: 42px !important;
+  max-height: 42px !important;
+
+  object-fit: contain !important;
+  object-position: left center !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  transform: translateY(-50%) !important;
+
+  transition: opacity .3s var(--ease) !important;
+}
+
+
+/* WHITE LOGO ON NAVY HERO */
+
+.site-header .logo-white{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+/* NAVY LOGO HIDDEN */
+
+.site-header .logo-navy{
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+
+/* SCROLLED HEADER */
+
+.site-header.is-scrolled .logo-white{
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.site-header.is-scrolled .logo-navy{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
