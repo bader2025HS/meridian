@@ -2,1284 +2,1848 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Turning Points — Athar</title>
+<title>Turning Points — Athar</title>
 
-  <style>
+<style>
 
-    /* =========================================
-       RESET
-    ========================================== */
+/* =========================================================
+   RESET
+========================================================= */
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    html{
-      scroll-behavior:smooth;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:#f5f6f7;
-      color:#12284b;
-    }
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#f6f7f8;
+  color:#12284b;
+}
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
 
-    /* =========================================
-       HEADER
-    ========================================== */
+/* =========================================================
+   VARIABLES
+========================================================= */
 
-    .tp-header{
-      height:82px;
-      padding:0 clamp(24px,5vw,75px);
+:root{
+  --navy:#12284b;
+  --deep-navy:#0d1f3c;
+  --coral:#f65343;
 
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+  --blue:#cbdce8;
+  --sand:#dfd1bf;
+  --sage:#c7d7d0;
+  --rose:#e3c4bf;
+  --lavender:#cfd0df;
+  --yellow:#e2d5ad;
 
-      background:#dce6ed;
+  --offwhite:#f6f7f8;
 
-      border-bottom:1px solid rgba(18,40,75,.12);
-    }
+  --edge:clamp(24px,5vw,76px);
+  --max:1500px;
+}
 
-    .tp-logo{
-      display:block;
-      width:105px;
-      height:auto;
-    }
 
-    .tp-main-nav{
-      display:flex;
-      gap:28px;
-      align-items:center;
-    }
+/* =========================================================
+   HEADER
+========================================================= */
 
-    .tp-main-nav a{
-      position:relative;
+.site-header{
+  height:92px;
 
-      font-size:.9rem;
-      font-weight:600;
+  padding:0 var(--edge);
 
-      color:#12284b;
-      opacity:.58;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-      transition:.25s ease;
-    }
+  background:#f6f7f8;
 
-    .tp-main-nav a:hover,
-    .tp-main-nav a.active{
-      opacity:1;
-    }
+  border-bottom:1px solid rgba(18,40,75,.10);
 
-    .tp-main-nav a.active::after{
-      content:"";
+  position:relative;
+  z-index:20;
+}
 
-      position:absolute;
-      left:0;
-      bottom:-9px;
+.logo{
+  width:115px;
+  display:block;
+}
 
-      width:100%;
-      height:2px;
+.main-nav{
+  display:flex;
+  align-items:center;
+  gap:32px;
+}
 
-      background:#f65343;
-    }
+.main-nav a{
+  position:relative;
 
+  font-size:.9rem;
+  font-weight:600;
 
-    /* =========================================
-       HERO
-    ========================================== */
+  color:rgba(18,40,75,.55);
 
-    .tp-hero{
-      position:relative;
+  transition:.25s ease;
+}
 
-      min-height:560px;
+.main-nav a:hover{
+  color:var(--navy);
+}
 
-      padding:
-        80px
-        clamp(24px,5vw,75px)
-        0;
+.main-nav a.active{
+  color:var(--navy);
+}
 
-      background:#dce6ed;
+.main-nav a.active::after{
+  content:"";
 
-      overflow:hidden;
-    }
+  position:absolute;
 
-    .tp-hero::before{
-      content:"";
+  left:0;
+  bottom:-12px;
 
-      position:absolute;
-      left:0;
-      top:0;
+  width:100%;
+  height:2px;
 
-      width:5px;
-      height:100%;
+  background:var(--coral);
+}
 
-      background:#f65343;
-    }
 
-    .tp-hero-inner{
-      position:relative;
-      z-index:2;
+/* =========================================================
+   HERO
+========================================================= */
 
-      max-width:1450px;
-      margin:auto;
-    }
+.tp-hero{
+  position:relative;
 
+  padding:
+    105px
+    var(--edge)
+    95px;
 
-    /* BACKGROUND YEAR */
+  background:#f6f7f8;
 
-    .tp-year{
-      position:absolute;
+  overflow:hidden;
+}
 
-      right:-40px;
-      top:44%;
 
-      transform:translateY(-50%);
+/* subtle decorative shapes */
 
-      font-size:clamp(16rem,30vw,32rem);
-      font-weight:700;
+.tp-hero::before{
+  content:"";
 
-      line-height:.7;
-      letter-spacing:-.1em;
+  position:absolute;
 
-      color:rgba(255,255,255,.38);
+  width:420px;
+  height:420px;
 
-      pointer-events:none;
-      user-select:none;
-    }
+  border-radius:50%;
 
+  right:-150px;
+  top:-170px;
 
-    /* KICKER */
+  background:#dce6ed;
 
-    .tp-kicker{
-      display:flex;
-      align-items:center;
-      gap:12px;
+  opacity:.7;
+}
 
-      margin-bottom:45px;
+.tp-hero::after{
+  content:"";
 
-      color:#f65343;
+  position:absolute;
 
-      font-size:.7rem;
-      font-weight:700;
+  width:170px;
+  height:170px;
 
-      letter-spacing:.15em;
-      text-transform:uppercase;
-    }
+  border-radius:50%;
 
-    .tp-kicker::after{
-      content:"";
+  right:18%;
+  bottom:-100px;
 
-      display:block;
+  background:#e5cbc5;
 
-      width:38px;
-      height:1px;
+  opacity:.55;
+}
 
-      background:#f65343;
-      opacity:.5;
-    }
 
+.tp-hero-inner{
+  position:relative;
+  z-index:2;
 
-    /* HERO CONTENT */
+  max-width:var(--max);
+  margin:auto;
+}
 
-    .tp-title-row{
-      display:grid;
 
-      grid-template-columns:
-        minmax(420px,1.1fr)
-        minmax(280px,.65fr);
+/* KICKER */
 
-      align-items:end;
+.tp-kicker{
+  display:flex;
+  align-items:center;
+  gap:15px;
 
-      gap:100px;
-    }
+  margin-bottom:38px;
 
-    .tp-title-row h1{
-      font-size:clamp(5rem,9vw,9rem);
+  color:var(--coral);
 
-      line-height:.76;
-      letter-spacing:-.075em;
+  font-size:.69rem;
+  font-weight:700;
 
-      font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
 
-      color:#12284b;
-    }
+.tp-kicker::before{
+  content:"";
 
-    .tp-title-row p{
-      max-width:470px;
+  width:28px;
+  height:3px;
 
-      padding-bottom:10px;
+  background:var(--coral);
+}
 
-      font-size:1.15rem;
-      line-height:1.65;
 
-      color:rgba(18,40,75,.65);
-    }
+/* HERO MAIN */
 
+.tp-hero-main{
+  display:grid;
 
-    /* =========================================
-       ERA NAVIGATION
-    ========================================== */
+  grid-template-columns:
+    minmax(400px,.95fr)
+    minmax(330px,.7fr);
 
-    .tp-era-nav{
-      position:relative;
+  gap:120px;
 
-      display:grid;
-      grid-template-columns:repeat(6,1fr);
+  align-items:end;
+}
 
-      margin-top:80px;
+.tp-hero h1{
+  font-size:clamp(5rem,8.5vw,8.6rem);
 
-      border-top:1px solid rgba(18,40,75,.16);
-    }
+  line-height:.78;
 
-    .tp-era-nav a{
-      position:relative;
+  letter-spacing:-.075em;
 
-      padding:20px 12px 23px 0;
+  font-weight:700;
 
-      border-right:1px solid rgba(18,40,75,.12);
+  color:var(--navy);
+}
 
-      color:#12284b;
+.tp-hero-copy{
+  padding-bottom:10px;
+}
 
-      transition:
-        background .25s ease,
-        padding .25s ease;
-    }
+.tp-hero-copy p{
+  max-width:500px;
 
-    .tp-era-nav a:last-child{
-      border-right:0;
-    }
+  font-size:1.18rem;
+  line-height:1.65;
 
-    .tp-era-nav strong{
-      display:block;
+  color:rgba(18,40,75,.62);
+}
 
-      margin-bottom:6px;
+.tp-scroll{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
 
-      font-size:.9rem;
-      font-weight:650;
-    }
+  margin-top:32px;
 
-    .tp-era-nav small{
-      color:rgba(18,40,75,.42);
+  color:var(--navy);
 
-      font-size:.65rem;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
+  font-size:.67rem;
+  font-weight:700;
 
-    .tp-era-nav a:hover{
-      background:rgba(255,255,255,.28);
-      padding-left:12px;
-    }
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
 
-    .tp-era-nav a::before{
-      content:"";
+.tp-scroll-line{
+  width:35px;
+  height:1px;
 
-      position:absolute;
-      left:0;
-      top:-2px;
+  background:var(--coral);
+}
 
-      width:0;
-      height:3px;
 
-      background:#f65343;
+/* =========================================================
+   ERA CARDS
+========================================================= */
 
-      transition:width .25s ease;
-    }
+.tp-periods{
+  position:relative;
 
-    .tp-era-nav a:hover::before{
-      width:100%;
-    }
+  padding:
+    0
+    var(--edge)
+    115px;
 
+  background:#f6f7f8;
+}
 
-    /* =========================================
-       ARCHIVE
-    ========================================== */
+.tp-periods-inner{
+  max-width:var(--max);
+  margin:auto;
+}
 
-    .tp-archive{
-      max-width:1450px;
+.tp-periods-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
 
-      margin:auto;
+  padding-top:34px;
+  margin-bottom:26px;
 
-      padding:
-        110px
-        clamp(24px,5vw,75px)
-        140px;
-    }
+  border-top:1px solid rgba(18,40,75,.14);
+}
 
+.tp-periods-header span{
+  color:var(--coral);
 
-    /* INTRO */
+  font-size:.67rem;
+  font-weight:700;
 
-    .tp-archive-intro{
-      display:grid;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
 
-      grid-template-columns:
-        minmax(300px,.8fr)
-        minmax(400px,1.2fr);
+.tp-periods-header p{
+  color:rgba(18,40,75,.43);
 
-      gap:100px;
+  font-size:.73rem;
+}
 
-      margin-bottom:110px;
-    }
 
-    .tp-eyebrow{
-      color:#f65343;
+/* GRID */
 
-      font-size:.7rem;
-      font-weight:700;
+.tp-period-grid{
+  display:grid;
 
-      letter-spacing:.15em;
-      text-transform:uppercase;
-    }
+  grid-template-columns:repeat(3,1fr);
 
-    .tp-archive-title h2{
-      max-width:700px;
+  gap:14px;
+}
 
-      font-size:clamp(3rem,5vw,5.3rem);
 
-      line-height:.95;
-      letter-spacing:-.055em;
+/* CARD */
 
-      color:#12284b;
-    }
+.tp-period-card{
+  position:relative;
 
-    .tp-archive-title p{
-      max-width:620px;
+  height:205px;
 
-      margin-top:30px;
+  padding:26px 28px;
 
-      color:rgba(18,40,75,.57);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
 
-      font-size:1rem;
-      line-height:1.7;
-    }
+  overflow:hidden;
 
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
 
-    /* =========================================
-       ERAS
-    ========================================== */
+.tp-period-card:hover{
+  transform:translateY(-6px);
 
-    .tp-era{
-      margin-bottom:100px;
-    }
+  box-shadow:
+    0 16px 35px
+    rgba(18,40,75,.10);
+}
 
-    .tp-era-heading{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
 
-      padding-bottom:20px;
+/* COLORS */
 
-      border-bottom:2px solid #12284b;
-    }
+.period-ancient{
+  background:var(--blue);
+}
 
-    .tp-era-heading-left{
-      display:flex;
-      align-items:baseline;
-      gap:20px;
-    }
+.period-medieval{
+  background:var(--sand);
+}
 
-    .tp-era-number{
-      color:#f65343;
+.period-early{
+  background:var(--sage);
+}
 
-      font-size:.68rem;
-      font-weight:700;
+.period-nineteenth{
+  background:var(--rose);
+}
 
-      letter-spacing:.1em;
-    }
+.period-twentieth{
+  background:var(--lavender);
+}
 
-    .tp-era-heading h2{
-      font-size:clamp(2.3rem,4vw,4rem);
+.period-contemporary{
+  background:var(--yellow);
+}
 
-      letter-spacing:-.045em;
-      line-height:1;
 
-      color:#12284b;
-    }
+/* CARD TOP */
 
-    .tp-era-range{
-      padding-bottom:5px;
+.tp-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-      color:rgba(18,40,75,.45);
+.tp-period-range{
+  color:rgba(18,40,75,.48);
 
-      font-size:.68rem;
-      font-weight:700;
+  font-size:.62rem;
+  font-weight:700;
 
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
 
 
-    /* =========================================
-       EVENTS
-    ========================================== */
+/* CSS arrow — NOT emoji */
 
-    .tp-event{
-      display:grid;
+.tp-card-arrow{
+  position:relative;
 
-      grid-template-columns:
-        130px
-        minmax(300px,1fr)
-        210px;
+  width:34px;
+  height:34px;
 
-      gap:35px;
+  border:1px solid rgba(18,40,75,.22);
+  border-radius:50%;
 
-      align-items:center;
+  transition:
+    background .3s ease,
+    border-color .3s ease;
+}
 
-      min-height:105px;
+.tp-card-arrow::before{
+  content:"";
 
-      border-bottom:1px solid rgba(18,40,75,.15);
+  position:absolute;
 
-      transition:
-        padding .3s ease,
-        background .3s ease;
-    }
+  width:7px;
+  height:7px;
 
-    .tp-event:hover{
-      padding-left:18px;
-      padding-right:18px;
+  border-top:1.5px solid var(--navy);
+  border-right:1.5px solid var(--navy);
 
-      background:#e7edf1;
-    }
+  top:11px;
+  left:12px;
 
-    .tp-event-date{
-      color:#f65343;
+  transform:rotate(45deg);
+}
 
-      font-size:.75rem;
-      font-weight:700;
+.tp-card-arrow::after{
+  content:"";
 
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
+  position:absolute;
 
-    .tp-event h3{
-      margin-bottom:7px;
+  width:10px;
+  height:1.5px;
 
-      color:#12284b;
+  background:var(--navy);
 
-      font-size:1.55rem;
-      font-weight:650;
+  left:10px;
+  top:16px;
+}
 
-      letter-spacing:-.025em;
-    }
+.tp-period-card:hover .tp-card-arrow{
+  background:var(--navy);
+  border-color:var(--navy);
+}
 
-    .tp-event p{
-      max-width:650px;
+.tp-period-card:hover .tp-card-arrow::before{
+  border-color:white;
+}
 
-      color:rgba(18,40,75,.52);
+.tp-period-card:hover .tp-card-arrow::after{
+  background:white;
+}
 
-      font-size:.85rem;
-      line-height:1.5;
-    }
 
-    .tp-event-region{
-      text-align:right;
+/* CARD TITLE */
 
-      color:rgba(18,40,75,.43);
+.tp-period-card h2{
+  position:relative;
+  z-index:2;
 
-      font-size:.67rem;
-      font-weight:700;
+  max-width:9ch;
 
-      letter-spacing:.1em;
-      text-transform:uppercase;
-    }
+  font-size:clamp(2rem,2.7vw,3rem);
 
+  line-height:.88;
 
-    /* =========================================
-       DIFFERENT ERA ACCENTS
-    ========================================== */
+  letter-spacing:-.055em;
 
-    #ancient .tp-era-heading{
-      border-color:#8ba8bb;
-    }
+  color:var(--navy);
+}
 
-    #medieval .tp-era-heading{
-      border-color:#b49c84;
-    }
 
-    #early-modern .tp-era-heading{
-      border-color:#8fa9a5;
-    }
+/* DECORATIVE LETTER */
 
-    #nineteenth .tp-era-heading{
-      border-color:#c48c83;
-    }
+.tp-period-letter{
+  position:absolute;
 
-    #twentieth .tp-era-heading{
-      border-color:#8798ad;
-    }
+  right:-7px;
+  bottom:-34px;
 
-    #contemporary .tp-era-heading{
-      border-color:#d6786e;
-    }
+  font-size:9rem;
+  font-weight:700;
 
+  line-height:1;
 
-    /* =========================================
-       FOOTER
-    ========================================== */
+  color:rgba(255,255,255,.27);
 
-    .tp-footer{
-      min-height:130px;
+  pointer-events:none;
+}
 
-      padding:0 clamp(24px,5vw,75px);
 
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
+/* =========================================================
+   ARCHIVE
+========================================================= */
 
-      background:#12284b;
+.tp-archive{
+  padding:
+    110px
+    var(--edge)
+    140px;
 
-      color:white;
-    }
+  background:#fff;
+}
 
-    .tp-footer a{
-      font-size:1.3rem;
-      font-weight:700;
-    }
+.tp-archive-inner{
+  max-width:var(--max);
+  margin:auto;
+}
 
-    .tp-footer span{
-      color:rgba(255,255,255,.5);
 
-      font-size:.68rem;
-      font-weight:700;
+/* ARCHIVE INTRO */
 
-      letter-spacing:.13em;
-      text-transform:uppercase;
-    }
+.tp-archive-intro{
+  display:grid;
 
+  grid-template-columns:.55fr 1.2fr;
 
-    /* =========================================
-       MOBILE
-    ========================================== */
+  gap:100px;
 
-    @media(max-width:800px){
+  margin-bottom:100px;
+}
 
-      .tp-header{
-        height:72px;
-      }
+.tp-section-label{
+  padding-top:10px;
 
-      .tp-logo{
-        width:90px;
-      }
+  color:var(--coral);
 
-      .tp-main-nav{
-        display:none;
-      }
+  font-size:.67rem;
+  font-weight:700;
 
-      .tp-hero{
-        min-height:auto;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
 
-        padding-top:65px;
-      }
+.tp-archive-heading h2{
+  max-width:680px;
 
-      .tp-year{
-        top:40%;
-        right:-10px;
+  font-size:clamp(3.2rem,5.5vw,5.5rem);
 
-        font-size:55vw;
-      }
+  line-height:.92;
 
-      .tp-title-row{
-        display:block;
-      }
+  letter-spacing:-.06em;
 
-      .tp-title-row h1{
-        font-size:clamp(4rem,19vw,6.5rem);
-      }
+  color:var(--navy);
+}
 
-      .tp-title-row p{
-        margin-top:45px;
+.tp-archive-heading p{
+  max-width:600px;
 
-        max-width:500px;
+  margin-top:28px;
 
-        font-size:1rem;
-      }
+  font-size:.98rem;
+  line-height:1.7;
 
-      .tp-era-nav{
-        grid-template-columns:repeat(2,1fr);
+  color:rgba(18,40,75,.55);
+}
 
-        margin-top:60px;
-      }
 
-      .tp-era-nav a{
-        border-bottom:1px solid rgba(18,40,75,.12);
-      }
+/* =========================================================
+   ERA SECTIONS
+========================================================= */
 
-      .tp-archive{
-        padding-top:80px;
-      }
+.tp-era{
+  margin-bottom:100px;
+}
 
-      .tp-archive-intro{
-        display:block;
+.tp-era-heading{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
 
-        margin-bottom:80px;
-      }
+  padding-bottom:18px;
 
-      .tp-archive-title{
-        margin-top:30px;
-      }
+  border-bottom:1px solid rgba(18,40,75,.2);
+}
 
-      .tp-event{
-        grid-template-columns:80px 1fr;
+.tp-era-heading h2{
+  font-size:clamp(2.4rem,4vw,4rem);
 
-        gap:20px;
+  line-height:1;
 
-        padding:22px 0;
-      }
+  letter-spacing:-.05em;
+}
 
-      .tp-event-region{
-        display:none;
-      }
+.tp-era-heading span{
+  padding-bottom:5px;
 
-      .tp-event h3{
-        font-size:1.25rem;
-      }
+  color:rgba(18,40,75,.4);
 
-      .tp-era-heading{
-        align-items:flex-start;
-      }
+  font-size:.65rem;
+  font-weight:700;
 
-      .tp-era-heading-left{
-        display:block;
-      }
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
 
-      .tp-era-number{
-        display:block;
 
-        margin-bottom:8px;
-      }
+/* EVENT ROW */
 
-    }
+.tp-event{
+  display:grid;
 
-  </style>
+  grid-template-columns:
+    130px
+    minmax(300px,1fr)
+    200px;
+
+  gap:35px;
+
+  align-items:center;
+
+  min-height:105px;
+
+  border-bottom:1px solid rgba(18,40,75,.12);
+
+  transition:
+    padding .3s ease,
+    background .3s ease;
+}
+
+.tp-event:hover{
+  padding-left:18px;
+  padding-right:18px;
+
+  background:#f1f4f6;
+}
+
+.tp-event-date{
+  color:var(--coral);
+
+  font-size:.72rem;
+  font-weight:700;
+
+  letter-spacing:.08em;
+}
+
+.tp-event h3{
+  margin-bottom:6px;
+
+  font-size:1.5rem;
+
+  letter-spacing:-.025em;
+
+  color:var(--navy);
+}
+
+.tp-event p{
+  max-width:650px;
+
+  color:rgba(18,40,75,.5);
+
+  font-size:.84rem;
+  line-height:1.5;
+}
+
+.tp-event-region{
+  text-align:right;
+
+  color:rgba(18,40,75,.4);
+
+  font-size:.64rem;
+  font-weight:700;
+
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   COLORED ERA MARKERS
+========================================================= */
+
+#ancient .tp-era-heading{
+  border-bottom:3px solid #9bb8ca;
+}
+
+#medieval .tp-era-heading{
+  border-bottom:3px solid #bba58b;
+}
+
+#early-modern .tp-era-heading{
+  border-bottom:3px solid #9bb8ae;
+}
+
+#nineteenth .tp-era-heading{
+  border-bottom:3px solid #c89187;
+}
+
+#twentieth .tp-era-heading{
+  border-bottom:3px solid #9c9fb8;
+}
+
+#contemporary .tp-era-heading{
+  border-bottom:3px solid #c7ad63;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer{
+  min-height:135px;
+
+  padding:0 var(--edge);
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  background:var(--navy);
+
+  color:white;
+}
+
+.site-footer strong{
+  font-size:1.25rem;
+}
+
+.site-footer span{
+  color:rgba(255,255,255,.5);
+
+  font-size:.65rem;
+  font-weight:700;
+
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:950px){
+
+  .tp-hero-main{
+    grid-template-columns:1fr;
+    gap:45px;
+  }
+
+  .tp-hero-copy{
+    max-width:600px;
+  }
+
+  .tp-period-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .tp-archive-intro{
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+  .site-header{
+    height:72px;
+  }
+
+  .logo{
+    width:90px;
+  }
+
+  .main-nav{
+    display:none;
+  }
+
+
+  .tp-hero{
+    padding-top:70px;
+    padding-bottom:70px;
+  }
+
+  .tp-kicker{
+    margin-bottom:30px;
+  }
+
+  .tp-hero h1{
+    font-size:clamp(4.3rem,20vw,6.3rem);
+  }
+
+  .tp-hero-copy p{
+    font-size:1rem;
+  }
+
+
+  /* CARDS */
+
+  .tp-periods{
+    padding-bottom:80px;
+  }
+
+  .tp-periods-header{
+    align-items:flex-start;
+  }
+
+  .tp-periods-header p{
+    display:none;
+  }
+
+  .tp-period-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .tp-period-card{
+    height:145px;
+
+    padding:21px 22px;
+  }
+
+  .tp-period-card h2{
+    font-size:2.25rem;
+  }
+
+  .tp-period-letter{
+    font-size:7rem;
+  }
+
+
+  /* ARCHIVE */
+
+  .tp-archive{
+    padding-top:80px;
+  }
+
+  .tp-archive-intro{
+    margin-bottom:75px;
+  }
+
+  .tp-event{
+    grid-template-columns:75px 1fr;
+
+    gap:15px;
+
+    padding:20px 0;
+  }
+
+  .tp-event-region{
+    display:none;
+  }
+
+  .tp-event h3{
+    font-size:1.2rem;
+  }
+
+  .tp-era-heading{
+    align-items:flex-start;
+  }
+
+  .tp-era-heading h2{
+    font-size:2.4rem;
+  }
+
+}
+
+</style>
 
 </head>
 
 
 <body>
 
-  <!-- =========================================
-       HEADER
-  ========================================== -->
 
-  <header class="tp-header">
+<!-- ======================================================
+     HEADER
+====================================================== -->
 
-    <a href="index.html">
-      <img
-        src="images/atharlogonavy1.png"
-        alt="Athar"
-        class="tp-logo"
-      >
+<header class="site-header">
+
+  <a href="index.html" aria-label="Athar home">
+
+    <img
+      src="images/atharlogonavy1.png"
+      alt="Athar"
+      class="logo"
+    >
+
+  </a>
+
+
+  <nav class="main-nav">
+
+    <a
+      href="turning-points.html"
+      class="active"
+    >
+      Turning Points
     </a>
 
-    <nav class="tp-main-nav">
-      <a href="turning-points.html" class="active">Turning Points</a>
-      <a href="conflicts.html">Fault Lines</a>
-      <a href="ideas.html">Big Ideas</a>
-      <a href="people.html">History Makers</a>
-    </nav>
+    <a href="conflicts.html">
+      Fault Lines
+    </a>
 
-  </header>
+    <a href="ideas.html">
+      Big Ideas
+    </a>
 
+    <a href="people.html">
+      History Makers
+    </a>
 
-  <main>
+  </nav>
 
-    <!-- =========================================
-         HERO
-    ========================================== -->
-
-    <section class="tp-hero">
-
-      <div class="tp-year">1789</div>
-
-      <div class="tp-hero-inner">
-
-        <div class="tp-kicker">
-          Events · Across Space & Time
-        </div>
+</header>
 
 
-        <div class="tp-title-row">
 
-          <h1>
-            Turning<br>
-            Points
-          </h1>
-
-          <p>
-            Revolutions, collapses, treaties and moments after which
-            the world was no longer the same.
-          </p>
-
-        </div>
+<main>
 
 
-        <nav class="tp-era-nav">
+<!-- ======================================================
+     HERO
+====================================================== -->
 
-          <a href="#ancient">
-            <strong>Ancient</strong>
-            <small>Before 500</small>
-          </a>
+<section class="tp-hero">
 
-          <a href="#medieval">
-            <strong>Medieval</strong>
-            <small>500 — 1500</small>
-          </a>
+  <div class="tp-hero-inner">
 
-          <a href="#early-modern">
-            <strong>Early Modern</strong>
-            <small>1500 — 1800</small>
-          </a>
 
-          <a href="#nineteenth">
-            <strong>19th Century</strong>
-            <small>1800 — 1900</small>
-          </a>
+    <div class="tp-kicker">
+      Events · Across Space & Time
+    </div>
 
-          <a href="#twentieth">
-            <strong>20th Century</strong>
-            <small>1900 — 2000</small>
-          </a>
 
-          <a href="#contemporary">
-            <strong>Contemporary</strong>
-            <small>2000 — Today</small>
-          </a>
+    <div class="tp-hero-main">
 
-        </nav>
+
+      <h1>
+        Turning<br>
+        Points
+      </h1>
+
+
+      <div class="tp-hero-copy">
+
+        <p>
+          Revolutions, collapses, treaties and moments
+          after which the world was no longer the same.
+        </p>
+
+        <a href="#periods" class="tp-scroll">
+
+          Explore the archive
+
+          <span class="tp-scroll-line"></span>
+
+        </a>
 
       </div>
 
-    </section>
+
+    </div>
+
+  </div>
+
+</section>
 
 
-    <!-- =========================================
-         ARCHIVE
-    ========================================== -->
 
-    <section class="tp-archive">
+<!-- ======================================================
+     PERIOD CARDS
+====================================================== -->
 
-      <div class="tp-archive-intro">
+<section class="tp-periods" id="periods">
 
-        <span class="tp-eyebrow">
-          Browse the archive
-        </span>
+  <div class="tp-periods-inner">
 
-        <div class="tp-archive-title">
 
-          <h2>
-            Moments that<br>
-            changed the world.
-          </h2>
+    <div class="tp-periods-header">
 
-          <p>
-            Explore the events that transformed political orders,
-            societies and borders across space and time.
-          </p>
+      <span>
+        Browse by period
+      </span>
 
-        </div>
+      <p>
+        Six eras · one archive
+      </p>
 
-      </div>
+    </div>
+
+
+    <div class="tp-period-grid">
 
 
       <!-- ANCIENT -->
 
-      <section class="tp-era" id="ancient">
+      <a
+        href="#ancient"
+        class="tp-period-card period-ancient"
+      >
 
-        <div class="tp-era-heading">
+        <div class="tp-card-top">
 
-          <div class="tp-era-heading-left">
-            <span class="tp-era-number">01</span>
-            <h2>Ancient</h2>
-          </div>
-
-          <span class="tp-era-range">
+          <span class="tp-period-range">
             Before 500 CE
           </span>
 
-        </div>
-
-
-        <div class="tp-event-list">
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">
-              539 BCE
-            </span>
-
-            <div>
-              <h3>Fall of Babylon</h3>
-              <p>
-                The Persian conquest of the Neo-Babylonian Empire.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Mesopotamia
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">
-              44 BCE
-            </span>
-
-            <div>
-              <h3>Assassination of Julius Caesar</h3>
-              <p>
-                A political rupture at the heart of the Roman Republic.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Rome
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">
-              476
-            </span>
-
-            <div>
-              <h3>Fall of the Western Roman Empire</h3>
-              <p>
-                The traditional marker for the end of Roman rule
-                in Western Europe.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Europe
-            </span>
-
-          </a>
+          <span class="tp-card-arrow"></span>
 
         </div>
 
-      </section>
+        <h2>Ancient</h2>
+
+        <span class="tp-period-letter">
+          A
+        </span>
+
+      </a>
+
 
 
       <!-- MEDIEVAL -->
 
-      <section class="tp-era" id="medieval">
+      <a
+        href="#medieval"
+        class="tp-period-card period-medieval"
+      >
 
-        <div class="tp-era-heading">
+        <div class="tp-card-top">
 
-          <div class="tp-era-heading-left">
-            <span class="tp-era-number">02</span>
-            <h2>Medieval</h2>
-          </div>
-
-          <span class="tp-era-range">
+          <span class="tp-period-range">
             500 — 1500
           </span>
 
-        </div>
-
-
-        <div class="tp-event-list">
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">622</span>
-
-            <div>
-              <h3>The Hijra</h3>
-              <p>
-                Muhammad's migration from Mecca to Medina.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Arabia
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1258</span>
-
-            <div>
-              <h3>Fall of Baghdad</h3>
-              <p>
-                The Mongol capture of Baghdad and the end
-                of Abbasid rule there.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Mesopotamia
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1453</span>
-
-            <div>
-              <h3>Fall of Constantinople</h3>
-              <p>
-                The Ottoman conquest of the Byzantine capital.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Eastern Mediterranean
-            </span>
-
-          </a>
+          <span class="tp-card-arrow"></span>
 
         </div>
 
-      </section>
+        <h2>Medieval</h2>
+
+        <span class="tp-period-letter">
+          M
+        </span>
+
+      </a>
+
 
 
       <!-- EARLY MODERN -->
 
-      <section class="tp-era" id="early-modern">
+      <a
+        href="#early-modern"
+        class="tp-period-card period-early"
+      >
 
-        <div class="tp-era-heading">
+        <div class="tp-card-top">
 
-          <div class="tp-era-heading-left">
-            <span class="tp-era-number">03</span>
-            <h2>Early Modern</h2>
-          </div>
-
-          <span class="tp-era-range">
+          <span class="tp-period-range">
             1500 — 1800
           </span>
 
-        </div>
-
-
-        <div class="tp-event-list">
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1517</span>
-
-            <div>
-              <h3>Protestant Reformation</h3>
-              <p>
-                A religious transformation that fractured
-                Western Christianity.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Europe
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1648</span>
-
-            <div>
-              <h3>Peace of Westphalia</h3>
-              <p>
-                A series of settlements ending major
-                European conflicts.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Europe
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1776</span>
-
-            <div>
-              <h3>American Declaration of Independence</h3>
-              <p>
-                Thirteen colonies declared independence
-                from Great Britain.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              North America
-            </span>
-
-          </a>
+          <span class="tp-card-arrow"></span>
 
         </div>
 
-      </section>
+        <h2>
+          Early<br>
+          Modern
+        </h2>
+
+        <span class="tp-period-letter">
+          E
+        </span>
+
+      </a>
 
 
-      <!-- 19TH CENTURY -->
 
-      <section class="tp-era" id="nineteenth">
+      <!-- 19TH -->
 
-        <div class="tp-era-heading">
+      <a
+        href="#nineteenth"
+        class="tp-period-card period-nineteenth"
+      >
 
-          <div class="tp-era-heading-left">
-            <span class="tp-era-number">04</span>
-            <h2>19th Century</h2>
-          </div>
+        <div class="tp-card-top">
 
-          <span class="tp-era-range">
+          <span class="tp-period-range">
             1800 — 1900
           </span>
 
-        </div>
-
-
-        <div class="tp-event-list">
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1815</span>
-
-            <div>
-              <h3>Congress of Vienna</h3>
-              <p>
-                European powers reconstructed the continental
-                order after Napoleon.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Europe
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1848</span>
-
-            <div>
-              <h3>Revolutions of 1848</h3>
-              <p>
-                A wave of political upheavals spread
-                across Europe.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Europe
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1868</span>
-
-            <div>
-              <h3>Meiji Restoration</h3>
-              <p>
-                Japan entered a period of rapid political
-                and social transformation.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Japan
-            </span>
-
-          </a>
+          <span class="tp-card-arrow"></span>
 
         </div>
 
-      </section>
+        <h2>
+          19th<br>
+          Century
+        </h2>
+
+        <span class="tp-period-letter">
+          XIX
+        </span>
+
+      </a>
 
 
-      <!-- 20TH CENTURY -->
 
-      <section class="tp-era" id="twentieth">
+      <!-- 20TH -->
 
-        <div class="tp-era-heading">
+      <a
+        href="#twentieth"
+        class="tp-period-card period-twentieth"
+      >
 
-          <div class="tp-era-heading-left">
-            <span class="tp-era-number">05</span>
-            <h2>20th Century</h2>
-          </div>
+        <div class="tp-card-top">
 
-          <span class="tp-era-range">
+          <span class="tp-period-range">
             1900 — 2000
           </span>
 
-        </div>
-
-
-        <div class="tp-event-list">
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1917</span>
-
-            <div>
-              <h3>Russian Revolution</h3>
-              <p>
-                Revolution brought imperial rule in Russia
-                to an end.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Russia
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1945</span>
-
-            <div>
-              <h3>End of the Second World War</h3>
-              <p>
-                The conflict ended and a new international
-                order emerged.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Global
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">1989</span>
-
-            <div>
-              <h3>Fall of the Berlin Wall</h3>
-              <p>
-                A defining moment in the collapse of communist
-                rule in Eastern Europe.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              Europe
-            </span>
-
-          </a>
+          <span class="tp-card-arrow"></span>
 
         </div>
 
-      </section>
+        <h2>
+          20th<br>
+          Century
+        </h2>
+
+        <span class="tp-period-letter">
+          XX
+        </span>
+
+      </a>
+
 
 
       <!-- CONTEMPORARY -->
 
-      <section class="tp-era" id="contemporary">
+      <a
+        href="#contemporary"
+        class="tp-period-card period-contemporary"
+      >
 
-        <div class="tp-era-heading">
+        <div class="tp-card-top">
 
-          <div class="tp-era-heading-left">
-            <span class="tp-era-number">06</span>
-            <h2>Contemporary</h2>
-          </div>
-
-          <span class="tp-era-range">
+          <span class="tp-period-range">
             2000 — Today
           </span>
 
-        </div>
-
-
-        <div class="tp-event-list">
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">2001</span>
-
-            <div>
-              <h3>September 11 Attacks</h3>
-              <p>
-                Attacks in the United States transformed
-                international security politics.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              United States
-            </span>
-
-          </a>
-
-
-          <a href="#" class="tp-event">
-
-            <span class="tp-event-date">2011</span>
-
-            <div>
-              <h3>Arab Uprisings</h3>
-              <p>
-                Mass protest movements challenged political
-                orders across the Middle East and North Africa.
-              </p>
-            </div>
-
-            <span class="tp-event-region">
-              MENA
-            </span>
-
-          </a>
+          <span class="tp-card-arrow"></span>
 
         </div>
 
-      </section>
+        <h2>
+          Contemporary
+        </h2>
+
+        <span class="tp-period-letter">
+          C
+        </span>
+
+      </a>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     ARCHIVE
+====================================================== -->
+
+<section class="tp-archive">
+
+  <div class="tp-archive-inner">
+
+
+    <div class="tp-archive-intro">
+
+      <span class="tp-section-label">
+        The archive
+      </span>
+
+
+      <div class="tp-archive-heading">
+
+        <h2>
+          Moments that<br>
+          changed the world.
+        </h2>
+
+        <p>
+          Explore political ruptures, revolutions, collapses,
+          treaties and transformations across regions and centuries.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         ANCIENT
+    =================================================== -->
+
+    <section class="tp-era" id="ancient">
+
+      <div class="tp-era-heading">
+
+        <h2>Ancient</h2>
+
+        <span>
+          Before 500 CE
+        </span>
+
+      </div>
+
+
+      <div class="tp-event-list">
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            539 BCE
+          </span>
+
+          <div>
+
+            <h3>
+              Fall of Babylon
+            </h3>
+
+            <p>
+              The Persian conquest of the Neo-Babylonian Empire.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Mesopotamia
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            44 BCE
+          </span>
+
+          <div>
+
+            <h3>
+              Assassination of Julius Caesar
+            </h3>
+
+            <p>
+              A political rupture at the heart of the Roman Republic.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Rome
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            476
+          </span>
+
+          <div>
+
+            <h3>
+              Fall of the Western Roman Empire
+            </h3>
+
+            <p>
+              The traditional marker for the end of Roman
+              imperial rule in Western Europe.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Europe
+          </span>
+
+        </a>
+
+
+      </div>
 
     </section>
 
-  </main>
 
 
-  <!-- =========================================
-       FOOTER
-  ========================================== -->
+    <!-- ==================================================
+         MEDIEVAL
+    =================================================== -->
 
-  <footer class="tp-footer">
+    <section class="tp-era" id="medieval">
 
-    <a href="index.html">
-      Athar
-    </a>
+      <div class="tp-era-heading">
 
-    <span>
-      Across Space & Time
-    </span>
+        <h2>Medieval</h2>
 
-  </footer>
+        <span>
+          500 — 1500
+        </span>
+
+      </div>
+
+
+      <div class="tp-event-list">
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            622
+          </span>
+
+          <div>
+
+            <h3>
+              The Hijra
+            </h3>
+
+            <p>
+              Muhammad's migration from Mecca to Medina.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Arabia
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1258
+          </span>
+
+          <div>
+
+            <h3>
+              Fall of Baghdad
+            </h3>
+
+            <p>
+              The Mongol capture of Baghdad and the end
+              of Abbasid rule there.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Mesopotamia
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1453
+          </span>
+
+          <div>
+
+            <h3>
+              Fall of Constantinople
+            </h3>
+
+            <p>
+              The Ottoman conquest of the Byzantine capital.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Eastern Mediterranean
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         EARLY MODERN
+    =================================================== -->
+
+    <section class="tp-era" id="early-modern">
+
+      <div class="tp-era-heading">
+
+        <h2>Early Modern</h2>
+
+        <span>
+          1500 — 1800
+        </span>
+
+      </div>
+
+
+      <div class="tp-event-list">
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1517
+          </span>
+
+          <div>
+
+            <h3>
+              Protestant Reformation
+            </h3>
+
+            <p>
+              A religious transformation that fractured
+              Western Christianity.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Europe
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1648
+          </span>
+
+          <div>
+
+            <h3>
+              Peace of Westphalia
+            </h3>
+
+            <p>
+              A series of settlements ending major European conflicts.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Europe
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1776
+          </span>
+
+          <div>
+
+            <h3>
+              American Declaration of Independence
+            </h3>
+
+            <p>
+              Thirteen colonies declared independence
+              from Great Britain.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            North America
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         19TH CENTURY
+    =================================================== -->
+
+    <section class="tp-era" id="nineteenth">
+
+      <div class="tp-era-heading">
+
+        <h2>19th Century</h2>
+
+        <span>
+          1800 — 1900
+        </span>
+
+      </div>
+
+
+      <div class="tp-event-list">
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1815
+          </span>
+
+          <div>
+
+            <h3>
+              Congress of Vienna
+            </h3>
+
+            <p>
+              European powers reconstructed the continental
+              order after Napoleon.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Europe
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1848
+          </span>
+
+          <div>
+
+            <h3>
+              Revolutions of 1848
+            </h3>
+
+            <p>
+              A wave of political upheavals spread across Europe.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Europe
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1868
+          </span>
+
+          <div>
+
+            <h3>
+              Meiji Restoration
+            </h3>
+
+            <p>
+              Japan entered a period of rapid political
+              and social transformation.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Japan
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         20TH CENTURY
+    =================================================== -->
+
+    <section class="tp-era" id="twentieth">
+
+      <div class="tp-era-heading">
+
+        <h2>20th Century</h2>
+
+        <span>
+          1900 — 2000
+        </span>
+
+      </div>
+
+
+      <div class="tp-event-list">
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1917
+          </span>
+
+          <div>
+
+            <h3>
+              Russian Revolution
+            </h3>
+
+            <p>
+              Revolution brought imperial rule in Russia to an end.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Russia
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1945
+          </span>
+
+          <div>
+
+            <h3>
+              End of the Second World War
+            </h3>
+
+            <p>
+              The conflict ended and a new international
+              order emerged.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Global
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            1989
+          </span>
+
+          <div>
+
+            <h3>
+              Fall of the Berlin Wall
+            </h3>
+
+            <p>
+              A defining moment in the collapse of communist
+              rule in Eastern Europe.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            Europe
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         CONTEMPORARY
+    =================================================== -->
+
+    <section class="tp-era" id="contemporary">
+
+      <div class="tp-era-heading">
+
+        <h2>Contemporary</h2>
+
+        <span>
+          2000 — Today
+        </span>
+
+      </div>
+
+
+      <div class="tp-event-list">
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            2001
+          </span>
+
+          <div>
+
+            <h3>
+              September 11 Attacks
+            </h3>
+
+            <p>
+              Attacks in the United States transformed
+              international security politics.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            United States
+          </span>
+
+        </a>
+
+
+        <a href="#" class="tp-event">
+
+          <span class="tp-event-date">
+            2011
+          </span>
+
+          <div>
+
+            <h3>
+              Arab Uprisings
+            </h3>
+
+            <p>
+              Mass protest movements challenged political orders
+              across the Middle East and North Africa.
+            </p>
+
+          </div>
+
+          <span class="tp-event-region">
+            MENA
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer class="site-footer">
+
+  <strong>
+    Athar
+  </strong>
+
+  <span>
+    Across Space & Time
+  </span>
+
+</footer>
+
 
 </body>
 </html>
