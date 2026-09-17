@@ -1281,6 +1281,261 @@
 
 }
 
+
+    /* =========================================================
+   EVENT MODAL
+========================================================= */
+
+.event-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+
+  display:flex;
+  justify-content:flex-end;
+
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.event-modal.is-open{
+  visibility:visible;
+  pointer-events:auto;
+}
+
+
+/* darkened page behind */
+
+.event-modal-backdrop{
+  position:absolute;
+  inset:0;
+
+  background:rgba(13,31,60,.58);
+  backdrop-filter:blur(4px);
+
+  opacity:0;
+  transition:opacity .4s ease;
+}
+
+.event-modal.is-open .event-modal-backdrop{
+  opacity:1;
+}
+
+
+/* main popup */
+
+.event-modal-panel{
+  position:relative;
+  z-index:2;
+
+  width:min(920px,82vw);
+  height:100%;
+
+  padding:70px 70px 80px;
+
+  background:#f7f7f5;
+  color:#12284b;
+
+  overflow-y:auto;
+
+  transform:translateX(100%);
+
+  transition:
+    transform .55s cubic-bezier(.77,0,.18,1);
+}
+
+.event-modal.is-open .event-modal-panel{
+  transform:translateX(0);
+}
+
+
+/* close */
+
+.event-modal-close{
+  position:absolute;
+  top:30px;
+  right:34px;
+
+  width:46px;
+  height:46px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid rgba(18,40,75,.18);
+  border-radius:50%;
+
+  background:transparent;
+  color:#12284b;
+
+  font-family:inherit;
+  font-size:1.7rem;
+  font-weight:300;
+
+  cursor:pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.event-modal-close:hover{
+  background:#12284b;
+  color:#fff;
+  transform:rotate(90deg);
+}
+
+
+/* header */
+
+.modal-header{
+  padding:50px 0 60px;
+  border-bottom:1px solid rgba(18,40,75,.15);
+}
+
+.modal-meta{
+  display:flex;
+  gap:28px;
+
+  margin-bottom:34px;
+
+  color:#a76d68;
+
+  font-size:.67rem;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.modal-header h2{
+  margin:0;
+
+  font-size:clamp(4.5rem,7vw,7rem);
+  line-height:.8;
+  letter-spacing:-.07em;
+
+  color:#12284b;
+}
+
+.modal-intro{
+  max-width:650px;
+
+  margin:42px 0 0;
+
+  font-size:1.2rem;
+  line-height:1.65;
+
+  color:#60738a;
+}
+
+
+/* content */
+
+.modal-content{
+  display:grid;
+  grid-template-columns:1.5fr .7fr;
+  gap:80px;
+
+  padding-top:60px;
+}
+
+.modal-main h3{
+  margin:0 0 20px;
+
+  font-size:1.65rem;
+  letter-spacing:-.035em;
+
+  color:#12284b;
+}
+
+.modal-main h3:not(:first-child){
+  margin-top:55px;
+}
+
+.modal-main p{
+  margin:0 0 22px;
+
+  font-size:1rem;
+  line-height:1.8;
+
+  color:#52667e;
+}
+
+
+/* facts */
+
+.modal-facts{
+  border-top:1px solid rgba(18,40,75,.15);
+}
+
+.modal-fact{
+  padding:22px 0;
+
+  border-bottom:1px solid rgba(18,40,75,.15);
+}
+
+.modal-fact span{
+  display:block;
+
+  margin-bottom:8px;
+
+  color:#8997a8;
+
+  font-size:.6rem;
+  font-weight:700;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.modal-fact strong{
+  display:block;
+
+  font-size:.95rem;
+  line-height:1.4;
+
+  color:#12284b;
+}
+
+
+/* stop background scrolling */
+
+body.modal-open{
+  overflow:hidden;
+}
+
+
+/* mobile */
+
+@media(max-width:700px){
+
+  .event-modal-panel{
+    width:100%;
+    padding:55px 25px 60px;
+  }
+
+  .event-modal-close{
+    top:20px;
+    right:20px;
+  }
+
+  .modal-header{
+    padding-top:55px;
+  }
+
+  .modal-header h2{
+    font-size:4.3rem;
+  }
+
+  .modal-content{
+    grid-template-columns:1fr;
+    gap:50px;
+  }
+
+}
+
+    
   </style>
 </head>
 
@@ -1739,6 +1994,107 @@
 
     </section>
 
+
+
+    <!-- =========================================================
+     FALL OF BABYLON MODAL
+========================================================= -->
+
+<div class="event-modal" id="babylon-modal" aria-hidden="true">
+
+  <div class="event-modal-backdrop" data-close-modal></div>
+
+  <article class="event-modal-panel">
+
+    <button
+      class="event-modal-close"
+      type="button"
+      aria-label="Close"
+      data-close-modal
+    >
+      ×
+    </button>
+
+    <div class="modal-header">
+
+      <div class="modal-meta">
+        <span>539 BCE</span>
+        <span>Mesopotamia</span>
+      </div>
+
+      <h2>Fall of<br>Babylon</h2>
+
+      <p class="modal-intro">
+        In 539 BCE, Babylon fell to Cyrus the Great,
+        bringing the Neo-Babylonian Empire to an end
+        and incorporating the city into the Persian Empire.
+      </p>
+
+    </div>
+
+    <div class="modal-content">
+
+      <div class="modal-main">
+
+        <h3>What happened?</h3>
+
+        <p>
+          Cyrus II of Persia invaded the Neo-Babylonian Empire
+          and defeated its forces. Babylon itself was subsequently
+          taken by Persian forces, apparently with relatively little
+          destruction to the city.
+        </p>
+
+        <p>
+          The conquest ended the reign of Nabonidus and transformed
+          Babylon from the centre of an independent empire into one
+          of the major cities of the rapidly expanding Achaemenid
+          Persian Empire.
+        </p>
+
+        <h3>Why it matters</h3>
+
+        <p>
+          The fall of Babylon marked a major shift in the political
+          order of the ancient Near East. Cyrus inherited Babylon's
+          territories and institutions while building an empire that
+          would eventually stretch across much of Western and Central
+          Asia.
+        </p>
+
+      </div>
+
+      <aside class="modal-facts">
+
+        <div class="modal-fact">
+          <span>Empire</span>
+          <strong>Neo-Babylonian Empire</strong>
+        </div>
+
+        <div class="modal-fact">
+          <span>Conqueror</span>
+          <strong>Cyrus the Great</strong>
+        </div>
+
+        <div class="modal-fact">
+          <span>Successor state</span>
+          <strong>Achaemenid Empire</strong>
+        </div>
+
+        <div class="modal-fact">
+          <span>Region</span>
+          <strong>Mesopotamia</strong>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </article>
+
+</div>
+
+    
   </main>
 
 
@@ -1757,5 +2113,50 @@
 
   <script src="script.js"></script>
 
+
+
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const babylonCard = document.querySelector(".ancient-feature");
+  const modal = document.getElementById("babylon-modal");
+
+  if (!babylonCard || !modal) return;
+
+  const closeButtons = modal.querySelectorAll("[data-close-modal]");
+
+  function openBabylon(event){
+    event.preventDefault();
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+
+    document.body.classList.add("modal-open");
+  }
+
+  function closeBabylon(){
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+
+    document.body.classList.remove("modal-open");
+  }
+
+  babylonCard.addEventListener("click", openBabylon);
+
+  closeButtons.forEach(button => {
+    button.addEventListener("click", closeBabylon);
+  });
+
+  document.addEventListener("keydown", event => {
+    if(event.key === "Escape"){
+      closeBabylon();
+    }
+  });
+
+});
+</script>
+
+  
 </body>
 </html>
