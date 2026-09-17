@@ -2245,3 +2245,45 @@ button{
   }
 
 }
+
+
+/* ATHAR LOGO */
+
+.wordmark{
+  position: relative;
+  display: block;
+  width: 112px;
+  height: 42px;
+  flex: 0 0 auto;
+}
+
+.wordmark .logo{
+  position: absolute;
+  left: 0;
+  top: 50%;
+
+  width: 112px;
+  height: auto;
+
+  transform: translateY(-50%);
+
+  transition: opacity .3s var(--ease);
+}
+
+/* Hero */
+.logo-white{
+  opacity: 1;
+}
+
+.logo-navy{
+  opacity: 0;
+}
+
+/* Scrolled white header */
+.site-header.is-scrolled .logo-white{
+  opacity: 0;
+}
+
+.site-header.is-scrolled .logo-navy{
+  opacity: 1;
+}
