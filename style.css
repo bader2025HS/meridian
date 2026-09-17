@@ -2416,3 +2416,63 @@ button{
     font-size:11rem;
   }
 }
+
+/* ==========================================================
+   ATHAR — COMPACT EXPLORE OVERRIDE
+   ========================================================== */
+
+.explore-grid{
+  gap:10px !important;
+}
+
+.explore-panel{
+  min-height:340px !important;
+  padding:28px 32px 30px !important;
+}
+
+.explore-panel h3{
+  margin-bottom:18px !important;
+  font-size:clamp(2.7rem,3.6vw,4rem) !important;
+  line-height:.88 !important;
+}
+
+.explore-panel p{
+  max-width:360px !important;
+  font-size:.86rem !important;
+  line-height:1.55 !important;
+}
+
+.explore-ghost{
+  right:-8px !important;
+  bottom:-42px !important;
+  font-size:10rem !important;
+}
+
+.explore-panel-top{
+  margin-bottom:20px !important;
+}
+
+.explore-arrow{
+  width:36px !important;
+  height:36px !important;
+}
+
+/* Mobile */
+@media(max-width:800px){
+  .explore-grid{
+    gap:8px !important;
+  }
+
+  .explore-panel{
+    min-height:290px !important;
+    padding:24px !important;
+  }
+
+  .explore-panel h3{
+    font-size:clamp(2.5rem,11vw,3.6rem) !important;
+  }
+
+  .explore-ghost{
+    font-size:8rem !important;
+  }
+}
