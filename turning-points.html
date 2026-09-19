@@ -15,7 +15,7 @@
 
 /* ==========================================================
    ATHAR — TURNING POINTS
-   COMPLETE PAGE
+   CONTINUOUS EDITORIAL ARCHIVE
 ========================================================== */
 
 :root{
@@ -24,20 +24,18 @@
   --paper:#f7f7f5;
   --white:#ffffff;
 
-  --line:rgba(18,40,75,.13);
+  --line:rgba(18,40,75,.14);
+  --line-strong:rgba(18,40,75,.25);
   --muted:rgba(18,40,75,.55);
+
+  --gold:#a3914e;
+  --rose:#a66f69;
+  --blue:#6f98ad;
 
   --display:"Archivo",sans-serif;
   --text:"Inter",sans-serif;
 
   --edge:5.5%;
-
-  --contemporary:#e8e0bd;
-  --twentieth:#ddddea;
-  --nineteenth:#e6d4d1;
-  --early:#d7e4df;
-  --medieval:#e8dfd3;
-  --ancient:#d6e4ec;
 }
 
 
@@ -53,9 +51,12 @@ html{
 
 body{
   margin:0;
+
   background:var(--paper);
   color:var(--navy);
+
   font-family:var(--text);
+
   overflow-x:hidden;
 }
 
@@ -71,17 +72,18 @@ a{
 }
 
 
-button{
+button,
+input{
   font:inherit;
 }
 
 
 /* ==========================================================
-   HEADER
+   SITE HEADER
 ========================================================== */
 
 .site-header{
-  height:96px;
+  height:86px;
 
   padding:0 var(--edge);
 
@@ -97,7 +99,8 @@ button{
 
 .logo img{
   display:block;
-  width:120px;
+
+  width:112px;
   height:auto;
 }
 
@@ -105,6 +108,7 @@ button{
 .main-nav{
   display:flex;
   align-items:center;
+
   gap:34px;
 }
 
@@ -116,7 +120,7 @@ button{
 
   color:rgba(18,40,75,.5);
 
-  font-size:.79rem;
+  font-size:.76rem;
   font-weight:600;
 
   transition:color .25s ease;
@@ -140,260 +144,208 @@ button{
 
   height:2px;
 
-  background:#9b6c68;
+  background:var(--rose);
 }
 
 
 /* ==========================================================
-   HERO
+   ARCHIVE TOOLBAR
 ========================================================== */
 
-.hero{
-  position:relative;
-
-  min-height:570px;
-
-  padding:
-    105px var(--edge)
-    90px;
-
-  display:flex;
-  align-items:flex-end;
-
-  background:#dce7ef;
-
-  overflow:hidden;
-}
-
-
-.hero::after{
-  content:"TURNING";
-
-  position:absolute;
-
-  right:-2vw;
-  top:10px;
-
-  color:rgba(18,40,75,.035);
-
-  font-family:var(--display);
-  font-size:clamp(11rem,25vw,27rem);
-  font-weight:700;
-
-  line-height:.8;
-  letter-spacing:-.09em;
-
-  pointer-events:none;
-}
-
-
-.hero-inner{
-  position:relative;
-  z-index:2;
-
-  width:100%;
-  max-width:1500px;
-
-  margin:auto;
-
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-
-  gap:100px;
-
-  align-items:end;
-}
-
-
-.hero h1{
-  margin:0;
-
-  font-family:var(--display);
-
-  font-size:clamp(5rem,9vw,9rem);
-  font-weight:650;
-
-  line-height:.77;
-  letter-spacing:-.08em;
-}
-
-
-.hero p{
-  max-width:520px;
-
-  margin:0 0 8px;
-
-  color:#60748b;
-
-  font-size:1.04rem;
-  line-height:1.7;
-}
-
-
-/* ==========================================================
-   PERIOD NAVIGATION
-   CARD MENU + STICKY
-========================================================== */
-
-.period-nav{
+.archive-toolbar{
   position:sticky;
 
   top:0;
 
-  z-index:200;
+  z-index:300;
 
-  padding:
-    14px var(--edge);
+  background:rgba(247,247,245,.96);
 
-  background:
-    rgba(247,247,245,.94);
-
-  border-bottom:
-    1px solid rgba(18,40,75,.12);
+  border-bottom:1px solid var(--line);
 
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
 }
 
 
-.period-grid{
+.toolbar-inner{
   max-width:1500px;
 
+  min-height:82px;
+
   margin:auto;
+
+  padding:
+    13px var(--edge);
 
   display:grid;
 
   grid-template-columns:
-    repeat(6,1fr);
+    250px minmax(300px,1fr) 110px;
 
-  gap:8px;
+  gap:32px;
+
+  align-items:center;
 }
 
 
-.period-card{
+.archive-name{
+  font-family:var(--display);
+
+  font-size:1.5rem;
+  font-weight:650;
+
+  letter-spacing:-.055em;
+}
+
+
+.search-wrap{
   position:relative;
 
-  min-height:72px;
+  width:100%;
+}
+
+
+.search-wrap input{
+  width:100%;
+
+  height:48px;
 
   padding:
-    13px 15px;
+    0 48px 0 18px;
 
-  display:flex;
+  outline:none;
 
-  flex-direction:column;
-  justify-content:space-between;
+  border:1px solid rgba(18,40,75,.16);
 
   background:#fff;
 
-  border:
-    1px solid rgba(18,40,75,.09);
+  color:var(--navy);
 
-  overflow:hidden;
+  font-size:.78rem;
 
   transition:
-    transform .3s cubic-bezier(.16,1,.3,1),
-    background .3s ease,
-    border-color .3s ease;
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
 }
 
 
-.period-card::after{
+.search-wrap input::placeholder{
+  color:rgba(18,40,75,.38);
+}
+
+
+.search-wrap input:focus{
+  border-color:rgba(18,40,75,.42);
+
+  box-shadow:
+    0 0 0 3px rgba(18,40,75,.04);
+}
+
+
+.search-icon{
+  position:absolute;
+
+  top:50%;
+  right:17px;
+
+  transform:translateY(-50%);
+
+  width:15px;
+  height:15px;
+
+  border:1.5px solid rgba(18,40,75,.5);
+  border-radius:50%;
+
+  pointer-events:none;
+}
+
+
+.search-icon::after{
   content:"";
 
   position:absolute;
 
-  left:0;
-  right:0;
-  bottom:0;
+  width:6px;
+  height:1.5px;
 
-  height:3px;
+  right:-5px;
+  bottom:-3px;
 
-  background:var(--card-accent);
+  background:rgba(18,40,75,.5);
 
-  transform:scaleX(0);
-
-  transform-origin:left;
-
-  transition:
-    transform .4s cubic-bezier(.16,1,.3,1);
+  transform:rotate(45deg);
 }
 
 
-.period-card:hover{
-  transform:translateY(-2px);
+.result-count{
+  text-align:right;
 
-  background:var(--card-bg);
-
-  border-color:transparent;
-}
-
-
-.period-card:hover::after,
-.period-card.active::after{
-  transform:scaleX(1);
-}
-
-
-.period-card.active{
-  background:var(--card-bg);
-
-  border-color:transparent;
-}
-
-
-.period-card small{
   color:rgba(18,40,75,.42);
 
-  font-size:.48rem;
+  font-size:.55rem;
   font-weight:700;
 
-  letter-spacing:.13em;
+  letter-spacing:.12em;
 
   text-transform:uppercase;
 }
 
 
-.period-card strong{
+/* ==========================================================
+   INTRO
+========================================================== */
+
+.archive-intro{
+  max-width:1500px;
+
+  margin:auto;
+
+  padding:
+    65px var(--edge)
+    50px;
+}
+
+
+.archive-intro-inner{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:80px;
+
+  align-items:end;
+}
+
+
+.archive-intro h1{
+  margin:0;
+
   font-family:var(--display);
 
-  font-size:.93rem;
-  font-weight:600;
+  font-size:
+    clamp(4.3rem,7vw,7.3rem);
 
-  line-height:1;
-  letter-spacing:-.035em;
+  font-weight:650;
+
+  line-height:.78;
+
+  letter-spacing:-.08em;
 }
 
 
-/* card colours */
+.archive-intro p{
+  max-width:500px;
 
-.period-card[data-target="contemporary"]{
-  --card-bg:#eee9d5;
-  --card-accent:#a3914e;
-}
+  margin:
+    0 0 5px auto;
 
-.period-card[data-target="twentieth"]{
-  --card-bg:#e5e5ef;
-  --card-accent:#7d7ea2;
-}
+  color:#60748b;
 
-.period-card[data-target="nineteenth"]{
-  --card-bg:#eadfdd;
-  --card-accent:#ad7771;
-}
-
-.period-card[data-target="early-modern"]{
-  --card-bg:#e1ebe7;
-  --card-accent:#6e9b8c;
-}
-
-.period-card[data-target="medieval"]{
-  --card-bg:#eee7dd;
-  --card-accent:#a48a6b;
-}
-
-.period-card[data-target="ancient"]{
-  --card-bg:#e0eaf0;
-  --card-accent:#6f98ad;
+  font-size:.9rem;
+  line-height:1.7;
 }
 
 
@@ -402,231 +354,133 @@ button{
 ========================================================== */
 
 .archive{
-  padding:
-    110px var(--edge)
-    170px;
-
-  background:var(--paper);
-}
-
-
-/* ==========================================================
-   ERA
-========================================================== */
-
-.era{
-  --accent:#7d7ea2;
-  --wash:#ddddea;
-
-  position:relative;
-
   max-width:1500px;
 
-  margin:
-    0 auto
-    155px;
+  margin:auto;
 
-  scroll-margin-top:125px;
-}
-
-
-.era:last-child{
-  margin-bottom:0;
-}
-
-
-#contemporary{
-  --accent:#9c8b4b;
-  --wash:#e8e0bd;
-}
-
-#twentieth{
-  --accent:#7d7ea2;
-  --wash:#ddddea;
-}
-
-#nineteenth{
-  --accent:#a86f69;
-  --wash:#e6d4d1;
-}
-
-#early-modern{
-  --accent:#668f82;
-  --wash:#d7e4df;
-}
-
-#medieval{
-  --accent:#9d8061;
-  --wash:#e8dfd3;
-}
-
-#ancient{
-  --accent:#688fa4;
-  --wash:#d6e4ec;
+  padding:
+    0 var(--edge)
+    150px;
 }
 
 
 /* ==========================================================
-   ERA HEADER
+   EDITORIAL GRID
 ========================================================== */
 
-.era-heading{
-  position:relative;
-
-  margin-bottom:50px;
-
-  display:flex;
-
-  align-items:flex-end;
-  justify-content:space-between;
-
-  gap:40px;
-}
-
-
-.era-heading::after{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:-21px;
-
-  height:1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--accent) 0 14%,
-      rgba(18,40,75,.13) 14% 100%
-    );
-}
-
-
-.era-heading h2{
-  margin:0;
-
-  font-family:var(--display);
-
-  font-size:
-    clamp(4.2rem,6.4vw,7rem);
-
-  font-weight:650;
-
-  line-height:.78;
-
-  letter-spacing:-.075em;
-}
-
-
-.era-heading span{
-  margin-bottom:4px;
-
-  color:rgba(18,40,75,.42);
-
-  font-size:.57rem;
-  font-weight:700;
-
-  letter-spacing:.15em;
-
-  text-transform:uppercase;
-}
-
-
-/* ==========================================================
-   TOPIC CANVAS
-========================================================== */
-
-.topic-layout{
-  position:relative;
-
+.story-grid{
   display:grid;
 
   grid-template-columns:
     repeat(12,minmax(0,1fr));
 
-  gap:
-    20px 30px;
-
-  align-items:start;
+  border-top:
+    3px solid var(--navy);
 }
 
 
 /* ==========================================================
-   TOPIC — BASE
+   BASE STORY
 ========================================================== */
 
-.topic{
+.story{
   position:relative;
 
   min-width:0;
 
   padding:
-    25px 0
-    28px;
+    30px 26px
+    34px 0;
 
   cursor:pointer;
 
-  border-top:
-    1px solid rgba(18,40,75,.16);
+  border-bottom:
+    1px solid var(--line);
 
   transition:
-    transform .4s cubic-bezier(.16,1,.3,1),
-    opacity .3s ease;
+    opacity .3s ease,
+    transform .35s cubic-bezier(.16,1,.3,1);
 }
 
 
-.topic-meta{
-  margin-bottom:16px;
+.story::after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  bottom:-1px;
+
+  width:0;
+  height:2px;
+
+  background:var(--rose);
+
+  transition:
+    width .45s cubic-bezier(.16,1,.3,1);
+}
+
+
+.story:hover::after{
+  width:54px;
+}
+
+
+.story:hover{
+  transform:translateY(-3px);
+}
+
+
+.story-grid:has(.story:hover)
+.story:not(:hover){
+  opacity:.62;
+}
+
+
+/* ==========================================================
+   METADATA
+========================================================== */
+
+.story-meta{
+  margin-bottom:13px;
 
   display:flex;
 
   align-items:center;
 
-  gap:14px;
-}
+  gap:8px;
 
+  color:rgba(18,40,75,.43);
 
-.topic-date,
-.topic-place{
-  font-size:.53rem;
+  font-size:.46rem;
   font-weight:700;
 
-  letter-spacing:.13em;
+  letter-spacing:.12em;
 
   text-transform:uppercase;
 }
 
 
-.topic-date{
-  color:var(--accent);
+.story-date{
+  color:var(--gold);
 }
 
 
-.topic-place{
-  color:rgba(18,40,75,.4);
+.story-meta i{
+  display:block;
+
+  width:3px;
+  height:3px;
+
+  background:rgba(18,40,75,.3);
 }
 
 
-.topic-place::before{
-  content:"";
+/* ==========================================================
+   STORY TYPOGRAPHY
+========================================================== */
 
-  display:inline-block;
-
-  width:18px;
-  height:1px;
-
-  margin:
-    0 9px
-    3px 0;
-
-  background:
-    rgba(18,40,75,.25);
-}
-
-
-.topic h3{
+.story h2{
   max-width:650px;
 
   margin:0;
@@ -634,352 +488,242 @@ button{
   font-family:var(--display);
 
   font-size:
-    clamp(2rem,2.8vw,3.4rem);
+    clamp(1.8rem,2.3vw,2.8rem);
 
   font-weight:620;
 
-  line-height:.88;
+  line-height:.91;
 
-  letter-spacing:-.052em;
-
-  transition:
-    transform .4s cubic-bezier(.16,1,.3,1);
+  letter-spacing:-.055em;
 }
 
 
-.topic p{
-  max-width:480px;
+.story p{
+  max-width:500px;
 
   margin:
-    17px 0 0;
+    14px 0 0;
 
-  color:rgba(18,40,75,.55);
+  color:rgba(18,40,75,.57);
 
-  font-size:.78rem;
-
-  line-height:1.6;
-
-  transition:
-    transform .4s cubic-bezier(.16,1,.3,1),
-    color .3s ease;
+  font-size:.73rem;
+  line-height:1.62;
 }
 
 
 /* ==========================================================
-   TOPIC HOVER
+   FIRST / LEAD STORY
 ========================================================== */
 
-.topic:not(.lead)::after{
-  content:"";
+.story.lead{
+  grid-column:
+    span 7;
 
-  position:absolute;
-
-  left:0;
-  bottom:13px;
-
-  width:0;
-  height:3px;
-
-  background:var(--accent);
-
-  transition:
-    width .4s cubic-bezier(.16,1,.3,1);
-}
-
-
-.topic:not(.lead):hover{
-  transform:translateX(8px);
-}
-
-
-.topic:not(.lead):hover::after{
-  width:48px;
-}
-
-
-.topic:hover h3,
-.topic:hover p{
-  transform:translateX(4px);
-}
-
-
-.topic:hover p{
-  color:rgba(18,40,75,.76);
-}
-
-
-.topic-layout:has(.topic:hover)
-.topic:not(:hover){
-  opacity:.55;
-}
-
-
-/* ==========================================================
-   LEAD STORY
-========================================================== */
-
-.topic.lead{
-  position:relative;
-
-  min-height:380px;
+  min-height:340px;
 
   padding:
-    38px 40px;
+    40px 55px
+    38px 0;
 
   display:flex;
 
   flex-direction:column;
-
   justify-content:flex-end;
 
-  background:var(--wash);
-
-  border:0;
-
-  overflow:hidden;
-
-  transition:
-    transform .45s cubic-bezier(.16,1,.3,1);
+  border-right:
+    1px solid var(--line);
 }
 
 
-.topic.lead::before{
-  content:attr(data-year);
-
+.story.lead .story-meta{
   position:absolute;
 
-  top:-25px;
-  right:-8px;
+  top:38px;
+  left:0;
+}
 
-  color:rgba(18,40,75,.045);
+
+.story.lead h2{
+  max-width:780px;
+
+  font-size:
+    clamp(3.8rem,5.5vw,6rem);
+
+  line-height:.8;
+}
+
+
+.story.lead p{
+  max-width:590px;
+
+  margin-top:20px;
+
+  font-size:.79rem;
+}
+
+
+/* ==========================================================
+   SECOND + THIRD
+========================================================== */
+
+.story:nth-child(2){
+  grid-column:
+    span 5;
+
+  padding-left:38px;
+  padding-right:0;
+}
+
+
+.story:nth-child(3){
+  grid-column:
+    span 5;
+
+  border-right:
+    1px solid var(--line);
+}
+
+
+.story:nth-child(4){
+  grid-column:
+    span 7;
+
+  padding-left:38px;
+  padding-right:0;
+}
+
+
+/* ==========================================================
+   REST OF ARCHIVE
+========================================================== */
+
+.story:nth-child(n+5){
+  grid-column:
+    span 4;
+
+  padding-right:28px;
+
+  border-right:
+    1px solid var(--line);
+}
+
+
+.story:nth-child(3n+1):nth-child(n+7){
+  border-right:0;
+
+  padding-left:28px;
+  padding-right:0;
+}
+
+
+.story:nth-child(3n):nth-child(n+6){
+  padding-left:28px;
+}
+
+
+/* ==========================================================
+   OCCASIONAL EMPHASIS
+
+   Gives the page variation without creating eras.
+========================================================== */
+
+.story.feature{
+  grid-column:
+    span 8;
+
+  min-height:270px;
+
+  padding:
+    38px 45px
+    38px 0;
+
+  border-right:
+    1px solid var(--line);
+}
+
+
+.story.feature h2{
+  font-size:
+    clamp(2.8rem,4vw,4.7rem);
+
+  line-height:.83;
+}
+
+
+.story.feature + .story{
+  grid-column:
+    span 4;
+
+  padding-left:30px;
+  padding-right:0;
+}
+
+
+/* ==========================================================
+   SEARCH STATES
+========================================================== */
+
+.story.hidden{
+  display:none !important;
+}
+
+
+.story.search-match{
+  animation:
+    searchIn .45s
+    cubic-bezier(.16,1,.3,1)
+    both;
+}
+
+
+@keyframes searchIn{
+
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+
+}
+
+
+.no-results{
+  display:none;
+
+  padding:
+    80px 0
+    110px;
+
+  text-align:center;
+}
+
+
+.no-results.visible{
+  display:block;
+}
+
+
+.no-results strong{
+  display:block;
+
+  margin-bottom:8px;
 
   font-family:var(--display);
 
-  font-size:
-    clamp(7rem,11vw,12rem);
+  font-size:2rem;
 
-  font-weight:700;
-
-  line-height:1;
-
-  pointer-events:none;
+  letter-spacing:-.05em;
 }
 
 
-.topic.lead .topic-meta{
-  position:absolute;
+.no-results span{
+  color:var(--muted);
 
-  top:31px;
-  left:40px;
-  right:40px;
-}
-
-
-.topic.lead h3{
-  position:relative;
-
-  max-width:760px;
-
-  font-size:
-    clamp(3.6rem,5vw,5.8rem);
-
-  line-height:.81;
-}
-
-
-.topic.lead p{
-  position:relative;
-
-  max-width:510px;
-
-  margin-top:23px;
-
-  font-size:.82rem;
-}
-
-
-.topic.lead:hover{
-  transform:translateY(-6px);
-}
-
-
-/* ==========================================================
-   CONTEMPORARY
-   Wide lead + two stories beside/below
-========================================================== */
-
-#contemporary .lead{
-  grid-column:
-    1 / span 7;
-}
-
-
-#contemporary .topic:nth-child(2){
-  grid-column:
-    9 / span 4;
-
-  margin-top:45px;
-}
-
-
-#contemporary .topic:nth-child(3){
-  grid-column:
-    8 / span 5;
-}
-
-
-#contemporary .topic:nth-child(n+4){
-  grid-column:span 3;
-}
-
-
-/* ==========================================================
-   20TH CENTURY
-   Denser, designed for lots of content
-========================================================== */
-
-#twentieth .lead{
-  grid-column:
-    1 / span 6;
-}
-
-
-#twentieth .topic:nth-child(2){
-  grid-column:
-    7 / span 6;
-}
-
-
-#twentieth .topic:nth-child(3){
-  grid-column:
-    8 / span 5;
-}
-
-
-#twentieth .topic:nth-child(n+4){
-  grid-column:span 3;
-}
-
-
-/* ==========================================================
-   19TH CENTURY
-   Lead shifted to the right
-========================================================== */
-
-#nineteenth .lead{
-  grid-column:
-    5 / span 8;
-}
-
-
-#nineteenth .topic:nth-child(2){
-  grid-column:
-    1 / span 4;
-
-  grid-row:1;
-
-  margin-top:55px;
-}
-
-
-#nineteenth .topic:nth-child(3){
-  grid-column:
-    1 / span 4;
-}
-
-
-#nineteenth .topic:nth-child(n+4){
-  grid-column:span 4;
-}
-
-
-/* ==========================================================
-   EARLY MODERN
-========================================================== */
-
-#early-modern .lead{
-  grid-column:
-    1 / span 8;
-}
-
-
-#early-modern .topic:nth-child(2){
-  grid-column:
-    9 / span 4;
-
-  min-height:250px;
-}
-
-
-#early-modern .topic:nth-child(3){
-  grid-column:
-    8 / span 5;
-}
-
-
-#early-modern .topic:nth-child(n+4){
-  grid-column:span 3;
-}
-
-
-/* ==========================================================
-   MEDIEVAL
-   Lead right, secondary topics left
-========================================================== */
-
-#medieval .lead{
-  grid-column:
-    5 / span 8;
-}
-
-
-#medieval .topic:nth-child(2){
-  grid-column:
-    1 / span 4;
-
-  grid-row:1;
-
-  margin-top:30px;
-}
-
-
-#medieval .topic:nth-child(3){
-  grid-column:
-    1 / span 4;
-}
-
-
-#medieval .topic:nth-child(n+4){
-  grid-column:span 4;
-}
-
-
-/* ==========================================================
-   ANCIENT
-========================================================== */
-
-#ancient .lead{
-  grid-column:
-    1 / span 7;
-}
-
-
-#ancient .topic:nth-child(2){
-  grid-column:
-    8 / span 5;
-
-  margin-top:55px;
-}
-
-
-#ancient .topic:nth-child(3){
-  grid-column:
-    8 / span 4;
-}
-
-
-#ancient .topic:nth-child(n+4){
-  grid-column:span 3;
+  font-size:.78rem;
 }
 
 
@@ -991,23 +735,22 @@ button{
   opacity:0;
 
   transform:
-    translateY(25px);
+    translateY(18px);
 
   transition:
-    opacity .65s ease,
-    transform .65s cubic-bezier(.16,1,.3,1);
+    opacity .6s ease,
+    transform .6s cubic-bezier(.16,1,.3,1);
 }
 
 
 .reveal.visible{
   opacity:1;
-
   transform:none;
 }
 
 
 /* ==========================================================
-   MODAL
+   FULL SCREEN MODAL
 ========================================================== */
 
 .modal{
@@ -1015,7 +758,7 @@ button{
 
   inset:0;
 
-  z-index:1000;
+  z-index:2000;
 
   display:flex;
 
@@ -1029,6 +772,7 @@ button{
 
 .modal.open{
   visibility:visible;
+
   pointer-events:auto;
 }
 
@@ -1039,14 +783,15 @@ button{
   inset:0;
 
   background:
-    rgba(13,31,60,.58);
+    rgba(13,31,60,.48);
 
-  backdrop-filter:blur(5px);
+  backdrop-filter:
+    blur(4px);
 
   opacity:0;
 
   transition:
-    opacity .4s ease;
+    opacity .45s ease;
 }
 
 
@@ -1055,18 +800,21 @@ button{
 }
 
 
+/* slides from RIGHT */
+
 .modal-panel{
   position:relative;
 
   z-index:2;
 
-  width:
-    min(880px,82vw);
+  width:100vw;
+  max-width:none;
 
-  height:100%;
+  height:100vh;
 
   padding:
-    80px 70px;
+    82px max(var(--edge),calc((100vw - 1400px)/2))
+    80px;
 
   background:var(--paper);
 
@@ -1076,33 +824,47 @@ button{
     translateX(100%);
 
   transition:
-    transform .55s
+    transform .62s
     cubic-bezier(.77,0,.18,1);
 }
 
 
 .modal.open .modal-panel{
-  transform:none;
+  transform:translateX(0);
 }
 
 
+/* ==========================================================
+   MODAL CLOSE
+========================================================== */
+
 .modal-close{
-  position:absolute;
+  position:fixed;
 
-  top:28px;
-  right:30px;
+  top:24px;
+  right:var(--edge);
 
-  width:43px;
-  height:43px;
+  z-index:10;
+
+  width:42px;
+  height:42px;
+
+  padding:0;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
 
   border:
     1px solid var(--line);
 
-  background:transparent;
+  background:
+    rgba(247,247,245,.94);
 
   color:var(--navy);
 
-  font-size:1.45rem;
+  font-size:1.25rem;
 
   cursor:pointer;
 
@@ -1118,85 +880,110 @@ button{
 }
 
 
+/* ==========================================================
+   MODAL TYPOGRAPHY
+========================================================== */
+
 .modal-meta{
-  margin-bottom:30px;
+  max-width:1250px;
+
+  margin:
+    0 auto
+    22px;
 
   display:flex;
 
-  gap:20px;
+  align-items:center;
+
+  gap:8px;
 
   color:#9b6c68;
 
-  font-size:.59rem;
+  font-size:.49rem;
   font-weight:700;
 
-  letter-spacing:.14em;
+  letter-spacing:.13em;
 
   text-transform:uppercase;
 }
 
 
-.modal-panel h2{
-  max-width:720px;
+.modal-meta i{
+  width:3px;
+  height:3px;
 
-  margin:0;
+  background:#9b6c68;
+}
+
+
+.modal-panel > h2{
+  max-width:1250px;
+
+  margin:auto;
 
   font-family:var(--display);
 
   font-size:
-    clamp(3.7rem,6vw,6.5rem);
+    clamp(4.5rem,8vw,9rem);
 
   font-weight:650;
 
-  line-height:.8;
+  line-height:.77;
 
-  letter-spacing:-.07em;
+  letter-spacing:-.085em;
 }
 
 
 .modal-lead{
-  max-width:650px;
+  max-width:800px;
 
   margin:
-    35px 0
-    45px;
+    42px auto
+    60px;
 
   color:#60738a;
 
-  font-size:1.03rem;
+  font-size:
+    clamp(1rem,1.3vw,1.22rem);
 
   line-height:1.7;
 }
 
 
 .modal-content{
-  padding-top:40px;
+  max-width:1150px;
 
-  border-top:
-    1px solid var(--line);
+  margin:auto;
+
+  padding-top:45px;
 
   display:grid;
 
   grid-template-columns:
     1.35fr .65fr;
 
-  gap:60px;
+  gap:90px;
+
+  border-top:
+    1px solid var(--line);
 }
 
 
 .modal-copy h3{
   margin:
     0 0
-    15px;
+    14px;
 
   font-family:var(--display);
 
-  font-size:1.45rem;
+  font-size:1.65rem;
+
+  letter-spacing:-.04em;
 }
 
 
 .modal-copy h3:not(:first-child){
-  margin-top:38px;
+  margin-top:42px;
 }
 
 
@@ -1209,13 +996,13 @@ button{
 
   font-size:.9rem;
 
-  line-height:1.75;
+  line-height:1.8;
 }
 
 
 .modal-facts{
   border-top:
-    1px solid var(--line);
+    3px solid var(--rose);
 }
 
 
@@ -1234,7 +1021,7 @@ button{
 
   color:#8b98a8;
 
-  font-size:.53rem;
+  font-size:.48rem;
   font-weight:700;
 
   letter-spacing:.13em;
@@ -1244,7 +1031,7 @@ button{
 
 
 .fact strong{
-  font-size:.84rem;
+  font-size:.83rem;
 }
 
 
@@ -1254,7 +1041,7 @@ button{
 
 footer{
   padding:
-    40px var(--edge);
+    38px var(--edge);
 
   display:flex;
 
@@ -1274,7 +1061,7 @@ footer strong{
 footer span{
   color:rgba(255,255,255,.45);
 
-  font-size:.7rem;
+  font-size:.68rem;
 }
 
 
@@ -1284,54 +1071,49 @@ footer span{
 
 @media(max-width:950px){
 
-  .hero-inner{
+  .toolbar-inner{
+    grid-template-columns:
+      190px 1fr 90px;
+  }
+
+
+  .archive-intro-inner{
     grid-template-columns:1fr;
-    gap:40px;
+
+    gap:30px;
   }
 
 
-  .period-grid{
-    grid-template-columns:
-      repeat(3,1fr);
+  .archive-intro p{
+    margin:0;
   }
 
 
-  .topic-layout{
-    grid-template-columns:
-      repeat(2,1fr);
-
-    gap:
-      0 40px;
-  }
-
-
-  .topic,
-  #contemporary .topic,
-  #twentieth .topic,
-  #nineteenth .topic,
-  #early-modern .topic,
-  #medieval .topic,
-  #ancient .topic{
-
-    grid-column:auto !important;
-    grid-row:auto !important;
-
-    margin-top:0 !important;
-  }
-
-
-  .topic.lead,
-  #contemporary .lead,
-  #twentieth .lead,
-  #nineteenth .lead,
-  #early-modern .lead,
-  #medieval .lead,
-  #ancient .lead{
-
+  .story.lead{
     grid-column:
-      1 / -1 !important;
+      span 12;
+  }
 
-    min-height:360px;
+
+  .story:nth-child(n+2),
+  .story.feature,
+  .story.feature + .story{
+    grid-column:
+      span 6;
+  }
+
+
+  .story:nth-child(n+2){
+    padding:
+      27px 25px !important;
+
+    border-right:
+      1px solid var(--line);
+  }
+
+
+  .modal-content{
+    gap:55px;
   }
 
 }
@@ -1349,12 +1131,12 @@ footer span{
 
 
   .site-header{
-    height:78px;
+    height:74px;
   }
 
 
   .logo img{
-    width:100px;
+    width:98px;
   }
 
 
@@ -1363,182 +1145,178 @@ footer span{
   }
 
 
-  .hero{
-    min-height:480px;
-
-    padding:
-      70px 5%
-      65px;
+  .archive-toolbar{
+    position:sticky;
+    top:0;
   }
 
 
-  .hero h1{
+  .toolbar-inner{
+    min-height:auto;
+
+    padding:
+      10px 5%;
+
+    grid-template-columns:
+      1fr auto;
+
+    gap:
+      8px 15px;
+  }
+
+
+  .archive-name{
+    font-size:1.15rem;
+  }
+
+
+  .search-wrap{
+    grid-column:
+      1 / -1;
+
+    grid-row:2;
+  }
+
+
+  .search-wrap input{
+    height:43px;
+  }
+
+
+  .result-count{
+    font-size:.46rem;
+  }
+
+
+  .archive-intro{
+    padding:
+      45px 5%
+      38px;
+  }
+
+
+  .archive-intro h1{
     font-size:
-      clamp(4.3rem,19vw,6rem);
+      clamp(4rem,18vw,5.5rem);
   }
 
 
-  /* horizontal sticky card menu */
-
-  .period-nav{
-    padding:
-      10px 0;
-
-    overflow-x:auto;
-
-    scrollbar-width:none;
-  }
-
-
-  .period-nav::-webkit-scrollbar{
-    display:none;
-  }
-
-
-  .period-grid{
-    width:max-content;
-
-    padding:
-      0 5%;
-
-    display:flex;
-
-    gap:6px;
-  }
-
-
-  .period-card{
-    width:125px;
-    min-height:65px;
-
-    flex:none;
+  .archive-intro p{
+    font-size:.8rem;
   }
 
 
   .archive{
     padding:
-      75px 5%
-      105px;
+      0 5%
+      90px;
   }
 
 
-  .era{
-    margin-bottom:100px;
-
-    scroll-margin-top:95px;
-  }
-
-
-  .era-heading{
-    display:block;
-
-    margin-bottom:40px;
-  }
-
-
-  .era-heading h2{
-    font-size:
-      clamp(3.4rem,15vw,4.8rem);
-  }
-
-
-  .era-heading span{
-    display:block;
-
-    margin-top:14px;
-  }
-
-
-  .topic-layout{
+  .story-grid{
     display:block;
   }
 
 
-  .topic,
-  #contemporary .topic,
-  #twentieth .topic,
-  #nineteenth .topic,
-  #early-modern .topic,
-  #medieval .topic,
-  #ancient .topic{
+  .story,
+  .story.lead,
+  .story.feature,
+  .story.feature + .story,
+  .story:nth-child(n+2),
+  .story:nth-child(n+5){
 
     width:100%;
 
     min-height:0;
 
-    margin:0 !important;
-
     padding:
-      24px 0
-      28px;
+      25px 0 !important;
 
-    border-top:
-      1px solid rgba(18,40,75,.14);
+    border-right:0 !important;
+
+    border-bottom:
+      1px solid var(--line);
   }
 
 
-  .topic.lead,
-  #contemporary .lead,
-  #twentieth .lead,
-  #nineteenth .lead,
-  #early-modern .lead,
-  #medieval .lead,
-  #ancient .lead{
+  .story.lead{
+    min-height:290px;
 
-    min-height:300px;
-
-    margin-bottom:14px !important;
-
-    padding:
-      32px 24px;
-
-    border:0;
+    padding-bottom:
+      30px !important;
   }
 
 
-  .topic.lead .topic-meta{
-    top:25px;
-    left:24px;
-    right:24px;
+  .story.lead .story-meta{
+    position:static;
   }
 
 
-  .topic.lead h3{
+  .story.lead h2{
     font-size:
-      clamp(3rem,14vw,4.3rem);
+      clamp(3.3rem,15vw,4.7rem);
   }
 
 
-  .topic h3{
+  .story.feature h2{
     font-size:
-      clamp(2.1rem,10vw,3rem);
+      clamp(2.4rem,11vw,3.4rem);
   }
 
 
-  .topic-layout:has(.topic:hover)
-  .topic:not(:hover){
+  .story h2{
+    font-size:
+      clamp(2rem,9vw,2.7rem);
+  }
+
+
+  .story-grid:has(.story:hover)
+  .story:not(:hover){
     opacity:1;
   }
 
 
   .modal-panel{
-    width:100%;
-
     padding:
-      70px 25px
+      72px 5%
       55px;
   }
 
 
+  .modal-close{
+    top:17px;
+    right:5%;
+  }
+
+
+  .modal-panel > h2{
+    font-size:
+      clamp(4rem,17vw,6rem);
+  }
+
+
+  .modal-lead{
+    margin:
+      32px 0
+      42px;
+  }
+
+
   .modal-content{
-    grid-template-columns:1fr;
-    gap:40px;
+    display:block;
+
+    padding-top:35px;
+  }
+
+
+  .modal-facts{
+    margin-top:45px;
   }
 
 
   footer{
     flex-direction:column;
-    gap:15px;
+    gap:12px;
   }
 
 }
@@ -1555,8 +1333,8 @@ footer span{
   *::after{
     scroll-behavior:auto !important;
     transition:none !important;
+    animation:none !important;
   }
-
 
   .reveal{
     opacity:1;
@@ -1565,2336 +1343,6 @@ footer span{
 
 }
 
-
-
-   /* ==========================================================
-   ATHAR — TURNING POINTS
-   HERO + ARCHIVE BALANCE FIX
-
-   PERIOD MENU IS INTENTIONALLY UNTOUCHED
-========================================================== */
-
-
-/* ==========================================================
-   SHORTER HERO
-========================================================== */
-
-.hero{
-  min-height:360px !important;
-
-  padding:
-    65px var(--edge)
-    62px !important;
-
-  align-items:center !important;
-}
-
-
-/* remove giant TURNING background word */
-
-.hero::after{
-  display:none !important;
-}
-
-
-.hero-inner{
-  grid-template-columns:
-    1fr .72fr !important;
-
-  gap:80px !important;
-
-  align-items:end !important;
-}
-
-
-.hero h1{
-  font-size:
-    clamp(4.5rem,7vw,7rem) !important;
-
-  line-height:.78 !important;
-}
-
-
-.hero p{
-  max-width:500px !important;
-
-  margin-bottom:4px !important;
-
-  font-size:.98rem !important;
-}
-
-
-/* ==========================================================
-   ARCHIVE — SLIGHTLY MORE COMPACT
-========================================================== */
-
-.archive{
-  padding-top:85px !important;
-}
-
-
-.era{
-  margin-bottom:125px !important;
-}
-
-
-/* ==========================================================
-   ERA HEADER
-========================================================== */
-
-.era-heading{
-  margin-bottom:45px !important;
-}
-
-
-.era-heading h2{
-  font-size:
-    clamp(3.8rem,5.4vw,6rem) !important;
-}
-
-
-/* ==========================================================
-   CLEAN 12 COLUMN GRID
-========================================================== */
-
-.topic-layout{
-  display:grid !important;
-
-  grid-template-columns:
-    repeat(12,minmax(0,1fr)) !important;
-
-  grid-template-rows:
-    repeat(2,minmax(190px,auto)) !important;
-
-  gap:
-    22px 44px !important;
-
-  align-items:stretch !important;
-}
-
-
-/* ==========================================================
-   RESET ALL TOPIC POSITIONING
-
-   Same geometry for every historical era.
-========================================================== */
-
-.topic,
-#contemporary .topic,
-#twentieth .topic,
-#nineteenth .topic,
-#early-modern .topic,
-#medieval .topic,
-#ancient .topic{
-
-  margin:0 !important;
-
-  min-height:0 !important;
-}
-
-
-/* ==========================================================
-   FEATURED TOPIC
-   LEFT 7 COLUMNS / FULL HEIGHT
-========================================================== */
-
-.topic.lead,
-#contemporary .lead,
-#twentieth .lead,
-#nineteenth .lead,
-#early-modern .lead,
-#medieval .lead,
-#ancient .lead{
-
-  grid-column:
-    1 / span 7 !important;
-
-  grid-row:
-    1 / span 2 !important;
-
-  min-height:430px !important;
-
-  padding:
-    36px 38px !important;
-
-  display:flex !important;
-
-  flex-direction:column !important;
-
-  justify-content:flex-end !important;
-}
-
-
-/* ==========================================================
-   REMOVE GIANT BACKGROUND DATE
-========================================================== */
-
-.topic.lead::before,
-#contemporary .lead::before,
-#twentieth .lead::before,
-#nineteenth .lead::before,
-#early-modern .lead::before,
-#medieval .lead::before,
-#ancient .lead::before{
-
-  display:none !important;
-  content:none !important;
-}
-
-
-/* ==========================================================
-   FEATURE META
-========================================================== */
-
-.topic.lead .topic-meta{
-
-  position:absolute !important;
-
-  top:32px !important;
-  left:38px !important;
-  right:38px !important;
-}
-
-
-/* ==========================================================
-   FEATURE TITLE
-========================================================== */
-
-.topic.lead h3{
-
-  max-width:720px !important;
-
-  font-size:
-    clamp(3.5rem,4.8vw,5.4rem) !important;
-
-  line-height:.82 !important;
-}
-
-
-/* ==========================================================
-   FEATURE DESCRIPTION
-========================================================== */
-
-.topic.lead p{
-
-  max-width:560px !important;
-
-  margin-top:22px !important;
-}
-
-
-/* ==========================================================
-   SECOND TOPIC
-   TOP RIGHT
-========================================================== */
-
-.topic:nth-child(2),
-#contemporary .topic:nth-child(2),
-#twentieth .topic:nth-child(2),
-#nineteenth .topic:nth-child(2),
-#early-modern .topic:nth-child(2),
-#medieval .topic:nth-child(2),
-#ancient .topic:nth-child(2){
-
-  grid-column:
-    8 / span 5 !important;
-
-  grid-row:
-    1 !important;
-
-  margin:0 !important;
-
-  padding:
-    28px 0 !important;
-
-  display:flex !important;
-
-  flex-direction:column !important;
-
-  justify-content:center !important;
-
-  border-top:
-    1px solid rgba(18,40,75,.18) !important;
-}
-
-
-/* ==========================================================
-   THIRD TOPIC
-   BOTTOM RIGHT
-========================================================== */
-
-.topic:nth-child(3),
-#contemporary .topic:nth-child(3),
-#twentieth .topic:nth-child(3),
-#nineteenth .topic:nth-child(3),
-#early-modern .topic:nth-child(3),
-#medieval .topic:nth-child(3),
-#ancient .topic:nth-child(3){
-
-  grid-column:
-    8 / span 5 !important;
-
-  grid-row:
-    2 !important;
-
-  margin:0 !important;
-
-  padding:
-    28px 0 !important;
-
-  display:flex !important;
-
-  flex-direction:column !important;
-
-  justify-content:center !important;
-
-  border-top:
-    1px solid rgba(18,40,75,.18) !important;
-}
-
-
-/* ==========================================================
-   RIGHT-SIDE TITLES
-========================================================== */
-
-.topic:nth-child(2) h3,
-.topic:nth-child(3) h3{
-
-  max-width:540px !important;
-
-  font-size:
-    clamp(2.25rem,3vw,3.35rem) !important;
-
-  line-height:.88 !important;
-}
-
-
-/* ==========================================================
-   RIGHT-SIDE DESCRIPTIONS
-========================================================== */
-
-.topic:nth-child(2) p,
-.topic:nth-child(3) p{
-
-  max-width:510px !important;
-
-  margin-top:16px !important;
-
-  font-size:.78rem !important;
-
-  line-height:1.6 !important;
-}
-
-
-/* ==========================================================
-   FOURTH TOPIC ONWARD
-
-   Future topics form a compact row underneath.
-========================================================== */
-
-.topic:nth-child(n+4),
-#contemporary .topic:nth-child(n+4),
-#twentieth .topic:nth-child(n+4),
-#nineteenth .topic:nth-child(n+4),
-#early-modern .topic:nth-child(n+4),
-#medieval .topic:nth-child(n+4),
-#ancient .topic:nth-child(n+4){
-
-  grid-column:
-    span 3 !important;
-
-  grid-row:auto !important;
-
-  margin:15px 0 0 !important;
-
-  padding:
-    24px 0
-    28px !important;
-
-  border-top:
-    1px solid rgba(18,40,75,.16) !important;
-}
-
-
-/* ==========================================================
-   KEEP FEATURE COLOUR BUT MAKE IT LIGHTER / CLEANER
-========================================================== */
-
-#contemporary .lead{
-  background:#eee8cb !important;
-}
-
-#twentieth .lead{
-  background:#e4e4ed !important;
-}
-
-#nineteenth .lead{
-  background:#eadbd9 !important;
-}
-
-#early-modern .lead{
-  background:#deebe6 !important;
-}
-
-#medieval .lead{
-  background:#ece4da !important;
-}
-
-#ancient .lead{
-  background:#dde9ef !important;
-}
-
-
-/* ==========================================================
-   REMOVE EXCESSIVE HOVER FADING
-========================================================== */
-
-.topic-layout:has(.topic:hover)
-.topic:not(:hover){
-
-  opacity:.72 !important;
-}
-
-
-/* ==========================================================
-   TABLET
-========================================================== */
-
-@media(max-width:950px){
-
-  .hero{
-    min-height:330px !important;
-  }
-
-
-  .hero-inner{
-    grid-template-columns:
-      1fr 1fr !important;
-
-    gap:45px !important;
-  }
-
-
-  .topic-layout{
-
-    grid-template-columns:
-      repeat(2,1fr) !important;
-
-    grid-template-rows:auto !important;
-
-    gap:
-      0 38px !important;
-  }
-
-
-  .topic.lead,
-  #contemporary .lead,
-  #twentieth .lead,
-  #nineteenth .lead,
-  #early-modern .lead,
-  #medieval .lead,
-  #ancient .lead{
-
-    grid-column:
-      1 / -1 !important;
-
-    grid-row:auto !important;
-
-    min-height:350px !important;
-
-    margin-bottom:20px !important;
-  }
-
-
-  .topic:nth-child(n+2),
-  #contemporary .topic:nth-child(n+2),
-  #twentieth .topic:nth-child(n+2),
-  #nineteenth .topic:nth-child(n+2),
-  #early-modern .topic:nth-child(n+2),
-  #medieval .topic:nth-child(n+2),
-  #ancient .topic:nth-child(n+2){
-
-    grid-column:auto !important;
-
-    grid-row:auto !important;
-
-    margin:0 !important;
-
-    min-height:180px !important;
-  }
-
-}
-
-
-/* ==========================================================
-   MOBILE
-========================================================== */
-
-@media(max-width:650px){
-
-  .hero{
-
-    min-height:320px !important;
-
-    padding:
-      55px 5%
-      50px !important;
-  }
-
-
-  .hero-inner{
-
-    display:block !important;
-  }
-
-
-  .hero h1{
-
-    font-size:
-      clamp(4rem,18vw,5.4rem) !important;
-  }
-
-
-  .hero p{
-
-    margin-top:35px !important;
-
-    max-width:420px !important;
-  }
-
-
-  .archive{
-
-    padding-top:
-      60px !important;
-  }
-
-
-  .era{
-
-    margin-bottom:
-      90px !important;
-  }
-
-
-  .topic-layout{
-
-    display:block !important;
-  }
-
-
-  .topic.lead,
-  #contemporary .lead,
-  #twentieth .lead,
-  #nineteenth .lead,
-  #early-modern .lead,
-  #medieval .lead,
-  #ancient .lead{
-
-    min-height:
-      300px !important;
-
-    margin-bottom:
-      10px !important;
-
-    padding:
-      30px 24px !important;
-  }
-
-
-  .topic.lead .topic-meta{
-
-    top:
-      24px !important;
-
-    left:
-      24px !important;
-
-    right:
-      24px !important;
-  }
-
-
-  .topic:nth-child(n+2),
-  #contemporary .topic:nth-child(n+2),
-  #twentieth .topic:nth-child(n+2),
-  #nineteenth .topic:nth-child(n+2),
-  #early-modern .topic:nth-child(n+2),
-  #medieval .topic:nth-child(n+2),
-  #ancient .topic:nth-child(n+2){
-
-    min-height:0 !important;
-
-    padding:
-      25px 0
-      28px !important;
-  }
-
-}
-
-
-
-/* ==========================================================
-   ATHAR — TURNING POINTS
-   POLISH OVERRIDE
-   Period navigation intentionally untouched
-========================================================== */
-
-
-/* ==========================================================
-   NEW HERO
-   Compact, graphic, less empty
-========================================================== */
-
-.hero{
-  position:relative;
-
-  min-height:290px !important;
-
-  padding:
-    52px var(--edge)
-    48px !important;
-
-  display:flex !important;
-  align-items:center !important;
-
-  background:#dce7ef !important;
-
-  overflow:hidden;
-}
-
-
-/* no background word */
-
-.hero::before,
-.hero::after{
-  display:none !important;
-}
-
-
-.hero-inner{
-  position:relative;
-
-  width:100%;
-  max-width:1500px;
-
-  margin:auto;
-
-  display:grid !important;
-
-  grid-template-columns:
-    minmax(0,1.15fr)
-    minmax(300px,.85fr) !important;
-
-  align-items:center !important;
-
-  gap:80px !important;
-}
-
-
-/* title */
-
-.hero h1{
-  position:relative;
-
-  margin:0 !important;
-
-  max-width:650px;
-
-  font-size:
-    clamp(4rem,6vw,6.4rem) !important;
-
-  line-height:.79 !important;
-
-  letter-spacing:-.075em !important;
-}
-
-
-/* small accent line */
-
-.hero h1::after{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  bottom:-25px;
-
-  width:72px;
-  height:4px;
-
-  background:#9b6c68;
-
-  transition:
-    width .7s cubic-bezier(.16,1,.3,1);
-}
-
-
-.hero:hover h1::after{
-  width:145px;
-}
-
-
-/* description */
-
-.hero p{
-  position:relative;
-
-  max-width:490px !important;
-
-  margin:0 !important;
-
-  padding-left:28px;
-
-  color:#61758c !important;
-
-  font-size:.94rem !important;
-
-  line-height:1.7 !important;
-
-  border-left:
-    1px solid rgba(18,40,75,.22);
-}
-
-
-/* ==========================================================
-   ERA SPACING
-   Keep current structure but slightly tighter
-========================================================== */
-
-.archive{
-  padding-top:
-    75px !important;
-}
-
-
-.era{
-  margin-bottom:
-    110px !important;
-}
-
-
-.era-heading{
-  margin-bottom:
-    38px !important;
-}
-
-
-.era-heading h2{
-  font-size:
-    clamp(3.5rem,4.8vw,5.3rem) !important;
-}
-
-
-/* ==========================================================
-   TOPIC LAYOUT
-   Keep your current geometry
-========================================================== */
-
-.topic-layout{
-  gap:
-    18px 38px !important;
-}
-
-
-/* ==========================================================
-   META = SMALL CARDS
-
-   DATE and REGION now read as interface information rather
-   than loose tiny text floating above the title.
-========================================================== */
-
-.topic-meta{
-  display:flex !important;
-
-  align-items:center !important;
-
-  justify-content:flex-start !important;
-
-  gap:6px !important;
-
-  margin-bottom:
-    17px !important;
-}
-
-
-.topic-date,
-.topic-place{
-  display:inline-flex !important;
-
-  align-items:center !important;
-
-  min-height:24px;
-
-  padding:
-    5px 8px !important;
-
-  border:
-    1px solid rgba(18,40,75,.11);
-
-  background:
-    rgba(255,255,255,.58);
-
-  color:
-    rgba(18,40,75,.55) !important;
-
-  font-size:
-    .44rem !important;
-
-  font-weight:700 !important;
-
-  line-height:1 !important;
-
-  letter-spacing:
-    .11em !important;
-
-  text-transform:
-    uppercase;
-
-  white-space:nowrap;
-
-  transition:
-    background .3s ease,
-    border-color .3s ease,
-    transform .3s cubic-bezier(.16,1,.3,1);
-}
-
-
-/* date slightly more visible */
-
-.topic-date{
-  color:
-    var(--accent) !important;
-
-  border-color:
-    color-mix(
-      in srgb,
-      var(--accent) 25%,
-      transparent
-    );
-}
-
-
-/* REMOVE OLD DASH */
-
-.topic-place::before{
-  display:none !important;
-}
-
-
-/* meta reacts when topic is hovered */
-
-.topic:hover .topic-date,
-.topic:hover .topic-place{
-  background:#fff;
-
-  transform:
-    translateY(-2px);
-}
-
-
-/* lead meta position */
-
-.topic.lead .topic-meta{
-  top:27px !important;
-
-  left:32px !important;
-  right:32px !important;
-}
-
-
-/* ==========================================================
-   FEATURE TOPIC
-   Same structure, less oversized
-========================================================== */
-
-.topic.lead,
-#contemporary .lead,
-#twentieth .lead,
-#nineteenth .lead,
-#early-modern .lead,
-#medieval .lead,
-#ancient .lead{
-
-  min-height:
-    380px !important;
-
-  padding:
-    32px !important;
-
-  overflow:hidden;
-
-  transition:
-    transform .5s cubic-bezier(.16,1,.3,1),
-    box-shadow .5s ease;
-}
-
-
-.topic.lead h3{
-  max-width:700px;
-
-  font-size:
-    clamp(3.2rem,4.2vw,4.8rem) !important;
-}
-
-
-/* no background date */
-
-.topic.lead::before{
-  display:none !important;
-}
-
-
-/* ==========================================================
-   FEATURE INTERACTION
-========================================================== */
-
-.topic.lead::after{
-  content:"" !important;
-
-  display:block !important;
-
-  position:absolute;
-
-  left:0;
-  bottom:0;
-
-  width:100%;
-  height:5px;
-
-  background:var(--accent);
-
-  transform:
-    scaleX(.16);
-
-  transform-origin:left;
-
-  transition:
-    transform .6s cubic-bezier(.16,1,.3,1);
-}
-
-
-.topic.lead:hover{
-  transform:
-    translateY(-6px) !important;
-
-  box-shadow:
-    0 18px 45px
-    rgba(18,40,75,.08);
-}
-
-
-.topic.lead:hover::after{
-  transform:
-    scaleX(1);
-}
-
-
-/* ==========================================================
-   RIGHT TOPICS
-   Slightly more designed
-========================================================== */
-
-.topic:not(.lead){
-  position:relative;
-
-  transition:
-    transform .4s cubic-bezier(.16,1,.3,1),
-    padding .4s cubic-bezier(.16,1,.3,1),
-    opacity .3s ease;
-}
-
-
-.topic:not(.lead)::before{
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  top:-1px;
-
-  width:0;
-  height:2px;
-
-  background:
-    var(--accent);
-
-  transition:
-    width .55s cubic-bezier(.16,1,.3,1);
-}
-
-
-.topic:not(.lead):hover::before{
-  width:100%;
-}
-
-
-.topic:not(.lead):hover{
-  transform:none !important;
-
-  padding-left:
-    12px !important;
-}
-
-
-/* kill previous bottom line */
-
-.topic:not(.lead)::after{
-  display:none !important;
-}
-
-
-/* ==========================================================
-   TITLE EFFECT
-========================================================== */
-
-.topic h3{
-  transition:
-    transform .4s cubic-bezier(.16,1,.3,1),
-    letter-spacing .4s cubic-bezier(.16,1,.3,1);
-}
-
-
-.topic:hover h3{
-  transform:
-    translateX(3px);
-
-  letter-spacing:
-    -.057em;
-}
-
-
-/* ==========================================================
-   DESCRIPTION
-========================================================== */
-
-.topic p{
-  transition:
-    transform .4s cubic-bezier(.16,1,.3,1),
-    color .3s ease;
-}
-
-
-.topic:hover p{
-  transform:
-    translateX(3px);
-
-  color:
-    rgba(18,40,75,.76);
-}
-
-
-/* less aggressive fading */
-
-.topic-layout:has(.topic:hover)
-.topic:not(:hover){
-  opacity:.72 !important;
-}
-
-
-/* ==========================================================
-   FULL-SCREEN MODAL
-========================================================== */
-
-.modal{
-  position:fixed !important;
-
-  inset:0 !important;
-
-  z-index:1000 !important;
-
-  display:block !important;
-
-  visibility:hidden;
-
-  pointer-events:none;
-
-  background:var(--paper);
-}
-
-
-.modal.open{
-  visibility:visible;
-
-  pointer-events:auto;
-}
-
-
-/* backdrop no longer needed */
-
-.modal-backdrop{
-  display:none !important;
-}
-
-
-/* FULL SCREEN */
-
-.modal-panel{
-  position:absolute !important;
-
-  inset:0 !important;
-
-  width:100% !important;
-  max-width:none !important;
-
-  height:100vh !important;
-
-  padding:
-    95px max(var(--edge),calc((100vw - 1500px)/2))
-    90px !important;
-
-  background:
-    var(--paper) !important;
-
-  overflow-y:auto !important;
-
-  transform:
-    translateY(100%) !important;
-
-  opacity:1;
-
-  transition:
-    transform .65s
-    cubic-bezier(.77,0,.18,1) !important;
-}
-
-
-.modal.open .modal-panel{
-  transform:
-    translateY(0) !important;
-}
-
-
-/* ==========================================================
-   FULL SCREEN MODAL CLOSE
-========================================================== */
-
-.modal-close{
-  position:fixed !important;
-
-  z-index:10;
-
-  top:28px !important;
-  right:var(--edge) !important;
-
-  width:auto !important;
-  height:auto !important;
-
-  padding:
-    9px 14px !important;
-
-  border:
-    1px solid rgba(18,40,75,.15) !important;
-
-  background:
-    rgba(247,247,245,.88) !important;
-
-  color:
-    var(--navy) !important;
-
-  font-size:
-    1rem !important;
-
-  backdrop-filter:
-    blur(10px);
-
-  cursor:pointer;
-
-  transition:
-    background .3s ease,
-    color .3s ease,
-    transform .3s ease;
-}
-
-
-.modal-close:hover{
-  background:
-    var(--navy) !important;
-
-  color:
-    #fff !important;
-
-  transform:
-    rotate(4deg);
-}
-
-
-/* ==========================================================
-   MODAL HEADER
-========================================================== */
-
-.modal-meta{
-  max-width:1500px;
-
-  margin:
-    0 auto
-    32px !important;
-
-  display:flex;
-
-  gap:7px !important;
-}
-
-
-.modal-meta span{
-  display:inline-flex;
-
-  align-items:center;
-
-  padding:
-    6px 9px;
-
-  background:#fff;
-
-  border:
-    1px solid rgba(18,40,75,.11);
-
-  color:
-    #8d706c;
-
-  font-size:
-    .48rem;
-
-  font-weight:700;
-
-  letter-spacing:
-    .13em;
-
-  text-transform:
-    uppercase;
-}
-
-
-/* ==========================================================
-   MODAL TITLE
-========================================================== */
-
-.modal-panel > h2{
-  max-width:1100px !important;
-
-  margin:
-    0 auto !important;
-
-  font-size:
-    clamp(5rem,9vw,10rem) !important;
-
-  line-height:
-    .77 !important;
-
-  letter-spacing:
-    -.085em !important;
-}
-
-
-/* ==========================================================
-   MODAL INTRO
-========================================================== */
-
-.modal-lead{
-  max-width:850px !important;
-
-  margin:
-    48px auto
-    65px !important;
-
-  color:
-    #60738a !important;
-
-  font-size:
-    clamp(1.05rem,1.5vw,1.35rem) !important;
-
-  line-height:
-    1.7 !important;
-}
-
-
-/* ==========================================================
-   MODAL CONTENT
-========================================================== */
-
-.modal-content{
-  max-width:1250px;
-
-  margin:auto;
-
-  padding-top:
-    55px !important;
-
-  display:grid !important;
-
-  grid-template-columns:
-    minmax(0,1.3fr)
-    minmax(240px,.7fr) !important;
-
-  gap:
-    100px !important;
-
-  border-top:
-    1px solid rgba(18,40,75,.16) !important;
-}
-
-
-.modal-copy{
-  max-width:720px;
-}
-
-
-.modal-copy h3{
-  margin:
-    0 0
-    17px !important;
-
-  font-size:
-    clamp(1.6rem,2vw,2.1rem) !important;
-}
-
-
-.modal-copy h3:not(:first-child){
-  margin-top:
-    50px !important;
-}
-
-
-.modal-copy p{
-  font-size:
-    .94rem !important;
-
-  line-height:
-    1.8 !important;
-}
-
-
-/* ==========================================================
-   MODAL FACTS
-========================================================== */
-
-.modal-facts{
-  border-top:
-    3px solid #9b6c68 !important;
-}
-
-
-.fact{
-  padding:
-    20px 0 !important;
-}
-
-
-.fact small{
-  font-size:
-    .46rem !important;
-}
-
-
-.fact strong{
-  font-size:
-    .88rem !important;
-}
-
-
-/* ==========================================================
-   SCROLL REVEAL — MORE NOTICEABLE
-========================================================== */
-
-.reveal{
-  opacity:0;
-
-  transform:
-    translateY(22px);
-
-  transition:
-    opacity .7s ease,
-    transform .7s cubic-bezier(.16,1,.3,1);
-}
-
-
-.reveal.visible{
-  opacity:1;
-
-  transform:none;
-}
-
-
-/* ==========================================================
-   TABLET
-========================================================== */
-
-@media(max-width:950px){
-
-  .hero{
-    min-height:
-      280px !important;
-  }
-
-
-  .hero-inner{
-    gap:
-      45px !important;
-  }
-
-
-  .modal-panel{
-    padding:
-      85px 6%
-      70px !important;
-  }
-
-
-  .modal-content{
-    gap:
-      55px !important;
-  }
-
-}
-
-
-/* ==========================================================
-   MOBILE
-========================================================== */
-
-@media(max-width:650px){
-
-  .hero{
-    min-height:
-      310px !important;
-
-    padding:
-      45px 5%
-      48px !important;
-  }
-
-
-  .hero-inner{
-    display:block !important;
-  }
-
-
-  .hero h1{
-    font-size:
-      clamp(3.8rem,17vw,5rem) !important;
-  }
-
-
-  .hero h1::after{
-    bottom:
-      -18px;
-  }
-
-
-  .hero p{
-    margin-top:
-      50px !important;
-
-    padding:
-      0 !important;
-
-    border:
-      0 !important;
-  }
-
-
-  .topic.lead,
-  #contemporary .lead,
-  #twentieth .lead,
-  #nineteenth .lead,
-  #early-modern .lead,
-  #medieval .lead,
-  #ancient .lead{
-
-    min-height:
-      280px !important;
-
-    padding:
-      27px 22px !important;
-  }
-
-
-  .topic.lead .topic-meta{
-    top:
-      22px !important;
-
-    left:
-      22px !important;
-  }
-
-
-  .topic-date,
-  .topic-place{
-    min-height:
-      22px;
-
-    padding:
-      4px 7px !important;
-
-    font-size:
-      .4rem !important;
-  }
-
-
-  /* full screen modal */
-
-  .modal-panel{
-    padding:
-      80px 5%
-      60px !important;
-  }
-
-
-  .modal-close{
-    top:
-      18px !important;
-
-    right:
-      5% !important;
-  }
-
-
-  .modal-panel > h2{
-    font-size:
-      clamp(4rem,18vw,6rem) !important;
-  }
-
-
-  .modal-lead{
-    margin:
-      35px 0
-      45px !important;
-  }
-
-
-  .modal-content{
-    display:block !important;
-
-    padding-top:
-      38px !important;
-  }
-
-
-  .modal-facts{
-    margin-top:
-      50px;
-  }
-
-}
-
-
-/* ==========================================================
-   ATHAR — CORRECTED CLEAN OVERRIDE
-
-   REMOVE:
-   - Turning Points blue hero ONLY
-   - unnecessary event divider lines
-
-   KEEP:
-   - main ATHAR site header
-   - sticky period navigation
-   - era/section titles
-   - current event layout
-
-   CHANGE:
-   - much smaller event cards
-   - tiny metadata chips
-   - full-screen modal sliding from RIGHT
-========================================================== */
-
-
-/* ==========================================================
-   REMOVE ONLY THE "TURNING POINTS" HERO
-========================================================== */
-
-.hero{
-  display:none !important;
-}
-
-
-/* ==========================================================
-   KEEP ERA / SECTION TITLES
-========================================================== */
-
-.era-heading{
-  display:flex !important;
-
-  align-items:flex-end !important;
-  justify-content:space-between !important;
-
-  gap:30px !important;
-
-  margin-bottom:28px !important;
-}
-
-
-.era-heading h2{
-  display:block !important;
-
-  margin:0 !important;
-
-  font-size:
-    clamp(2.8rem,4vw,4.5rem) !important;
-
-  line-height:.85 !important;
-}
-
-
-.era-heading span{
-  display:block !important;
-
-  margin-bottom:3px !important;
-
-  font-size:.48rem !important;
-
-  letter-spacing:.14em !important;
-}
-
-
-/* remove decorative line below section title */
-
-.era-heading::before,
-.era-heading::after{
-  display:none !important;
-  content:none !important;
-}
-
-
-/* ==========================================================
-   ARCHIVE SPACING
-========================================================== */
-
-.archive{
-  padding-top:60px !important;
-  padding-bottom:110px !important;
-}
-
-
-.era{
-  padding-top:0 !important;
-
-  margin-bottom:85px !important;
-
-  scroll-margin-top:115px !important;
-}
-
-
-/* ==========================================================
-   EVENT GRID
-========================================================== */
-
-.topic-layout{
-  display:grid !important;
-
-  grid-template-columns:
-    repeat(12,minmax(0,1fr)) !important;
-
-  grid-template-rows:
-    repeat(2,145px) !important;
-
-  gap:
-    14px 36px !important;
-
-  align-items:stretch !important;
-}
-
-
-/* ==========================================================
-   REMOVE ALL USELESS EVENT LINES
-========================================================== */
-
-.topic,
-.topic:nth-child(2),
-.topic:nth-child(3),
-.topic:nth-child(n+4){
-  border:0 !important;
-}
-
-
-.topic::before,
-.topic::after,
-.topic:not(.lead)::before,
-.topic:not(.lead)::after,
-.topic.lead::before,
-.topic.lead::after{
-  display:none !important;
-  content:none !important;
-}
-
-
-/* ==========================================================
-   FEATURE CARD
-   MUCH SMALLER
-========================================================== */
-
-.topic.lead,
-#contemporary .lead,
-#twentieth .lead,
-#nineteenth .lead,
-#early-modern .lead,
-#medieval .lead,
-#ancient .lead{
-
-  grid-column:
-    1 / span 7 !important;
-
-  grid-row:
-    1 / span 2 !important;
-
-  min-height:0 !important;
-  height:304px !important;
-
-  padding:
-    24px 26px !important;
-
-  display:flex !important;
-
-  flex-direction:column !important;
-  justify-content:flex-end !important;
-
-  overflow:hidden !important;
-
-  box-shadow:none !important;
-
-  transition:
-    transform .4s cubic-bezier(.16,1,.3,1),
-    box-shadow .4s ease !important;
-}
-
-
-/* FEATURE TITLE */
-
-.topic.lead h3{
-  max-width:650px !important;
-
-  margin:0 !important;
-
-  font-size:
-    clamp(2.5rem,3.3vw,3.8rem) !important;
-
-  line-height:.85 !important;
-}
-
-
-/* FEATURE DESCRIPTION */
-
-.topic.lead p{
-  max-width:560px !important;
-
-  margin:
-    13px 0 0 !important;
-
-  font-size:.69rem !important;
-
-  line-height:1.55 !important;
-}
-
-
-/* ==========================================================
-   TINY METADATA CHIPS
-========================================================== */
-
-.topic-meta{
-  display:flex !important;
-
-  align-items:center !important;
-
-  gap:4px !important;
-
-  margin-bottom:11px !important;
-}
-
-
-.topic-date,
-.topic-place{
-  display:inline-flex !important;
-
-  align-items:center !important;
-
-  width:auto !important;
-  min-width:0 !important;
-
-  min-height:0 !important;
-
-  padding:
-    3px 5px !important;
-
-  background:
-    rgba(255,255,255,.52) !important;
-
-  border:
-    1px solid rgba(18,40,75,.09) !important;
-
-  color:
-    rgba(18,40,75,.5) !important;
-
-  font-size:
-    .33rem !important;
-
-  font-weight:700 !important;
-
-  line-height:1 !important;
-
-  letter-spacing:
-    .09em !important;
-
-  white-space:nowrap !important;
-
-  box-shadow:none !important;
-}
-
-
-.topic-date{
-  color:
-    var(--accent) !important;
-}
-
-
-.topic-place::before,
-.topic-date::before{
-  display:none !important;
-}
-
-
-/* FEATURE META POSITION */
-
-.topic.lead .topic-meta{
-  position:absolute !important;
-
-  top:20px !important;
-  left:26px !important;
-  right:auto !important;
-}
-
-
-/* ==========================================================
-   RIGHT TOPIC — TOP
-========================================================== */
-
-.topic:nth-child(2),
-#contemporary .topic:nth-child(2),
-#twentieth .topic:nth-child(2),
-#nineteenth .topic:nth-child(2),
-#early-modern .topic:nth-child(2),
-#medieval .topic:nth-child(2),
-#ancient .topic:nth-child(2){
-
-  grid-column:
-    8 / span 5 !important;
-
-  grid-row:
-    1 !important;
-
-  min-height:0 !important;
-  height:145px !important;
-
-  margin:0 !important;
-
-  padding:
-    13px 0 !important;
-
-  display:flex !important;
-
-  flex-direction:column !important;
-  justify-content:center !important;
-
-  border:0 !important;
-}
-
-
-/* ==========================================================
-   RIGHT TOPIC — BOTTOM
-========================================================== */
-
-.topic:nth-child(3),
-#contemporary .topic:nth-child(3),
-#twentieth .topic:nth-child(3),
-#nineteenth .topic:nth-child(3),
-#early-modern .topic:nth-child(3),
-#medieval .topic:nth-child(3),
-#ancient .topic:nth-child(3){
-
-  grid-column:
-    8 / span 5 !important;
-
-  grid-row:
-    2 !important;
-
-  min-height:0 !important;
-  height:145px !important;
-
-  margin:0 !important;
-
-  padding:
-    13px 0 !important;
-
-  display:flex !important;
-
-  flex-direction:column !important;
-  justify-content:center !important;
-
-  border:0 !important;
-}
-
-
-/* SMALL EVENT TITLES */
-
-.topic:nth-child(2) h3,
-.topic:nth-child(3) h3{
-  max-width:540px !important;
-
-  margin:0 !important;
-
-  font-size:
-    clamp(1.65rem,2.15vw,2.45rem) !important;
-
-  line-height:.9 !important;
-}
-
-
-/* SMALL EVENT TEXT */
-
-.topic:nth-child(2) p,
-.topic:nth-child(3) p{
-  max-width:510px !important;
-
-  margin:
-    8px 0 0 !important;
-
-  font-size:.65rem !important;
-
-  line-height:1.5 !important;
-}
-
-
-/* ==========================================================
-   FUTURE EVENTS
-
-   When you add 4th, 5th, 6th etc., they become compact
-   entries underneath rather than giant cards.
-========================================================== */
-
-.topic:nth-child(n+4),
-#contemporary .topic:nth-child(n+4),
-#twentieth .topic:nth-child(n+4),
-#nineteenth .topic:nth-child(n+4),
-#early-modern .topic:nth-child(n+4),
-#medieval .topic:nth-child(n+4),
-#ancient .topic:nth-child(n+4){
-
-  grid-column:
-    span 3 !important;
-
-  grid-row:auto !important;
-
-  min-height:0 !important;
-  height:auto !important;
-
-  margin:
-    10px 0 0 !important;
-
-  padding:
-    16px 0 !important;
-
-  border:0 !important;
-}
-
-
-.topic:nth-child(n+4) h3{
-  font-size:
-    clamp(1.5rem,1.8vw,2rem) !important;
-}
-
-
-.topic:nth-child(n+4) p{
-  font-size:
-    .63rem !important;
-
-  line-height:
-    1.5 !important;
-}
-
-
-/* ==========================================================
-   SUBTLE HOVER
-   NO LINES
-========================================================== */
-
-.topic{
-  transition:
-    transform .4s cubic-bezier(.16,1,.3,1),
-    opacity .3s ease !important;
-}
-
-
-.topic.lead:hover{
-  transform:
-    translateY(-4px) !important;
-
-  box-shadow:
-    0 12px 28px
-    rgba(18,40,75,.07) !important;
-}
-
-
-.topic:not(.lead):hover{
-  padding-left:0 !important;
-
-  transform:
-    translateX(6px) !important;
-}
-
-
-.topic:hover h3{
-  transform:none !important;
-}
-
-
-.topic:hover p{
-  transform:none !important;
-}
-
-
-.topic:hover .topic-date,
-.topic:hover .topic-place{
-  transform:
-    translateY(-1px) !important;
-
-  background:
-    rgba(255,255,255,.9) !important;
-}
-
-
-.topic-layout:has(.topic:hover)
-.topic:not(:hover){
-  opacity:.72 !important;
-}
-
-
-/* ==========================================================
-   FULL-SCREEN MODAL
-   SLIDES FROM RIGHT
-========================================================== */
-
-.modal{
-  position:fixed !important;
-
-  inset:0 !important;
-
-  z-index:3000 !important;
-
-  width:100vw !important;
-  height:100vh !important;
-
-  display:flex !important;
-
-  justify-content:flex-end !important;
-
-  visibility:hidden !important;
-
-  pointer-events:none !important;
-
-  background:transparent !important;
-}
-
-
-.modal.open{
-  visibility:visible !important;
-
-  pointer-events:auto !important;
-}
-
-
-/* BACKDROP */
-
-.modal-backdrop{
-  display:block !important;
-
-  position:absolute !important;
-
-  inset:0 !important;
-
-  background:
-    rgba(13,31,60,.42) !important;
-
-  opacity:0 !important;
-
-  backdrop-filter:
-    blur(4px);
-
-  transition:
-    opacity .45s ease !important;
-}
-
-
-.modal.open .modal-backdrop{
-  opacity:1 !important;
-}
-
-
-/* FULL VIEWPORT PANEL */
-
-.modal-panel{
-  position:relative !important;
-
-  z-index:2 !important;
-
-  inset:auto !important;
-
-  width:100vw !important;
-  max-width:100vw !important;
-
-  height:100vh !important;
-  min-height:100vh !important;
-
-  margin:0 !important;
-
-  padding:
-    80px max(var(--edge),calc((100vw - 1400px)/2))
-    70px !important;
-
-  background:
-    var(--paper) !important;
-
-  overflow-y:auto !important;
-
-  transform:
-    translateX(100vw) !important;
-
-  opacity:1 !important;
-
-  transition:
-    transform .62s
-    cubic-bezier(.77,0,.18,1) !important;
-}
-
-
-.modal.open .modal-panel{
-  transform:
-    translateX(0) !important;
-}
-
-
-/* ==========================================================
-   MODAL CLOSE
-========================================================== */
-
-.modal-close{
-  position:fixed !important;
-
-  z-index:10 !important;
-
-  top:22px !important;
-  right:var(--edge) !important;
-
-  width:38px !important;
-  height:38px !important;
-
-  padding:0 !important;
-
-  display:flex !important;
-
-  align-items:center !important;
-  justify-content:center !important;
-
-  border:
-    1px solid rgba(18,40,75,.12) !important;
-
-  background:
-    rgba(247,247,245,.94) !important;
-
-  color:
-    var(--navy) !important;
-
-  font-size:
-    1.15rem !important;
-
-  cursor:pointer !important;
-
-  transition:
-    background .25s ease,
-    color .25s ease !important;
-}
-
-
-.modal-close:hover{
-  background:
-    var(--navy) !important;
-
-  color:#fff !important;
-}
-
-
-/* ==========================================================
-   MODAL CONTENT
-========================================================== */
-
-.modal-meta{
-  max-width:1350px !important;
-
-  margin:
-    0 auto
-    22px !important;
-
-  gap:4px !important;
-}
-
-
-.modal-meta span{
-  padding:
-    4px 6px !important;
-
-  font-size:
-    .37rem !important;
-}
-
-
-.modal-panel > h2{
-  max-width:1050px !important;
-
-  margin:
-    0 auto !important;
-
-  font-size:
-    clamp(4.3rem,7vw,7.5rem) !important;
-
-  line-height:
-    .8 !important;
-}
-
-
-.modal-lead{
-  max-width:760px !important;
-
-  margin:
-    35px auto
-    48px !important;
-
-  font-size:
-    .95rem !important;
-}
-
-
-.modal-content{
-  max-width:1150px !important;
-
-  margin:auto !important;
-
-  padding-top:
-    38px !important;
-
-  display:grid !important;
-
-  grid-template-columns:
-    1.35fr .65fr !important;
-
-  gap:
-    75px !important;
-
-  border-top:
-    1px solid rgba(18,40,75,.1) !important;
-}
-
-
-/* ==========================================================
-   MOBILE
-========================================================== */
-
-@media(max-width:650px){
-
-  .archive{
-    padding-top:
-      45px !important;
-  }
-
-
-  .era-heading{
-    display:block !important;
-
-    margin-bottom:
-      25px !important;
-  }
-
-
-  .era-heading h2{
-    font-size:
-      clamp(2.8rem,13vw,4rem) !important;
-  }
-
-
-  .era-heading span{
-    margin-top:
-      8px !important;
-  }
-
-
-  .topic-layout{
-    display:block !important;
-  }
-
-
-  .topic.lead,
-  #contemporary .lead,
-  #twentieth .lead,
-  #nineteenth .lead,
-  #early-modern .lead,
-  #medieval .lead,
-  #ancient .lead{
-
-    width:100% !important;
-
-    height:250px !important;
-
-    margin-bottom:
-      8px !important;
-
-    padding:
-      20px !important;
-  }
-
-
-  .topic.lead .topic-meta{
-    top:
-      17px !important;
-
-    left:
-      20px !important;
-  }
-
-
-  .topic:nth-child(n+2),
-  #contemporary .topic:nth-child(n+2),
-  #twentieth .topic:nth-child(n+2),
-  #nineteenth .topic:nth-child(n+2),
-  #early-modern .topic:nth-child(n+2),
-  #medieval .topic:nth-child(n+2),
-  #ancient .topic:nth-child(n+2){
-
-    width:100% !important;
-
-    height:auto !important;
-
-    min-height:120px !important;
-
-    padding:
-      18px 0 !important;
-  }
-
-
-  .modal-panel{
-    width:
-      100vw !important;
-
-    height:
-      100vh !important;
-
-    padding:
-      70px 5%
-      50px !important;
-  }
-
-
-  .modal-content{
-    display:block !important;
-  }
-
-}
-   
 </style>
 </head>
 
@@ -3903,7 +1351,7 @@ footer span{
 
 
 <!-- ========================================================
-     HEADER
+     ATHAR HEADER
 ======================================================== -->
 
 <header class="site-header">
@@ -3950,12 +1398,55 @@ footer span{
 
 
 <!-- ========================================================
-     HERO
+     STICKY SEARCH TOOLBAR
 ======================================================== -->
 
-<section class="hero">
+<section class="archive-toolbar">
 
-  <div class="hero-inner">
+  <div class="toolbar-inner">
+
+    <div class="archive-name">
+      Turning Points
+    </div>
+
+
+    <div class="search-wrap">
+
+      <input
+        type="search"
+        id="archiveSearch"
+        placeholder="Search events, places, dates or keywords..."
+        autocomplete="off"
+        aria-label="Search Turning Points"
+      >
+
+      <span
+        class="search-icon"
+        aria-hidden="true"
+      ></span>
+
+    </div>
+
+
+    <div
+      class="result-count"
+      id="resultCount"
+    >
+      18 events
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================
+     SIMPLE INTRO
+======================================================== -->
+
+<section class="archive-intro">
+
+  <div class="archive-intro-inner">
 
     <h1>
       Turning<br>
@@ -3965,6 +1456,8 @@ footer span{
     <p>
       Revolutions, collapses, treaties and moments
       after which the world was no longer the same.
+      Explore the archive from the present to the
+      ancient world.
     </p>
 
   </div>
@@ -3973,645 +1466,424 @@ footer span{
 
 
 <!-- ========================================================
-     STICKY PERIOD CARDS
+     ONE CONTINUOUS ARCHIVE
 ======================================================== -->
 
-<nav
-  class="period-nav"
-  aria-label="Historical periods"
+<section class="archive">
+
+<div
+  class="story-grid"
+  id="storyGrid"
 >
 
-  <div class="period-grid">
 
+<!-- ARAB UPRISINGS -->
 
-    <a
-      href="#contemporary"
-      class="period-card active"
-      data-target="contemporary"
-    >
-      <small>2000 — Today</small>
-      <strong>Contemporary</strong>
-    </a>
-
-
-    <a
-      href="#twentieth"
-      class="period-card"
-      data-target="twentieth"
-    >
-      <small>1900 — 2000</small>
-      <strong>20th Century</strong>
-    </a>
-
-
-    <a
-      href="#nineteenth"
-      class="period-card"
-      data-target="nineteenth"
-    >
-      <small>1800 — 1900</small>
-      <strong>19th Century</strong>
-    </a>
-
-
-    <a
-      href="#early-modern"
-      class="period-card"
-      data-target="early-modern"
-    >
-      <small>1500 — 1800</small>
-      <strong>Early Modern</strong>
-    </a>
-
-
-    <a
-      href="#medieval"
-      class="period-card"
-      data-target="medieval"
-    >
-      <small>500 — 1500</small>
-      <strong>Medieval</strong>
-    </a>
-
-
-    <a
-      href="#ancient"
-      class="period-card"
-      data-target="ancient"
-    >
-      <small>Before 500 CE</small>
-      <strong>Ancient</strong>
-    </a>
-
-
-  </div>
-
-</nav>
-
-
-<!-- ========================================================
-     ARCHIVE
-======================================================== -->
-
-<div class="archive">
-
-
-<!-- ========================================================
-     CONTEMPORARY
-======================================================== -->
-
-<section
-  class="era"
-  id="contemporary"
+<article
+  class="story lead reveal"
+  data-search="arab uprisings 2010 2011 mena middle east north africa arab spring revolution protests politics tunisia egypt syria libya"
 >
-
-  <header class="era-heading">
-
-    <h2>
-      Contemporary
-    </h2>
-
-    <span>
-      2000 — Today
-    </span>
-
-  </header>
-
-
-  <div class="topic-layout">
-
-
-    <article
-      class="topic lead reveal"
-      data-year="2001"
-      data-modal="september11"
-    >
-
-      <div class="topic-meta">
-        <span class="topic-date">2001</span>
-        <span class="topic-place">United States</span>
-      </div>
-
-      <h3>
-        September 11
-      </h3>
-
-      <p>
-        The attacks transformed international
-        security agendas and were followed by major
-        military, political and legal consequences.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">2010–2011</span>
-        <span class="topic-place">MENA</span>
-      </div>
-
-      <h3>
-        Arab Uprisings
-      </h3>
-
-      <p>
-        Mass protests challenged political systems
-        across the Middle East and North Africa.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">2008</span>
-        <span class="topic-place">Global</span>
-      </div>
-
-      <h3>
-        Global Financial Crisis
-      </h3>
-
-      <p>
-        A financial shock with lasting economic,
-        political and institutional consequences.
-      </p>
-
-    </article>
-
-
+  <div class="story-meta">
+    <span class="story-date">2010–2011</span>
+    <i></i>
+    <span>MENA</span>
   </div>
 
-</section>
+  <h2>Arab Uprisings</h2>
+
+  <p>
+    Mass protests challenged political systems
+    across the Middle East and North Africa.
+  </p>
+</article>
 
 
-<!-- ========================================================
-     20TH CENTURY
-======================================================== -->
+<!-- GLOBAL FINANCIAL CRISIS -->
 
-<section
-  class="era"
-  id="twentieth"
+<article
+  class="story reveal"
+  data-search="global financial crisis 2008 global economy finance recession banking economic crisis"
 >
-
-  <header class="era-heading">
-
-    <h2>
-      20th Century
-    </h2>
-
-    <span>
-      1900 — 2000
-    </span>
-
-  </header>
-
-
-  <div class="topic-layout">
-
-
-    <article
-      class="topic lead reveal"
-      data-year="1989"
-    >
-
-      <div class="topic-meta">
-        <span class="topic-date">1989</span>
-        <span class="topic-place">Berlin</span>
-      </div>
-
-      <h3>
-        Fall of the Berlin Wall
-      </h3>
-
-      <p>
-        The opening of the Wall became one of the
-        defining symbols of the collapse of communist
-        regimes in Eastern Europe.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">1939–1945</span>
-        <span class="topic-place">Global</span>
-      </div>
-
-      <h3>
-        Second World War
-      </h3>
-
-      <p>
-        Global warfare transformed borders,
-        societies and the international order.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">1917</span>
-        <span class="topic-place">Russia</span>
-      </div>
-
-      <h3>
-        Russian Revolution
-      </h3>
-
-      <p>
-        Revolution ended imperial rule and
-        ultimately produced the Soviet Union.
-      </p>
-
-    </article>
-
-
+  <div class="story-meta">
+    <span class="story-date">2008</span>
+    <i></i>
+    <span>Global</span>
   </div>
 
-</section>
+  <h2>Global Financial Crisis</h2>
+
+  <p>
+    A financial shock with lasting economic,
+    political and institutional consequences.
+  </p>
+</article>
 
 
-<!-- ========================================================
-     19TH CENTURY
-======================================================== -->
+<!-- SEPTEMBER 11 -->
 
-<section
-  class="era"
-  id="nineteenth"
+<article
+  class="story reveal"
+  data-modal="september11"
+  data-search="september 11 9/11 2001 united states new york terrorism security war on terror afghanistan al qaeda"
 >
-
-  <header class="era-heading">
-
-    <h2>
-      19th Century
-    </h2>
-
-    <span>
-      1800 — 1900
-    </span>
-
-  </header>
-
-
-  <div class="topic-layout">
-
-
-    <article
-      class="topic lead reveal"
-      data-year="1868"
-    >
-
-      <div class="topic-meta">
-        <span class="topic-date">1868</span>
-        <span class="topic-place">Japan</span>
-      </div>
-
-      <h3>
-        Meiji Restoration
-      </h3>
-
-      <p>
-        Political transformation accelerated
-        centralisation, industrialisation and
-        Japan's emergence as a major modern power.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">1848</span>
-        <span class="topic-place">Europe</span>
-      </div>
-
-      <h3>
-        Revolutions of 1848
-      </h3>
-
-      <p>
-        A wave of uprisings placed nationalism,
-        constitutionalism and social reform at the
-        centre of political struggles.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">1814–1815</span>
-        <span class="topic-place">Vienna</span>
-      </div>
-
-      <h3>
-        Congress of Vienna
-      </h3>
-
-      <p>
-        European powers constructed a new
-        post-Napoleonic political settlement.
-      </p>
-
-    </article>
-
-
+  <div class="story-meta">
+    <span class="story-date">2001</span>
+    <i></i>
+    <span>United States</span>
   </div>
 
-</section>
+  <h2>September 11</h2>
+
+  <p>
+    The attacks transformed international security
+    agendas and were followed by major military,
+    political and legal consequences.
+  </p>
+</article>
 
 
-<!-- ========================================================
-     EARLY MODERN
-======================================================== -->
+<!-- BERLIN WALL -->
 
-<section
-  class="era"
-  id="early-modern"
+<article
+  class="story reveal"
+  data-search="fall berlin wall 1989 berlin germany cold war communism eastern europe soviet collapse"
 >
-
-  <header class="era-heading">
-
-    <h2>
-      Early Modern
-    </h2>
-
-    <span>
-      1500 — 1800
-    </span>
-
-  </header>
-
-
-  <div class="topic-layout">
-
-
-    <article
-      class="topic lead reveal"
-      data-year="1776"
-    >
-
-      <div class="topic-meta">
-        <span class="topic-date">1776</span>
-        <span class="topic-place">North America</span>
-      </div>
-
-      <h3>
-        American Independence
-      </h3>
-
-      <p>
-        The break with Britain created a new
-        republic and influenced later debates
-        about sovereignty and revolution.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">1648</span>
-        <span class="topic-place">Europe</span>
-      </div>
-
-      <h3>
-        Peace of Westphalia
-      </h3>
-
-      <p>
-        The settlements ending the Thirty Years'
-        War became a major reference point in
-        histories of the European state system.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">1517</span>
-        <span class="topic-place">Europe</span>
-      </div>
-
-      <h3>
-        Protestant Reformation
-      </h3>
-
-      <p>
-        Religious fragmentation reshaped authority
-        and politics across Europe.
-      </p>
-
-    </article>
-
-
+  <div class="story-meta">
+    <span class="story-date">1989</span>
+    <i></i>
+    <span>Berlin</span>
   </div>
 
-</section>
+  <h2>Fall of the Berlin Wall</h2>
+
+  <p>
+    The opening of the Wall became one of the defining
+    symbols of the collapse of communist regimes in
+    Eastern Europe.
+  </p>
+</article>
 
 
-<!-- ========================================================
-     MEDIEVAL
-======================================================== -->
+<!-- SECOND WORLD WAR -->
 
-<section
-  class="era"
-  id="medieval"
+<article
+  class="story feature reveal"
+  data-search="second world war world war ii ww2 1939 1945 global europe asia conflict war nazism fascism allies axis"
 >
-
-  <header class="era-heading">
-
-    <h2>
-      Medieval
-    </h2>
-
-    <span>
-      500 — 1500
-    </span>
-
-  </header>
-
-
-  <div class="topic-layout">
-
-
-    <article
-      class="topic lead reveal"
-      data-year="1453"
-    >
-
-      <div class="topic-meta">
-        <span class="topic-date">1453</span>
-        <span class="topic-place">Constantinople</span>
-      </div>
-
-      <h3>
-        Fall of Constantinople
-      </h3>
-
-      <p>
-        Ottoman forces captured the Byzantine
-        capital, transforming the political order
-        of the eastern Mediterranean.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">1206</span>
-        <span class="topic-place">Mongolia</span>
-      </div>
-
-      <h3>
-        Rise of the Mongol Empire
-      </h3>
-
-      <p>
-        The unification associated with Genghis Khan
-        preceded the creation of the largest contiguous
-        land empire in history.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">622</span>
-        <span class="topic-place">Arabia</span>
-      </div>
-
-      <h3>
-        The Hijra
-      </h3>
-
-      <p>
-        Muhammad's migration from Mecca to Medina
-        marked a foundational political and religious
-        moment in Islamic history.
-      </p>
-
-    </article>
-
-
+  <div class="story-meta">
+    <span class="story-date">1939–1945</span>
+    <i></i>
+    <span>Global</span>
   </div>
 
-</section>
+  <h2>Second World War</h2>
+
+  <p>
+    Global warfare transformed borders, societies
+    and the international order.
+  </p>
+</article>
 
 
-<!-- ========================================================
-     ANCIENT
-======================================================== -->
+<!-- RUSSIAN REVOLUTION -->
 
-<section
-  class="era"
-  id="ancient"
+<article
+  class="story reveal"
+  data-search="russian revolution 1917 russia soviet union communism bolshevik revolution lenin empire"
 >
-
-  <header class="era-heading">
-
-    <h2>
-      Ancient
-    </h2>
-
-    <span>
-      Before 500 CE
-    </span>
-
-  </header>
-
-
-  <div class="topic-layout">
-
-
-    <article
-      class="topic lead reveal"
-      data-year="539"
-      data-modal="babylon"
-    >
-
-      <div class="topic-meta">
-        <span class="topic-date">539 BCE</span>
-        <span class="topic-place">Babylon</span>
-      </div>
-
-      <h3>
-        Fall of Babylon
-      </h3>
-
-      <p>
-        Cyrus the Great entered Babylon and
-        incorporated one of the ancient world's
-        most powerful kingdoms into the
-        Achaemenid Empire.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">334–323 BCE</span>
-        <span class="topic-place">Eurasia</span>
-      </div>
-
-      <h3>
-        Alexander's Conquests
-      </h3>
-
-      <p>
-        Rapid imperial expansion connected
-        political and cultural worlds from
-        Greece to Central and South Asia.
-      </p>
-
-    </article>
-
-
-    <article class="topic reveal">
-
-      <div class="topic-meta">
-        <span class="topic-date">490–479 BCE</span>
-        <span class="topic-place">Greece</span>
-      </div>
-
-      <h3>
-        Greco-Persian Wars
-      </h3>
-
-      <p>
-        A confrontation with lasting political
-        and cultural consequences across the
-        eastern Mediterranean.
-      </p>
-
-    </article>
-
-
+  <div class="story-meta">
+    <span class="story-date">1917</span>
+    <i></i>
+    <span>Russia</span>
   </div>
 
-</section>
+  <h2>Russian Revolution</h2>
+
+  <p>
+    Revolution ended imperial rule and ultimately
+    produced the Soviet Union.
+  </p>
+</article>
+
+
+<!-- MEIJI -->
+
+<article
+  class="story reveal"
+  data-search="meiji restoration 1868 japan industrialisation modernization empire asia political transformation"
+>
+  <div class="story-meta">
+    <span class="story-date">1868</span>
+    <i></i>
+    <span>Japan</span>
+  </div>
+
+  <h2>Meiji Restoration</h2>
+
+  <p>
+    Political transformation accelerated
+    centralisation, industrialisation and Japan's
+    emergence as a major modern power.
+  </p>
+</article>
+
+
+<!-- 1848 -->
+
+<article
+  class="story reveal"
+  data-search="revolutions 1848 europe nationalism constitutionalism social reform uprising revolution"
+>
+  <div class="story-meta">
+    <span class="story-date">1848</span>
+    <i></i>
+    <span>Europe</span>
+  </div>
+
+  <h2>Revolutions of 1848</h2>
+
+  <p>
+    A wave of uprisings placed nationalism,
+    constitutionalism and social reform at the
+    centre of political struggles.
+  </p>
+</article>
+
+
+<!-- VIENNA -->
+
+<article
+  class="story reveal"
+  data-search="congress vienna 1814 1815 europe diplomacy napoleon napoleonic balance power international order"
+>
+  <div class="story-meta">
+    <span class="story-date">1814–1815</span>
+    <i></i>
+    <span>Vienna</span>
+  </div>
+
+  <h2>Congress of Vienna</h2>
+
+  <p>
+    European powers constructed a new
+    post-Napoleonic political settlement.
+  </p>
+</article>
+
+
+<!-- AMERICAN INDEPENDENCE -->
+
+<article
+  class="story feature reveal"
+  data-search="american independence 1776 north america united states revolution britain sovereignty republic"
+>
+  <div class="story-meta">
+    <span class="story-date">1776</span>
+    <i></i>
+    <span>North America</span>
+  </div>
+
+  <h2>American Independence</h2>
+
+  <p>
+    The break with Britain created a new republic
+    and influenced later debates about sovereignty
+    and revolution.
+  </p>
+</article>
+
+
+<!-- WESTPHALIA -->
+
+<article
+  class="story reveal"
+  data-search="peace westphalia 1648 europe thirty years war diplomacy sovereignty state system treaty"
+>
+  <div class="story-meta">
+    <span class="story-date">1648</span>
+    <i></i>
+    <span>Europe</span>
+  </div>
+
+  <h2>Peace of Westphalia</h2>
+
+  <p>
+    The settlements ending the Thirty Years' War
+    became a major reference point in histories
+    of the European state system.
+  </p>
+</article>
+
+
+<!-- REFORMATION -->
+
+<article
+  class="story reveal"
+  data-search="protestant reformation 1517 europe religion christianity luther church politics religious fragmentation"
+>
+  <div class="story-meta">
+    <span class="story-date">1517</span>
+    <i></i>
+    <span>Europe</span>
+  </div>
+
+  <h2>Protestant Reformation</h2>
+
+  <p>
+    Religious fragmentation reshaped authority
+    and politics across Europe.
+  </p>
+</article>
+
+
+<!-- CONSTANTINOPLE -->
+
+<article
+  class="story reveal"
+  data-search="fall constantinople 1453 ottoman empire byzantine empire mehmed conquest istanbul mediterranean"
+>
+  <div class="story-meta">
+    <span class="story-date">1453</span>
+    <i></i>
+    <span>Constantinople</span>
+  </div>
+
+  <h2>Fall of Constantinople</h2>
+
+  <p>
+    Ottoman forces captured the Byzantine capital,
+    transforming the political order of the eastern
+    Mediterranean.
+  </p>
+</article>
+
+
+<!-- MONGOL -->
+
+<article
+  class="story reveal"
+  data-search="rise mongol empire 1206 mongolia genghis khan empire asia conquest eurasia"
+>
+  <div class="story-meta">
+    <span class="story-date">1206</span>
+    <i></i>
+    <span>Mongolia</span>
+  </div>
+
+  <h2>Rise of the Mongol Empire</h2>
+
+  <p>
+    The unification associated with Genghis Khan
+    preceded the creation of the largest contiguous
+    land empire in history.
+  </p>
+</article>
+
+
+<!-- HIJRA -->
+
+<article
+  class="story reveal"
+  data-search="hijra 622 arabia mecca medina muhammad islam islamic history migration religion politics"
+>
+  <div class="story-meta">
+    <span class="story-date">622</span>
+    <i></i>
+    <span>Arabia</span>
+  </div>
+
+  <h2>The Hijra</h2>
+
+  <p>
+    Muhammad's migration from Mecca to Medina
+    marked a foundational political and religious
+    moment in Islamic history.
+  </p>
+</article>
+
+
+<!-- BABYLON -->
+
+<article
+  class="story feature reveal"
+  data-modal="babylon"
+  data-search="fall babylon 539 bce mesopotamia persia achaemenid empire cyrus cyrus the great ancient conquest"
+>
+  <div class="story-meta">
+    <span class="story-date">539 BCE</span>
+    <i></i>
+    <span>Babylon</span>
+  </div>
+
+  <h2>Fall of Babylon</h2>
+
+  <p>
+    Cyrus the Great entered Babylon and incorporated
+    one of the ancient world's most powerful kingdoms
+    into the Achaemenid Empire.
+  </p>
+</article>
+
+
+<!-- ALEXANDER -->
+
+<article
+  class="story reveal"
+  data-search="alexander conquests 334 323 bce alexander the great macedonia greece persia eurasia central asia empire"
+>
+  <div class="story-meta">
+    <span class="story-date">334–323 BCE</span>
+    <i></i>
+    <span>Eurasia</span>
+  </div>
+
+  <h2>Alexander's Conquests</h2>
+
+  <p>
+    Rapid imperial expansion connected political
+    and cultural worlds from Greece to Central
+    and South Asia.
+  </p>
+</article>
+
+
+<!-- GRECO PERSIAN -->
+
+<article
+  class="story reveal"
+  data-search="greco persian wars 490 479 bce greece persia achaemenid empire mediterranean war ancient"
+>
+  <div class="story-meta">
+    <span class="story-date">490–479 BCE</span>
+    <i></i>
+    <span>Greece</span>
+  </div>
+
+  <h2>Greco-Persian Wars</h2>
+
+  <p>
+    A confrontation with lasting political
+    and cultural consequences across the
+    eastern Mediterranean.
+  </p>
+</article>
 
 
 </div>
+
+
+<div
+  class="no-results"
+  id="noResults"
+>
+  <strong>No matching turning points</strong>
+
+  <span>
+    Try another event, place, date or keyword.
+  </span>
+</div>
+
+</section>
 
 </main>
 
@@ -4632,7 +1904,7 @@ footer span{
 
 
 <!-- ========================================================
-     MODAL
+     FULL SCREEN MODAL
 ======================================================== -->
 
 <div
@@ -4651,12 +1923,13 @@ footer span{
     class="modal-panel"
     role="dialog"
     aria-modal="true"
+    aria-labelledby="modalTitle"
   >
 
     <button
       class="modal-close"
       data-close
-      aria-label="Close"
+      aria-label="Close article"
     >
       ×
     </button>
@@ -4665,6 +1938,8 @@ footer span{
     <div class="modal-meta">
 
       <span id="modalDate"></span>
+
+      <i></i>
 
       <span id="modalPlace"></span>
 
@@ -4682,19 +1957,14 @@ footer span{
 
     <div class="modal-content">
 
-
       <div class="modal-copy">
 
-        <h3>
-          What happened?
-        </h3>
+        <h3>What happened?</h3>
 
         <p id="modalWhat"></p>
 
 
-        <h3>
-          Why does it matter?
-        </h3>
+        <h3>Why does it matter?</h3>
 
         <p id="modalWhy"></p>
 
@@ -4706,7 +1976,6 @@ footer span{
         id="modalFacts"
       ></aside>
 
-
     </div>
 
   </div>
@@ -4717,8 +1986,122 @@ footer span{
 <script>
 
 /* ==========================================================
-   ATHAR — TURNING POINTS JS
+   ATHAR — TURNING POINTS
 ========================================================== */
+
+
+/* ==========================================================
+   LIVE SEARCH
+========================================================== */
+
+const searchInput =
+  document.getElementById("archiveSearch");
+
+const stories =
+  [...document.querySelectorAll(".story")];
+
+const resultCount =
+  document.getElementById("resultCount");
+
+const noResults =
+  document.getElementById("noResults");
+
+
+function normalizeText(value){
+
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .trim();
+
+}
+
+
+function updateCount(count){
+
+  resultCount.textContent =
+    `${count} ${count === 1 ? "event" : "events"}`;
+
+}
+
+
+function filterArchive(){
+
+  const query =
+    normalizeText(searchInput.value);
+
+
+  let visible = 0;
+
+
+  stories.forEach(story => {
+
+    const searchable =
+      normalizeText(
+        `${story.textContent} ${story.dataset.search || ""}`
+      );
+
+
+    const terms =
+      query
+        .split(/\s+/)
+        .filter(Boolean);
+
+
+    const matches =
+      terms.every(term =>
+        searchable.includes(term)
+      );
+
+
+    story.classList.toggle(
+      "hidden",
+      !matches
+    );
+
+
+    if(matches){
+
+      visible++;
+
+      if(query){
+
+        story.classList.remove(
+          "search-match"
+        );
+
+        void story.offsetWidth;
+
+        story.classList.add(
+          "search-match"
+        );
+
+      }
+
+    }
+
+  });
+
+
+  updateCount(visible);
+
+
+  noResults.classList.toggle(
+    "visible",
+    visible === 0
+  );
+
+}
+
+
+searchInput.addEventListener(
+  "input",
+  filterArchive
+);
+
+
+updateCount(stories.length);
 
 
 /* ==========================================================
@@ -4752,7 +2135,7 @@ const revealObserver =
     },
 
     {
-      threshold:.12
+      threshold:.08
     }
 
   );
@@ -4766,138 +2149,10 @@ revealItems.forEach(item => {
 
 
 /* ==========================================================
-   STICKY PERIOD MENU — ACTIVE SECTION
-========================================================== */
-
-const eras =
-  document.querySelectorAll(".era");
-
-
-const periodCards =
-  document.querySelectorAll(".period-card");
-
-
-const eraObserver =
-  new IntersectionObserver(
-
-    entries => {
-
-      entries.forEach(entry => {
-
-        if(!entry.isIntersecting){
-          return;
-        }
-
-
-        periodCards.forEach(card => {
-
-          card.classList.remove("active");
-
-        });
-
-
-        const activeCard =
-          document.querySelector(
-            `.period-card[data-target="${entry.target.id}"]`
-          );
-
-
-        if(activeCard){
-
-          activeCard.classList.add("active");
-
-        }
-
-      });
-
-    },
-
-    {
-      rootMargin:
-        "-25% 0px -60% 0px"
-    }
-
-  );
-
-
-eras.forEach(era => {
-
-  eraObserver.observe(era);
-
-});
-
-
-/* ==========================================================
-   PERIOD MENU CLICK
-========================================================== */
-
-periodCards.forEach(card => {
-
-  card.addEventListener(
-    "click",
-    event => {
-
-      event.preventDefault();
-
-
-      const target =
-        document.getElementById(
-          card.dataset.target
-        );
-
-
-      if(target){
-
-        target.scrollIntoView({
-          behavior:"smooth",
-          block:"start"
-        });
-
-      }
-
-    }
-  );
-
-});
-
-
-/* ==========================================================
-   MODAL CONTENT
-
-   Add future full topics here.
+   MODAL DATA
 ========================================================== */
 
 const topicData = {
-
-  babylon:{
-
-    title:
-      "Fall of Babylon",
-
-    date:
-      "539 BCE",
-
-    place:
-      "Babylon",
-
-    lead:
-      "In 539 BCE, Babylon passed into the hands of Cyrus II of Persia, ending the Neo-Babylonian Empire and incorporating its territories into the Achaemenid Empire.",
-
-    what:
-      "Cyrus II's forces defeated the Babylonian kingdom during a campaign that culminated in the Persian occupation of Babylon. The city subsequently became part of a much larger imperial structure.",
-
-    why:
-      "The conquest represented a major shift in the political balance of the ancient Near East. Babylon remained an important centre, while imperial power passed to the expanding Achaemenid state.",
-
-    facts:[
-      ["Region","Mesopotamia"],
-      ["Polity","Neo-Babylonian Empire"],
-      ["Successor","Achaemenid Empire"],
-      ["Associated figure","Cyrus II"]
-    ]
-
-  },
-
 
   september11:{
 
@@ -4926,6 +2181,36 @@ const topicData = {
       ["Period","Contemporary"]
     ]
 
+  },
+
+
+  babylon:{
+
+    title:
+      "Fall of Babylon",
+
+    date:
+      "539 BCE",
+
+    place:
+      "Babylon",
+
+    lead:
+      "In 539 BCE, Babylon passed into the hands of Cyrus II of Persia, ending the Neo-Babylonian Empire and incorporating its territories into the Achaemenid Empire.",
+
+    what:
+      "Cyrus II's forces defeated the Babylonian kingdom during a campaign that culminated in the Persian occupation of Babylon. The city subsequently became part of a much larger imperial structure.",
+
+    why:
+      "The conquest represented a major shift in the political balance of the ancient Near East. Babylon remained an important centre, while imperial power passed to the expanding Achaemenid state.",
+
+    facts:[
+      ["Region","Mesopotamia"],
+      ["Polity","Neo-Babylonian Empire"],
+      ["Successor","Achaemenid Empire"],
+      ["Associated figure","Cyrus II"]
+    ]
+
   }
 
 };
@@ -4937,7 +2222,6 @@ const topicData = {
 
 const modal =
   document.getElementById("topicModal");
-
 
 const modalTitle =
   document.getElementById("modalTitle");
@@ -5022,7 +2306,6 @@ function openModal(key){
 
 
     block.appendChild(label);
-
     block.appendChild(value);
 
     modalFacts.appendChild(block);
@@ -5067,19 +2350,19 @@ function closeModal(){
 
 
 /* ==========================================================
-   TOPIC CLICKS
+   CLICKABLE STORIES
 ========================================================== */
 
 document
   .querySelectorAll("[data-modal]")
-  .forEach(topic => {
+  .forEach(story => {
 
-    topic.addEventListener(
+    story.addEventListener(
       "click",
       () => {
 
         openModal(
-          topic.dataset.modal
+          story.dataset.modal
         );
 
       }
@@ -5094,9 +2377,9 @@ document
 
 document
   .querySelectorAll("[data-close]")
-  .forEach(element => {
+  .forEach(control => {
 
-    element.addEventListener(
+    control.addEventListener(
       "click",
       closeModal
     );
@@ -5112,9 +2395,7 @@ document.addEventListener(
       event.key === "Escape" &&
       modal.classList.contains("open")
     ){
-
       closeModal();
-
     }
 
   }
