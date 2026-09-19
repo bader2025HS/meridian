@@ -1565,6 +1565,580 @@ footer span{
 
 }
 
+
+
+   /* ==========================================================
+   ATHAR — TURNING POINTS
+   HERO + ARCHIVE BALANCE FIX
+
+   PERIOD MENU IS INTENTIONALLY UNTOUCHED
+========================================================== */
+
+
+/* ==========================================================
+   SHORTER HERO
+========================================================== */
+
+.hero{
+  min-height:360px !important;
+
+  padding:
+    65px var(--edge)
+    62px !important;
+
+  align-items:center !important;
+}
+
+
+/* remove giant TURNING background word */
+
+.hero::after{
+  display:none !important;
+}
+
+
+.hero-inner{
+  grid-template-columns:
+    1fr .72fr !important;
+
+  gap:80px !important;
+
+  align-items:end !important;
+}
+
+
+.hero h1{
+  font-size:
+    clamp(4.5rem,7vw,7rem) !important;
+
+  line-height:.78 !important;
+}
+
+
+.hero p{
+  max-width:500px !important;
+
+  margin-bottom:4px !important;
+
+  font-size:.98rem !important;
+}
+
+
+/* ==========================================================
+   ARCHIVE — SLIGHTLY MORE COMPACT
+========================================================== */
+
+.archive{
+  padding-top:85px !important;
+}
+
+
+.era{
+  margin-bottom:125px !important;
+}
+
+
+/* ==========================================================
+   ERA HEADER
+========================================================== */
+
+.era-heading{
+  margin-bottom:45px !important;
+}
+
+
+.era-heading h2{
+  font-size:
+    clamp(3.8rem,5.4vw,6rem) !important;
+}
+
+
+/* ==========================================================
+   CLEAN 12 COLUMN GRID
+========================================================== */
+
+.topic-layout{
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(12,minmax(0,1fr)) !important;
+
+  grid-template-rows:
+    repeat(2,minmax(190px,auto)) !important;
+
+  gap:
+    22px 44px !important;
+
+  align-items:stretch !important;
+}
+
+
+/* ==========================================================
+   RESET ALL TOPIC POSITIONING
+
+   Same geometry for every historical era.
+========================================================== */
+
+.topic,
+#contemporary .topic,
+#twentieth .topic,
+#nineteenth .topic,
+#early-modern .topic,
+#medieval .topic,
+#ancient .topic{
+
+  margin:0 !important;
+
+  min-height:0 !important;
+}
+
+
+/* ==========================================================
+   FEATURED TOPIC
+   LEFT 7 COLUMNS / FULL HEIGHT
+========================================================== */
+
+.topic.lead,
+#contemporary .lead,
+#twentieth .lead,
+#nineteenth .lead,
+#early-modern .lead,
+#medieval .lead,
+#ancient .lead{
+
+  grid-column:
+    1 / span 7 !important;
+
+  grid-row:
+    1 / span 2 !important;
+
+  min-height:430px !important;
+
+  padding:
+    36px 38px !important;
+
+  display:flex !important;
+
+  flex-direction:column !important;
+
+  justify-content:flex-end !important;
+}
+
+
+/* ==========================================================
+   REMOVE GIANT BACKGROUND DATE
+========================================================== */
+
+.topic.lead::before,
+#contemporary .lead::before,
+#twentieth .lead::before,
+#nineteenth .lead::before,
+#early-modern .lead::before,
+#medieval .lead::before,
+#ancient .lead::before{
+
+  display:none !important;
+  content:none !important;
+}
+
+
+/* ==========================================================
+   FEATURE META
+========================================================== */
+
+.topic.lead .topic-meta{
+
+  position:absolute !important;
+
+  top:32px !important;
+  left:38px !important;
+  right:38px !important;
+}
+
+
+/* ==========================================================
+   FEATURE TITLE
+========================================================== */
+
+.topic.lead h3{
+
+  max-width:720px !important;
+
+  font-size:
+    clamp(3.5rem,4.8vw,5.4rem) !important;
+
+  line-height:.82 !important;
+}
+
+
+/* ==========================================================
+   FEATURE DESCRIPTION
+========================================================== */
+
+.topic.lead p{
+
+  max-width:560px !important;
+
+  margin-top:22px !important;
+}
+
+
+/* ==========================================================
+   SECOND TOPIC
+   TOP RIGHT
+========================================================== */
+
+.topic:nth-child(2),
+#contemporary .topic:nth-child(2),
+#twentieth .topic:nth-child(2),
+#nineteenth .topic:nth-child(2),
+#early-modern .topic:nth-child(2),
+#medieval .topic:nth-child(2),
+#ancient .topic:nth-child(2){
+
+  grid-column:
+    8 / span 5 !important;
+
+  grid-row:
+    1 !important;
+
+  margin:0 !important;
+
+  padding:
+    28px 0 !important;
+
+  display:flex !important;
+
+  flex-direction:column !important;
+
+  justify-content:center !important;
+
+  border-top:
+    1px solid rgba(18,40,75,.18) !important;
+}
+
+
+/* ==========================================================
+   THIRD TOPIC
+   BOTTOM RIGHT
+========================================================== */
+
+.topic:nth-child(3),
+#contemporary .topic:nth-child(3),
+#twentieth .topic:nth-child(3),
+#nineteenth .topic:nth-child(3),
+#early-modern .topic:nth-child(3),
+#medieval .topic:nth-child(3),
+#ancient .topic:nth-child(3){
+
+  grid-column:
+    8 / span 5 !important;
+
+  grid-row:
+    2 !important;
+
+  margin:0 !important;
+
+  padding:
+    28px 0 !important;
+
+  display:flex !important;
+
+  flex-direction:column !important;
+
+  justify-content:center !important;
+
+  border-top:
+    1px solid rgba(18,40,75,.18) !important;
+}
+
+
+/* ==========================================================
+   RIGHT-SIDE TITLES
+========================================================== */
+
+.topic:nth-child(2) h3,
+.topic:nth-child(3) h3{
+
+  max-width:540px !important;
+
+  font-size:
+    clamp(2.25rem,3vw,3.35rem) !important;
+
+  line-height:.88 !important;
+}
+
+
+/* ==========================================================
+   RIGHT-SIDE DESCRIPTIONS
+========================================================== */
+
+.topic:nth-child(2) p,
+.topic:nth-child(3) p{
+
+  max-width:510px !important;
+
+  margin-top:16px !important;
+
+  font-size:.78rem !important;
+
+  line-height:1.6 !important;
+}
+
+
+/* ==========================================================
+   FOURTH TOPIC ONWARD
+
+   Future topics form a compact row underneath.
+========================================================== */
+
+.topic:nth-child(n+4),
+#contemporary .topic:nth-child(n+4),
+#twentieth .topic:nth-child(n+4),
+#nineteenth .topic:nth-child(n+4),
+#early-modern .topic:nth-child(n+4),
+#medieval .topic:nth-child(n+4),
+#ancient .topic:nth-child(n+4){
+
+  grid-column:
+    span 3 !important;
+
+  grid-row:auto !important;
+
+  margin:15px 0 0 !important;
+
+  padding:
+    24px 0
+    28px !important;
+
+  border-top:
+    1px solid rgba(18,40,75,.16) !important;
+}
+
+
+/* ==========================================================
+   KEEP FEATURE COLOUR BUT MAKE IT LIGHTER / CLEANER
+========================================================== */
+
+#contemporary .lead{
+  background:#eee8cb !important;
+}
+
+#twentieth .lead{
+  background:#e4e4ed !important;
+}
+
+#nineteenth .lead{
+  background:#eadbd9 !important;
+}
+
+#early-modern .lead{
+  background:#deebe6 !important;
+}
+
+#medieval .lead{
+  background:#ece4da !important;
+}
+
+#ancient .lead{
+  background:#dde9ef !important;
+}
+
+
+/* ==========================================================
+   REMOVE EXCESSIVE HOVER FADING
+========================================================== */
+
+.topic-layout:has(.topic:hover)
+.topic:not(:hover){
+
+  opacity:.72 !important;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media(max-width:950px){
+
+  .hero{
+    min-height:330px !important;
+  }
+
+
+  .hero-inner{
+    grid-template-columns:
+      1fr 1fr !important;
+
+    gap:45px !important;
+  }
+
+
+  .topic-layout{
+
+    grid-template-columns:
+      repeat(2,1fr) !important;
+
+    grid-template-rows:auto !important;
+
+    gap:
+      0 38px !important;
+  }
+
+
+  .topic.lead,
+  #contemporary .lead,
+  #twentieth .lead,
+  #nineteenth .lead,
+  #early-modern .lead,
+  #medieval .lead,
+  #ancient .lead{
+
+    grid-column:
+      1 / -1 !important;
+
+    grid-row:auto !important;
+
+    min-height:350px !important;
+
+    margin-bottom:20px !important;
+  }
+
+
+  .topic:nth-child(n+2),
+  #contemporary .topic:nth-child(n+2),
+  #twentieth .topic:nth-child(n+2),
+  #nineteenth .topic:nth-child(n+2),
+  #early-modern .topic:nth-child(n+2),
+  #medieval .topic:nth-child(n+2),
+  #ancient .topic:nth-child(n+2){
+
+    grid-column:auto !important;
+
+    grid-row:auto !important;
+
+    margin:0 !important;
+
+    min-height:180px !important;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:650px){
+
+  .hero{
+
+    min-height:320px !important;
+
+    padding:
+      55px 5%
+      50px !important;
+  }
+
+
+  .hero-inner{
+
+    display:block !important;
+  }
+
+
+  .hero h1{
+
+    font-size:
+      clamp(4rem,18vw,5.4rem) !important;
+  }
+
+
+  .hero p{
+
+    margin-top:35px !important;
+
+    max-width:420px !important;
+  }
+
+
+  .archive{
+
+    padding-top:
+      60px !important;
+  }
+
+
+  .era{
+
+    margin-bottom:
+      90px !important;
+  }
+
+
+  .topic-layout{
+
+    display:block !important;
+  }
+
+
+  .topic.lead,
+  #contemporary .lead,
+  #twentieth .lead,
+  #nineteenth .lead,
+  #early-modern .lead,
+  #medieval .lead,
+  #ancient .lead{
+
+    min-height:
+      300px !important;
+
+    margin-bottom:
+      10px !important;
+
+    padding:
+      30px 24px !important;
+  }
+
+
+  .topic.lead .topic-meta{
+
+    top:
+      24px !important;
+
+    left:
+      24px !important;
+
+    right:
+      24px !important;
+  }
+
+
+  .topic:nth-child(n+2),
+  #contemporary .topic:nth-child(n+2),
+  #twentieth .topic:nth-child(n+2),
+  #nineteenth .topic:nth-child(n+2),
+  #early-modern .topic:nth-child(n+2),
+  #medieval .topic:nth-child(n+2),
+  #ancient .topic:nth-child(n+2){
+
+    min-height:0 !important;
+
+    padding:
+      25px 0
+      28px !important;
+  }
+
+}
+
+
+
+
+
+
+
+   
 </style>
 </head>
 
