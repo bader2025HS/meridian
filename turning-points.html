@@ -1519,24 +1519,32 @@ button{
 
 
 
+
+
+
+
+
+
+
+
    /* ==========================================================
    ATHAR — TURNING POINTS
-   SCALABLE EDITORIAL ARCHIVE
-   FINAL OVERRIDE
+   EDITORIAL ARCHIVE OVERRIDE
+
+   Period navigation intentionally untouched.
    ========================================================== */
 
 
 /* ==========================================================
    ARCHIVE
-   Remove the vertical timeline entirely
    ========================================================== */
 
 .archive{
   position:relative;
 
   padding:
-    125px var(--edge)
-    180px;
+    105px var(--edge)
+    150px;
 
   background:#f7f7f5;
 
@@ -1550,7 +1558,6 @@ button{
 
 /* ==========================================================
    ERA
-   Each era becomes its own editorial chapter
    ========================================================== */
 
 .era{
@@ -1560,97 +1567,30 @@ button{
 
   margin:
     0 auto
-    175px;
+    135px;
 
-  padding-top:0;
+  padding:0;
 
-  opacity:0;
-
-  transform:translateY(40px);
-
-  transition:
-    opacity .7s ease,
-    transform .7s cubic-bezier(.22,.61,.36,1);
-}
-
-.era.visible{
   opacity:1;
+
   transform:none;
 }
-
-.era:last-child{
-  margin-bottom:0;
-}
-
-
-/* remove timeline dots */
 
 .era::before{
   display:none !important;
 }
 
 
-/* ==========================================================
-   LARGE BACKGROUND ERA WORD
-   ========================================================== */
+/* remove giant background era words */
 
 .era::after{
-  position:absolute;
-
-  z-index:-1;
-
-  top:-55px;
-  right:-2%;
-
-  color:rgba(18,40,75,.025);
-
-  font-family:var(--display);
-
-  font-size:clamp(9rem,17vw,17rem);
-  font-weight:700;
-
-  line-height:.8;
-
-  letter-spacing:-.09em;
-
-  pointer-events:none;
-}
-
-#ancient::after{
-  content:"ANCIENT";
-}
-
-#medieval::after{
-  content:"MEDIEVAL";
-}
-
-#early-modern::after{
-  content:"EARLY";
-}
-
-#nineteenth::after{
-  content:"XIX";
-}
-
-#twentieth::after{
-  content:"XX";
-}
-
-#contemporary::after{
-  content:"NOW";
-}
-
-
-/* alternate background word */
-
-.era:nth-of-type(even)::after{
-  right:auto;
-  left:-3%;
+  display:none !important;
 }
 
 
 /* ==========================================================
    ERA HEADER
+   More like an editorial chapter heading
    ========================================================== */
 
 .era-header,
@@ -1660,253 +1600,257 @@ button{
 
   margin:
     0 0
-    50px 0;
+    38px;
 
-  padding-bottom:25px;
+  padding:0;
 
-  display:flex;
+  display:grid;
 
-  justify-content:space-between;
-  align-items:flex-end;
+  grid-template-columns:
+    1fr auto;
 
-  gap:40px;
+  align-items:end;
 
-  border-bottom:
-    1px solid rgba(18,40,75,.16);
+  gap:30px;
+
+  border:0;
 }
 
 
 .era-header h2{
+
   margin:0;
 
+  font-family:var(--display);
+
   font-size:
-    clamp(4rem,6vw,6.8rem);
+    clamp(3.7rem,5vw,5.8rem);
 
-  line-height:.8;
+  font-weight:620;
 
-  letter-spacing:-.07em;
+  line-height:.82;
+
+  letter-spacing:-.065em;
 }
 
 
 .era-range{
-  margin:0 0 5px;
 
-  white-space:nowrap;
+  margin:0 0 4px;
 
   color:rgba(18,40,75,.42);
 
-  font-size:.6rem;
+  font-size:.57rem;
 
-  letter-spacing:.14em;
+  font-weight:700;
+
+  letter-spacing:.15em;
+
+  text-transform:uppercase;
+}
+
+
+/* small line beneath heading */
+
+.era-header::after{
+
+  content:"";
+
+  grid-column:1 / -1;
+
+  width:100%;
+  height:1px;
+
+  margin-top:5px;
+
+  background:rgba(18,40,75,.16);
 }
 
 
 /* ==========================================================
    EVENT LIST
-   Editorial mosaic instead of timeline
+
+   NOT A CARD GRID.
+
+   Creates a compact editorial index.
    ========================================================== */
 
 .event-list{
+
   display:grid;
 
   grid-template-columns:
-    repeat(12,1fr);
+    repeat(2,minmax(0,1fr));
 
-  grid-auto-flow:row dense;
+  column-gap:70px;
 
-  gap:14px;
+  row-gap:0;
 }
 
 
-/* RESET OLD TIMELINE PLACEMENT */
+/* reset EVERYTHING inherited from previous versions */
 
 .event,
+.event.feature,
 .event:nth-child(odd),
 .event:nth-child(even),
+.event:nth-child(n+4),
+.event:nth-child(n+7),
 
 .era.reverse .event:nth-child(odd),
-.era.reverse .event:nth-child(even){
+.era.reverse .event:nth-child(even),
+
+#medieval .event,
+#medieval .event.feature,
+
+#early-modern .event,
+#early-modern .event.feature,
+
+#nineteenth .event,
+#nineteenth .event.feature,
+
+#twentieth .event,
+#twentieth .event.feature,
+
+#contemporary .event,
+#contemporary .event.feature{
+
+  position:relative;
 
   width:auto;
 
+  grid-column:auto;
+  grid-row:auto;
+
+  min-height:0;
+
   margin:0;
 
-  min-width:0;
-}
+  padding:
+    25px 0
+    27px;
 
+  display:block;
 
-/* ==========================================================
-   BASE EVENT
-   ========================================================== */
-
-.event{
-  position:relative;
-
-  grid-column:span 4;
-
-  min-height:245px;
-
-  padding:28px 30px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:space-between;
+  background:transparent;
 
   border:0;
 
-  background:#fff;
+  border-top:
+    1px solid rgba(18,40,75,.13);
 
-  overflow:hidden;
+  overflow:visible;
 
   cursor:pointer;
 
+  transform:none;
+
   transition:
-    transform .4s cubic-bezier(.22,.61,.36,1),
-    background .35s ease,
+    padding .35s cubic-bezier(.22,.61,.36,1),
     opacity .3s ease;
 }
 
 
-/* kill old sweep */
+/* no rectangular hover fields */
 
-.event::before{
-  display:none;
+.event::before,
+.event::after{
+
+  display:none !important;
 }
 
 
 /* ==========================================================
-   FIRST EVENT = FEATURE
+   FEATURED EVENT
+
+   Larger TYPOGRAPHY, not a giant rectangle.
    ========================================================== */
 
 .event.feature{
-  grid-column:span 7;
-  grid-row:span 2;
 
-  min-height:505px;
+  grid-column:1 / -1;
 
-  padding:40px;
+  min-height:0;
 
-  background:var(--era-wash);
+  padding:
+    31px 0
+    40px;
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1.3fr)
+    minmax(260px,.7fr);
+
+  column-gap:80px;
+
+  align-items:end;
+
+  background:transparent !important;
+
+  border-top:
+    2px solid var(--navy);
+}
+
+
+.event.feature .event-meta{
+
+  grid-column:1 / -1;
 }
 
 
 .event.feature h3{
-  max-width:720px;
+
+  grid-column:1;
+
+  max-width:850px;
 
   font-size:
-    clamp(4rem,5.6vw,6.4rem);
+    clamp(3.4rem,4.8vw,5.6rem);
 
-  line-height:.81;
+  line-height:.83;
+
+  letter-spacing:-.065em;
 }
 
 
 .event.feature .event-summary{
-  max-width:530px;
 
-  font-size:.92rem;
+  grid-column:2;
+
+  align-self:end;
+
+  max-width:420px;
+
+  margin:0;
 }
 
 
 /* ==========================================================
-   SECOND EVENT
+   NORMAL EVENTS
    ========================================================== */
 
-.event:nth-child(2){
-  grid-column:span 5;
-
-  min-height:245px;
-
-  background:#fff;
-}
-
-
-/* ==========================================================
-   THIRD EVENT
-   ========================================================== */
-
-.event:nth-child(3){
-  grid-column:span 5;
-
-  min-height:245px;
-
-  background:rgba(255,255,255,.5);
-
-  border:
-    1px solid rgba(18,40,75,.12);
-}
-
-
-/* ==========================================================
-   EVENTS 4–6
-   More compact archive entries
-   ========================================================== */
-
-.event:nth-child(n+4):nth-child(-n+6){
-
-  grid-column:span 4;
-
-  min-height:210px;
-
-  padding:25px 26px;
-
-  background:transparent;
-
-  border-top:
-    1px solid rgba(18,40,75,.16);
-}
-
-
-.event:nth-child(n+4):nth-child(-n+6) h3{
-
-  font-size:
-    clamp(2rem,2.8vw,3rem);
-}
-
-
-/* ==========================================================
-   EVENTS 7+
-   Dense index mode
-
-   This is what makes the design scalable.
-   Add 10, 20, 30 topics and they progressively become
-   cleaner archive entries instead of giant cards.
-   ========================================================== */
-
-.event:nth-child(n+7){
-
-  grid-column:span 3;
-
-  min-height:170px;
-
-  padding:
-    22px 20px
-    24px 0;
-
-  background:transparent;
-
-  border-top:
-    1px solid rgba(18,40,75,.15);
-}
-
-
+.event h3,
+.event:nth-child(n+4) h3,
 .event:nth-child(n+7) h3{
 
+  max-width:600px;
+
+  margin:0;
+
+  font-family:var(--display);
+
   font-size:
-    clamp(1.65rem,2vw,2.25rem);
+    clamp(2rem,2.6vw,3rem);
 
-  line-height:.94;
-}
+  font-weight:600;
 
+  line-height:.91;
 
-.event:nth-child(n+7) .event-summary{
+  letter-spacing:-.045em;
 
-  margin-top:14px;
-
-  font-size:.76rem;
-
-  line-height:1.55;
+  transition:
+    transform .35s cubic-bezier(.22,.61,.36,1);
 }
 
 
@@ -1915,11 +1859,16 @@ button{
    ========================================================== */
 
 .event-meta{
-  margin-bottom:25px;
+
+  margin:
+    0 0
+    16px;
 
   display:flex;
 
-  justify-content:space-between;
+  align-items:center;
+
+  justify-content:flex-start;
 
   gap:20px;
 }
@@ -1928,39 +1877,44 @@ button{
 .event-date,
 .event-place{
 
-  font-size:.57rem;
+  font-size:.54rem;
+
+  font-weight:700;
 
   letter-spacing:.13em;
+
+  text-transform:uppercase;
 }
 
 
 .event-date{
+
   color:#9b6c68;
 }
 
 
 .event-place{
+
   color:rgba(18,40,75,.4);
 }
 
 
-/* ==========================================================
-   STANDARD TITLES
-   ========================================================== */
+/* separator without circles */
 
-.event h3{
+.event-place::before{
 
-  max-width:600px;
+  content:"";
 
-  margin:0;
+  display:inline-block;
 
-  font-size:
-    clamp(2.4rem,3.4vw,4rem);
+  width:18px;
+  height:1px;
 
-  line-height:.88;
+  margin:
+    0 10px
+    3px 0;
 
-  transition:
-    transform .4s cubic-bezier(.22,.61,.36,1);
+  background:rgba(18,40,75,.25);
 }
 
 
@@ -1968,76 +1922,173 @@ button{
    DESCRIPTION
    ========================================================== */
 
-.event-summary{
+.event-summary,
+.event:nth-child(n+7) .event-summary{
 
-  max-width:470px;
+  max-width:520px;
 
   margin:
-    20px 0 0;
+    15px 0 0;
 
-  color:rgba(18,40,75,.55);
+  color:rgba(18,40,75,.54);
 
-  font-size:.84rem;
+  font-size:.78rem;
 
-  line-height:1.65;
+  line-height:1.6;
 
   transition:
-    transform .4s ease,
-    opacity .3s ease;
+    color .3s ease,
+    transform .35s ease;
+}
+
+
+/* ==========================================================
+   CREATE VARIATION WITHOUT BOXES
+   ========================================================== */
+
+
+/*
+Every few events become slightly more prominent.
+This means a long section doesn't look like one endless list.
+*/
+
+.event:nth-child(5n + 2):not(.feature){
+
+  padding-top:35px;
+  padding-bottom:35px;
+}
+
+
+.event:nth-child(5n + 2):not(.feature) h3{
+
+  font-size:
+    clamp(2.5rem,3.3vw,3.8rem);
+}
+
+
+/*
+Occasional entry spans both columns.
+Still just typography + whitespace.
+*/
+
+.event:nth-child(6n + 4){
+
+  grid-column:1 / -1;
+
+  padding:
+    34px 0
+    38px;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  column-gap:70px;
+}
+
+
+.event:nth-child(6n + 4) .event-meta{
+
+  grid-column:1 / -1;
+}
+
+
+.event:nth-child(6n + 4) h3{
+
+  grid-column:1;
+
+  font-size:
+    clamp(2.8rem,4vw,4.6rem);
+}
+
+
+.event:nth-child(6n + 4) .event-summary{
+
+  grid-column:2;
+
+  margin:0;
+
+  align-self:end;
 }
 
 
 /* ==========================================================
    HOVER
+
+   Animation happens through typography / line movement,
+   not boxes.
    ========================================================== */
 
 .event:hover{
 
-  padding-left:30px;
-  padding-right:30px;
+  padding-left:13px;
 
-  transform:
-    translateY(-5px);
+  padding-right:0;
 
-  background:var(--era-wash);
+  background:transparent !important;
+
+  transform:none;
 }
 
 
 .event.feature:hover{
 
-  padding-left:40px;
-  padding-right:40px;
+  padding-left:13px;
 
-  filter:saturate(1.04);
+  padding-right:0;
+
+  background:transparent !important;
 }
 
 
 .event:hover h3{
 
   transform:
-    translateX(5px);
+    translateX(7px);
 }
 
 
 .event:hover .event-summary{
 
   transform:
-    translateX(5px);
+    translateX(7px);
+
+  color:rgba(18,40,75,.78);
 }
 
 
-/* surrounding content softens */
+/*
+Short accent line grows from the left
+*/
+
+.event > h3::after{
+
+  content:"";
+
+  display:block;
+
+  width:0;
+  height:2px;
+
+  margin-top:15px;
+
+  background:#9b6c68;
+
+  transition:
+    width .45s cubic-bezier(.22,.61,.36,1);
+}
+
+
+.event:hover > h3::after{
+
+  width:45px;
+}
+
+
+/* don't excessively grey everything */
 
 .event-list:has(.event:hover)
-.event:not(:hover){
-
-  opacity:.48;
-}
-
-
-/* But not TOO faded */
-
-.event-list:has(.event.feature:hover)
 .event:not(:hover){
 
   opacity:.58;
@@ -2045,280 +2096,178 @@ button{
 
 
 /* ==========================================================
-   DIFFERENT ERA COMPOSITIONS
+   DIFFERENT ERA RHYTHMS
 
-   They use the same scalable system but don't all look
-   identical.
+   No cards.
+   Just subtle changes in composition.
    ========================================================== */
 
 
-/* ----------------------------------------------------------
-   MEDIEVAL
-   Feature on RIGHT
-   ---------------------------------------------------------- */
+/* MEDIEVAL — first feature text weighted right */
 
 #medieval .event.feature{
 
-  grid-column:
-    6 / span 7;
-
-  grid-row:
-    1 / span 2;
+  grid-template-columns:
+    .72fr 1.28fr;
 }
 
 
-#medieval .event:nth-child(2){
+#medieval .event.feature h3{
 
-  grid-column:
-    1 / span 5;
-
-  grid-row:1;
+  grid-column:2;
 }
 
 
-#medieval .event:nth-child(3){
+#medieval .event.feature .event-summary{
 
-  grid-column:
-    1 / span 5;
-
+  grid-column:1;
   grid-row:2;
+
+  align-self:end;
 }
 
 
-/* ----------------------------------------------------------
-   EARLY MODERN
-   Large feature + horizontal second story
-   ---------------------------------------------------------- */
+/* EARLY MODERN — slightly denser */
 
-#early-modern .event.feature{
+#early-modern .event-list{
 
-  grid-column:span 8;
-
-  min-height:470px;
+  column-gap:45px;
 }
 
 
-#early-modern .event:nth-child(2){
+#early-modern .event:not(.feature){
 
-  grid-column:span 4;
-
-  min-height:470px;
-
-  background:#fff;
+  padding-top:21px;
+  padding-bottom:23px;
 }
 
 
-#early-modern .event:nth-child(3){
+/* 19TH — more open */
 
-  grid-column:span 12;
+#nineteenth .event-list{
 
-  min-height:190px;
+  column-gap:95px;
+}
 
-  display:grid;
+
+#nineteenth .event:not(.feature){
+
+  padding-top:30px;
+  padding-bottom:32px;
+}
+
+
+/* 20TH — denser because this will probably hold lots of topics */
+
+#twentieth .event-list{
 
   grid-template-columns:
-    .75fr 1.25fr;
+    repeat(3,minmax(0,1fr));
 
-  align-items:end;
-
-  gap:40px;
-
-  background:transparent;
-
-  border-top:
-    1px solid rgba(18,40,75,.16);
-
-  border-left:0;
-  border-right:0;
-  border-bottom:0;
+  column-gap:40px;
 }
 
-
-#early-modern .event:nth-child(3) .event-meta{
-
-  align-self:start;
-}
-
-
-#early-modern .event:nth-child(3) h3{
-
-  font-size:
-    clamp(3rem,4.3vw,5rem);
-}
-
-
-/* ----------------------------------------------------------
-   19TH CENTURY
-   Horizontal main feature
-   ---------------------------------------------------------- */
-
-#nineteenth .event.feature{
-
-  grid-column:span 12;
-
-  grid-row:auto;
-
-  min-height:330px;
-
-  display:grid;
-
-  grid-template-columns:
-    .65fr 1.35fr;
-
-  align-items:end;
-
-  gap:50px;
-}
-
-
-#nineteenth .event.feature .event-meta{
-
-  align-self:start;
-}
-
-
-#nineteenth .event:nth-child(2){
-
-  grid-column:span 5;
-}
-
-
-#nineteenth .event:nth-child(3){
-
-  grid-column:span 7;
-}
-
-
-/* ----------------------------------------------------------
-   20TH CENTURY
-   Designed for lots of future content
-   ---------------------------------------------------------- */
 
 #twentieth .event.feature{
 
-  grid-column:span 6;
-
-  min-height:480px;
+  grid-column:1 / -1;
 }
 
 
-#twentieth .event:nth-child(2){
+#twentieth .event:nth-child(6n + 4){
 
-  grid-column:span 6;
+  grid-column:span 2;
 
-  min-height:300px;
+  display:block;
 }
 
 
-#twentieth .event:nth-child(3){
+#twentieth .event:nth-child(6n + 4) .event-summary{
 
-  grid-column:7 / span 6;
-
-  min-height:166px;
+  margin-top:15px;
 }
 
 
-/*
-Future 20th-century topics immediately form
-a denser archive underneath.
-*/
-
-#twentieth .event:nth-child(n+4){
-
-  grid-column:span 3;
-}
-
-
-/* ----------------------------------------------------------
-   CONTEMPORARY
-   More open / clean
-   ---------------------------------------------------------- */
+/* Contemporary — two-column open ending */
 
 #contemporary .event-list{
 
   grid-template-columns:
-    repeat(2,1fr);
-}
+    1.15fr .85fr;
 
-
-#contemporary .event,
-#contemporary .event.feature,
-#contemporary .event:nth-child(2),
-#contemporary .event:nth-child(3){
-
-  grid-column:auto;
-  grid-row:auto;
-
-  min-height:330px;
-}
-
-
-#contemporary .event.feature{
-
-  background:var(--era-wash);
-}
-
-
-#contemporary .event:nth-child(n+3){
-
-  min-height:180px;
-
-  background:transparent;
-
-  border-top:
-    1px solid rgba(18,40,75,.16);
+  column-gap:85px;
 }
 
 
 /* ==========================================================
-   ERA COLOURS
-   Keep them muted
+   ERA ACCENT
+
+   One very subtle coloured line per era.
+   No rectangles.
    ========================================================== */
 
-#ancient{
-  --era-wash:#d8e5ec;
+#ancient .era-header::after{
+  background:#9bb8c8;
 }
 
-#medieval{
-  --era-wash:#ebe1d5;
+#medieval .era-header::after{
+  background:#c9b59d;
 }
 
-#early-modern{
-  --era-wash:#d9e6e1;
+#early-modern .era-header::after{
+  background:#9ebdb2;
 }
 
-#nineteenth{
-  --era-wash:#e8d8d5;
+#nineteenth .era-header::after{
+  background:#c7a5a0;
 }
 
-#twentieth{
-  --era-wash:#dedfeb;
+#twentieth .era-header::after{
+  background:#aaaac5;
 }
 
-#contemporary{
-  --era-wash:#ebe4c9;
+#contemporary .era-header::after{
+  background:#c7ba83;
 }
 
 
 /* ==========================================================
    INTERLUDE
-   Make it feel integrated rather than another box
+
+   Remove the giant navy rectangle.
+   Make it an editorial pause instead.
    ========================================================== */
 
 .archive-interlude{
 
+  position:relative;
+
   max-width:1500px;
 
   margin:
-    -55px auto
-    150px;
+    -25px auto
+    125px;
 
   padding:
-    65px 7%;
+    55px 8%;
 
-  background:var(--navy);
+  background:transparent;
 
-  overflow:hidden;
+  color:var(--navy);
+
+  border-top:
+    1px solid rgba(18,40,75,.18);
+
+  border-bottom:
+    1px solid rgba(18,40,75,.18);
+
+  overflow:visible;
+}
+
+
+.archive-interlude::after{
+
+  display:none;
 }
 
 
@@ -2326,97 +2275,26 @@ a denser archive underneath.
 
   max-width:1000px;
 
+  margin:0;
+
   font-size:
-    clamp(2.3rem,3.8vw,4.4rem);
+    clamp(2rem,3.2vw,3.8rem);
+
+  line-height:.98;
+}
+
+
+.archive-interlude span{
+
+  margin-top:25px;
+
+  color:rgba(18,40,75,.4);
 }
 
 
 /* ==========================================================
-   PERIOD NAV
-   STICKY ARCHIVE NAVIGATION
-   ========================================================== */
-
-.period-nav{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:80;
-
-  padding:
-    15px var(--edge);
-
-  background:
-    rgba(255,255,255,.94);
-
-  border-bottom:
-    1px solid rgba(18,40,75,.12);
-
-  backdrop-filter:
-    blur(14px);
-
-  -webkit-backdrop-filter:
-    blur(14px);
-}
-
-
-.period-grid{
-
-  border:0;
-
-  gap:5px;
-}
-
-
-.period-link{
-
-  min-height:58px;
-
-  padding:
-    10px 13px;
-
-  border:0;
-
-  background:transparent;
-}
-
-
-.period-link:hover,
-.period-link.current{
-
-  padding-left:16px;
-
-  background:#edf1f3;
-}
-
-
-.period-link strong{
-
-  font-size:
-    .94rem;
-}
-
-
-.period-years{
-
-  font-size:.48rem;
-}
-
-
-/* subtle active indicator */
-
-.period-link::after{
-
-  height:2px;
-
-  background:#9b6c68;
-}
-
-
-/* ==========================================================
-   ANIMATION
-   Individual events reveal as user scrolls
+   SCROLL REVEAL
+   Smaller / cleaner
    ========================================================== */
 
 @media(prefers-reduced-motion:no-preference){
@@ -2424,24 +2302,24 @@ a denser archive underneath.
   .event{
 
     animation:
-      eventReveal linear both;
+      atharEditorialReveal linear both;
 
     animation-timeline:view();
 
     animation-range:
       entry 0%
-      entry 35%;
+      entry 22%;
   }
 
 
-  @keyframes eventReveal{
+  @keyframes atharEditorialReveal{
 
     from{
 
       opacity:0;
 
       transform:
-        translateY(30px);
+        translateY(18px);
 
     }
 
@@ -2463,77 +2341,53 @@ a denser archive underneath.
    TABLET
    ========================================================== */
 
-@media(max-width:1000px){
+@media(max-width:950px){
 
-  .event-list{
-
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-
-  .event,
-  .event.feature,
-  .event:nth-child(2),
-  .event:nth-child(3),
-  .event:nth-child(n+4),
-  .event:nth-child(n+7),
-
-  #medieval .event.feature,
-  #medieval .event:nth-child(2),
-  #medieval .event:nth-child(3),
-
-  #early-modern .event.feature,
-  #early-modern .event:nth-child(2),
-  #early-modern .event:nth-child(3),
-
-  #nineteenth .event.feature,
-  #nineteenth .event:nth-child(2),
-  #nineteenth .event:nth-child(3),
-
-  #twentieth .event.feature,
-  #twentieth .event:nth-child(2),
-  #twentieth .event:nth-child(3),
-  #twentieth .event:nth-child(n+4){
-
-    grid-column:auto;
-
-    grid-row:auto;
-
-    min-height:250px;
-  }
-
-
-  .event.feature{
-
-    grid-column:1 / -1 !important;
-
-    min-height:420px !important;
-  }
-
-
-  #early-modern .event:nth-child(3),
-  #nineteenth .event.feature{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-  }
-
-
+  .event-list,
+  #twentieth .event-list,
   #contemporary .event-list{
 
     grid-template-columns:
-      repeat(2,1fr);
+      repeat(2,minmax(0,1fr));
+
+    column-gap:45px;
   }
 
 
-  .era-header,
-  .era:nth-child(even) .era-header{
+  .event.feature,
+  #medieval .event.feature,
+  #twentieth .event.feature{
 
-    margin-left:0;
+    grid-column:1 / -1;
+
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+
+  #medieval .event.feature h3{
+
+    grid-column:1;
+  }
+
+
+  #medieval .event.feature .event-summary{
+
+    grid-column:2;
+  }
+
+
+  .event:nth-child(6n + 4),
+  #twentieth .event:nth-child(6n + 4){
+
+    grid-column:1 / -1;
+
+    display:grid;
+
+    grid-template-columns:
+      1fr 1fr;
+
+    column-gap:45px;
   }
 
 }
@@ -2548,147 +2402,110 @@ a denser archive underneath.
   .archive{
 
     padding:
-      80px 5%
-      110px;
+      70px 5%
+      100px;
   }
 
 
   .era{
 
     margin-bottom:
-      105px;
-  }
-
-
-  .era::after{
-
-    display:none;
+      90px;
   }
 
 
   .era-header,
   .era:nth-child(even) .era-header{
 
-    margin:
-      0 0
-      32px;
-
     display:block;
+
+    margin-bottom:27px;
   }
 
 
   .era-header h2{
 
     font-size:
-      clamp(3.3rem,15vw,4.7rem);
+      clamp(3.1rem,14vw,4.4rem);
   }
 
 
   .era-range{
 
-    margin-top:15px;
+    display:block;
+
+    margin-top:13px;
   }
 
 
   .event-list,
+  #twentieth .event-list,
   #contemporary .event-list{
 
-    display:grid;
-
-    grid-template-columns:
-      1fr;
-
-    gap:0;
+    display:block;
   }
 
 
   .event,
   .event.feature,
-  .event:nth-child(2),
-  .event:nth-child(3),
-  .event:nth-child(n+4),
-  .event:nth-child(n+7),
-
+  .event:nth-child(6n + 4),
   #medieval .event.feature,
-  #medieval .event:nth-child(2),
-  #medieval .event:nth-child(3),
-
-  #early-modern .event.feature,
-  #early-modern .event:nth-child(2),
-  #early-modern .event:nth-child(3),
-
-  #nineteenth .event.feature,
-  #nineteenth .event:nth-child(2),
-  #nineteenth .event:nth-child(3),
-
   #twentieth .event.feature,
-  #twentieth .event:nth-child(2),
-  #twentieth .event:nth-child(3),
-  #twentieth .event:nth-child(n+4),
+  #twentieth .event:nth-child(6n + 4){
 
-  #contemporary .event,
-  #contemporary .event.feature{
+    width:100%;
 
-    grid-column:auto !important;
+    min-height:0;
 
-    grid-row:auto !important;
-
-    min-height:0 !important;
+    margin:0;
 
     padding:
-      27px 0
-      30px;
+      24px 0
+      26px;
 
-    background:transparent;
+    display:block;
 
-    border:
-      0;
+    background:transparent !important;
 
     border-top:
-      1px solid rgba(18,40,75,.15);
+      1px solid rgba(18,40,75,.14);
   }
 
 
   .event.feature{
 
     padding:
-      32px 24px !important;
+      29px 0
+      34px;
 
-    min-height:
-      330px !important;
-
-    background:
-      var(--era-wash) !important;
-
-    border:0;
+    border-top:
+      2px solid var(--navy);
   }
 
 
   .event h3,
-  .event.feature h3{
+  .event.feature h3,
+  .event:nth-child(5n + 2):not(.feature) h3,
+  .event:nth-child(6n + 4) h3{
 
     font-size:
-      clamp(2.25rem,11vw,3.4rem);
+      clamp(2.15rem,10vw,3.1rem);
 
-    line-height:.88;
+    line-height:.9;
   }
 
 
-  .event:hover{
+  .event.feature .event-summary,
+  .event:nth-child(6n + 4) .event-summary{
 
-    padding-left:10px;
-
-    padding-right:10px;
+    margin-top:17px;
   }
 
 
+  .event:hover,
   .event.feature:hover{
 
-    padding-left:
-      24px !important;
-
-    padding-right:
-      24px !important;
+    padding-left:8px;
   }
 
 
@@ -2699,56 +2516,14 @@ a denser archive underneath.
   }
 
 
-  /* horizontal sticky period selector */
-
-  .period-nav{
-
-    padding:
-      10px 0;
-
-    overflow-x:auto;
-
-    scrollbar-width:none;
-  }
-
-
-  .period-nav::-webkit-scrollbar{
-
-    display:none;
-  }
-
-
-  .period-grid{
-
-    width:max-content;
-
-    display:flex;
-
-    padding:
-      0 5%;
-
-    gap:4px;
-  }
-
-
-  .period-link{
-
-    width:125px;
-
-    min-height:55px;
-
-    flex:none;
-  }
-
-
   .archive-interlude{
 
     margin:
-      -30px 0
-      90px;
+      -15px 0
+      80px;
 
     padding:
-      45px 28px;
+      40px 0;
   }
 
 }
