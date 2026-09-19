@@ -1343,6 +1343,809 @@ footer span{
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /* ==========================================================
+   ATHAR — RICH EDITORIAL ARCHIVE OVERRIDE
+   Paste at END of existing CSS
+========================================================== */
+
+
+/* ==========================================================
+   MORE COLOUR
+========================================================== */
+
+:root{
+  --athar-blue:#dce8ed;
+  --athar-green:#dbe5df;
+  --athar-rose:#ead9d6;
+  --athar-sand:#e9e2cf;
+  --athar-lilac:#e1dfeb;
+  --athar-yellow:#ebe4c4;
+
+  --athar-blue-deep:#6f98ad;
+  --athar-green-deep:#738f82;
+  --athar-rose-deep:#a66f69;
+  --athar-gold:#9a8743;
+}
+
+
+/* ==========================================================
+   INTRO — TIGHTER
+========================================================== */
+
+.archive-intro{
+  padding-top:55px !important;
+  padding-bottom:45px !important;
+}
+
+.archive-intro-inner{
+  align-items:center !important;
+}
+
+.archive-intro h1{
+  font-size:clamp(4.2rem,6.5vw,7rem) !important;
+}
+
+.archive-intro p{
+  max-width:430px !important;
+}
+
+
+/* ==========================================================
+   GRID — DENSER
+========================================================== */
+
+.story-grid{
+  gap:0 !important;
+
+  border-top:
+    3px solid var(--navy) !important;
+
+  background:
+    var(--paper);
+}
+
+
+/* ==========================================================
+   ALL STORIES
+========================================================== */
+
+.story{
+  overflow:hidden !important;
+
+  min-height:220px !important;
+
+  padding:
+    28px 32px 30px !important;
+
+  display:flex !important;
+
+  flex-direction:column !important;
+  justify-content:flex-end !important;
+
+  border-right:
+    1px solid rgba(18,40,75,.12) !important;
+
+  border-bottom:
+    1px solid rgba(18,40,75,.12) !important;
+
+  transition:
+    transform .35s cubic-bezier(.16,1,.3,1),
+    opacity .3s ease,
+    background .3s ease !important;
+}
+
+
+/* remove useless line effect */
+
+.story::after{
+  display:none !important;
+}
+
+
+/* ==========================================================
+   METADATA — MUCH MORE READABLE
+========================================================== */
+
+.story-meta{
+  position:absolute !important;
+
+  top:24px !important;
+  left:30px !important;
+
+  margin:0 !important;
+
+  display:flex !important;
+  align-items:center !important;
+
+  gap:10px !important;
+
+  font-size:.67rem !important;
+
+  font-weight:700 !important;
+
+  letter-spacing:.08em !important;
+
+  line-height:1 !important;
+
+  text-transform:uppercase !important;
+
+  color:rgba(18,40,75,.62) !important;
+}
+
+
+.story-date{
+  color:var(--navy) !important;
+
+  font-size:.72rem !important;
+
+  font-weight:750 !important;
+}
+
+
+.story-meta i{
+  width:14px !important;
+  height:1px !important;
+
+  background:
+    rgba(18,40,75,.28) !important;
+}
+
+
+/* ==========================================================
+   NORMAL TITLES
+========================================================== */
+
+.story h2{
+  position:relative;
+
+  z-index:2;
+
+  max-width:680px !important;
+
+  margin:0 !important;
+
+  font-size:
+    clamp(2rem,2.5vw,3.15rem) !important;
+
+  line-height:.9 !important;
+
+  letter-spacing:-.06em !important;
+}
+
+
+.story p{
+  position:relative;
+
+  z-index:2;
+
+  max-width:540px !important;
+
+  margin:
+    14px 0 0 !important;
+
+  font-size:.78rem !important;
+
+  line-height:1.55 !important;
+
+  color:
+    rgba(18,40,75,.63) !important;
+}
+
+
+/* ==========================================================
+   LEAD STORY
+========================================================== */
+
+.story.lead{
+  grid-column:
+    span 7 !important;
+
+  min-height:330px !important;
+
+  padding:
+    34px 45px !important;
+
+  background:
+    var(--athar-green) !important;
+
+  border-right:
+    8px solid var(--paper) !important;
+
+  border-bottom:
+    8px solid var(--paper) !important;
+}
+
+
+.story.lead .story-meta{
+  position:absolute !important;
+
+  top:30px !important;
+  left:42px !important;
+}
+
+
+.story.lead h2{
+  max-width:760px !important;
+
+  font-size:
+    clamp(4rem,5.3vw,6rem) !important;
+
+  line-height:.8 !important;
+}
+
+
+.story.lead p{
+  max-width:650px !important;
+
+  font-size:.86rem !important;
+
+  line-height:1.6 !important;
+}
+
+
+/* ==========================================================
+   ADD LARGE ABSTRACT LETTER TO LEAD
+========================================================== */
+
+.story.lead::before{
+  content:"A";
+
+  position:absolute;
+
+  top:-60px;
+  right:-12px;
+
+  font-family:var(--display);
+
+  font-size:25rem;
+
+  font-weight:700;
+
+  line-height:1;
+
+  letter-spacing:-.12em;
+
+  color:
+    rgba(18,40,75,.045);
+
+  pointer-events:none;
+}
+
+
+/* ==========================================================
+   FIRST SMALL STORIES
+========================================================== */
+
+.story:nth-child(2){
+  grid-column:
+    span 5 !important;
+
+  min-height:165px !important;
+
+  background:
+    var(--athar-blue) !important;
+}
+
+
+.story:nth-child(3){
+  grid-column:
+    span 5 !important;
+
+  min-height:215px !important;
+
+  background:
+    #f3f0e8 !important;
+}
+
+
+.story:nth-child(4){
+  grid-column:
+    span 7 !important;
+
+  min-height:215px !important;
+
+  background:
+    var(--athar-rose) !important;
+}
+
+
+/* ==========================================================
+   SECOND WORLD WAR — LARGE FEATURE
+========================================================== */
+
+.story.feature{
+  grid-column:
+    span 8 !important;
+
+  min-height:280px !important;
+
+  padding:
+    35px 38px !important;
+
+  background:
+    var(--navy) !important;
+
+  color:white !important;
+
+  border-right:
+    8px solid var(--paper) !important;
+
+  border-bottom:
+    8px solid var(--paper) !important;
+}
+
+
+.story.feature .story-meta,
+.story.feature .story-date{
+  color:
+    rgba(255,255,255,.67) !important;
+}
+
+
+.story.feature .story-meta i{
+  background:
+    rgba(255,255,255,.3) !important;
+}
+
+
+.story.feature h2{
+  max-width:850px !important;
+
+  color:#fff !important;
+
+  font-size:
+    clamp(3.4rem,4.5vw,5.4rem) !important;
+
+  line-height:.82 !important;
+}
+
+
+.story.feature p{
+  color:
+    rgba(255,255,255,.62) !important;
+
+  font-size:.82rem !important;
+}
+
+
+/* ==========================================================
+   STORY AFTER FEATURE
+========================================================== */
+
+.story.feature + .story{
+  grid-column:
+    span 4 !important;
+
+  min-height:280px !important;
+
+  background:
+    var(--athar-yellow) !important;
+
+  border-bottom:
+    8px solid var(--paper) !important;
+}
+
+
+/* ==========================================================
+   REST OF STORIES
+
+   Make the archive feel irregular rather than repetitive.
+========================================================== */
+
+.story:nth-child(7){
+  grid-column:
+    span 5 !important;
+
+  background:
+    #f1eee7 !important;
+}
+
+
+.story:nth-child(8){
+  grid-column:
+    span 3 !important;
+
+  background:
+    var(--athar-lilac) !important;
+}
+
+
+.story:nth-child(9){
+  grid-column:
+    span 4 !important;
+
+  background:
+    var(--athar-blue) !important;
+}
+
+
+.story:nth-child(10){
+  grid-column:
+    span 7 !important;
+}
+
+
+.story:nth-child(11){
+  grid-column:
+    span 5 !important;
+
+  background:
+    var(--athar-green) !important;
+}
+
+
+.story:nth-child(12){
+  grid-column:
+    span 4 !important;
+
+  background:
+    var(--athar-sand) !important;
+}
+
+
+.story:nth-child(13){
+  grid-column:
+    span 5 !important;
+
+  background:
+    #edf0f2 !important;
+}
+
+
+.story:nth-child(14){
+  grid-column:
+    span 3 !important;
+
+  background:
+    var(--athar-rose) !important;
+}
+
+
+.story:nth-child(15){
+  grid-column:
+    span 5 !important;
+
+  background:
+    var(--athar-yellow) !important;
+}
+
+
+.story:nth-child(16){
+  grid-column:
+    span 7 !important;
+}
+
+
+.story:nth-child(17){
+  grid-column:
+    span 5 !important;
+
+  background:
+    var(--athar-blue) !important;
+}
+
+
+.story:nth-child(18){
+  grid-column:
+    span 7 !important;
+
+  background:
+    var(--athar-green) !important;
+}
+
+
+/* ==========================================================
+   REMOVE OLD nth-child PADDING BEHAVIOUR
+========================================================== */
+
+.story:nth-child(n+5),
+.story:nth-child(3n+1):nth-child(n+7),
+.story:nth-child(3n):nth-child(n+6){
+
+  padding:
+    28px 32px 30px !important;
+}
+
+
+/* ==========================================================
+   DIFFERENT HEIGHTS
+
+   Prevents it looking like an Excel table.
+========================================================== */
+
+.story:nth-child(7),
+.story:nth-child(9),
+.story:nth-child(11),
+.story:nth-child(13),
+.story:nth-child(17){
+  min-height:245px !important;
+}
+
+
+.story:nth-child(8),
+.story:nth-child(12),
+.story:nth-child(14){
+  min-height:245px !important;
+}
+
+
+.story:nth-child(10),
+.story:nth-child(16),
+.story:nth-child(18){
+  min-height:275px !important;
+}
+
+
+/* ==========================================================
+   LARGE TYPOGRAPHIC STORIES
+========================================================== */
+
+.story:nth-child(10) h2,
+.story:nth-child(16) h2{
+
+  font-size:
+    clamp(3rem,4vw,4.7rem) !important;
+
+  line-height:.83 !important;
+
+  max-width:760px !important;
+}
+
+
+/* ==========================================================
+   SUBTLE COLOUR EDGE
+========================================================== */
+
+.story:not(.lead):not(.feature)::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:4px;
+  height:0;
+
+  background:
+    var(--athar-rose-deep);
+
+  transition:
+    height .4s cubic-bezier(.16,1,.3,1);
+}
+
+
+.story:not(.lead):not(.feature):hover::before{
+  height:100%;
+}
+
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.story:hover{
+  transform:
+    translateY(-4px) !important;
+
+  z-index:5;
+}
+
+
+.story-grid:has(.story:hover)
+.story:not(:hover){
+
+  opacity:.72 !important;
+}
+
+
+/* coloured stories remain strong */
+
+.story:hover h2{
+  transform:
+    translateX(4px);
+
+  transition:
+    transform .35s cubic-bezier(.16,1,.3,1);
+}
+
+
+/* ==========================================================
+   SEARCH RESULTS
+
+   Search should not leave broken gaps.
+========================================================== */
+
+.story-grid.searching{
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(3,1fr) !important;
+}
+
+
+.story-grid.searching .story:not(.hidden){
+  grid-column:
+    span 1 !important;
+
+  min-height:230px !important;
+
+  padding:
+    28px 30px !important;
+}
+
+
+.story-grid.searching .story:not(.hidden) h2{
+  font-size:
+    clamp(1.8rem,2.4vw,2.8rem) !important;
+
+  color:var(--navy) !important;
+}
+
+
+.story-grid.searching .story:not(.hidden) p{
+  color:
+    rgba(18,40,75,.62) !important;
+}
+
+
+.story-grid.searching .story:not(.hidden) .story-meta,
+.story-grid.searching .story:not(.hidden) .story-date{
+  color:
+    rgba(18,40,75,.65) !important;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media(max-width:950px){
+
+  .story,
+  .story.lead,
+  .story.feature,
+  .story.feature + .story,
+  .story:nth-child(n){
+
+    grid-column:
+      span 6 !important;
+
+    min-height:
+      230px !important;
+
+    padding:
+      28px !important;
+
+    border-right:
+      5px solid var(--paper) !important;
+
+    border-bottom:
+      5px solid var(--paper) !important;
+  }
+
+
+  .story.lead{
+    grid-column:
+      span 12 !important;
+
+    min-height:
+      310px !important;
+  }
+
+
+  .story.lead .story-meta{
+    left:28px !important;
+  }
+
+
+  .story-grid.searching{
+    grid-template-columns:
+      repeat(2,1fr) !important;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:650px){
+
+  .story-grid{
+    display:block !important;
+  }
+
+
+  .story,
+  .story.lead,
+  .story.feature,
+  .story.feature + .story,
+  .story:nth-child(n){
+
+    min-height:
+      210px !important;
+
+    padding:
+      25px 22px !important;
+
+    border-right:0 !important;
+
+    border-bottom:
+      5px solid var(--paper) !important;
+  }
+
+
+  .story-meta,
+  .story.lead .story-meta{
+
+    top:22px !important;
+    left:22px !important;
+
+    font-size:
+      .61rem !important;
+  }
+
+
+  .story-date{
+    font-size:
+      .65rem !important;
+  }
+
+
+  .story.lead{
+    min-height:
+      290px !important;
+  }
+
+
+  .story.lead h2{
+    font-size:
+      clamp(3.3rem,15vw,4.8rem) !important;
+  }
+
+
+  .story.feature h2,
+  .story:nth-child(10) h2,
+  .story:nth-child(16) h2{
+
+    font-size:
+      clamp(2.7rem,12vw,3.8rem) !important;
+  }
+
+
+  .story-grid.searching{
+    display:block !important;
+  }
+
+
+  .story-grid:has(.story:hover)
+  .story:not(:hover){
+
+    opacity:1 !important;
+  }
+
+}
+
 </style>
 </head>
 
@@ -2030,6 +2833,14 @@ function filterArchive(){
 
   const query =
     normalizeText(searchInput.value);
+
+   const storyGrid =
+  document.getElementById("storyGrid");
+
+storyGrid.classList.toggle(
+  "searching",
+  query.length > 0
+);
 
 
   let visible = 0;
