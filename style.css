@@ -2710,3 +2710,453 @@ button{
   }
 
 }
+
+
+/* ==========================================================
+   ATHAR — EXPLORE EDITORIAL INDEX
+   FINAL OVERRIDE
+   Paste at the VERY END of style.css
+   ========================================================== */
+
+
+/* SECTION
+   ---------------------------------------------------------- */
+
+.explore{
+  padding: 105px var(--edge) 115px !important;
+  background: #f4f6f7 !important;
+  color: var(--navy) !important;
+}
+
+
+/* HEADER
+   ---------------------------------------------------------- */
+
+.explore-head{
+  width: 100% !important;
+  max-width: var(--max) !important;
+
+  margin: 0 auto 62px !important;
+
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 390px) !important;
+
+  align-items: end !important;
+  gap: 50px !important;
+}
+
+.explore-head .section-label{
+  grid-column: 1 / -1 !important;
+
+  margin: 0 0 -18px !important;
+
+  color: var(--coral) !important;
+
+  font-size: .68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .15em !important;
+
+  text-transform: uppercase !important;
+}
+
+.explore-head h2{
+  max-width: 8ch !important;
+
+  font-family: var(--display) !important;
+  font-size: clamp(3.5rem, 5.8vw, 6rem) !important;
+  font-weight: 620 !important;
+
+  line-height: .91 !important;
+  letter-spacing: -.055em !important;
+}
+
+.explore-intro{
+  max-width: 380px !important;
+
+  margin: 0 0 6px !important;
+  justify-self: end !important;
+
+  color: rgba(18,40,75,.58) !important;
+
+  font-size: .95rem !important;
+  line-height: 1.7 !important;
+}
+
+
+/* INDEX
+   ---------------------------------------------------------- */
+
+.explore-grid,
+.explore-rows{
+  width: 100% !important;
+  max-width: var(--max) !important;
+
+  margin: 0 auto !important;
+
+  display: block !important;
+
+  border-top: 1px solid rgba(18,40,75,.18) !important;
+}
+
+
+/* EACH ENTRY
+   ---------------------------------------------------------- */
+
+.explore-panel,
+.explore-row{
+  position: relative !important;
+
+  width: 100% !important;
+
+  height: auto !important;
+  min-height: 150px !important;
+
+  padding: 26px 22px !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(190px, .72fr)
+    minmax(250px, 1.28fr) !important;
+
+  align-items: center !important;
+
+  gap: 30px !important;
+
+  overflow: hidden !important;
+
+  background: transparent !important;
+
+  border: 0 !important;
+  border-bottom: 1px solid rgba(18,40,75,.18) !important;
+  border-radius: 0 !important;
+
+  color: var(--navy) !important;
+
+  transform: none !important;
+
+  transition:
+    background-color .35s var(--ease),
+    padding-left .35s var(--ease) !important;
+}
+
+
+/* REMOVE OLD CARD COLOURS
+   ---------------------------------------------------------- */
+
+.explore-panel.turning,
+.explore-panel.fault,
+.explore-panel.ideas,
+.explore-panel.makers{
+  background: transparent !important;
+}
+
+
+/* REMOVE OLD CORAL TOP LINE
+   ---------------------------------------------------------- */
+
+.explore-panel::before,
+.explore-row::before{
+  content: none !important;
+  display: none !important;
+}
+
+
+/* REMOVE NUMBERS
+   ---------------------------------------------------------- */
+
+.explore-ghost,
+.row-code{
+  display: none !important;
+}
+
+
+/* REMOVE ARROW / CIRCLE COMPLETELY
+   ---------------------------------------------------------- */
+
+.explore-arrow,
+.row-arrow{
+  display: none !important;
+}
+
+.explore-arrow::before,
+.explore-arrow::after{
+  display: none !important;
+  content: none !important;
+}
+
+
+/* TOP LABEL
+   ---------------------------------------------------------- */
+
+.explore-panel-top{
+  position: absolute !important;
+
+  top: 26px !important;
+  left: 22px !important;
+
+  z-index: 2 !important;
+
+  display: block !important;
+
+  margin: 0 !important;
+}
+
+.explore-type{
+  color: rgba(18,40,75,.48) !important;
+
+  font-size: .62rem !important;
+  font-weight: 700 !important;
+
+  letter-spacing: .15em !important;
+
+  text-transform: uppercase !important;
+}
+
+
+/* MAIN CONTENT
+   ---------------------------------------------------------- */
+
+.explore-panel-content{
+  position: static !important;
+
+  display: contents !important;
+}
+
+
+/* TITLE
+   ---------------------------------------------------------- */
+
+.explore-panel h3,
+.row-title{
+  position: relative !important;
+
+  margin: 18px 0 0 !important;
+
+  max-width: 8ch !important;
+
+  font-family: var(--display) !important;
+
+  font-size: clamp(2rem, 3vw, 3.15rem) !important;
+  font-weight: 620 !important;
+
+  line-height: .92 !important;
+  letter-spacing: -.045em !important;
+
+  transition:
+    transform .35s var(--ease),
+    color .35s var(--ease) !important;
+}
+
+
+/* DESCRIPTION
+   ---------------------------------------------------------- */
+
+.explore-panel p,
+.row-desc{
+  display: block !important;
+
+  max-width: 500px !important;
+
+  margin: 0 !important;
+
+  color: rgba(18,40,75,.61) !important;
+
+  font-size: .87rem !important;
+  line-height: 1.68 !important;
+}
+
+
+/* SMALL INDIVIDUAL COLOUR MARK
+   ---------------------------------------------------------- */
+
+.explore-panel::after{
+  content: "" !important;
+
+  position: absolute !important;
+
+  left: 0 !important;
+  top: 50% !important;
+
+  width: 3px !important;
+  height: 0 !important;
+
+  transform: translateY(-50%) !important;
+
+  transition: height .35s var(--ease) !important;
+}
+
+.explore-panel.turning::after{
+  background: #829eaf !important;
+}
+
+.explore-panel.fault::after{
+  background: #ad8269 !important;
+}
+
+.explore-panel.ideas::after{
+  background: #78948c !important;
+}
+
+.explore-panel.makers::after{
+  background: #ad7775 !important;
+}
+
+
+/* HOVER
+   ---------------------------------------------------------- */
+
+.explore-panel:hover,
+.explore-row:hover{
+  transform: none !important;
+
+  padding-left: 31px !important;
+
+  background: rgba(18,40,75,.035) !important;
+}
+
+.explore-panel:hover::after{
+  height: 54% !important;
+}
+
+.explore-panel:hover h3,
+.explore-row:hover .row-title{
+  transform: translateX(5px) !important;
+}
+
+
+/* REMOVE ALL OLD HOVER EFFECTS
+   ---------------------------------------------------------- */
+
+.explore-panel:hover .explore-ghost{
+  transform: none !important;
+}
+
+.explore-panel:hover::before{
+  width: 0 !important;
+}
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+
+@media (max-width: 900px){
+
+  .explore{
+    padding:
+      85px var(--edge)
+      90px !important;
+  }
+
+  .explore-head{
+    display: block !important;
+
+    margin-bottom: 45px !important;
+  }
+
+  .explore-head .section-label{
+    display: block !important;
+
+    margin-bottom: 22px !important;
+  }
+
+  .explore-intro{
+    max-width: 520px !important;
+
+    margin-top: 24px !important;
+
+    justify-self: auto !important;
+  }
+
+  .explore-panel,
+  .explore-row{
+    min-height: 135px !important;
+
+    grid-template-columns:
+      minmax(160px,.75fr)
+      minmax(0,1.25fr) !important;
+
+    padding:
+      24px 18px !important;
+
+    gap: 24px !important;
+  }
+
+  .explore-panel-top{
+    top: 22px !important;
+    left: 18px !important;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media (max-width: 620px){
+
+  .explore{
+    padding:
+      72px var(--edge)
+      78px !important;
+  }
+
+  .explore-head{
+    margin-bottom: 38px !important;
+  }
+
+  .explore-head h2{
+    font-size:
+      clamp(2.8rem, 13vw, 4rem) !important;
+  }
+
+  .explore-intro{
+    margin-top: 20px !important;
+
+    font-size: .9rem !important;
+  }
+
+  .explore-panel,
+  .explore-row{
+    min-height: 0 !important;
+
+    padding:
+      26px 5px 27px !important;
+
+    display: block !important;
+  }
+
+  .explore-panel-top{
+    position: static !important;
+
+    margin-bottom: 16px !important;
+  }
+
+  .explore-panel h3,
+  .row-title{
+    max-width: none !important;
+
+    margin: 0 0 13px !important;
+
+    font-size: 2.25rem !important;
+  }
+
+  .explore-panel p,
+  .row-desc{
+    max-width: 34ch !important;
+
+    font-size: .8rem !important;
+  }
+
+  .explore-panel::after{
+    left: -5px !important;
+  }
+
+  .explore-panel:hover,
+  .explore-row:hover{
+    padding-left: 12px !important;
+  }
+
+}
