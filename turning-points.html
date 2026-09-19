@@ -1,3001 +1,954 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Turning Points — Athar</title>
-
-  <!-- Keeps the fonts / global Athar identity -->
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-
-    /* =========================================================
-       TURNING POINTS
-    ========================================================= */
-
-    body.turning-points-page{
-      --navy:#12284b;
-      --coral:#f65343;
-
-      --paper:#f7f7f5;
-      --blue:#cbdde9;
-      --sand:#dfcfbc;
-      --green:#c7d9d2;
-      --rose:#dfbfbb;
-      --lilac:#c9cadc;
-      --yellow:#e2d39f;
-
-      margin:0;
-      background:var(--paper);
-      color:var(--navy);
-    }
-
-    .turning-points-page *,
-    .turning-points-page *::before,
-    .turning-points-page *::after{
-      box-sizing:border-box;
-    }
-
-    .turning-points-page a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-
-    /* =========================================================
-       HEADER
-    ========================================================= */
-
-    .tp-header{
-      height:100px;
-      padding:0 5.5%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-
-      background:var(--paper);
-      border-bottom:1px solid rgba(18,40,75,.11);
-    }
-
-    .tp-logo img{
-      display:block;
-      width:122px;
-      height:auto;
-    }
-
-    .tp-main-nav{
-      display:flex;
-      align-items:center;
-      gap:36px;
-    }
-
-    .tp-main-nav a{
-      position:relative;
-
-      font-size:.88rem;
-      font-weight:600;
-
-      color:rgba(18,40,75,.55);
-
-      transition:color .25s ease;
-    }
-
-    .tp-main-nav a:hover,
-    .tp-main-nav a.active{
-      color:var(--navy);
-    }
-
-    .tp-main-nav a.active::after{
-      content:"";
-      position:absolute;
-
-      left:0;
-      right:0;
-      bottom:-12px;
-
-      height:2px;
-
-      background:var(--coral);
-    }
-
-
-    /* =========================================================
-       HERO
-    ========================================================= */
-
-    .tp-hero{
-      background:#dce7ef;
-      padding:105px 5.5% 110px;
-    }
-
-    .tp-hero-inner{
-      max-width:1500px;
-      margin:auto;
-    }
-
-    .tp-hero-main{
-      display:grid;
-      grid-template-columns:1fr .85fr;
-      gap:100px;
-      align-items:end;
-    }
-
-    .tp-hero h1{
-      margin:0;
-
-      font-size:clamp(5.3rem,8.4vw,8.7rem);
-      line-height:.78;
-      letter-spacing:-.075em;
-
-      color:var(--navy);
-    }
-
-    .tp-hero p{
-      max-width:590px;
-      margin:0 0 8px;
-
-      font-size:1.15rem;
-      line-height:1.6;
-
-      color:#5d718a;
-    }
-
-
-    /* =========================================================
-       PERIOD CARDS
-    ========================================================= */
-
-    .tp-periods{
-      padding:90px 5.5% 120px;
-      background:var(--paper);
-    }
-
-    .tp-period-grid{
-      max-width:1500px;
-      margin:auto;
-
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-
-    .tp-period-card{
-      position:relative;
-
-      min-height:215px;
-      padding:30px 34px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-
-      overflow:hidden;
-
-      transition:
-        transform .3s ease,
-        filter .3s ease;
-    }
-
-    .tp-period-card:nth-child(1){background:var(--blue);}
-    .tp-period-card:nth-child(2){background:var(--sand);}
-    .tp-period-card:nth-child(3){background:var(--green);}
-    .tp-period-card:nth-child(4){background:var(--rose);}
-    .tp-period-card:nth-child(5){background:var(--lilac);}
-    .tp-period-card:nth-child(6){background:var(--yellow);}
-
-    .tp-period-card:hover{
-      transform:translateY(-5px);
-      filter:saturate(1.08);
-    }
-
-    .tp-period-years{
-      font-size:.66rem;
-      font-weight:700;
-      letter-spacing:.13em;
-      text-transform:uppercase;
-
-      color:#708198;
-    }
-
-    .tp-period-card h2{
-      margin:0;
-
-      font-size:clamp(2rem,3vw,3rem);
-      line-height:.88;
-      letter-spacing:-.05em;
-
-      color:var(--navy);
-    }
-
-
-    /* =========================================================
-       ARCHIVE
-    ========================================================= */
-
-    .tp-archive{
-      padding:120px 5.5% 150px;
-      background:#fff;
-    }
-
-    .archive-era{
-      max-width:1500px;
-      margin:0 auto 150px;
-    }
-
-    .archive-era:last-child{
-      margin-bottom:0;
-    }
-
-    .archive-era-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-
-      margin-bottom:35px;
-    }
-
-    .archive-era-head h2{
-      margin:0;
-
-      font-size:clamp(3.7rem,5.5vw,6rem);
-      line-height:.88;
-      letter-spacing:-.06em;
-
-      color:var(--navy);
-    }
-
-    .archive-era-head span{
-      padding-bottom:7px;
-
-      color:#8997a8;
-
-      font-size:.67rem;
-      font-weight:700;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-    }
-
-
-    /* =========================================================
-       COMMON EVENT ELEMENTS
-    ========================================================= */
-
-    .event-date,
-    .event-place{
-      font-size:.66rem;
-      font-weight:700;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-
-    .event-date{
-      color:var(--coral);
-    }
-
-    .event-place{
-      color:#75869a;
-    }
-
-    .event-card{
-      transition:
-        transform .35s ease,
-        filter .35s ease;
-    }
-
-    .event-card:hover{
-      transform:translateY(-5px);
-      filter:saturate(1.08);
-    }
-
-
-    /* =========================================================
-       ANCIENT
-       Large feature + two smaller stories
-    ========================================================= */
-
-    .ancient-layout{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:14px;
-    }
-
-    .ancient-feature{
-      min-height:535px;
-      padding:42px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-
-      background:var(--blue);
-    }
-
-    .event-top{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-    }
-
-    .ancient-feature h3{
-      max-width:650px;
-      margin:14px 0 22px;
-
-      font-size:clamp(4rem,5.8vw,6.4rem);
-      line-height:.82;
-      letter-spacing:-.065em;
-    }
-
-    .ancient-feature p{
-      max-width:520px;
-      margin:0;
-
-      color:#5e7187;
-      line-height:1.6;
-    }
-
-    .ancient-side{
-      display:grid;
-      grid-template-rows:1fr 1fr;
-      gap:14px;
-    }
-
-    .ancient-small{
-      min-height:260px;
-      padding:34px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .ancient-small:first-child{
-      background:var(--sand);
-    }
-
-    .ancient-small:last-child{
-      background:var(--green);
-    }
-
-    .ancient-small h3{
-      max-width:480px;
-      margin:12px 0 0;
-
-      font-size:2.45rem;
-      line-height:.93;
-      letter-spacing:-.045em;
-    }
-
-
-    /* =========================================================
-       MEDIEVAL
-       Horizontal editorial bands
-    ========================================================= */
-
-    .medieval-layout{
-      display:grid;
-      gap:14px;
-    }
-
-    .medieval-story{
-      min-height:210px;
-      padding:34px 40px;
-
-      display:grid;
-      grid-template-columns:130px 1fr 180px;
-      gap:40px;
-      align-items:center;
-    }
-
-    .medieval-story:nth-child(1){
-      background:var(--sand);
-    }
-
-    .medieval-story:nth-child(2){
-      background:#dbe6ec;
-    }
-
-    .medieval-story:nth-child(3){
-      background:var(--green);
-    }
-
-    .medieval-story h3{
-      margin:0;
-
-      font-size:clamp(2.4rem,3.5vw,4rem);
-      line-height:.92;
-      letter-spacing:-.05em;
-    }
-
-    .medieval-story .event-place{
-      text-align:right;
-    }
-
-
-    /* =========================================================
-       EARLY MODERN
-       Three editorial cards
-    ========================================================= */
-
-    .early-layout{
-      display:grid;
-      grid-template-columns:1.1fr .9fr .9fr;
-      gap:14px;
-    }
-
-    .early-card{
-      min-height:390px;
-      padding:36px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .early-card:nth-child(1){
-      background:var(--green);
-    }
-
-    .early-card:nth-child(2){
-      background:var(--rose);
-    }
-
-    .early-card:nth-child(3){
-      background:var(--sand);
-    }
-
-    .early-card h3{
-      margin:12px 0 0;
-
-      font-size:clamp(2.6rem,3.5vw,4.1rem);
-      line-height:.9;
-      letter-spacing:-.055em;
-    }
-
-
-    /* =========================================================
-       19TH CENTURY
-       One dominant story + stacked pair
-    ========================================================= */
-
-    .nineteenth-layout{
-      display:grid;
-      grid-template-columns:.9fr 1.1fr;
-      gap:14px;
-    }
-
-    .nineteenth-feature{
-      min-height:510px;
-      padding:40px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-
-      background:var(--rose);
-    }
-
-    .nineteenth-feature h3{
-      margin:14px 0 0;
-
-      font-size:clamp(4rem,5.5vw,6rem);
-      line-height:.82;
-      letter-spacing:-.065em;
-    }
-
-    .nineteenth-side{
-      display:grid;
-      grid-template-rows:1fr 1fr;
-      gap:14px;
-    }
-
-    .nineteenth-small{
-      min-height:248px;
-      padding:34px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .nineteenth-small:first-child{
-      background:var(--yellow);
-    }
-
-    .nineteenth-small:last-child{
-      background:#d5e1e7;
-    }
-
-    .nineteenth-small h3{
-      margin:12px 0 0;
-
-      font-size:2.7rem;
-      line-height:.9;
-      letter-spacing:-.05em;
-    }
-
-
-    /* =========================================================
-       20TH CENTURY
-       Wide feature across top + two below
-    ========================================================= */
-
-    .twentieth-layout{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-
-    .twentieth-feature{
-      grid-column:1 / -1;
-
-      min-height:380px;
-      padding:42px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-
-      background:var(--lilac);
-    }
-
-    .twentieth-feature h3{
-      max-width:950px;
-      margin:14px 0 0;
-
-      font-size:clamp(4.5rem,6vw,7rem);
-      line-height:.82;
-      letter-spacing:-.065em;
-    }
-
-    .twentieth-small{
-      min-height:280px;
-      padding:35px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .twentieth-small:nth-child(2){
-      background:var(--blue);
-    }
-
-    .twentieth-small:nth-child(3){
-      background:var(--sand);
-    }
-
-    .twentieth-small h3{
-      margin:12px 0 0;
-
-      font-size:2.8rem;
-      line-height:.9;
-      letter-spacing:-.05em;
-    }
-
-
-    /* =========================================================
-       CONTEMPORARY
-    ========================================================= */
-
-    .contemporary-layout{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-
-    .contemporary-card{
-      min-height:390px;
-      padding:38px;
-
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-
-    .contemporary-card:first-child{
-      background:var(--yellow);
-    }
-
-    .contemporary-card:last-child{
-      background:var(--green);
-    }
-
-    .contemporary-card h3{
-      max-width:600px;
-      margin:14px 0 0;
-
-      font-size:clamp(3.2rem,4.5vw,5rem);
-      line-height:.86;
-      letter-spacing:-.06em;
-    }
-
-
-    /* =========================================================
-       FOOTER
-    ========================================================= */
-
-    .tp-footer{
-      padding:42px 5.5%;
-
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-
-      background:var(--navy);
-      color:#fff;
-    }
-
-    .tp-footer strong{
-      font-size:1rem;
-    }
-
-    .tp-footer span{
-      color:rgba(255,255,255,.55);
-      font-size:.76rem;
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-
-    @media(max-width:900px){
-
-      .tp-header{
-        height:auto;
-        padding:25px 6%;
-        align-items:flex-start;
-      }
-
-      .tp-main-nav{
-        gap:14px;
-        flex-wrap:wrap;
-        justify-content:flex-end;
-      }
-
-      .tp-main-nav a{
-        font-size:.72rem;
-      }
-
-      .tp-hero{
-        padding:75px 6% 80px;
-      }
-
-      .tp-hero-main{
-        grid-template-columns:1fr;
-        gap:40px;
-      }
-
-      .tp-hero h1{
-        font-size:clamp(4.5rem,16vw,7rem);
-      }
-
-      .tp-periods,
-      .tp-archive{
-        padding-left:6%;
-        padding-right:6%;
-      }
-
-      .tp-period-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .ancient-layout,
-      .nineteenth-layout{
-        grid-template-columns:1fr;
-      }
-
-      .early-layout{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .early-card:first-child{
-        grid-column:1 / -1;
-      }
-
-      .medieval-story{
-        grid-template-columns:90px 1fr;
-      }
-
-      .medieval-story .event-place{
-        display:none;
-      }
-
-    }
-
-
-    @media(max-width:600px){
-
-      .tp-header{
-        padding:20px 5%;
-      }
-
-      .tp-logo img{
-        width:95px;
-      }
-
-      .tp-main-nav{
-        display:none;
-      }
-
-      .tp-hero{
-        padding:65px 5% 70px;
-      }
-
-      .tp-hero h1{
-        font-size:clamp(4rem,19vw,6rem);
-      }
-
-      .tp-hero p{
-        font-size:.95rem;
-      }
-
-      .tp-periods{
-        padding:55px 5% 75px;
-      }
-
-      .tp-period-grid{
-        grid-template-columns:1fr;
-        gap:10px;
-      }
-
-      .tp-period-card{
-        min-height:155px;
-        padding:24px;
-      }
-
-      .tp-period-card h2{
-        font-size:2.2rem;
-      }
-
-      .tp-archive{
-        padding:80px 5% 100px;
-      }
-
-      .archive-era{
-        margin-bottom:95px;
-      }
-
-      .archive-era-head h2{
-        font-size:3.4rem;
-      }
-
-      .archive-era-head span{
-        display:none;
-      }
-
-      .ancient-feature{
-        min-height:410px;
-        padding:28px;
-      }
-
-      .ancient-feature h3{
-        font-size:3.8rem;
-      }
-
-      .ancient-side{
-        grid-template-rows:auto;
-      }
-
-      .ancient-small{
-        min-height:210px;
-        padding:27px;
-      }
-
-      .medieval-story{
-        min-height:190px;
-        padding:28px;
-
-        grid-template-columns:1fr;
-        gap:20px;
-      }
-
-      .medieval-story h3{
-        font-size:2.5rem;
-      }
-
-      .early-layout{
-        grid-template-columns:1fr;
-      }
-
-      .early-card:first-child{
-        grid-column:auto;
-      }
-
-      .early-card{
-        min-height:260px;
-        padding:28px;
-      }
-
-      .nineteenth-feature{
-        min-height:390px;
-        padding:28px;
-      }
-
-      .nineteenth-side{
-        grid-template-rows:auto;
-      }
-
-      .nineteenth-small{
-        min-height:220px;
-        padding:28px;
-      }
-
-      .twentieth-layout,
-      .contemporary-layout{
-        grid-template-columns:1fr;
-      }
-
-      .twentieth-feature{
-        grid-column:auto;
-        min-height:370px;
-        padding:28px;
-      }
-
-      .twentieth-feature h3{
-        font-size:3.7rem;
-      }
-
-      .twentieth-small,
-      .contemporary-card{
-        min-height:240px;
-        padding:28px;
-      }
-
-    }
-
-
-    /* =========================================================
-   OVERRIDE — COMPACT PERIOD FILTERS
-========================================================= */
-
-.tp-periods{
-  padding: 48px 5.5% 58px;
-  background: var(--paper);
-}
-
-.tp-period-grid{
-  max-width: 1500px;
-  margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
-}
-
-.tp-period-card{
-  min-height: 105px;
-  padding: 18px 20px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  border: 0;
-  overflow: hidden;
-
-  transition:
-    transform .25s ease,
-    filter .25s ease;
-}
-
-/* keep the existing colours */
-
-.tp-period-card:nth-child(1){ background: var(--blue); }
-.tp-period-card:nth-child(2){ background: var(--sand); }
-.tp-period-card:nth-child(3){ background: var(--green); }
-.tp-period-card:nth-child(4){ background: var(--rose); }
-.tp-period-card:nth-child(5){ background: var(--lilac); }
-.tp-period-card:nth-child(6){ background: var(--yellow); }
-
-
-/* date */
-
-.tp-period-years{
-  font-size: .55rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(18,40,75,.48);
-}
-
-
-/* period name */
-
-.tp-period-card h2{
-  margin: 0;
-
-  font-size: clamp(1.15rem, 1.45vw, 1.55rem);
-  line-height: .95;
-  letter-spacing: -.035em;
-
-  color: var(--navy);
-}
-
-
-/* subtle interaction */
-
-.tp-period-card:hover{
-  transform: translateY(-3px);
-  filter: saturate(1.12);
-}
-
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-  .tp-period-grid{
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-}
-
-
-@media(max-width:600px){
-
-  .tp-periods{
-    padding: 32px 5% 42px;
-  }
-
-  .tp-period-grid{
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-  }
-
-  .tp-period-card{
-    min-height: 88px;
-    padding: 15px 16px;
-  }
-
-  .tp-period-card h2{
-    font-size: 1.1rem;
-  }
-
-}
-
-    /* =========================================================
-   FINAL OVERRIDE — ARCHIVE POLISH
-   Softer palette + stronger variation between eras
-========================================================= */
-
-/* ---------------------------------------------------------
-   GLOBAL ARCHIVE
---------------------------------------------------------- */
+/* ==========================================================
+   ATHAR — TURNING POINTS
+   CHRONOLOGICAL EXHIBITION OVERRIDE
+   ========================================================== */
+
+
+/* ==========================================================
+   ARCHIVE — NEW STRUCTURE
+   ========================================================== */
 
 .tp-archive{
-  padding-top:105px;
-  background:#fbfbfa;
-}
-
-/* Less empty space between eras */
-.archive-era{
-  margin-bottom:120px;
-}
-
-/* Softer dates — remove aggressive coral */
-.event-date{
-  color:#a76d68 !important;
-}
-
-/* Softer secondary information */
-.event-place{
-  color:rgba(18,40,75,.48) !important;
-}
-
-/* Remove excessive saturation effect */
-.event-card:hover{
-  filter:none !important;
-  transform:translateY(-4px);
-}
-
-
-/* =========================================================
-   ANCIENT
-   Large blue feature + two compact side stories
-========================================================= */
-
-.ancient-feature{
-  background:#c9dce8;
-}
-
-.ancient-small:first-child{
-  background:#ded1c2;
-}
-
-.ancient-small:last-child{
-  background:#c8d9d3;
-}
-
-
-/* =========================================================
-   MEDIEVAL
-   Horizontal bands — deliberately NOT cards
-========================================================= */
-
-.medieval-layout{
-  gap:0;
-  border-top:1px solid rgba(18,40,75,.13);
-}
-
-.medieval-story{
-  min-height:175px;
-  padding:30px 18px;
-
-  background:transparent !important;
-
-  border-bottom:1px solid rgba(18,40,75,.13);
-
-  transition:
-    padding .3s ease,
-    background .3s ease;
-}
-
-.medieval-story:nth-child(1),
-.medieval-story:nth-child(2),
-.medieval-story:nth-child(3){
-  background:transparent;
-}
-
-.medieval-story:hover{
-  transform:none;
-  padding-left:34px;
-  padding-right:34px;
-}
-
-.medieval-story:nth-child(1):hover{
-  background:#eee6dc !important;
-}
-
-.medieval-story:nth-child(2):hover{
-  background:#e3ebef !important;
-}
-
-.medieval-story:nth-child(3):hover{
-  background:#e1ebe7 !important;
-}
-
-
-/* =========================================================
-   EARLY MODERN
-   Two cards + wide horizontal third story
-========================================================= */
-
-.early-layout{
-  grid-template-columns:1.15fr .85fr;
-  gap:14px;
-}
-
-.early-card{
-  min-height:330px;
-}
-
-.early-card:nth-child(1){
-  background:#c8d9d3;
-}
-
-.early-card:nth-child(2){
-  background:#ddc4c0;
-}
-
-.early-card:nth-child(3){
-  grid-column:1 / -1;
-
-  min-height:185px;
-
-  display:grid;
-  grid-template-columns:1fr 1.5fr;
-  align-items:end;
-
-  background:#ded1c2;
-}
-
-.early-card:nth-child(3) .event-top{
-  align-self:start;
-}
-
-.early-card:nth-child(3) h3{
-  margin:0;
-  font-size:clamp(2.8rem,4vw,4.7rem);
-}
-
-
-/* =========================================================
-   19TH CENTURY
-   Dominant feature + compact stacked stories
-========================================================= */
-
-.nineteenth-layout{
-  grid-template-columns:1.15fr .85fr;
-}
-
-.nineteenth-feature{
-  min-height:470px;
-  background:#d9c1bd;
-}
-
-.nineteenth-small{
-  min-height:228px;
-}
-
-.nineteenth-small:first-child{
-  background:#ded3a9;
-}
-
-.nineteenth-small:last-child{
-  background:#cbdde6;
-}
-
-
-/* =========================================================
-   20TH CENTURY
-   Wide editorial feature + asymmetric lower row
-========================================================= */
-
-.twentieth-layout{
-  grid-template-columns:1.2fr .8fr;
-}
-
-.twentieth-feature{
-  min-height:330px;
-  background:#c9cadc;
-}
-
-.twentieth-small{
-  min-height:250px;
-}
-
-.twentieth-small:nth-child(2){
-  background:#c9dce8;
-}
-
-.twentieth-small:nth-child(3){
-  background:#ddd0c1;
-}
-
-/* Give the first lower card more visual weight */
-.twentieth-small:nth-child(2){
-  padding-right:60px;
-}
-
-
-/* =========================================================
-   CONTEMPORARY
-   Two horizontal editorial panels instead of tall blocks
-========================================================= */
-
-.contemporary-layout{
-  grid-template-columns:1fr;
-  gap:14px;
-}
-
-.contemporary-card{
-  min-height:210px;
-
-  display:grid;
-  grid-template-columns:.7fr 1.3fr;
-  align-items:end;
-}
-
-.contemporary-card:first-child{
-  background:#ded3a9;
-}
-
-.contemporary-card:last-child{
-  background:#c7d9d2;
-}
-
-.contemporary-card .event-top{
-  align-self:start;
-}
-
-.contemporary-card h3{
-  margin:0;
-
-  font-size:clamp(3rem,4.4vw,5rem);
-}
-
-
-/* =========================================================
-   HEADINGS — slightly tighter
-========================================================= */
-
-.archive-era-head{
-  margin-bottom:28px;
-}
-
-.archive-era-head h2{
-  font-size:clamp(3.4rem,5vw,5.4rem);
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:900px){
-
-  .early-layout{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .early-card:nth-child(3){
-    grid-column:1 / -1;
-  }
-
-  .twentieth-layout{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .contemporary-card{
-    grid-template-columns:1fr 1fr;
-  }
-
-}
-
-
-@media(max-width:600px){
-
-  .archive-era{
-    margin-bottom:85px;
-  }
-
-  /* Everything becomes readable vertically,
-     but retains its colour identity */
-
-  .early-layout,
-  .twentieth-layout,
-  .contemporary-layout{
-    grid-template-columns:1fr;
-  }
-
-  .early-card:nth-child(3),
-  .twentieth-feature{
-    grid-column:auto;
-  }
-
-  .early-card:nth-child(3),
-  .contemporary-card{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    align-items:stretch;
-  }
-
-  .early-card,
-  .contemporary-card{
-    min-height:220px;
-  }
-
-  .medieval-story{
-    padding:26px 0;
-  }
-
-  .medieval-story:hover{
-    padding-left:12px;
-    padding-right:12px;
-  }
-
-}
-
-
-    /* =========================================================
-   EVENT MODAL
-========================================================= */
-
-.event-modal{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-
-  display:flex;
-  justify-content:flex-end;
-
-  visibility:hidden;
-  pointer-events:none;
-}
-
-.event-modal.is-open{
-  visibility:visible;
-  pointer-events:auto;
-}
-
-
-/* darkened page behind */
-
-.event-modal-backdrop{
-  position:absolute;
-  inset:0;
-
-  background:rgba(13,31,60,.58);
-  backdrop-filter:blur(4px);
-
-  opacity:0;
-  transition:opacity .4s ease;
-}
-
-.event-modal.is-open .event-modal-backdrop{
-  opacity:1;
-}
-
-
-/* main popup */
-
-.event-modal-panel{
   position:relative;
-  z-index:2;
 
-  width:min(920px,82vw);
-  height:100%;
+  padding:
+    135px 5.5%
+    180px !important;
 
-  padding:70px 70px 80px;
+  background:#f7f7f5 !important;
 
-  background:#f7f7f5;
-  color:#12284b;
-
-  overflow-y:auto;
-
-  transform:translateX(100%);
-
-  transition:
-    transform .55s cubic-bezier(.77,0,.18,1);
-}
-
-.event-modal.is-open .event-modal-panel{
-  transform:translateX(0);
-}
-
-
-/* close */
-
-.event-modal-close{
-  position:absolute;
-  top:30px;
-  right:34px;
-
-  width:46px;
-  height:46px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border:1px solid rgba(18,40,75,.18);
-  border-radius:50%;
-
-  background:transparent;
-  color:#12284b;
-
-  font-family:inherit;
-  font-size:1.7rem;
-  font-weight:300;
-
-  cursor:pointer;
-
-  transition:
-    background .25s ease,
-    color .25s ease,
-    transform .25s ease;
-}
-
-.event-modal-close:hover{
-  background:#12284b;
-  color:#fff;
-  transform:rotate(90deg);
-}
-
-
-/* header */
-
-.modal-header{
-  padding:50px 0 60px;
-  border-bottom:1px solid rgba(18,40,75,.15);
-}
-
-.modal-meta{
-  display:flex;
-  gap:28px;
-
-  margin-bottom:34px;
-
-  color:#a76d68;
-
-  font-size:.67rem;
-  font-weight:700;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-}
-
-.modal-header h2{
-  margin:0;
-
-  font-size:clamp(4.5rem,7vw,7rem);
-  line-height:.8;
-  letter-spacing:-.07em;
-
-  color:#12284b;
-}
-
-.modal-intro{
-  max-width:650px;
-
-  margin:42px 0 0;
-
-  font-size:1.2rem;
-  line-height:1.65;
-
-  color:#60738a;
-}
-
-
-/* content */
-
-.modal-content{
-  display:grid;
-  grid-template-columns:1.5fr .7fr;
-  gap:80px;
-
-  padding-top:60px;
-}
-
-.modal-main h3{
-  margin:0 0 20px;
-
-  font-size:1.65rem;
-  letter-spacing:-.035em;
-
-  color:#12284b;
-}
-
-.modal-main h3:not(:first-child){
-  margin-top:55px;
-}
-
-.modal-main p{
-  margin:0 0 22px;
-
-  font-size:1rem;
-  line-height:1.8;
-
-  color:#52667e;
-}
-
-
-/* facts */
-
-.modal-facts{
-  border-top:1px solid rgba(18,40,75,.15);
-}
-
-.modal-fact{
-  padding:22px 0;
-
-  border-bottom:1px solid rgba(18,40,75,.15);
-}
-
-.modal-fact span{
-  display:block;
-
-  margin-bottom:8px;
-
-  color:#8997a8;
-
-  font-size:.6rem;
-  font-weight:700;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-}
-
-.modal-fact strong{
-  display:block;
-
-  font-size:.95rem;
-  line-height:1.4;
-
-  color:#12284b;
-}
-
-
-/* stop background scrolling */
-
-body.modal-open{
   overflow:hidden;
 }
 
 
-/* mobile */
+/* central historical line */
 
-@media(max-width:700px){
+.tp-archive::before{
+  content:"";
 
-  .event-modal-panel{
-    width:100%;
-    padding:55px 25px 60px;
-  }
+  position:absolute;
 
-  .event-modal-close{
-    top:20px;
-    right:20px;
-  }
+  top:100px;
+  bottom:100px;
+  left:50%;
 
-  .modal-header{
-    padding-top:55px;
-  }
+  width:1px;
 
-  .modal-header h2{
-    font-size:4.3rem;
-  }
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(18,40,75,.18) 5%,
+      rgba(18,40,75,.18) 95%,
+      transparent
+    );
 
-  .modal-content{
-    grid-template-columns:1fr;
-    gap:50px;
-  }
-
+  pointer-events:none;
 }
 
-    /* =========================================================
-   ATHAR — DETAILED ARCHIVE REDESIGN
-   VARIED EDITORIAL LAYOUTS
-   Paste at END of <style>
-========================================================= */
 
-
-/* =========================================================
-   GLOBAL
-========================================================= */
-
-.tp-archive{
-  padding-top:110px;
-  padding-bottom:160px;
-  background:#fbfbfa;
-}
+/* ==========================================================
+   EACH ERA
+   ========================================================== */
 
 .archive-era{
   position:relative;
-  margin-bottom:145px;
+
+  max-width:1500px;
+
+  margin:
+    0 auto
+    190px !important;
+
+  padding:0 !important;
 }
+
+.archive-era:last-child{
+  margin-bottom:0 !important;
+}
+
+
+/* timeline marker */
+
+.archive-era::before{
+  content:"";
+
+  position:absolute;
+
+  top:22px;
+  left:50%;
+
+  width:9px;
+  height:9px;
+
+  background:#f7f7f5;
+
+  border:2px solid #a36f69;
+  border-radius:50%;
+
+  transform:translateX(-50%);
+
+  z-index:5;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+.archive-era:hover::before{
+  background:#a36f69;
+
+  transform:
+    translateX(-50%)
+    scale(1.4);
+}
+
+
+/* ==========================================================
+   ERA HEADINGS
+   ========================================================== */
 
 .archive-era-head{
-  margin-bottom:34px;
+  position:relative;
+
+  width:46%;
+
+  margin:
+    0 0
+    55px !important;
+
+  padding:0 !important;
 }
 
-.archive-era-head h2{
-  font-size:clamp(3.6rem,5vw,5.6rem);
+
+/* alternating headings */
+
+.archive-era:nth-child(even) .archive-era-head{
+  margin-left:54% !important;
 }
+
+
+/* remove previous manual offsets */
+
+#medieval .archive-era-head,
+#twentieth .archive-era-head,
+#contemporary .archive-era-head{
+  padding-left:0 !important;
+}
+
+
+.archive-era-head h2{
+  margin:0 !important;
+
+  font-family:var(--display);
+
+  font-size:
+    clamp(4.3rem,6.3vw,7.2rem) !important;
+
+  font-weight:620;
+
+  line-height:.8 !important;
+
+  letter-spacing:-.07em !important;
+
+  color:var(--navy);
+}
+
+
+.archive-era-head span{
+  display:block !important;
+
+  margin-top:20px;
+
+  padding:0 !important;
+
+  color:#a36f69 !important;
+
+  font-size:.63rem !important;
+  font-weight:700;
+
+  letter-spacing:.15em;
+
+  text-transform:uppercase;
+}
+
+
+/* ==========================================================
+   DESTROY OLD GRID LOGIC
+   ========================================================== */
+
+.ancient-layout,
+.medieval-layout,
+.early-layout,
+.nineteenth-layout,
+.twentieth-layout,
+.contemporary-layout,
+.ancient-side,
+.nineteenth-side{
+
+  display:flex !important;
+
+  flex-direction:column !important;
+
+  gap:0 !important;
+
+  padding:0 !important;
+
+  border:0 !important;
+}
+
+
+/* remove old decorative timeline */
+
+.medieval-layout::before{
+  display:none !important;
+}
+
+
+/* ==========================================================
+   EVENTS — COMMON
+   ========================================================== */
+
+.event-card{
+  position:relative !important;
+
+  width:46% !important;
+
+  min-height:0 !important;
+
+  margin:0 !important;
+
+  padding:
+    32px 0
+    35px !important;
+
+  display:block !important;
+
+  background:transparent !important;
+
+  border:0 !important;
+  border-top:
+    1px solid rgba(18,40,75,.16) !important;
+
+  overflow:visible !important;
+
+  cursor:pointer;
+
+  transition:
+    padding .45s cubic-bezier(.22,.61,.36,1),
+    transform .45s cubic-bezier(.22,.61,.36,1),
+    opacity .35s ease !important;
+}
+
+
+/* ==========================================================
+   ALTERNATING EVENTS
+   ========================================================== */
+
+/* first event */
+
+.archive-era .event-card:nth-child(odd){
+  margin-right:54% !important;
+}
+
+
+/* second event */
+
+.archive-era .event-card:nth-child(even){
+  margin-left:54% !important;
+}
+
+
+/*
+   Nested layouts mean nth-child alone isn't always enough.
+   These rules deliberately create irregular rhythm.
+*/
+
+.ancient-feature,
+.early-card:nth-child(1),
+.nineteenth-feature,
+.twentieth-feature,
+.contemporary-card:nth-child(1){
+
+  margin-right:54% !important;
+  margin-left:0 !important;
+}
+
+
+.ancient-small:first-child,
+.early-card:nth-child(2),
+.nineteenth-small:first-child,
+.twentieth-small:nth-child(2),
+.contemporary-card:nth-child(2){
+
+  margin-left:54% !important;
+  margin-right:0 !important;
+}
+
+
+.ancient-small:last-child,
+.early-card:nth-child(3),
+.nineteenth-small:last-child,
+.twentieth-small:nth-child(3){
+
+  margin-right:54% !important;
+  margin-left:0 !important;
+}
+
+
+/* Medieval gets a deliberate zigzag */
+
+.medieval-story:nth-child(1),
+.medieval-story:nth-child(3){
+  margin:
+    0 54% 0 0 !important;
+}
+
+.medieval-story:nth-child(2){
+  margin:
+    0 0 0 54% !important;
+}
+
+
+/* ==========================================================
+   EVENT META
+   ========================================================== */
+
+.event-top{
+  display:flex !important;
+
+  justify-content:space-between !important;
+  align-items:center !important;
+
+  gap:20px;
+
+  margin-bottom:18px;
+}
+
+
+.event-date,
+.event-place{
+  font-size:.61rem !important;
+
+  font-weight:700;
+
+  letter-spacing:.13em;
+
+  text-transform:uppercase;
+}
+
 
 .event-date{
   color:#a36f69 !important;
 }
 
 .event-place{
-  color:rgba(18,40,75,.46) !important;
-}
+  color:rgba(18,40,75,.42) !important;
 
-.event-card{
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.event-card:hover{
-  filter:none !important;
-  transform:none !important;
+  text-align:right !important;
 }
 
 
-/* =========================================================
-   01 — ANCIENT
-   Keep the strong feature composition,
-   but make it more editorial and less "three cards"
-========================================================= */
+/* ==========================================================
+   TITLES — RESET ALL THE DIFFERENT SIZES
+   ========================================================== */
 
-.ancient-layout{
-  display:grid;
-  grid-template-columns:1.35fr .65fr;
-  gap:18px;
-}
+.event-card h3,
+.ancient-feature h3,
+.ancient-small h3,
+.medieval-story h3,
+.early-card h3,
+.early-card:nth-child(1) h3,
+.early-card:nth-child(2) h3,
+.early-card:nth-child(3) h3,
+.nineteenth-feature h3,
+.nineteenth-small h3,
+.twentieth-feature h3,
+.twentieth-small h3,
+.contemporary-card h3,
+.contemporary-card:last-child h3{
 
-.ancient-feature{
-  position:relative;
+  max-width:650px !important;
 
-  min-height:540px;
-  padding:48px;
+  margin:
+    0 !important;
 
-  background:#c8dce8;
+  font-family:var(--display);
 
-  transition:background .35s ease;
-}
+  font-size:
+    clamp(2.7rem,4vw,4.7rem) !important;
 
-.ancient-feature:hover{
-  background:#bed5e3;
-}
+  font-weight:620;
 
+  line-height:.87 !important;
 
-/* thin detail on feature */
+  letter-spacing:-.055em !important;
 
-.ancient-feature::after{
-  content:"";
-  position:absolute;
+  color:var(--navy);
 
-  left:48px;
-  bottom:42px;
-
-  width:70px;
-  height:3px;
-
-  background:#a36f69;
-
-  opacity:.65;
+  transition:
+    transform .45s cubic-bezier(.22,.61,.36,1),
+    color .3s ease !important;
 }
 
 
-/* give description room above line */
+/* ==========================================================
+   DESCRIPTION
+   ========================================================== */
 
+.event-card p,
 .ancient-feature p{
-  padding-bottom:35px;
-}
 
+  max-width:500px !important;
 
-/* side events stop looking like equal cards */
+  margin:
+    20px 0 0 !important;
 
-.ancient-side{
-  display:flex;
-  flex-direction:column;
-  gap:0;
+  padding:0 !important;
 
-  border-top:1px solid rgba(18,40,75,.16);
-}
+  color:rgba(18,40,75,.57) !important;
 
-.ancient-small{
-  flex:1;
+  font-size:.88rem;
 
-  min-height:0;
-  padding:35px 28px;
+  line-height:1.7;
 
-  background:transparent !important;
-
-  border-bottom:1px solid rgba(18,40,75,.16);
+  opacity:.8;
 
   transition:
-    background .3s ease,
-    padding .3s ease;
-}
-
-.ancient-small:first-child:hover{
-  background:#eee4d8 !important;
-  padding-left:38px;
-}
-
-.ancient-small:last-child:hover{
-  background:#e0ebe6 !important;
-  padding-left:38px;
-}
-
-.ancient-small h3{
-  font-size:clamp(2rem,2.6vw,2.8rem);
+    opacity .35s ease,
+    transform .45s ease;
 }
 
 
-/* =========================================================
-   02 — MEDIEVAL
-   NO CARDS.
-   Pure editorial timeline / index.
-========================================================= */
+/* ==========================================================
+   COLOURED HOVER FIELD
+   ========================================================== */
 
-.medieval-layout{
-  position:relative;
-
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:0;
-
-  padding-top:45px;
-
-  border-top:1px solid rgba(18,40,75,.18);
-}
-
-
-/* timeline line */
-
-.medieval-layout::before{
-  content:"";
-  position:absolute;
-
-  top:21px;
-  left:0;
-  right:0;
-
-  height:1px;
-
-  background:rgba(18,40,75,.16);
-}
-
-
-.medieval-story{
-  position:relative;
-
-  min-height:320px;
-  padding:42px 38px 35px 0;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items:flex-start;
-
-  background:transparent !important;
-
-  border-bottom:1px solid rgba(18,40,75,.16);
-
-  transition:
-    padding .35s ease,
-    background .35s ease;
-}
-
-
-/* vertical separators */
-
-.medieval-story:not(:last-child){
-  border-right:1px solid rgba(18,40,75,.12);
-  margin-right:38px;
-}
-
-
-/* timeline dots */
-
-.medieval-story::before{
+.event-card::after{
   content:"";
 
   position:absolute;
 
-  top:-29px;
-  left:0;
+  z-index:-1;
 
-  width:9px;
-  height:9px;
+  top:15px;
+  bottom:15px;
 
-  border-radius:50%;
+  left:-25px;
+  right:-25px;
 
-  background:#a36f69;
+  background:#dce7ef;
+
+  transform:
+    scaleX(.03);
+
+  transform-origin:left center;
+
+  opacity:0;
+
+  transition:
+    transform .5s cubic-bezier(.22,.61,.36,1),
+    opacity .3s ease;
 }
 
 
-/* stagger the typography */
+/* events on right animate opposite direction */
 
-.medieval-story:nth-child(2){
-  padding-top:85px;
-}
+.archive-era .event-card:nth-child(even)::after,
+.ancient-small:first-child::after,
+.early-card:nth-child(2)::after,
+.nineteenth-small:first-child::after,
+.twentieth-small:nth-child(2)::after,
+.contemporary-card:nth-child(2)::after{
 
-.medieval-story:nth-child(3){
-  padding-top:125px;
-}
-
-
-/* different hover washes */
-
-.medieval-story:nth-child(1):hover{
-  background:#eee6dc !important;
-}
-
-.medieval-story:nth-child(2):hover{
-  background:#e5edf1 !important;
-}
-
-.medieval-story:nth-child(3):hover{
-  background:#e3ece8 !important;
-}
-
-.medieval-story:hover{
-  padding-left:22px;
-}
-
-.medieval-story h3{
-  max-width:360px;
-
-  font-size:clamp(2.5rem,3.4vw,4rem);
-  line-height:.9;
-}
-
-.medieval-story .event-place{
-  text-align:left;
+  transform-origin:right center;
 }
 
 
-/* =========================================================
-   03 — EARLY MODERN
-   Magazine composition:
-   one tall story + two very different stories
-========================================================= */
+/* varied but subtle archive colours */
 
-.early-layout{
-  display:grid;
-
-  grid-template-columns:1.15fr .85fr;
-  grid-template-rows:260px 260px;
-
-  gap:16px;
+#ancient .event-card::after{
+  background:#dce8ef;
 }
 
-
-/* Protestant Reformation = tall feature */
-
-.early-card:nth-child(1){
-  grid-column:1;
-  grid-row:1 / 3;
-
-  min-height:536px;
-
-  padding:42px;
-
-  background:#c7d9d2;
-}
-
-
-/* Westphalia = horizontal */
-
-.early-card:nth-child(2){
-  grid-column:2;
-  grid-row:1;
-
-  min-height:0;
-
-  padding:32px 36px;
-
-  background:#dfc5c1;
-}
-
-
-/* American Independence = almost no card */
-
-.early-card:nth-child(3){
-  grid-column:2;
-  grid-row:2;
-
-  min-height:0;
-
-  padding:32px 36px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-
+#medieval .event-card::after{
   background:#eee5d9;
 }
 
+#early-modern .event-card::after{
+  background:#dce8e3;
+}
 
-/* feature typography */
+#nineteenth .event-card::after{
+  background:#eadeda;
+}
 
-.early-card:nth-child(1) h3{
-  font-size:clamp(4rem,5vw,6rem);
-  line-height:.82;
+#twentieth .event-card::after{
+  background:#e1e2eb;
+}
+
+#contemporary .event-card::after{
+  background:#e8e1c9;
 }
 
 
-/* smaller stories */
+/* ==========================================================
+   HOVER
+   ========================================================== */
 
-.early-card:nth-child(2) h3,
-.early-card:nth-child(3) h3{
-  margin:0;
+.event-card:hover{
+  background:transparent !important;
 
-  font-size:clamp(2.4rem,3vw,3.5rem);
-  line-height:.9;
+  padding-left:20px !important;
+  padding-right:20px !important;
+
+  transform:none !important;
+
+  filter:none !important;
 }
 
 
-/* subtle interactions */
+.event-card:hover::after{
+  opacity:1;
 
-.early-card:nth-child(1):hover{
-  background:#bdd2ca;
-}
-
-.early-card:nth-child(2):hover{
-  background:#d9bbb7;
-}
-
-.early-card:nth-child(3):hover{
-  background:#e6d9c9;
+  transform:
+    scaleX(1);
 }
 
 
-/* =========================================================
-   04 — 19TH CENTURY
-   Wide horizontal feature + two compact stories underneath.
-   Completely different from Ancient.
-========================================================= */
-
-.nineteenth-layout{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
+.event-card:hover h3{
+  transform:
+    translateX(8px);
 }
 
 
-/* Congress of Vienna */
+.event-card:hover p{
+  opacity:1;
 
-.nineteenth-feature{
-  grid-column:1 / -1;
-
-  min-height:300px;
-
-  padding:40px 44px;
-
-  display:grid;
-  grid-template-columns:.75fr 1.25fr;
-  align-items:end;
-
-  background:#d9c1bd;
-}
-
-.nineteenth-feature .event-top{
-  align-self:start;
-}
-
-.nineteenth-feature h3{
-  margin:0;
-
-  font-size:clamp(4rem,5.8vw,6.8rem);
+  transform:
+    translateX(8px);
 }
 
 
-/* remove the stacked-side logic */
+/* soften siblings when interacting */
 
-.nineteenth-side{
-  grid-column:1 / -1;
+.archive-era:has(.event-card:hover)
+.event-card:not(:hover){
 
-  display:grid;
-  grid-template-columns:.8fr 1.2fr;
-  grid-template-rows:none;
-
-  gap:16px;
+  opacity:.42;
 }
 
 
-/* 1848 */
+/* ==========================================================
+   ERA BACKGROUND WORD
+   ========================================================== */
 
-.nineteenth-small:first-child{
-  min-height:245px;
+.archive-era::after{
+  position:absolute;
 
-  padding:34px;
+  z-index:-1;
 
-  background:#e1d4a8;
+  top:-50px;
+
+  color:rgba(18,40,75,.022);
+
+  font-family:var(--display);
+
+  font-size:
+    clamp(9rem,18vw,18rem);
+
+  font-weight:700;
+
+  line-height:1;
+
+  letter-spacing:-.08em;
+
+  pointer-events:none;
 }
 
 
-/* Meiji */
+/* actual era words */
 
-.nineteenth-small:last-child{
-  min-height:245px;
+#ancient::after{
+  content:"ANCIENT";
+  right:-4%;
+}
 
-  padding:34px;
+#medieval::after{
+  content:"MEDIEVAL";
+  left:-5%;
+}
 
-  background:#cfdee6;
+#early-modern::after{
+  content:"EARLY";
+  right:-3%;
+}
+
+#nineteenth::after{
+  content:"XIX";
+  left:8%;
+}
+
+#twentieth::after{
+  content:"XX";
+  right:5%;
+}
+
+#contemporary::after{
+  content:"NOW";
+  left:7%;
 }
 
 
-.nineteenth-small:first-child h3{
-  font-size:clamp(2.6rem,3.5vw,4rem);
-}
+/* ==========================================================
+   SCROLL REVEAL
+   works automatically if your existing reveal JS
+   applies .is-visible; otherwise elements still display.
+   ========================================================== */
 
-.nineteenth-small:last-child h3{
-  font-size:clamp(3rem,4vw,4.7rem);
-}
+@media (prefers-reduced-motion:no-preference){
 
+  .archive-era{
+    animation:
+      eraReveal linear both;
 
-/* =========================================================
-   05 — 20TH CENTURY
-   Actual mosaic instead of feature + two boring cards
-========================================================= */
+    animation-timeline:view();
 
-.twentieth-layout{
-  display:grid;
+    animation-range:
+      entry 5%
+      cover 25%;
+  }
 
-  grid-template-columns:.72fr 1.28fr;
-  grid-template-rows:300px 300px;
+  @keyframes eraReveal{
 
-  gap:16px;
-}
+    from{
+      opacity:.15;
+      transform:translateY(45px);
+    }
 
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
 
-/* Russian Revolution = tall */
+  }
 
-.twentieth-feature{
-  grid-column:1;
-  grid-row:1 / 3;
-
-  min-height:616px;
-
-  padding:42px;
-
-  background:#c9cadc;
-}
-
-.twentieth-feature h3{
-  font-size:clamp(4rem,5.2vw,6rem);
 }
 
 
-/* WWII = wide upper */
+/* ==========================================================
+   PERIOD NAV — ALSO MAKE IT LESS "SIX CARDS"
+   ========================================================== */
 
-.twentieth-small:nth-child(2){
-  grid-column:2;
-  grid-row:1;
+.tp-periods{
+  padding:
+    34px 5.5%
+    42px !important;
 
-  min-height:0;
+  background:#fff !important;
 
-  padding:35px 40px;
-
-  background:#c9dce8;
+  border-bottom:
+    1px solid rgba(18,40,75,.11);
 }
 
 
-/* Berlin Wall = wide lower */
+.tp-period-grid{
+  max-width:1500px;
 
-.twentieth-small:nth-child(3){
-  grid-column:2;
-  grid-row:2;
+  margin:auto;
 
-  min-height:0;
+  display:flex !important;
 
-  padding:35px 40px;
+  gap:0 !important;
 
-  background:#ded1c2;
+  border-top:
+    1px solid rgba(18,40,75,.15);
 }
 
 
-.twentieth-small h3{
-  max-width:650px;
+.tp-period-card{
+  position:relative;
 
-  font-size:clamp(2.8rem,3.7vw,4.4rem);
-}
+  flex:1;
 
+  min-height:92px !important;
 
-/* little differences in alignment */
-
-.twentieth-small:nth-child(2) h3{
-  align-self:flex-end;
-}
-
-.twentieth-small:nth-child(3) h3{
-  max-width:500px;
-}
-
-
-/* =========================================================
-   06 — CONTEMPORARY
-   Split editorial ending.
-   No obvious card-grid feeling.
-========================================================= */
-
-.contemporary-layout{
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:0;
-
-  border-top:1px solid rgba(18,40,75,.17);
-  border-bottom:1px solid rgba(18,40,75,.17);
-}
-
-
-.contemporary-card{
-  min-height:400px;
-
-  padding:42px 40px;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  padding:
+    17px 15px
+    15px !important;
 
   background:transparent !important;
 
+  border-right:
+    1px solid rgba(18,40,75,.12) !important;
+
   transition:
-    background .35s ease,
-    padding .35s ease;
+    background .3s ease,
+    padding .3s ease !important;
 }
 
 
-.contemporary-card:first-child{
-  border-right:1px solid rgba(18,40,75,.17);
-}
-
-.contemporary-card:first-child:hover{
-  background:#eee3bd !important;
-}
-
-.contemporary-card:last-child:hover{
-  background:#dce9e4 !important;
+.tp-period-card:last-child{
+  border-right:0 !important;
 }
 
 
-.contemporary-card h3{
-  font-size:clamp(3.7rem,5vw,5.8rem);
+.tp-period-card:hover{
+  transform:none !important;
+
+  filter:none !important;
+
+  background:#f0f3f4 !important;
+
+  padding-left:22px !important;
 }
 
 
-/* make second story feel larger */
+.tp-period-years{
+  color:rgba(18,40,75,.4) !important;
 
-.contemporary-card:last-child{
-  padding-left:65px;
-}
-
-.contemporary-card:last-child h3{
-  font-size:clamp(4.2rem,5.7vw,6.5rem);
+  font-size:.54rem !important;
 }
 
 
-/* =========================================================
-   ERA HEADINGS — subtle variation
-========================================================= */
+.tp-period-card h2{
+  margin-top:auto !important;
 
-/* Medieval heading shifted slightly right */
-#medieval .archive-era-head{
-  padding-left:8%;
-}
+  font-size:
+    clamp(1rem,1.35vw,1.35rem) !important;
 
-/* Early Modern heading narrower */
-#early-modern .archive-era-head h2{
-  max-width:600px;
-}
-
-/* 19th heading aligned normally */
-#nineteenth .archive-era-head{
-  padding-left:0;
-}
-
-/* 20th heading pushed slightly inward */
-#twentieth .archive-era-head{
-  padding-left:4%;
-}
-
-/* Contemporary heading on opposite rhythm */
-#contemporary .archive-era-head{
-  padding-left:10%;
+  line-height:.95 !important;
 }
 
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* tiny active-feeling line */
+
+.tp-period-card::after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  bottom:-1px;
+
+  width:0;
+  height:2px;
+
+  background:#a36f69;
+
+  transition:
+    width .4s cubic-bezier(.22,.61,.36,1);
+}
+
+
+.tp-period-card:hover::after{
+  width:100%;
+}
+
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
 
 @media(max-width:900px){
 
-  .ancient-layout{
-    grid-template-columns:1fr;
-  }
-
-  .ancient-side{
-    display:grid;
-    grid-template-columns:1fr 1fr;
+  .tp-archive::before{
+    left:24px;
   }
 
 
-  .medieval-layout{
-    grid-template-columns:1fr;
-    padding-top:0;
+  .archive-era::before{
+    left:24px;
   }
 
-  .medieval-layout::before{
-    display:none;
+
+  .archive-era-head,
+  .archive-era:nth-child(even) .archive-era-head{
+
+    width:auto;
+
+    margin:
+      0 0
+      45px 55px !important;
   }
 
-  .medieval-story,
+
+  .event-card,
+  .archive-era .event-card:nth-child(odd),
+  .archive-era .event-card:nth-child(even),
+
+  .ancient-feature,
+  .ancient-small:first-child,
+  .ancient-small:last-child,
+
+  .early-card:nth-child(1),
+  .early-card:nth-child(2),
+  .early-card:nth-child(3),
+
+  .nineteenth-feature,
+  .nineteenth-small:first-child,
+  .nineteenth-small:last-child,
+
+  .twentieth-feature,
+  .twentieth-small:nth-child(2),
+  .twentieth-small:nth-child(3),
+
+  .contemporary-card:nth-child(1),
+  .contemporary-card:nth-child(2),
+
+  .medieval-story:nth-child(1),
   .medieval-story:nth-child(2),
   .medieval-story:nth-child(3){
-    min-height:190px;
-    padding:28px 0;
 
-    border-right:0;
-    margin-right:0;
-  }
+    width:auto !important;
 
-  .medieval-story::before{
-    display:none;
+    margin:
+      0 0
+      0 55px !important;
   }
 
 
-  .early-layout{
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:auto;
-  }
+  .tp-period-grid{
+    display:grid !important;
 
-  .early-card:nth-child(1){
-    grid-column:1 / -1;
-    grid-row:auto;
-    min-height:420px;
-  }
-
-  .early-card:nth-child(2),
-  .early-card:nth-child(3){
-    grid-column:auto;
-    grid-row:auto;
-    min-height:250px;
+    grid-template-columns:
+      repeat(3,1fr) !important;
   }
 
 
-  .twentieth-layout{
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:auto;
-  }
-
-  .twentieth-feature{
-    grid-column:1 / -1;
-    grid-row:auto;
-    min-height:420px;
-  }
-
-  .twentieth-small:nth-child(2),
-  .twentieth-small:nth-child(3){
-    grid-column:auto;
-    grid-row:auto;
-    min-height:250px;
+  .tp-period-card{
+    border-bottom:
+      1px solid rgba(18,40,75,.12) !important;
   }
 
 }
 
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
 
 @media(max-width:600px){
 
   .tp-archive{
-    padding-top:75px;
-    padding-bottom:100px;
+    padding:
+      85px 5%
+      110px !important;
   }
+
+
+  .tp-archive::before{
+    left:9px;
+  }
+
 
   .archive-era{
-    margin-bottom:100px;
+    margin-bottom:
+      110px !important;
   }
 
 
-  /* don't over-stagger headings on phone */
+  .archive-era::before{
+    left:9px;
 
-  #medieval .archive-era-head,
-  #twentieth .archive-era-head,
-  #contemporary .archive-era-head{
-    padding-left:0;
+    top:10px;
+
+    width:7px;
+    height:7px;
   }
 
 
-  /* ANCIENT */
+  .archive-era-head,
+  .archive-era:nth-child(even) .archive-era-head{
 
-  .ancient-feature{
-    min-height:400px;
-    padding:28px;
-  }
+    margin-left:
+      30px !important;
 
-  .ancient-feature::after{
-    left:28px;
-    bottom:25px;
-  }
-
-  .ancient-side{
-    grid-template-columns:1fr;
-  }
-
-  .ancient-small{
-    min-height:190px;
-    padding:27px 0;
+    margin-bottom:
+      35px !important;
   }
 
 
-  /* MEDIEVAL */
-
-  .medieval-story,
-  .medieval-story:nth-child(2),
-  .medieval-story:nth-child(3){
-    min-height:180px;
-    padding:28px 0;
+  .archive-era-head h2{
+    font-size:
+      clamp(3rem,14vw,4.4rem) !important;
   }
 
 
-  /* EARLY MODERN */
+  .event-card,
+  .archive-era .event-card:nth-child(odd),
+  .archive-era .event-card:nth-child(even),
 
-  .early-layout{
-    grid-template-columns:1fr;
-  }
+  .ancient-feature,
+  .ancient-small:first-child,
+  .ancient-small:last-child,
 
   .early-card:nth-child(1),
   .early-card:nth-child(2),
-  .early-card:nth-child(3){
-    grid-column:auto;
-    grid-row:auto;
+  .early-card:nth-child(3),
 
-    min-height:230px;
-    padding:28px;
-  }
-
-  .early-card:nth-child(1){
-    min-height:360px;
-  }
-
-
-  /* 19TH */
-
-  .nineteenth-layout,
-  .nineteenth-side{
-    grid-template-columns:1fr;
-  }
-
-  .nineteenth-feature{
-    grid-column:auto;
-
-    min-height:360px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-
-    padding:28px;
-  }
-
-  .nineteenth-small{
-    min-height:210px !important;
-    padding:28px !important;
-  }
-
-
-  /* 20TH */
-
-  .twentieth-layout{
-    grid-template-columns:1fr;
-  }
+  .nineteenth-feature,
+  .nineteenth-small:first-child,
+  .nineteenth-small:last-child,
 
   .twentieth-feature,
   .twentieth-small:nth-child(2),
-  .twentieth-small:nth-child(3){
-    grid-column:auto;
-    grid-row:auto;
+  .twentieth-small:nth-child(3),
+
+  .contemporary-card:nth-child(1),
+  .contemporary-card:nth-child(2),
+
+  .medieval-story:nth-child(1),
+  .medieval-story:nth-child(2),
+  .medieval-story:nth-child(3){
+
+    width:auto !important;
+
+    min-height:0 !important;
+
+    margin:
+      0 0
+      0 30px !important;
+
+    padding:
+      25px 0
+      28px !important;
   }
 
-  .twentieth-feature{
-    min-height:370px;
-    padding:28px;
+
+  .event-card h3,
+  .ancient-feature h3,
+  .ancient-small h3,
+  .medieval-story h3,
+  .early-card h3,
+  .nineteenth-feature h3,
+  .nineteenth-small h3,
+  .twentieth-feature h3,
+  .twentieth-small h3,
+  .contemporary-card h3{
+
+    font-size:
+      clamp(2.2rem,11vw,3.2rem) !important;
   }
 
-  .twentieth-small{
-    min-height:220px !important;
-    padding:28px !important;
+
+  .event-card:hover{
+    padding-left:
+      12px !important;
+
+    padding-right:
+      12px !important;
   }
 
 
-  /* CONTEMPORARY */
-
-  .contemporary-layout{
-    grid-template-columns:1fr;
+  .archive-era::after{
+    display:none;
   }
 
-  .contemporary-card{
-    min-height:250px;
-    padding:28px !important;
-  }
 
-  .contemporary-card:first-child{
-    border-right:0;
-    border-bottom:1px solid rgba(18,40,75,.17);
+  .tp-period-grid{
+    grid-template-columns:
+      repeat(2,1fr) !important;
   }
 
 }
-
-    
-  </style>
-</head>
-
-
-<body class="turning-points-page">
-
-
-  <!-- =========================================================
-       HEADER
-  ========================================================== -->
-
-  <header class="tp-header">
-
-    <a href="index.html" class="tp-logo" aria-label="Athar home">
-      <img src="images/atharlogonavy1.png" alt="Athar">
-    </a>
-
-    <nav class="tp-main-nav">
-      <a href="turning-points.html" class="active">Turning Points</a>
-      <a href="conflicts.html">Fault Lines</a>
-      <a href="ideas.html">Big Ideas</a>
-      <a href="people.html">History Makers</a>
-    </nav>
-
-  </header>
-
-
-  <main>
-
-
-    <!-- =========================================================
-         HERO
-    ========================================================== -->
-
-    <section class="tp-hero">
-
-      <div class="tp-hero-inner">
-
-        <div class="tp-hero-main">
-
-          <h1>
-            Turning<br>
-            Points
-          </h1>
-
-          <p>
-            Revolutions, collapses, treaties and moments after which
-            the world was no longer the same.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================================
-         PERIODS
-    ========================================================== -->
-
-    <section class="tp-periods" id="periods">
-
-      <div class="tp-period-grid">
-
-        <a href="#ancient" class="tp-period-card">
-          <span class="tp-period-years">Before 500 CE</span>
-          <h2>Ancient</h2>
-        </a>
-
-        <a href="#medieval" class="tp-period-card">
-          <span class="tp-period-years">500 — 1500</span>
-          <h2>Medieval</h2>
-        </a>
-
-        <a href="#early-modern" class="tp-period-card">
-          <span class="tp-period-years">1500 — 1800</span>
-          <h2>Early<br>Modern</h2>
-        </a>
-
-        <a href="#nineteenth" class="tp-period-card">
-          <span class="tp-period-years">1800 — 1900</span>
-          <h2>19th<br>Century</h2>
-        </a>
-
-        <a href="#twentieth" class="tp-period-card">
-          <span class="tp-period-years">1900 — 2000</span>
-          <h2>20th<br>Century</h2>
-        </a>
-
-        <a href="#contemporary" class="tp-period-card">
-          <span class="tp-period-years">2000 — Today</span>
-          <h2>Contemporary</h2>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================================================
-         ARCHIVE
-    ========================================================== -->
-
-    <section class="tp-archive">
-
-
-      <!-- ANCIENT -->
-
-      <section class="archive-era" id="ancient">
-
-        <div class="archive-era-head">
-          <h2>Ancient</h2>
-          <span>Before 500 CE</span>
-        </div>
-
-        <div class="ancient-layout">
-
-          <a href="#" class="ancient-feature event-card">
-
-            <div class="event-top">
-              <span class="event-date">539 BCE</span>
-              <span class="event-place">Mesopotamia</span>
-            </div>
-
-            <div>
-              <h3>Fall of<br>Babylon</h3>
-
-              <p>
-                Cyrus the Great captures Babylon, bringing the
-                Neo-Babylonian Empire to an end.
-              </p>
-            </div>
-
-          </a>
-
-
-          <div class="ancient-side">
-
-            <a href="#" class="ancient-small event-card">
-
-              <div class="event-top">
-                <span class="event-date">44 BCE</span>
-                <span class="event-place">Rome</span>
-              </div>
-
-              <h3>
-                Assassination of<br>
-                Julius Caesar
-              </h3>
-
-            </a>
-
-
-            <a href="#" class="ancient-small event-card">
-
-              <div class="event-top">
-                <span class="event-date">476</span>
-                <span class="event-place">Europe</span>
-              </div>
-
-              <h3>
-                Fall of the Western<br>
-                Roman Empire
-              </h3>
-
-            </a>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- MEDIEVAL -->
-
-      <section class="archive-era" id="medieval">
-
-        <div class="archive-era-head">
-          <h2>Medieval</h2>
-          <span>500 — 1500</span>
-        </div>
-
-        <div class="medieval-layout">
-
-          <a href="#" class="medieval-story event-card">
-
-            <span class="event-date">622</span>
-
-            <h3>The Hijra</h3>
-
-            <span class="event-place">Arabia</span>
-
-          </a>
-
-
-          <a href="#" class="medieval-story event-card">
-
-            <span class="event-date">1258</span>
-
-            <h3>Fall of Baghdad</h3>
-
-            <span class="event-place">Mesopotamia</span>
-
-          </a>
-
-
-          <a href="#" class="medieval-story event-card">
-
-            <span class="event-date">1453</span>
-
-            <h3>Fall of Constantinople</h3>
-
-            <span class="event-place">
-              Eastern Mediterranean
-            </span>
-
-          </a>
-
-        </div>
-
-      </section>
-
-
-      <!-- EARLY MODERN -->
-
-      <section class="archive-era" id="early-modern">
-
-        <div class="archive-era-head">
-          <h2>Early Modern</h2>
-          <span>1500 — 1800</span>
-        </div>
-
-        <div class="early-layout">
-
-          <a href="#" class="early-card event-card">
-
-            <div class="event-top">
-              <span class="event-date">1517</span>
-              <span class="event-place">Europe</span>
-            </div>
-
-            <h3>
-              Protestant<br>
-              Reformation
-            </h3>
-
-          </a>
-
-
-          <a href="#" class="early-card event-card">
-
-            <div class="event-top">
-              <span class="event-date">1648</span>
-              <span class="event-place">Europe</span>
-            </div>
-
-            <h3>
-              Peace of<br>
-              Westphalia
-            </h3>
-
-          </a>
-
-
-          <a href="#" class="early-card event-card">
-
-            <div class="event-top">
-              <span class="event-date">1776</span>
-              <span class="event-place">North America</span>
-            </div>
-
-            <h3>
-              American<br>
-              Independence
-            </h3>
-
-          </a>
-
-        </div>
-
-      </section>
-
-
-      <!-- 19TH CENTURY -->
-
-      <section class="archive-era" id="nineteenth">
-
-        <div class="archive-era-head">
-          <h2>19th Century</h2>
-          <span>1800 — 1900</span>
-        </div>
-
-        <div class="nineteenth-layout">
-
-          <a href="#" class="nineteenth-feature event-card">
-
-            <div class="event-top">
-              <span class="event-date">1815</span>
-              <span class="event-place">Europe</span>
-            </div>
-
-            <h3>
-              Congress<br>
-              of Vienna
-            </h3>
-
-          </a>
-
-
-          <div class="nineteenth-side">
-
-            <a href="#" class="nineteenth-small event-card">
-
-              <div class="event-top">
-                <span class="event-date">1848</span>
-                <span class="event-place">Europe</span>
-              </div>
-
-              <h3>
-                Revolutions<br>
-                of 1848
-              </h3>
-
-            </a>
-
-
-            <a href="#" class="nineteenth-small event-card">
-
-              <div class="event-top">
-                <span class="event-date">1868</span>
-                <span class="event-place">Japan</span>
-              </div>
-
-              <h3>
-                Meiji<br>
-                Restoration
-              </h3>
-
-            </a>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- 20TH CENTURY -->
-
-      <section class="archive-era" id="twentieth">
-
-        <div class="archive-era-head">
-          <h2>20th Century</h2>
-          <span>1900 — 2000</span>
-        </div>
-
-        <div class="twentieth-layout">
-
-          <a href="#" class="twentieth-feature event-card">
-
-            <div class="event-top">
-              <span class="event-date">1917</span>
-              <span class="event-place">Russia</span>
-            </div>
-
-            <h3>
-              Russian<br>
-              Revolution
-            </h3>
-
-          </a>
-
-
-          <a href="#" class="twentieth-small event-card">
-
-            <div class="event-top">
-              <span class="event-date">1945</span>
-              <span class="event-place">Global</span>
-            </div>
-
-            <h3>
-              End of the Second<br>
-              World War
-            </h3>
-
-          </a>
-
-
-          <a href="#" class="twentieth-small event-card">
-
-            <div class="event-top">
-              <span class="event-date">1989</span>
-              <span class="event-place">Europe</span>
-            </div>
-
-            <h3>
-              Fall of the<br>
-              Berlin Wall
-            </h3>
-
-          </a>
-
-        </div>
-
-      </section>
-
-
-      <!-- CONTEMPORARY -->
-
-      <section class="archive-era" id="contemporary">
-
-        <div class="archive-era-head">
-          <h2>Contemporary</h2>
-          <span>2000 — Today</span>
-        </div>
-
-        <div class="contemporary-layout">
-
-          <a href="#" class="contemporary-card event-card">
-
-            <div class="event-top">
-              <span class="event-date">2001</span>
-              <span class="event-place">United States</span>
-            </div>
-
-            <h3>
-              September 11<br>
-              Attacks
-            </h3>
-
-          </a>
-
-
-          <a href="#" class="contemporary-card event-card">
-
-            <div class="event-top">
-              <span class="event-date">2011</span>
-              <span class="event-place">
-                Middle East & North Africa
-              </span>
-            </div>
-
-            <h3>
-              Arab<br>
-              Uprisings
-            </h3>
-
-          </a>
-
-        </div>
-
-      </section>
-
-
-    </section>
-
-
-
-    <!-- =========================================================
-     FALL OF BABYLON MODAL
-========================================================= -->
-
-<div class="event-modal" id="babylon-modal" aria-hidden="true">
-
-  <div class="event-modal-backdrop" data-close-modal></div>
-
-  <article class="event-modal-panel">
-
-    <button
-      class="event-modal-close"
-      type="button"
-      aria-label="Close"
-      data-close-modal
-    >
-      ×
-    </button>
-
-    <div class="modal-header">
-
-      <div class="modal-meta">
-        <span>539 BCE</span>
-        <span>Mesopotamia</span>
-      </div>
-
-      <h2>Fall of<br>Babylon</h2>
-
-      <p class="modal-intro">
-        In 539 BCE, Babylon fell to Cyrus the Great,
-        bringing the Neo-Babylonian Empire to an end
-        and incorporating the city into the Persian Empire.
-      </p>
-
-    </div>
-
-    <div class="modal-content">
-
-      <div class="modal-main">
-
-        <h3>What happened?</h3>
-
-        <p>
-          Cyrus II of Persia invaded the Neo-Babylonian Empire
-          and defeated its forces. Babylon itself was subsequently
-          taken by Persian forces, apparently with relatively little
-          destruction to the city.
-        </p>
-
-        <p>
-          The conquest ended the reign of Nabonidus and transformed
-          Babylon from the centre of an independent empire into one
-          of the major cities of the rapidly expanding Achaemenid
-          Persian Empire.
-        </p>
-
-        <h3>Why it matters</h3>
-
-        <p>
-          The fall of Babylon marked a major shift in the political
-          order of the ancient Near East. Cyrus inherited Babylon's
-          territories and institutions while building an empire that
-          would eventually stretch across much of Western and Central
-          Asia.
-        </p>
-
-      </div>
-
-      <aside class="modal-facts">
-
-        <div class="modal-fact">
-          <span>Empire</span>
-          <strong>Neo-Babylonian Empire</strong>
-        </div>
-
-        <div class="modal-fact">
-          <span>Conqueror</span>
-          <strong>Cyrus the Great</strong>
-        </div>
-
-        <div class="modal-fact">
-          <span>Successor state</span>
-          <strong>Achaemenid Empire</strong>
-        </div>
-
-        <div class="modal-fact">
-          <span>Region</span>
-          <strong>Mesopotamia</strong>
-        </div>
-
-      </aside>
-
-    </div>
-
-  </article>
-
-</div>
-
-    
-  </main>
-
-
-  <!-- =========================================================
-       FOOTER
-  ========================================================== -->
-
-  <footer class="tp-footer">
-
-    <strong>Athar</strong>
-
-    <span>Across Space & Time</span>
-
-  </footer>
-
-
-  <script src="script.js"></script>
-
-
-
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const babylonCard = document.querySelector(".ancient-feature");
-  const modal = document.getElementById("babylon-modal");
-
-  if (!babylonCard || !modal) return;
-
-  const closeButtons = modal.querySelectorAll("[data-close-modal]");
-
-  function openBabylon(event){
-    event.preventDefault();
-
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-
-    document.body.classList.add("modal-open");
-  }
-
-  function closeBabylon(){
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-
-    document.body.classList.remove("modal-open");
-  }
-
-  babylonCard.addEventListener("click", openBabylon);
-
-  closeButtons.forEach(button => {
-    button.addEventListener("click", closeBabylon);
-  });
-
-  document.addEventListener("keydown", event => {
-    if(event.key === "Escape"){
-      closeBabylon();
-    }
-  });
-
-});
-</script>
-
-  
-</body>
-</html>
