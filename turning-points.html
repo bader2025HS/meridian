@@ -1360,657 +1360,581 @@ footer span{
 
 
 
-
-   /* ==========================================================
-   ATHAR — RICH EDITORIAL ARCHIVE OVERRIDE
-   Paste at END of existing CSS
-========================================================== */
-
-
 /* ==========================================================
-   MORE COLOUR
+   ATHAR — CLEAN CORPORATE EDITORIAL ARCHIVE
+   BNP PARIBAS-INSPIRED STRUCTURE
+   REPLACES PREVIOUS RICH ARCHIVE OVERRIDE
 ========================================================== */
 
 :root{
-  --athar-blue:#dce8ed;
-  --athar-green:#dbe5df;
-  --athar-rose:#ead9d6;
-  --athar-sand:#e9e2cf;
-  --athar-lilac:#e1dfeb;
-  --athar-yellow:#ebe4c4;
+  --navy:#12284b;
+  --paper:#f7f7f5;
+  --white:#ffffff;
 
-  --athar-blue-deep:#6f98ad;
-  --athar-green-deep:#738f82;
-  --athar-rose-deep:#a66f69;
-  --athar-gold:#9a8743;
+  --soft-blue:#e5eef2;
+  --soft-green:#e3ebe6;
+  --soft-sand:#eee9dc;
+
+  --accent:#6f8f82;
+  --accent-dark:#526f64;
+
+  --line:rgba(18,40,75,.13);
+  --muted:#64778c;
 }
 
 
 /* ==========================================================
-   INTRO — TIGHTER
+   INTRO
 ========================================================== */
 
 .archive-intro{
-  padding-top:55px !important;
-  padding-bottom:45px !important;
+  padding:
+    62px var(--edge)
+    48px !important;
+
+  background:var(--paper);
 }
 
 .archive-intro-inner{
-  align-items:center !important;
+  max-width:1500px;
+
+  margin:auto;
+
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+
+  gap:70px !important;
+
+  align-items:end !important;
 }
 
 .archive-intro h1{
-  font-size:clamp(4.2rem,6.5vw,7rem) !important;
+  margin:0;
+
+  font-size:
+    clamp(4.3rem,6.4vw,6.8rem) !important;
+
+  line-height:.79 !important;
 }
 
 .archive-intro p{
-  max-width:430px !important;
+  max-width:500px !important;
+
+  margin:
+    0 0 5px auto !important;
+
+  font-size:.9rem !important;
+
+  line-height:1.7 !important;
+
+  color:var(--muted) !important;
 }
 
 
 /* ==========================================================
-   GRID — DENSER
+   ARCHIVE
+========================================================== */
+
+.archive{
+  max-width:1500px !important;
+
+  margin:auto !important;
+
+  padding:
+    20px var(--edge)
+    150px !important;
+}
+
+
+/* ==========================================================
+   GRID
+
+   Much cleaner:
+   - one feature
+   - then three-column news grid
 ========================================================== */
 
 .story-grid{
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(12,minmax(0,1fr)) !important;
+
   gap:0 !important;
 
-  border-top:
-    3px solid var(--navy) !important;
+  border:0 !important;
 
-  background:
-    var(--paper);
+  background:transparent !important;
 }
 
 
 /* ==========================================================
-   ALL STORIES
+   BASE STORY
 ========================================================== */
 
-.story{
-  overflow:hidden !important;
+.story,
+.story:nth-child(n),
+.story.feature,
+.story.feature + .story{
 
-  min-height:220px !important;
+  position:relative !important;
+
+  grid-column:
+    span 4 !important;
+
+  min-height:255px !important;
 
   padding:
-    28px 32px 30px !important;
+    32px 32px
+    34px 0 !important;
 
   display:flex !important;
 
   flex-direction:column !important;
-  justify-content:flex-end !important;
+  justify-content:flex-start !important;
 
-  border-right:
-    1px solid rgba(18,40,75,.12) !important;
+  background:
+    transparent !important;
 
-  border-bottom:
-    1px solid rgba(18,40,75,.12) !important;
+  border:0 !important;
+  border-top:
+    1px solid var(--line) !important;
+
+  cursor:pointer;
+
+  overflow:hidden;
 
   transition:
     transform .35s cubic-bezier(.16,1,.3,1),
-    opacity .3s ease,
-    background .3s ease !important;
+    opacity .3s ease !important;
 }
 
 
-/* remove useless line effect */
+/* vertical separators only */
 
+.story:nth-child(3n+2),
+.story:nth-child(3n+3){
+
+  padding-left:
+    32px !important;
+
+  border-left:
+    1px solid var(--line) !important;
+}
+
+
+/* remove all previous decorations */
+
+.story::before,
 .story::after{
   display:none !important;
 }
 
 
 /* ==========================================================
-   METADATA — MUCH MORE READABLE
+   METADATA
+
+   Readable, but not boxed.
 ========================================================== */
 
-.story-meta{
-  position:absolute !important;
+.story-meta,
+.story.lead .story-meta{
 
-  top:24px !important;
-  left:30px !important;
+  position:static !important;
 
-  margin:0 !important;
+  margin:
+    0 0 24px !important;
 
   display:flex !important;
+
   align-items:center !important;
 
-  gap:10px !important;
+  gap:9px !important;
 
-  font-size:.67rem !important;
+  color:
+    var(--muted) !important;
+
+  font-size:.64rem !important;
 
   font-weight:700 !important;
 
-  letter-spacing:.08em !important;
-
   line-height:1 !important;
 
-  text-transform:uppercase !important;
+  letter-spacing:.08em !important;
 
-  color:rgba(18,40,75,.62) !important;
+  text-transform:uppercase !important;
 }
 
 
 .story-date{
-  color:var(--navy) !important;
+  color:
+    var(--accent-dark) !important;
 
-  font-size:.72rem !important;
+  font-size:.68rem !important;
 
   font-weight:750 !important;
 }
 
 
 .story-meta i{
-  width:14px !important;
+  display:block !important;
+
+  width:15px !important;
   height:1px !important;
 
   background:
-    rgba(18,40,75,.28) !important;
+    rgba(18,40,75,.25) !important;
 }
 
 
 /* ==========================================================
-   NORMAL TITLES
+   STORY TYPOGRAPHY
 ========================================================== */
 
-.story h2{
-  position:relative;
+.story h2,
+.story:nth-child(n) h2{
 
-  z-index:2;
-
-  max-width:680px !important;
+  max-width:440px !important;
 
   margin:0 !important;
 
-  font-size:
-    clamp(2rem,2.5vw,3.15rem) !important;
-
-  line-height:.9 !important;
-
-  letter-spacing:-.06em !important;
-}
-
-
-.story p{
-  position:relative;
-
-  z-index:2;
-
-  max-width:540px !important;
-
-  margin:
-    14px 0 0 !important;
-
-  font-size:.78rem !important;
-
-  line-height:1.55 !important;
-
-  color:
-    rgba(18,40,75,.63) !important;
-}
-
-
-/* ==========================================================
-   LEAD STORY
-========================================================== */
-
-.story.lead{
-  grid-column:
-    span 7 !important;
-
-  min-height:330px !important;
-
-  padding:
-    34px 45px !important;
-
-  background:
-    var(--athar-green) !important;
-
-  border-right:
-    8px solid var(--paper) !important;
-
-  border-bottom:
-    8px solid var(--paper) !important;
-}
-
-
-.story.lead .story-meta{
-  position:absolute !important;
-
-  top:30px !important;
-  left:42px !important;
-}
-
-
-.story.lead h2{
-  max-width:760px !important;
+  color:var(--navy) !important;
 
   font-size:
-    clamp(4rem,5.3vw,6rem) !important;
+    clamp(1.75rem,2.1vw,2.55rem) !important;
 
-  line-height:.8 !important;
-}
+  font-weight:620 !important;
 
+  line-height:.94 !important;
 
-.story.lead p{
-  max-width:650px !important;
-
-  font-size:.86rem !important;
-
-  line-height:1.6 !important;
-}
-
-
-/* ==========================================================
-   ADD LARGE ABSTRACT LETTER TO LEAD
-========================================================== */
-
-.story.lead::before{
-  content:"A";
-
-  position:absolute;
-
-  top:-60px;
-  right:-12px;
-
-  font-family:var(--display);
-
-  font-size:25rem;
-
-  font-weight:700;
-
-  line-height:1;
-
-  letter-spacing:-.12em;
-
-  color:
-    rgba(18,40,75,.045);
-
-  pointer-events:none;
-}
-
-
-/* ==========================================================
-   FIRST SMALL STORIES
-========================================================== */
-
-.story:nth-child(2){
-  grid-column:
-    span 5 !important;
-
-  min-height:165px !important;
-
-  background:
-    var(--athar-blue) !important;
-}
-
-
-.story:nth-child(3){
-  grid-column:
-    span 5 !important;
-
-  min-height:215px !important;
-
-  background:
-    #f3f0e8 !important;
-}
-
-
-.story:nth-child(4){
-  grid-column:
-    span 7 !important;
-
-  min-height:215px !important;
-
-  background:
-    var(--athar-rose) !important;
-}
-
-
-/* ==========================================================
-   SECOND WORLD WAR — LARGE FEATURE
-========================================================== */
-
-.story.feature{
-  grid-column:
-    span 8 !important;
-
-  min-height:280px !important;
-
-  padding:
-    35px 38px !important;
-
-  background:
-    var(--navy) !important;
-
-  color:white !important;
-
-  border-right:
-    8px solid var(--paper) !important;
-
-  border-bottom:
-    8px solid var(--paper) !important;
-}
-
-
-.story.feature .story-meta,
-.story.feature .story-date{
-  color:
-    rgba(255,255,255,.67) !important;
-}
-
-
-.story.feature .story-meta i{
-  background:
-    rgba(255,255,255,.3) !important;
-}
-
-
-.story.feature h2{
-  max-width:850px !important;
-
-  color:#fff !important;
-
-  font-size:
-    clamp(3.4rem,4.5vw,5.4rem) !important;
-
-  line-height:.82 !important;
-}
-
-
-.story.feature p{
-  color:
-    rgba(255,255,255,.62) !important;
-
-  font-size:.82rem !important;
-}
-
-
-/* ==========================================================
-   STORY AFTER FEATURE
-========================================================== */
-
-.story.feature + .story{
-  grid-column:
-    span 4 !important;
-
-  min-height:280px !important;
-
-  background:
-    var(--athar-yellow) !important;
-
-  border-bottom:
-    8px solid var(--paper) !important;
-}
-
-
-/* ==========================================================
-   REST OF STORIES
-
-   Make the archive feel irregular rather than repetitive.
-========================================================== */
-
-.story:nth-child(7){
-  grid-column:
-    span 5 !important;
-
-  background:
-    #f1eee7 !important;
-}
-
-
-.story:nth-child(8){
-  grid-column:
-    span 3 !important;
-
-  background:
-    var(--athar-lilac) !important;
-}
-
-
-.story:nth-child(9){
-  grid-column:
-    span 4 !important;
-
-  background:
-    var(--athar-blue) !important;
-}
-
-
-.story:nth-child(10){
-  grid-column:
-    span 7 !important;
-}
-
-
-.story:nth-child(11){
-  grid-column:
-    span 5 !important;
-
-  background:
-    var(--athar-green) !important;
-}
-
-
-.story:nth-child(12){
-  grid-column:
-    span 4 !important;
-
-  background:
-    var(--athar-sand) !important;
-}
-
-
-.story:nth-child(13){
-  grid-column:
-    span 5 !important;
-
-  background:
-    #edf0f2 !important;
-}
-
-
-.story:nth-child(14){
-  grid-column:
-    span 3 !important;
-
-  background:
-    var(--athar-rose) !important;
-}
-
-
-.story:nth-child(15){
-  grid-column:
-    span 5 !important;
-
-  background:
-    var(--athar-yellow) !important;
-}
-
-
-.story:nth-child(16){
-  grid-column:
-    span 7 !important;
-}
-
-
-.story:nth-child(17){
-  grid-column:
-    span 5 !important;
-
-  background:
-    var(--athar-blue) !important;
-}
-
-
-.story:nth-child(18){
-  grid-column:
-    span 7 !important;
-
-  background:
-    var(--athar-green) !important;
-}
-
-
-/* ==========================================================
-   REMOVE OLD nth-child PADDING BEHAVIOUR
-========================================================== */
-
-.story:nth-child(n+5),
-.story:nth-child(3n+1):nth-child(n+7),
-.story:nth-child(3n):nth-child(n+6){
-
-  padding:
-    28px 32px 30px !important;
-}
-
-
-/* ==========================================================
-   DIFFERENT HEIGHTS
-
-   Prevents it looking like an Excel table.
-========================================================== */
-
-.story:nth-child(7),
-.story:nth-child(9),
-.story:nth-child(11),
-.story:nth-child(13),
-.story:nth-child(17){
-  min-height:245px !important;
-}
-
-
-.story:nth-child(8),
-.story:nth-child(12),
-.story:nth-child(14){
-  min-height:245px !important;
-}
-
-
-.story:nth-child(10),
-.story:nth-child(16),
-.story:nth-child(18){
-  min-height:275px !important;
-}
-
-
-/* ==========================================================
-   LARGE TYPOGRAPHIC STORIES
-========================================================== */
-
-.story:nth-child(10) h2,
-.story:nth-child(16) h2{
-
-  font-size:
-    clamp(3rem,4vw,4.7rem) !important;
-
-  line-height:.83 !important;
-
-  max-width:760px !important;
-}
-
-
-/* ==========================================================
-   SUBTLE COLOUR EDGE
-========================================================== */
-
-.story:not(.lead):not(.feature)::before{
-  content:"";
-
-  position:absolute;
-
-  top:0;
-  left:0;
-
-  width:4px;
-  height:0;
-
-  background:
-    var(--athar-rose-deep);
-
-  transition:
-    height .4s cubic-bezier(.16,1,.3,1);
-}
-
-
-.story:not(.lead):not(.feature):hover::before{
-  height:100%;
-}
-
-
-/* ==========================================================
-   HOVER
-========================================================== */
-
-.story:hover{
-  transform:
-    translateY(-4px) !important;
-
-  z-index:5;
-}
-
-
-.story-grid:has(.story:hover)
-.story:not(:hover){
-
-  opacity:.72 !important;
-}
-
-
-/* coloured stories remain strong */
-
-.story:hover h2{
-  transform:
-    translateX(4px);
+  letter-spacing:-.055em !important;
 
   transition:
     transform .35s cubic-bezier(.16,1,.3,1);
 }
 
 
-/* ==========================================================
-   SEARCH RESULTS
+.story p,
+.story:nth-child(n) p{
 
-   Search should not leave broken gaps.
+  max-width:430px !important;
+
+  margin:
+    15px 0 0 !important;
+
+  color:
+    var(--muted) !important;
+
+  font-size:.76rem !important;
+
+  line-height:1.62 !important;
+}
+
+
+/* ==========================================================
+   MAIN FEATURE
+
+   BNP-style large editorial feature:
+   restrained background, strong hierarchy.
 ========================================================== */
 
-.story-grid.searching{
+.story.lead{
+
+  grid-column:
+    1 / -1 !important;
+
+  min-height:
+    380px !important;
+
+  margin-bottom:
+    55px !important;
+
+  padding:
+    54px 52px !important;
+
   display:grid !important;
 
   grid-template-columns:
-    repeat(3,1fr) !important;
+    minmax(0,1.35fr)
+    minmax(280px,.65fr) !important;
+
+  grid-template-rows:
+    auto 1fr !important;
+
+  column-gap:
+    80px !important;
+
+  background:
+    var(--soft-green) !important;
+
+  border:0 !important;
+}
+
+
+.story.lead .story-meta{
+
+  grid-column:
+    1 / -1;
+
+  margin-bottom:
+    65px !important;
+}
+
+
+.story.lead h2{
+
+  align-self:end;
+
+  max-width:
+    760px !important;
+
+  font-size:
+    clamp(4.3rem,6vw,7rem) !important;
+
+  line-height:.78 !important;
+
+  letter-spacing:-.075em !important;
+}
+
+
+.story.lead p{
+
+  align-self:end;
+
+  max-width:
+    390px !important;
+
+  margin:
+    0 0 5px !important;
+
+  padding-left:
+    30px;
+
+  border-left:
+    3px solid var(--accent);
+
+  font-size:
+    .86rem !important;
+
+  line-height:
+    1.7 !important;
+}
+
+
+/* ==========================================================
+   FEATURE STORIES
+
+   No more huge navy / coloured tiles.
+========================================================== */
+
+.story.feature{
+
+  grid-column:
+    span 8 !important;
+
+  min-height:
+    300px !important;
+
+  padding:
+    42px 50px 42px 0 !important;
+
+  background:
+    transparent !important;
+
+  border-top:
+    1px solid var(--line) !important;
+
+  border-right:
+    1px solid var(--line) !important;
+}
+
+
+.story.feature h2{
+
+  max-width:
+    750px !important;
+
+  font-size:
+    clamp(3rem,4vw,4.8rem) !important;
+
+  line-height:.84 !important;
+}
+
+
+.story.feature p{
+
+  max-width:
+    580px !important;
+
+  font-size:
+    .8rem !important;
+}
+
+
+.story.feature + .story{
+
+  grid-column:
+    span 4 !important;
+
+  min-height:
+    300px !important;
+
+  padding:
+    42px 0 42px 35px !important;
+
+  border-left:0 !important;
+}
+
+
+/* ==========================================================
+   SUBTLE COLOUR MODULES
+
+   Only occasional stories get colour.
+========================================================== */
+
+.story:nth-child(4n+6):not(.lead):not(.feature){
+
+  margin:
+    18px 18px 18px 0 !important;
+
+  padding:
+    30px !important;
+
+  min-height:
+    220px !important;
+
+  background:
+    var(--soft-blue) !important;
+
+  border:
+    0 !important;
+}
+
+
+.story:nth-child(7n+4):not(.lead):not(.feature){
+
+  margin:
+    18px 0 18px 18px !important;
+
+  padding:
+    30px !important;
+
+  min-height:
+    220px !important;
+
+  background:
+    var(--soft-sand) !important;
+
+  border:
+    0 !important;
+}
+
+
+/* ==========================================================
+   HOVER
+
+   Clean corporate-site interaction.
+========================================================== */
+
+.story:hover{
+  transform:
+    translateY(-3px) !important;
+}
+
+
+.story:hover h2{
+  transform:
+    translateX(5px);
+}
+
+
+.story-grid:has(.story:hover)
+.story:not(:hover){
+
+  opacity:.68 !important;
+}
+
+
+/* small accent appears on hover */
+
+.story:not(.lead)::after{
+
+  content:"" !important;
+
+  display:block !important;
+
+  position:absolute;
+
+  left:0;
+  bottom:0;
+
+  width:0;
+  height:3px;
+
+  background:
+    var(--accent);
+
+  transition:
+    width .4s cubic-bezier(.16,1,.3,1);
+}
+
+
+.story:not(.lead):hover::after{
+  width:52px;
+}
+
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+.story-grid.searching{
+
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr)) !important;
 }
 
 
 .story-grid.searching .story:not(.hidden){
+
   grid-column:
     span 1 !important;
 
-  min-height:230px !important;
+  min-height:
+    230px !important;
+
+  margin:0 !important;
 
   padding:
-    28px 30px !important;
+    30px !important;
+
+  display:block !important;
+
+  background:
+    transparent !important;
+
+  border:
+    1px solid var(--line) !important;
 }
 
 
-.story-grid.searching .story:not(.hidden) h2{
+.story-grid.searching
+.story:not(.hidden)
+.story-meta{
+
+  margin-bottom:
+    22px !important;
+}
+
+
+.story-grid.searching
+.story:not(.hidden)
+h2{
+
   font-size:
-    clamp(1.8rem,2.4vw,2.8rem) !important;
-
-  color:var(--navy) !important;
-}
-
-
-.story-grid.searching .story:not(.hidden) p{
-  color:
-    rgba(18,40,75,.62) !important;
-}
-
-
-.story-grid.searching .story:not(.hidden) .story-meta,
-.story-grid.searching .story:not(.hidden) .story-date{
-  color:
-    rgba(18,40,75,.65) !important;
+    2rem !important;
 }
 
 
@@ -2020,44 +1944,85 @@ footer span{
 
 @media(max-width:950px){
 
+  .archive-intro-inner{
+
+    grid-template-columns:
+      1fr !important;
+
+    gap:30px !important;
+  }
+
+
+  .archive-intro p{
+
+    margin:
+      0 !important;
+  }
+
+
   .story,
-  .story.lead,
+  .story:nth-child(n),
   .story.feature,
-  .story.feature + .story,
-  .story:nth-child(n){
+  .story.feature + .story{
 
     grid-column:
       span 6 !important;
 
-    min-height:
-      230px !important;
-
     padding:
-      28px !important;
+      30px !important;
+
+    border-left:
+      0 !important;
 
     border-right:
-      5px solid var(--paper) !important;
-
-    border-bottom:
-      5px solid var(--paper) !important;
+      1px solid var(--line) !important;
   }
 
 
   .story.lead{
+
     grid-column:
-      span 12 !important;
+      1 / -1 !important;
+
+    grid-template-columns:
+      1fr !important;
 
     min-height:
-      310px !important;
+      350px !important;
+
+    padding:
+      42px !important;
   }
 
 
   .story.lead .story-meta{
-    left:28px !important;
+
+    margin-bottom:
+      55px !important;
+  }
+
+
+  .story.lead p{
+
+    margin-top:
+      28px !important;
+
+    padding:
+      0 !important;
+
+    border:0;
+  }
+
+
+  .story.feature{
+
+    grid-column:
+      span 12 !important;
   }
 
 
   .story-grid.searching{
+
     grid-template-columns:
       repeat(2,1fr) !important;
   }
@@ -2071,70 +2036,124 @@ footer span{
 
 @media(max-width:650px){
 
+  .archive-intro{
+
+    padding:
+      42px 5%
+      35px !important;
+  }
+
+
+  .archive-intro h1{
+
+    font-size:
+      clamp(3.8rem,17vw,5.2rem) !important;
+  }
+
+
   .story-grid{
+
     display:block !important;
   }
 
 
   .story,
-  .story.lead,
+  .story:nth-child(n),
   .story.feature,
-  .story.feature + .story,
-  .story:nth-child(n){
+  .story.feature + .story{
 
-    min-height:
-      210px !important;
+    width:100% !important;
+
+    min-height:0 !important;
+
+    margin:0 !important;
 
     padding:
-      25px 22px !important;
+      27px 0 !important;
 
-    border-right:0 !important;
+    display:block !important;
 
-    border-bottom:
-      5px solid var(--paper) !important;
-  }
+    background:
+      transparent !important;
 
+    border:
+      0 !important;
 
-  .story-meta,
-  .story.lead .story-meta{
-
-    top:22px !important;
-    left:22px !important;
-
-    font-size:
-      .61rem !important;
-  }
-
-
-  .story-date{
-    font-size:
-      .65rem !important;
+    border-top:
+      1px solid var(--line) !important;
   }
 
 
   .story.lead{
+
     min-height:
-      290px !important;
+      390px !important;
+
+    margin-bottom:
+      35px !important;
+
+    padding:
+      30px !important;
+
+    display:flex !important;
+
+    flex-direction:column !important;
+
+    justify-content:flex-end !important;
+
+    background:
+      var(--soft-green) !important;
+
+    border:0 !important;
+  }
+
+
+  .story.lead .story-meta{
+
+    position:absolute !important;
+
+    top:28px !important;
+    left:28px !important;
+
+    margin:0 !important;
   }
 
 
   .story.lead h2{
+
     font-size:
-      clamp(3.3rem,15vw,4.8rem) !important;
+      clamp(3.4rem,15vw,4.8rem) !important;
   }
 
 
-  .story.feature h2,
-  .story:nth-child(10) h2,
-  .story:nth-child(16) h2{
+  .story.lead p{
+
+    margin-top:
+      22px !important;
+  }
+
+
+  .story.feature h2{
 
     font-size:
-      clamp(2.7rem,12vw,3.8rem) !important;
+      clamp(2.7rem,12vw,3.7rem) !important;
   }
 
 
   .story-grid.searching{
+
     display:block !important;
+  }
+
+
+  .story-grid.searching
+  .story:not(.hidden){
+
+    margin:
+      0 0 12px !important;
+
+    padding:
+      24px !important;
   }
 
 
