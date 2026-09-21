@@ -13,26 +13,24 @@
 
 <style>
 
-/* =========================================================
+/* ==========================================================
    ATHAR — TURNING POINTS
-   SINGLE CLEAN FILE
-========================================================= */
+   CONTINUOUS EDITORIAL ARCHIVE
+========================================================== */
 
 :root{
   --navy:#12284b;
   --navy-deep:#0d1f3c;
   --paper:#f7f7f5;
-  --white:#fff;
-
-  --sage:#dfe8e3;
-  --blue:#dfe9ee;
-  --rose:#eadfdd;
-  --sand:#eee9dc;
-
-  --green:#66897d;
-  --muted:#64778b;
+  --white:#ffffff;
 
   --line:rgba(18,40,75,.14);
+  --line-strong:rgba(18,40,75,.25);
+  --muted:rgba(18,40,75,.55);
+
+  --gold:#a3914e;
+  --rose:#a66f69;
+  --blue:#6f98ad;
 
   --display:"Archivo",sans-serif;
   --text:"Inter",sans-serif;
@@ -40,30 +38,39 @@
   --edge:5.5%;
 }
 
+
 *{
   box-sizing:border-box;
 }
+
 
 html{
   scroll-behavior:smooth;
 }
 
+
 body{
   margin:0;
+
   background:var(--paper);
   color:var(--navy);
+
   font-family:var(--text);
+
   overflow-x:hidden;
 }
+
 
 body.modal-open{
   overflow:hidden;
 }
 
+
 a{
   color:inherit;
   text-decoration:none;
 }
+
 
 button,
 input{
@@ -71,9 +78,9 @@ input{
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* ==========================================================
+   SITE HEADER
+========================================================== */
 
 .site-header{
   height:86px;
@@ -84,24 +91,27 @@ input{
   align-items:center;
   justify-content:space-between;
 
-  border-bottom:1px solid var(--line);
-
   background:var(--paper);
 
-  position:relative;
-  z-index:500;
+  border-bottom:1px solid var(--line);
 }
+
 
 .logo img{
   display:block;
+
   width:112px;
+  height:auto;
 }
+
 
 .main-nav{
   display:flex;
   align-items:center;
+
   gap:34px;
 }
+
 
 .main-nav a{
   position:relative;
@@ -116,10 +126,12 @@ input{
   transition:color .25s ease;
 }
 
+
 .main-nav a:hover,
 .main-nav a.active{
   color:var(--navy);
 }
+
 
 .main-nav a.active::after{
   content:"";
@@ -132,669 +144,568 @@ input{
 
   height:2px;
 
-  background:#a66f69;
+  background:var(--rose);
 }
 
 
-/* =========================================================
-   PAGE INTRO
-========================================================= */
+/* ==========================================================
+   ARCHIVE TOOLBAR
+========================================================== */
 
-.tp-intro{
-  padding:78px var(--edge) 0;
+.archive-toolbar{
+  position:sticky;
+
+  top:0;
+
+  z-index:300;
+
+  background:rgba(247,247,245,.96);
+
+  border-bottom:1px solid var(--line);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
 }
 
-.tp-intro-top{
-  max-width:1450px;
+
+.toolbar-inner{
+  max-width:1500px;
+
+  min-height:82px;
+
   margin:auto;
 
-  display:grid;
-  grid-template-columns:1.25fr .75fr;
-
-  gap:100px;
-
-  align-items:end;
-}
-
-.tp-intro h1{
-  margin:0;
-
-  font-family:var(--display);
-
-  font-size:clamp(4.8rem,7.8vw,8.5rem);
-  font-weight:650;
-
-  line-height:.77;
-  letter-spacing:-.08em;
-}
-
-.tp-intro p{
-  max-width:470px;
-
-  margin:0 0 7px auto;
-
-  color:var(--muted);
-
-  font-size:.94rem;
-  line-height:1.7;
-}
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.search-bar{
-  max-width:1450px;
-
-  margin:62px auto 0;
-
-  min-height:84px;
+  padding:
+    13px var(--edge);
 
   display:grid;
-  grid-template-columns:180px 1fr auto;
 
-  gap:28px;
+  grid-template-columns:
+    250px minmax(300px,1fr) 110px;
+
+  gap:32px;
 
   align-items:center;
-
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
 }
 
-.search-label{
-  font-size:.64rem;
-  font-weight:700;
 
-  letter-spacing:.09em;
-  text-transform:uppercase;
+.archive-name{
+  font-family:var(--display);
+
+  font-size:1.5rem;
+  font-weight:650;
+
+  letter-spacing:-.055em;
 }
 
-.search-input{
+
+.search-wrap{
+  position:relative;
+
+  width:100%;
+}
+
+
+.search-wrap input{
   width:100%;
 
-  padding:20px 0;
+  height:48px;
 
-  border:0;
-  outline:0;
+  padding:
+    0 48px 0 18px;
 
-  background:transparent;
+  outline:none;
+
+  border:1px solid rgba(18,40,75,.16);
+
+  background:#fff;
 
   color:var(--navy);
 
-  font-size:1.08rem;
-}
-
-.search-input::placeholder{
-  color:rgba(18,40,75,.35);
-}
-
-.result-count{
-  color:var(--muted);
-
-  font-size:.62rem;
-  font-weight:700;
-
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-
-
-/* =========================================================
-   ARCHIVE
-========================================================= */
-
-.archive{
-  padding:82px var(--edge) 140px;
-}
-
-.stream{
-  max-width:1450px;
-  margin:auto;
-}
-
-
-/* =========================================================
-   COMMON STORY
-========================================================= */
-
-.story{
-  position:relative;
-  cursor:pointer;
+  font-size:.78rem;
 
   transition:
-    transform .35s cubic-bezier(.16,1,.3,1),
-    opacity .3s ease;
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
 }
 
-.story:hover{
-  transform:translateY(-3px);
+
+.search-wrap input::placeholder{
+  color:rgba(18,40,75,.38);
 }
 
-.story h2{
-  margin:0;
 
-  font-family:var(--display);
+.search-wrap input:focus{
+  border-color:rgba(18,40,75,.42);
 
-  font-weight:620;
-  line-height:.88;
-
-  letter-spacing:-.06em;
-
-  transition:transform .35s cubic-bezier(.16,1,.3,1);
+  box-shadow:
+    0 0 0 3px rgba(18,40,75,.04);
 }
 
-.story:hover h2{
-  transform:translateX(5px);
+
+.search-icon{
+  position:absolute;
+
+  top:50%;
+  right:17px;
+
+  transform:translateY(-50%);
+
+  width:15px;
+  height:15px;
+
+  border:1.5px solid rgba(18,40,75,.5);
+  border-radius:50%;
+
+  pointer-events:none;
 }
 
-.story p{
-  color:var(--muted);
-}
 
-.story-meta{
-  margin-bottom:31px;
-
-  display:flex;
-  align-items:center;
-
-  gap:15px;
-
-  font-size:.69rem;
-  font-weight:700;
-
-  letter-spacing:.07em;
-  text-transform:uppercase;
-}
-
-.date{
-  color:var(--green);
-}
-
-.place{
-  position:relative;
-
-  padding-left:22px;
-
-  color:var(--muted);
-}
-
-.place::before{
+.search-icon::after{
   content:"";
 
   position:absolute;
 
-  left:0;
-  top:50%;
+  width:6px;
+  height:1.5px;
 
-  width:11px;
-  height:1px;
+  right:-5px;
+  bottom:-3px;
 
-  background:rgba(18,40,75,.35);
+  background:rgba(18,40,75,.5);
+
+  transform:rotate(45deg);
 }
 
 
-/* =========================================================
-   HERO EVENT
-========================================================= */
+.result-count{
+  text-align:right;
 
-.hero-event{
-  min-height:420px;
+  color:rgba(18,40,75,.42);
 
-  padding:56px 64px;
+  font-size:.55rem;
+  font-weight:700;
 
-  background:var(--sage);
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
 }
 
-.hero-event-inner{
-  min-height:305px;
 
+/* ==========================================================
+   INTRO
+========================================================== */
+
+.archive-intro{
+  max-width:1500px;
+
+  margin:auto;
+
+  padding:
+    65px var(--edge)
+    50px;
+}
+
+
+.archive-intro-inner{
   display:grid;
-  grid-template-columns:1.35fr .65fr;
-  grid-template-rows:auto 1fr;
 
-  column-gap:90px;
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:80px;
+
+  align-items:end;
 }
 
-.hero-event .story-meta{
-  grid-column:1 / -1;
-}
 
-.hero-main{
-  align-self:end;
-}
+.archive-intro h1{
+  margin:0;
 
-.hero-event h2{
-  max-width:800px;
+  font-family:var(--display);
 
-  font-size:clamp(4.6rem,6.6vw,7.3rem);
+  font-size:
+    clamp(4.3rem,7vw,7.3rem);
+
+  font-weight:650;
 
   line-height:.78;
+
+  letter-spacing:-.08em;
 }
 
-.hero-copy{
-  align-self:end;
 
-  max-width:430px;
+.archive-intro p{
+  max-width:500px;
 
-  padding-left:30px;
+  margin:
+    0 0 5px auto;
 
-  border-left:3px solid var(--green);
-}
-
-.hero-copy p{
-  margin:0;
+  color:#60748b;
 
   font-size:.9rem;
   line-height:1.7;
 }
 
 
-/* =========================================================
-   PAIRS
-========================================================= */
+/* ==========================================================
+   ARCHIVE
+========================================================== */
 
-.pair{
-  margin:90px 0;
+.archive{
+  max-width:1500px;
 
+  margin:auto;
+
+  padding:
+    0 var(--edge)
+    150px;
+}
+
+
+/* ==========================================================
+   EDITORIAL GRID
+========================================================== */
+
+.story-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-}
 
-.pair .story{
-  min-height:290px;
+  grid-template-columns:
+    repeat(12,minmax(0,1fr));
 
-  padding:10px 58px 35px 0;
-}
-
-.pair .story + .story{
-  padding-left:58px;
-  padding-right:0;
-
-  border-left:1px solid var(--line);
-}
-
-.pair h2{
-  max-width:560px;
-
-  font-size:clamp(2.7rem,3.8vw,4.5rem);
-}
-
-.pair p{
-  max-width:480px;
-
-  margin:20px 0 0;
-
-  font-size:.82rem;
-  line-height:1.65;
-}
-
-.pair:has(.story:hover) .story:not(:hover){
-  opacity:.55;
+  border-top:
+    3px solid var(--navy);
 }
 
 
-/* =========================================================
-   FULL-WIDTH BANDS
-========================================================= */
+/* ==========================================================
+   BASE STORY
+========================================================== */
 
-.band{
-  min-height:290px;
+.story{
+  position:relative;
 
-  padding:50px 60px;
+  min-width:0;
 
-  display:grid;
-  grid-template-columns:.28fr 1fr .52fr;
+  padding:
+    30px 26px
+    34px 0;
 
-  gap:55px;
+  cursor:pointer;
+
+  border-bottom:
+    1px solid var(--line);
+
+  transition:
+    opacity .3s ease,
+    transform .35s cubic-bezier(.16,1,.3,1);
+}
+
+
+.story::after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  bottom:-1px;
+
+  width:0;
+  height:2px;
+
+  background:var(--rose);
+
+  transition:
+    width .45s cubic-bezier(.16,1,.3,1);
+}
+
+
+.story:hover::after{
+  width:54px;
+}
+
+
+.story:hover{
+  transform:translateY(-3px);
+}
+
+
+.story-grid:has(.story:hover)
+.story:not(:hover){
+  opacity:.62;
+}
+
+
+/* ==========================================================
+   METADATA
+========================================================== */
+
+.story-meta{
+  margin-bottom:13px;
+
+  display:flex;
 
   align-items:center;
-}
-
-.band-blue{
-  background:var(--blue);
-}
-
-.band-sage{
-  background:var(--sage);
-}
-
-.band-rose{
-  background:var(--rose);
-}
-
-.band-meta{
-  align-self:start;
-
-  display:flex;
-  flex-direction:column;
 
   gap:8px;
 
-  color:var(--muted);
+  color:rgba(18,40,75,.43);
 
-  font-size:.7rem;
+  font-size:.46rem;
   font-weight:700;
 
-  letter-spacing:.07em;
+  letter-spacing:.12em;
+
   text-transform:uppercase;
 }
 
-.band-meta .date{
-  color:var(--navy);
-  font-size:.95rem;
+
+.story-date{
+  color:var(--gold);
 }
 
-.band h2{
-  max-width:700px;
 
-  font-size:clamp(3.2rem,4.8vw,5.5rem);
+.story-meta i{
+  display:block;
 
-  line-height:.82;
+  width:3px;
+  height:3px;
+
+  background:rgba(18,40,75,.3);
 }
 
-.band-copy{
-  padding-left:30px;
 
-  border-left:2px solid rgba(18,40,75,.23);
-}
+/* ==========================================================
+   STORY TYPOGRAPHY
+========================================================== */
 
-.band-copy p{
+.story h2{
+  max-width:650px;
+
   margin:0;
 
-  font-size:.86rem;
-  line-height:1.7;
+  font-family:var(--display);
+
+  font-size:
+    clamp(1.8rem,2.3vw,2.8rem);
+
+  font-weight:620;
+
+  line-height:.91;
+
+  letter-spacing:-.055em;
 }
 
 
-/* =========================================================
-   MAJOR SPLIT
-========================================================= */
+.story p{
+  max-width:500px;
 
-.major-split{
-  margin:95px 0;
+  margin:
+    14px 0 0;
 
-  display:grid;
-  grid-template-columns:1.38fr .62fr;
+  color:rgba(18,40,75,.57);
 
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+  font-size:.73rem;
+  line-height:1.62;
 }
 
-.major{
-  min-height:410px;
 
-  padding:48px 65px 48px 0;
+/* ==========================================================
+   FIRST / LEAD STORY
+========================================================== */
+
+.story.lead{
+  grid-column:
+    span 7;
+
+  min-height:340px;
+
+  padding:
+    40px 55px
+    38px 0;
 
   display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-}
 
-.major .story-meta{
-  position:absolute;
-
-  top:48px;
-}
-
-.major h2{
-  font-size:clamp(4rem,5.7vw,6.5rem);
-  line-height:.78;
-}
-
-.major p{
-  max-width:550px;
-
-  margin:24px 0 0;
-
-  font-size:.86rem;
-  line-height:1.65;
-}
-
-.side-story{
-  min-height:410px;
-
-  padding:48px;
-
-  display:flex;
   flex-direction:column;
   justify-content:flex-end;
 
-  border-left:1px solid var(--line);
+  border-right:
+    1px solid var(--line);
 }
 
-.side-story .story-meta{
+
+.story.lead .story-meta{
   position:absolute;
-  top:48px;
-}
 
-.side-story h2{
-  font-size:clamp(2.4rem,3.2vw,3.6rem);
-}
-
-.side-story p{
-  margin:20px 0 0;
-
-  font-size:.8rem;
-  line-height:1.65;
+  top:38px;
+  left:0;
 }
 
 
-/* =========================================================
-   THREE COLUMN ROW
-========================================================= */
+.story.lead h2{
+  max-width:780px;
 
-.three{
-  margin:95px 0;
+  font-size:
+    clamp(3.8rem,5.5vw,6rem);
 
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+  line-height:.8;
 }
 
-.three .story{
-  min-height:305px;
 
-  padding:40px 38px 40px 0;
+.story.lead p{
+  max-width:590px;
+
+  margin-top:20px;
+
+  font-size:.79rem;
 }
 
-.three .story + .story{
+
+/* ==========================================================
+   SECOND + THIRD
+========================================================== */
+
+.story:nth-child(2){
+  grid-column:
+    span 5;
+
   padding-left:38px;
-
-  border-left:1px solid var(--line);
-}
-
-.three .story:last-child{
   padding-right:0;
 }
 
-.three h2{
-  font-size:clamp(1.9rem,2.6vw,3rem);
-}
 
-.three p{
-  margin:18px 0 0;
+.story:nth-child(3){
+  grid-column:
+    span 5;
 
-  font-size:.76rem;
-  line-height:1.65;
-}
-
-.three:has(.story:hover) .story:not(:hover){
-  opacity:.55;
+  border-right:
+    1px solid var(--line);
 }
 
 
-/* =========================================================
-   DARK FEATURE
-========================================================= */
+.story:nth-child(4){
+  grid-column:
+    span 7;
 
-.dark-feature{
-  min-height:380px;
-
-  padding:55px 65px;
-
-  display:grid;
-  grid-template-columns:.3fr 1fr;
-
-  gap:50px;
-
-  background:var(--navy);
-
-  color:white;
-}
-
-.dark-meta{
-  display:flex;
-  flex-direction:column;
-
-  gap:8px;
-
-  color:rgba(255,255,255,.5);
-
-  font-size:.7rem;
-  font-weight:700;
-
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-
-.dark-main{
-  align-self:end;
-}
-
-.dark-feature h2{
-  max-width:950px;
-
-  color:#fff;
-
-  font-size:clamp(3.8rem,5.7vw,6.5rem);
-
-  line-height:.79;
-}
-
-.dark-feature p{
-  max-width:570px;
-
-  margin:25px 0 0;
-
-  color:rgba(255,255,255,.62);
-
-  font-size:.86rem;
-  line-height:1.7;
+  padding-left:38px;
+  padding-right:0;
 }
 
 
-/* =========================================================
-   SEARCH MODE
-========================================================= */
+/* ==========================================================
+   REST OF ARCHIVE
+========================================================== */
+
+.story:nth-child(n+5){
+  grid-column:
+    span 4;
+
+  padding-right:28px;
+
+  border-right:
+    1px solid var(--line);
+}
+
+
+.story:nth-child(3n+1):nth-child(n+7){
+  border-right:0;
+
+  padding-left:28px;
+  padding-right:0;
+}
+
+
+.story:nth-child(3n):nth-child(n+6){
+  padding-left:28px;
+}
+
+
+/* ==========================================================
+   OCCASIONAL EMPHASIS
+
+   Gives the page variation without creating eras.
+========================================================== */
+
+.story.feature{
+  grid-column:
+    span 8;
+
+  min-height:270px;
+
+  padding:
+    38px 45px
+    38px 0;
+
+  border-right:
+    1px solid var(--line);
+}
+
+
+.story.feature h2{
+  font-size:
+    clamp(2.8rem,4vw,4.7rem);
+
+  line-height:.83;
+}
+
+
+.story.feature + .story{
+  grid-column:
+    span 4;
+
+  padding-left:30px;
+  padding-right:0;
+}
+
+
+/* ==========================================================
+   SEARCH STATES
+========================================================== */
 
 .story.hidden{
   display:none !important;
 }
 
-.stream.searching{
-  display:grid;
 
-  grid-template-columns:repeat(3,1fr);
-
-  gap:1px;
-
-  background:var(--line);
-}
-
-.stream.searching > .layout-group{
-  display:contents;
-}
-
-.stream.searching .story:not(.hidden){
-  display:block !important;
-
-  min-height:245px !important;
-
-  margin:0 !important;
-
-  padding:32px !important;
-
-  background:var(--paper) !important;
-
-  border:0 !important;
-
-  color:var(--navy) !important;
-
-  transform:none;
-}
-
-.stream.searching .story:not(.hidden) .hero-event-inner{
-  display:block;
-
-  min-height:0;
-}
-
-.stream.searching .story:not(.hidden) .hero-copy,
-.stream.searching .story:not(.hidden) .band-copy{
-  padding:0;
-
-  border:0;
-}
-
-.stream.searching .story:not(.hidden) .hero-copy{
-  margin-top:18px;
-}
-
-.stream.searching .story:not(.hidden) .story-meta,
-.stream.searching .story:not(.hidden) .band-meta,
-.stream.searching .story:not(.hidden) .dark-meta{
-  position:static;
-
-  display:flex;
-  flex-direction:row;
-
-  gap:14px;
-
-  margin:0 0 25px;
-
-  color:var(--muted);
-}
-
-.stream.searching .story:not(.hidden) h2{
-  max-width:none;
-
-  color:var(--navy);
-
-  font-size:2.15rem;
-
-  line-height:.9;
-}
-
-.stream.searching .story:not(.hidden) p{
-  max-width:430px;
-
-  margin:17px 0 0;
-
-  color:var(--muted);
-
-  font-size:.76rem;
-  line-height:1.6;
+.story.search-match{
+  animation:
+    searchIn .45s
+    cubic-bezier(.16,1,.3,1)
+    both;
 }
 
 
-/* =========================================================
-   NO RESULTS
-========================================================= */
+@keyframes searchIn{
+
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+
+}
+
 
 .no-results{
   display:none;
 
-  padding:90px 0;
+  padding:
+    80px 0
+    110px;
 
   text-align:center;
 }
 
+
 .no-results.visible{
   display:block;
 }
+
 
 .no-results strong{
   display:block;
@@ -808,6 +719,7 @@ input{
   letter-spacing:-.05em;
 }
 
+
 .no-results span{
   color:var(--muted);
 
@@ -815,19 +727,21 @@ input{
 }
 
 
-/* =========================================================
+/* ==========================================================
    REVEAL
-========================================================= */
+========================================================== */
 
 .reveal{
   opacity:0;
 
-  transform:translateY(14px);
+  transform:
+    translateY(18px);
 
   transition:
     opacity .6s ease,
     transform .6s cubic-bezier(.16,1,.3,1);
 }
+
 
 .reveal.visible{
   opacity:1;
@@ -835,221 +749,314 @@ input{
 }
 
 
-/* =========================================================
-   MODAL
-========================================================= */
+/* ==========================================================
+   FULL SCREEN MODAL
+========================================================== */
 
 .modal{
   position:fixed;
 
   inset:0;
 
-  z-index:3000;
+  z-index:2000;
+
+  display:flex;
+
+  justify-content:flex-end;
 
   visibility:hidden;
 
   pointer-events:none;
 }
 
+
 .modal.open{
   visibility:visible;
+
   pointer-events:auto;
 }
+
 
 .modal-backdrop{
   position:absolute;
 
   inset:0;
 
-  background:rgba(13,31,60,.45);
+  background:
+    rgba(13,31,60,.48);
+
+  backdrop-filter:
+    blur(4px);
 
   opacity:0;
 
-  transition:opacity .45s ease;
+  transition:
+    opacity .45s ease;
 }
+
 
 .modal.open .modal-backdrop{
   opacity:1;
 }
 
+
+/* slides from RIGHT */
+
 .modal-panel{
-  position:absolute;
+  position:relative;
 
-  inset:0;
+  z-index:2;
 
-  width:100%;
-  height:100%;
+  width:100vw;
+  max-width:none;
 
-  padding:85px max(var(--edge),calc((100vw - 1300px)/2));
+  height:100vh;
 
-  overflow-y:auto;
+  padding:
+    82px max(var(--edge),calc((100vw - 1400px)/2))
+    80px;
 
   background:var(--paper);
 
-  transform:translateX(100%);
+  overflow-y:auto;
+
+  transform:
+    translateX(100%);
 
   transition:
-    transform .6s cubic-bezier(.77,0,.18,1);
+    transform .62s
+    cubic-bezier(.77,0,.18,1);
 }
+
 
 .modal.open .modal-panel{
   transform:translateX(0);
 }
 
+
+/* ==========================================================
+   MODAL CLOSE
+========================================================== */
+
 .modal-close{
   position:fixed;
 
-  top:25px;
+  top:24px;
   right:var(--edge);
 
-  z-index:20;
+  z-index:10;
 
-  width:43px;
-  height:43px;
+  width:42px;
+  height:42px;
 
-  border:1px solid var(--line);
+  padding:0;
 
-  background:var(--paper);
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border:
+    1px solid var(--line);
+
+  background:
+    rgba(247,247,245,.94);
 
   color:var(--navy);
 
   font-size:1.25rem;
 
   cursor:pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease;
 }
+
 
 .modal-close:hover{
   background:var(--navy);
-  color:white;
+  color:#fff;
 }
 
-.modal-meta{
-  max-width:1200px;
 
-  margin:0 auto 24px;
+/* ==========================================================
+   MODAL TYPOGRAPHY
+========================================================== */
+
+.modal-meta{
+  max-width:1250px;
+
+  margin:
+    0 auto
+    22px;
 
   display:flex;
 
-  gap:15px;
+  align-items:center;
 
-  color:var(--green);
+  gap:8px;
 
-  font-size:.68rem;
+  color:#9b6c68;
+
+  font-size:.49rem;
   font-weight:700;
 
-  letter-spacing:.08em;
+  letter-spacing:.13em;
+
   text-transform:uppercase;
 }
 
+
+.modal-meta i{
+  width:3px;
+  height:3px;
+
+  background:#9b6c68;
+}
+
+
 .modal-panel > h2{
-  max-width:1200px;
+  max-width:1250px;
 
   margin:auto;
 
   font-family:var(--display);
 
-  font-size:clamp(4.5rem,7.5vw,8.5rem);
+  font-size:
+    clamp(4.5rem,8vw,9rem);
 
-  line-height:.78;
-  letter-spacing:-.08em;
+  font-weight:650;
+
+  line-height:.77;
+
+  letter-spacing:-.085em;
 }
+
 
 .modal-lead{
   max-width:800px;
 
-  margin:42px auto 60px;
+  margin:
+    42px auto
+    60px;
 
-  color:var(--muted);
+  color:#60738a;
 
-  font-size:1.08rem;
-  line-height:1.75;
+  font-size:
+    clamp(1rem,1.3vw,1.22rem);
+
+  line-height:1.7;
 }
 
+
 .modal-content{
-  max-width:1100px;
+  max-width:1150px;
 
   margin:auto;
 
   padding-top:45px;
 
   display:grid;
-  grid-template-columns:1.3fr .7fr;
 
-  gap:80px;
+  grid-template-columns:
+    1.35fr .65fr;
 
-  border-top:1px solid var(--line);
+  gap:90px;
+
+  border-top:
+    1px solid var(--line);
 }
 
+
 .modal-copy h3{
-  margin:0 0 15px;
+  margin:
+    0 0
+    14px;
 
   font-family:var(--display);
 
-  font-size:1.55rem;
+  font-size:1.65rem;
 
   letter-spacing:-.04em;
 }
 
+
 .modal-copy h3:not(:first-child){
-  margin-top:40px;
+  margin-top:42px;
 }
 
-.modal-copy p{
-  margin:0;
 
-  color:var(--muted);
+.modal-copy p{
+  margin:
+    0 0
+    18px;
+
+  color:#53677e;
 
   font-size:.9rem;
+
   line-height:1.8;
 }
 
+
 .modal-facts{
-  border-top:3px solid var(--green);
+  border-top:
+    3px solid var(--rose);
 }
+
 
 .fact{
   padding:17px 0;
 
-  border-bottom:1px solid var(--line);
+  border-bottom:
+    1px solid var(--line);
 }
+
 
 .fact small{
   display:block;
 
   margin-bottom:6px;
 
-  color:var(--muted);
+  color:#8b98a8;
 
-  font-size:.55rem;
+  font-size:.48rem;
   font-weight:700;
 
-  letter-spacing:.08em;
+  letter-spacing:.13em;
+
   text-transform:uppercase;
 }
 
+
 .fact strong{
-  font-size:.84rem;
+  font-size:.83rem;
 }
 
 
-/* =========================================================
+/* ==========================================================
    FOOTER
-========================================================= */
+========================================================== */
 
 footer{
-  padding:38px var(--edge);
+  padding:
+    38px var(--edge);
 
   display:flex;
+
   justify-content:space-between;
 
   background:var(--navy);
 
-  color:white;
+  color:#fff;
 }
+
 
 footer strong{
   font-family:var(--display);
 }
+
 
 footer span{
   color:rgba(255,255,255,.45);
@@ -1058,102 +1065,63 @@ footer span{
 }
 
 
-/* =========================================================
+/* ==========================================================
    TABLET
-========================================================= */
+========================================================== */
 
 @media(max-width:950px){
 
-  .tp-intro-top{
+  .toolbar-inner{
+    grid-template-columns:
+      190px 1fr 90px;
+  }
+
+
+  .archive-intro-inner{
     grid-template-columns:1fr;
 
     gap:30px;
   }
 
-  .tp-intro p{
+
+  .archive-intro p{
     margin:0;
   }
 
-  .hero-event-inner{
-    grid-template-columns:1fr;
+
+  .story.lead{
+    grid-column:
+      span 12;
   }
 
-  .hero-copy{
-    margin-top:30px;
 
-    padding:0;
-
-    border:0;
+  .story:nth-child(n+2),
+  .story.feature,
+  .story.feature + .story{
+    grid-column:
+      span 6;
   }
 
-  .pair,
-  .major-split{
-    grid-template-columns:1fr;
+
+  .story:nth-child(n+2){
+    padding:
+      27px 25px !important;
+
+    border-right:
+      1px solid var(--line);
   }
 
-  .pair .story,
-  .pair .story + .story{
-    padding:42px 0;
 
-    border-left:0;
-  }
-
-  .pair .story + .story{
-    border-top:1px solid var(--line);
-  }
-
-  .band{
-    grid-template-columns:.3fr 1fr;
-  }
-
-  .band-copy{
-    grid-column:2;
-
-    padding:0;
-
-    border:0;
-  }
-
-  .side-story{
-    min-height:300px;
-
-    border-left:0;
-    border-top:1px solid var(--line);
-  }
-
-  .three{
-    grid-template-columns:1fr;
-  }
-
-  .three .story,
-  .three .story + .story{
-    min-height:0;
-
-    padding:38px 0;
-
-    border-left:0;
-  }
-
-  .three .story + .story{
-    border-top:1px solid var(--line);
-  }
-
-  .dark-feature{
-    grid-template-columns:1fr;
-
-    gap:70px;
-  }
-
-  .stream.searching{
-    grid-template-columns:repeat(2,1fr);
+  .modal-content{
+    gap:55px;
   }
 
 }
 
 
-/* =========================================================
+/* ==========================================================
    MOBILE
-========================================================= */
+========================================================== */
 
 @media(max-width:650px){
 
@@ -1161,179 +1129,202 @@ footer span{
     --edge:5%;
   }
 
+
   .site-header{
-    height:72px;
+    height:74px;
   }
+
 
   .logo img{
     width:98px;
   }
 
+
   .main-nav{
     display:none;
   }
 
-  .tp-intro{
-    padding-top:48px;
+
+  .archive-toolbar{
+    position:sticky;
+    top:0;
   }
 
-  .tp-intro h1{
-    font-size:clamp(3.9rem,17vw,5.5rem);
+
+  .toolbar-inner{
+    min-height:auto;
+
+    padding:
+      10px 5%;
+
+    grid-template-columns:
+      1fr auto;
+
+    gap:
+      8px 15px;
   }
 
-  .tp-intro p{
-    font-size:.8rem;
+
+  .archive-name{
+    font-size:1.15rem;
   }
 
-  .search-bar{
-    margin-top:38px;
 
-    padding:14px 0;
+  .search-wrap{
+    grid-column:
+      1 / -1;
 
-    grid-template-columns:1fr auto;
-
-    gap:7px 15px;
+    grid-row:2;
   }
 
-  .search-label{
-    grid-column:1;
+
+  .search-wrap input{
+    height:43px;
   }
+
 
   .result-count{
-    grid-column:2;
+    font-size:.46rem;
   }
 
-  .search-input{
-    grid-column:1 / -1;
-    grid-row:2;
 
-    padding:10px 0;
-
-    font-size:.9rem;
+  .archive-intro{
+    padding:
+      45px 5%
+      38px;
   }
 
-  .archive{
-    padding-top:45px;
-    padding-bottom:90px;
+
+  .archive-intro h1{
+    font-size:
+      clamp(4rem,18vw,5.5rem);
   }
 
-  .hero-event{
-    min-height:400px;
 
-    padding:28px;
-  }
-
-  .hero-event-inner{
-    min-height:340px;
-  }
-
-  .hero-event h2{
-    font-size:clamp(3.4rem,15vw,4.8rem);
-  }
-
-  .hero-copy p{
+  .archive-intro p{
     font-size:.8rem;
   }
 
-  .pair,
-  .major-split,
-  .three{
-    margin:55px 0;
+
+  .archive{
+    padding:
+      0 5%
+      90px;
   }
 
-  .band{
+
+  .story-grid{
     display:block;
+  }
+
+
+  .story,
+  .story.lead,
+  .story.feature,
+  .story.feature + .story,
+  .story:nth-child(n+2),
+  .story:nth-child(n+5){
+
+    width:100%;
 
     min-height:0;
 
-    padding:34px 27px;
+    padding:
+      25px 0 !important;
+
+    border-right:0 !important;
+
+    border-bottom:
+      1px solid var(--line);
   }
 
-  .band-meta{
-    margin-bottom:60px;
+
+  .story.lead{
+    min-height:290px;
+
+    padding-bottom:
+      30px !important;
   }
 
-  .band h2{
-    font-size:clamp(2.8rem,13vw,4.2rem);
-  }
 
-  .band-copy{
-    margin-top:25px;
-  }
-
-  .major{
-    min-height:390px;
-
-    padding:38px 0;
-  }
-
-  .major .story-meta{
-    top:38px;
-  }
-
-  .major h2{
-    font-size:clamp(3.4rem,15vw,4.8rem);
-  }
-
-  .side-story{
-    padding:38px 0;
-  }
-
-  .side-story .story-meta{
+  .story.lead .story-meta{
     position:static;
   }
 
-  .dark-feature{
-    min-height:400px;
 
-    padding:32px 27px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
+  .story.lead h2{
+    font-size:
+      clamp(3.3rem,15vw,4.7rem);
   }
 
-  .dark-feature h2{
-    font-size:clamp(3.3rem,14vw,4.8rem);
+
+  .story.feature h2{
+    font-size:
+      clamp(2.4rem,11vw,3.4rem);
   }
 
-  .stream.searching{
-    display:block;
 
-    background:transparent;
+  .story h2{
+    font-size:
+      clamp(2rem,9vw,2.7rem);
   }
 
-  .stream.searching .story:not(.hidden){
-    margin-bottom:1px !important;
+
+  .story-grid:has(.story:hover)
+  .story:not(:hover){
+    opacity:1;
   }
+
 
   .modal-panel{
-    padding:75px 5% 50px;
+    padding:
+      72px 5%
+      55px;
   }
+
 
   .modal-close{
     top:17px;
     right:5%;
   }
 
+
   .modal-panel > h2{
-    font-size:clamp(3.8rem,16vw,5.7rem);
+    font-size:
+      clamp(4rem,17vw,6rem);
   }
+
+
+  .modal-lead{
+    margin:
+      32px 0
+      42px;
+  }
+
 
   .modal-content{
     display:block;
+
+    padding-top:35px;
   }
+
 
   .modal-facts{
     margin-top:45px;
   }
 
+
   footer{
     flex-direction:column;
-    gap:10px;
+    gap:12px;
   }
 
 }
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1342,11 +1333,834 @@ footer span{
   *::after{
     scroll-behavior:auto !important;
     transition:none !important;
+    animation:none !important;
   }
 
   .reveal{
     opacity:1;
     transform:none;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   ATHAR — CLEAN CORPORATE EDITORIAL ARCHIVE
+   BNP PARIBAS-INSPIRED STRUCTURE
+   REPLACES PREVIOUS RICH ARCHIVE OVERRIDE
+========================================================== */
+
+:root{
+  --navy:#12284b;
+  --paper:#f7f7f5;
+  --white:#ffffff;
+
+  --soft-blue:#e5eef2;
+  --soft-green:#e3ebe6;
+  --soft-sand:#eee9dc;
+
+  --accent:#6f8f82;
+  --accent-dark:#526f64;
+
+  --line:rgba(18,40,75,.13);
+  --muted:#64778c;
+}
+
+
+/* ==========================================================
+   INTRO
+========================================================== */
+
+.archive-intro{
+  padding:
+    62px var(--edge)
+    48px !important;
+
+  background:var(--paper);
+}
+
+.archive-intro-inner{
+  max-width:1500px;
+
+  margin:auto;
+
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+
+  gap:70px !important;
+
+  align-items:end !important;
+}
+
+.archive-intro h1{
+  margin:0;
+
+  font-size:
+    clamp(4.3rem,6.4vw,6.8rem) !important;
+
+  line-height:.79 !important;
+}
+
+.archive-intro p{
+  max-width:500px !important;
+
+  margin:
+    0 0 5px auto !important;
+
+  font-size:.9rem !important;
+
+  line-height:1.7 !important;
+
+  color:var(--muted) !important;
+}
+
+
+/* ==========================================================
+   ARCHIVE
+========================================================== */
+
+.archive{
+  max-width:1500px !important;
+
+  margin:auto !important;
+
+  padding:
+    20px var(--edge)
+    150px !important;
+}
+
+
+/* ==========================================================
+   GRID
+
+   Much cleaner:
+   - one feature
+   - then three-column news grid
+========================================================== */
+
+.story-grid{
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(12,minmax(0,1fr)) !important;
+
+  gap:0 !important;
+
+  border:0 !important;
+
+  background:transparent !important;
+}
+
+
+/* ==========================================================
+   BASE STORY
+========================================================== */
+
+.story,
+.story:nth-child(n),
+.story.feature,
+.story.feature + .story{
+
+  position:relative !important;
+
+  grid-column:
+    span 4 !important;
+
+  min-height:255px !important;
+
+  padding:
+    32px 32px
+    34px 0 !important;
+
+  display:flex !important;
+
+  flex-direction:column !important;
+  justify-content:flex-start !important;
+
+  background:
+    transparent !important;
+
+  border:0 !important;
+  border-top:
+    1px solid var(--line) !important;
+
+  cursor:pointer;
+
+  overflow:hidden;
+
+  transition:
+    transform .35s cubic-bezier(.16,1,.3,1),
+    opacity .3s ease !important;
+}
+
+
+/* vertical separators only */
+
+.story:nth-child(3n+2),
+.story:nth-child(3n+3){
+
+  padding-left:
+    32px !important;
+
+  border-left:
+    1px solid var(--line) !important;
+}
+
+
+/* remove all previous decorations */
+
+.story::before,
+.story::after{
+  display:none !important;
+}
+
+
+/* ==========================================================
+   METADATA
+
+   Readable, but not boxed.
+========================================================== */
+
+.story-meta,
+.story.lead .story-meta{
+
+  position:static !important;
+
+  margin:
+    0 0 24px !important;
+
+  display:flex !important;
+
+  align-items:center !important;
+
+  gap:9px !important;
+
+  color:
+    var(--muted) !important;
+
+  font-size:.64rem !important;
+
+  font-weight:700 !important;
+
+  line-height:1 !important;
+
+  letter-spacing:.08em !important;
+
+  text-transform:uppercase !important;
+}
+
+
+.story-date{
+  color:
+    var(--accent-dark) !important;
+
+  font-size:.68rem !important;
+
+  font-weight:750 !important;
+}
+
+
+.story-meta i{
+  display:block !important;
+
+  width:15px !important;
+  height:1px !important;
+
+  background:
+    rgba(18,40,75,.25) !important;
+}
+
+
+/* ==========================================================
+   STORY TYPOGRAPHY
+========================================================== */
+
+.story h2,
+.story:nth-child(n) h2{
+
+  max-width:440px !important;
+
+  margin:0 !important;
+
+  color:var(--navy) !important;
+
+  font-size:
+    clamp(1.75rem,2.1vw,2.55rem) !important;
+
+  font-weight:620 !important;
+
+  line-height:.94 !important;
+
+  letter-spacing:-.055em !important;
+
+  transition:
+    transform .35s cubic-bezier(.16,1,.3,1);
+}
+
+
+.story p,
+.story:nth-child(n) p{
+
+  max-width:430px !important;
+
+  margin:
+    15px 0 0 !important;
+
+  color:
+    var(--muted) !important;
+
+  font-size:.76rem !important;
+
+  line-height:1.62 !important;
+}
+
+
+/* ==========================================================
+   MAIN FEATURE
+
+   BNP-style large editorial feature:
+   restrained background, strong hierarchy.
+========================================================== */
+
+.story.lead{
+
+  grid-column:
+    1 / -1 !important;
+
+  min-height:
+    380px !important;
+
+  margin-bottom:
+    55px !important;
+
+  padding:
+    54px 52px !important;
+
+  display:grid !important;
+
+  grid-template-columns:
+    minmax(0,1.35fr)
+    minmax(280px,.65fr) !important;
+
+  grid-template-rows:
+    auto 1fr !important;
+
+  column-gap:
+    80px !important;
+
+  background:
+    var(--soft-green) !important;
+
+  border:0 !important;
+}
+
+
+.story.lead .story-meta{
+
+  grid-column:
+    1 / -1;
+
+  margin-bottom:
+    65px !important;
+}
+
+
+.story.lead h2{
+
+  align-self:end;
+
+  max-width:
+    760px !important;
+
+  font-size:
+    clamp(4.3rem,6vw,7rem) !important;
+
+  line-height:.78 !important;
+
+  letter-spacing:-.075em !important;
+}
+
+
+.story.lead p{
+
+  align-self:end;
+
+  max-width:
+    390px !important;
+
+  margin:
+    0 0 5px !important;
+
+  padding-left:
+    30px;
+
+  border-left:
+    3px solid var(--accent);
+
+  font-size:
+    .86rem !important;
+
+  line-height:
+    1.7 !important;
+}
+
+
+/* ==========================================================
+   FEATURE STORIES
+
+   No more huge navy / coloured tiles.
+========================================================== */
+
+.story.feature{
+
+  grid-column:
+    span 8 !important;
+
+  min-height:
+    300px !important;
+
+  padding:
+    42px 50px 42px 0 !important;
+
+  background:
+    transparent !important;
+
+  border-top:
+    1px solid var(--line) !important;
+
+  border-right:
+    1px solid var(--line) !important;
+}
+
+
+.story.feature h2{
+
+  max-width:
+    750px !important;
+
+  font-size:
+    clamp(3rem,4vw,4.8rem) !important;
+
+  line-height:.84 !important;
+}
+
+
+.story.feature p{
+
+  max-width:
+    580px !important;
+
+  font-size:
+    .8rem !important;
+}
+
+
+.story.feature + .story{
+
+  grid-column:
+    span 4 !important;
+
+  min-height:
+    300px !important;
+
+  padding:
+    42px 0 42px 35px !important;
+
+  border-left:0 !important;
+}
+
+
+/* ==========================================================
+   SUBTLE COLOUR MODULES
+
+   Only occasional stories get colour.
+========================================================== */
+
+.story:nth-child(4n+6):not(.lead):not(.feature){
+
+  margin:
+    18px 18px 18px 0 !important;
+
+  padding:
+    30px !important;
+
+  min-height:
+    220px !important;
+
+  background:
+    var(--soft-blue) !important;
+
+  border:
+    0 !important;
+}
+
+
+.story:nth-child(7n+4):not(.lead):not(.feature){
+
+  margin:
+    18px 0 18px 18px !important;
+
+  padding:
+    30px !important;
+
+  min-height:
+    220px !important;
+
+  background:
+    var(--soft-sand) !important;
+
+  border:
+    0 !important;
+}
+
+
+/* ==========================================================
+   HOVER
+
+   Clean corporate-site interaction.
+========================================================== */
+
+.story:hover{
+  transform:
+    translateY(-3px) !important;
+}
+
+
+.story:hover h2{
+  transform:
+    translateX(5px);
+}
+
+
+.story-grid:has(.story:hover)
+.story:not(:hover){
+
+  opacity:.68 !important;
+}
+
+
+/* small accent appears on hover */
+
+.story:not(.lead)::after{
+
+  content:"" !important;
+
+  display:block !important;
+
+  position:absolute;
+
+  left:0;
+  bottom:0;
+
+  width:0;
+  height:3px;
+
+  background:
+    var(--accent);
+
+  transition:
+    width .4s cubic-bezier(.16,1,.3,1);
+}
+
+
+.story:not(.lead):hover::after{
+  width:52px;
+}
+
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+.story-grid.searching{
+
+  display:grid !important;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr)) !important;
+}
+
+
+.story-grid.searching .story:not(.hidden){
+
+  grid-column:
+    span 1 !important;
+
+  min-height:
+    230px !important;
+
+  margin:0 !important;
+
+  padding:
+    30px !important;
+
+  display:block !important;
+
+  background:
+    transparent !important;
+
+  border:
+    1px solid var(--line) !important;
+}
+
+
+.story-grid.searching
+.story:not(.hidden)
+.story-meta{
+
+  margin-bottom:
+    22px !important;
+}
+
+
+.story-grid.searching
+.story:not(.hidden)
+h2{
+
+  font-size:
+    2rem !important;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media(max-width:950px){
+
+  .archive-intro-inner{
+
+    grid-template-columns:
+      1fr !important;
+
+    gap:30px !important;
+  }
+
+
+  .archive-intro p{
+
+    margin:
+      0 !important;
+  }
+
+
+  .story,
+  .story:nth-child(n),
+  .story.feature,
+  .story.feature + .story{
+
+    grid-column:
+      span 6 !important;
+
+    padding:
+      30px !important;
+
+    border-left:
+      0 !important;
+
+    border-right:
+      1px solid var(--line) !important;
+  }
+
+
+  .story.lead{
+
+    grid-column:
+      1 / -1 !important;
+
+    grid-template-columns:
+      1fr !important;
+
+    min-height:
+      350px !important;
+
+    padding:
+      42px !important;
+  }
+
+
+  .story.lead .story-meta{
+
+    margin-bottom:
+      55px !important;
+  }
+
+
+  .story.lead p{
+
+    margin-top:
+      28px !important;
+
+    padding:
+      0 !important;
+
+    border:0;
+  }
+
+
+  .story.feature{
+
+    grid-column:
+      span 12 !important;
+  }
+
+
+  .story-grid.searching{
+
+    grid-template-columns:
+      repeat(2,1fr) !important;
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:650px){
+
+  .archive-intro{
+
+    padding:
+      42px 5%
+      35px !important;
+  }
+
+
+  .archive-intro h1{
+
+    font-size:
+      clamp(3.8rem,17vw,5.2rem) !important;
+  }
+
+
+  .story-grid{
+
+    display:block !important;
+  }
+
+
+  .story,
+  .story:nth-child(n),
+  .story.feature,
+  .story.feature + .story{
+
+    width:100% !important;
+
+    min-height:0 !important;
+
+    margin:0 !important;
+
+    padding:
+      27px 0 !important;
+
+    display:block !important;
+
+    background:
+      transparent !important;
+
+    border:
+      0 !important;
+
+    border-top:
+      1px solid var(--line) !important;
+  }
+
+
+  .story.lead{
+
+    min-height:
+      390px !important;
+
+    margin-bottom:
+      35px !important;
+
+    padding:
+      30px !important;
+
+    display:flex !important;
+
+    flex-direction:column !important;
+
+    justify-content:flex-end !important;
+
+    background:
+      var(--soft-green) !important;
+
+    border:0 !important;
+  }
+
+
+  .story.lead .story-meta{
+
+    position:absolute !important;
+
+    top:28px !important;
+    left:28px !important;
+
+    margin:0 !important;
+  }
+
+
+  .story.lead h2{
+
+    font-size:
+      clamp(3.4rem,15vw,4.8rem) !important;
+  }
+
+
+  .story.lead p{
+
+    margin-top:
+      22px !important;
+  }
+
+
+  .story.feature h2{
+
+    font-size:
+      clamp(2.7rem,12vw,3.7rem) !important;
+  }
+
+
+  .story-grid.searching{
+
+    display:block !important;
+  }
+
+
+  .story-grid.searching
+  .story:not(.hidden){
+
+    margin:
+      0 0 12px !important;
+
+    padding:
+      24px !important;
+  }
+
+
+  .story-grid:has(.story:hover)
+  .story:not(:hover){
+
+    opacity:1 !important;
   }
 
 }
@@ -1359,20 +2173,44 @@ footer span{
 
 
 <!-- ========================================================
-     HEADER
+     ATHAR HEADER
 ======================================================== -->
 
 <header class="site-header">
 
-  <a href="index.html" class="logo" aria-label="ATHAR home">
-    <img src="images/atharlogonavy1.png" alt="ATHAR">
+  <a
+    href="index.html"
+    class="logo"
+    aria-label="ATHAR home"
+  >
+    <img
+      src="images/atharlogonavy1.png"
+      alt="ATHAR"
+    >
   </a>
 
+
   <nav class="main-nav">
-    <a href="turning-points.html" class="active">Turning Points</a>
-    <a href="conflicts.html">Fault Lines</a>
-    <a href="ideas.html">Big Ideas</a>
-    <a href="people.html">History Makers</a>
+
+    <a
+      href="turning-points.html"
+      class="active"
+    >
+      Turning Points
+    </a>
+
+    <a href="conflicts.html">
+      Fault Lines
+    </a>
+
+    <a href="ideas.html">
+      Big Ideas
+    </a>
+
+    <a href="people.html">
+      History Makers
+    </a>
+
   </nav>
 
 </header>
@@ -1382,42 +2220,42 @@ footer span{
 
 
 <!-- ========================================================
-     INTRO + SEARCH
+     STICKY SEARCH TOOLBAR
 ======================================================== -->
 
-<section class="tp-intro">
+<section class="archive-toolbar">
 
-  <div class="tp-intro-top">
+  <div class="toolbar-inner">
 
-    <h1>Turning<br>Points</h1>
-
-    <p>
-      Revolutions, collapses, treaties and moments
-      after which the world was no longer the same.
-      Search across events, places, dates and ideas.
-    </p>
-
-  </div>
+    <div class="archive-name">
+      Turning Points
+    </div>
 
 
-  <div class="search-bar">
+    <div class="search-wrap">
 
-    <span class="search-label">
-      Explore the archive
-    </span>
+      <input
+        type="search"
+        id="archiveSearch"
+        placeholder="Search events, places, dates or keywords..."
+        autocomplete="off"
+        aria-label="Search Turning Points"
+      >
 
-    <input
-      class="search-input"
-      id="archiveSearch"
-      type="search"
-      placeholder="Search events, places, dates or keywords..."
-      autocomplete="off"
-      aria-label="Search the archive"
+      <span
+        class="search-icon"
+        aria-hidden="true"
+      ></span>
+
+    </div>
+
+
+    <div
+      class="result-count"
+      id="resultCount"
     >
-
-    <span class="result-count" id="resultCount">
       18 events
-    </span>
+    </div>
 
   </div>
 
@@ -1425,428 +2263,446 @@ footer span{
 
 
 <!-- ========================================================
-     ARCHIVE
+     SIMPLE INTRO
+======================================================== -->
+
+<section class="archive-intro">
+
+  <div class="archive-intro-inner">
+
+    <h1>
+      Turning<br>
+      Points
+    </h1>
+
+    <p>
+      Revolutions, collapses, treaties and moments
+      after which the world was no longer the same.
+      Explore the archive from the present to the
+      ancient world.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ========================================================
+     ONE CONTINUOUS ARCHIVE
 ======================================================== -->
 
 <section class="archive">
 
-<div class="stream" id="storyGrid">
+<div
+  class="story-grid"
+  id="storyGrid"
+>
 
 
 <!-- ARAB UPRISINGS -->
 
 <article
-  class="story hero-event reveal"
-  data-search="arab uprisings arab spring 2010 2011 mena middle east north africa tunisia egypt syria libya protests revolution politics"
+  class="story lead reveal"
+  data-search="arab uprisings 2010 2011 mena middle east north africa arab spring revolution protests politics tunisia egypt syria libya"
 >
-  <div class="hero-event-inner">
-
-    <div class="story-meta">
-      <span class="date">2010–2011</span>
-      <span class="place">MENA</span>
-    </div>
-
-    <div class="hero-main">
-      <h2>Arab Uprisings</h2>
-    </div>
-
-    <div class="hero-copy">
-      <p>
-        Mass protests challenged political systems
-        across the Middle East and North Africa.
-      </p>
-    </div>
-
+  <div class="story-meta">
+    <span class="story-date">2010–2011</span>
+    <i></i>
+    <span>MENA</span>
   </div>
+
+  <h2>Arab Uprisings</h2>
+
+  <p>
+    Mass protests challenged political systems
+    across the Middle East and North Africa.
+  </p>
 </article>
 
 
-<!-- 2008 + 2001 -->
+<!-- GLOBAL FINANCIAL CRISIS -->
 
-<div class="pair layout-group">
+<article
+  class="story reveal"
+  data-search="global financial crisis 2008 global economy finance recession banking economic crisis"
+>
+  <div class="story-meta">
+    <span class="story-date">2008</span>
+    <i></i>
+    <span>Global</span>
+  </div>
 
-  <article
-    class="story reveal"
-    data-search="global financial crisis 2008 global economy finance banking recession economic crisis"
-  >
-    <div class="story-meta">
-      <span class="date">2008</span>
-      <span class="place">Global</span>
-    </div>
+  <h2>Global Financial Crisis</h2>
 
-    <h2>Global Financial Crisis</h2>
-
-    <p>
-      A financial shock with lasting economic,
-      political and institutional consequences.
-    </p>
-  </article>
+  <p>
+    A financial shock with lasting economic,
+    political and institutional consequences.
+  </p>
+</article>
 
 
-  <article
-    class="story reveal"
-    data-modal="september11"
-    data-search="september 11 9/11 2001 united states new york terrorism security war on terror afghanistan al qaeda"
-  >
-    <div class="story-meta">
-      <span class="date">2001</span>
-      <span class="place">United States</span>
-    </div>
+<!-- SEPTEMBER 11 -->
 
-    <h2>September 11</h2>
+<article
+  class="story reveal"
+  data-modal="september11"
+  data-search="september 11 9/11 2001 united states new york terrorism security war on terror afghanistan al qaeda"
+>
+  <div class="story-meta">
+    <span class="story-date">2001</span>
+    <i></i>
+    <span>United States</span>
+  </div>
 
-    <p>
-      The attacks transformed international security
-      agendas and were followed by major military,
-      political and legal consequences.
-    </p>
-  </article>
+  <h2>September 11</h2>
 
-</div>
+  <p>
+    The attacks transformed international security
+    agendas and were followed by major military,
+    political and legal consequences.
+  </p>
+</article>
 
 
 <!-- BERLIN WALL -->
 
 <article
-  class="story band band-blue reveal"
+  class="story reveal"
   data-search="fall berlin wall 1989 berlin germany cold war communism eastern europe soviet collapse"
 >
-
-  <div class="band-meta">
-    <span class="date">1989</span>
+  <div class="story-meta">
+    <span class="story-date">1989</span>
+    <i></i>
     <span>Berlin</span>
   </div>
 
   <h2>Fall of the Berlin Wall</h2>
 
-  <div class="band-copy">
-    <p>
-      The opening of the Wall became one of the defining
-      symbols of the collapse of communist regimes in
-      Eastern Europe.
-    </p>
-  </div>
-
+  <p>
+    The opening of the Wall became one of the defining
+    symbols of the collapse of communist regimes in
+    Eastern Europe.
+  </p>
 </article>
 
 
-<!-- WWII + RUSSIAN REVOLUTION -->
+<!-- SECOND WORLD WAR -->
 
-<div class="major-split layout-group">
+<article
+  class="story feature reveal"
+  data-search="second world war world war ii ww2 1939 1945 global europe asia conflict war nazism fascism allies axis"
+>
+  <div class="story-meta">
+    <span class="story-date">1939–1945</span>
+    <i></i>
+    <span>Global</span>
+  </div>
 
-  <article
-    class="story major reveal"
-    data-search="second world war world war ii ww2 1939 1945 global europe asia war conflict allies axis fascism nazism"
-  >
-    <div class="story-meta">
-      <span class="date">1939–1945</span>
-      <span class="place">Global</span>
-    </div>
+  <h2>Second World War</h2>
 
-    <h2>Second<br>World War</h2>
-
-    <p>
-      Global warfare transformed borders,
-      societies and the international order.
-    </p>
-  </article>
-
-
-  <article
-    class="story side-story reveal"
-    data-search="russian revolution 1917 russia bolshevik lenin communism soviet union empire revolution"
-  >
-    <div class="story-meta">
-      <span class="date">1917</span>
-      <span class="place">Russia</span>
-    </div>
-
-    <h2>Russian Revolution</h2>
-
-    <p>
-      Revolution ended imperial rule and
-      ultimately produced the Soviet Union.
-    </p>
-  </article>
-
-</div>
+  <p>
+    Global warfare transformed borders, societies
+    and the international order.
+  </p>
+</article>
 
 
-<!-- 19TH CENTURY TRIO -->
+<!-- RUSSIAN REVOLUTION -->
 
-<div class="three layout-group">
+<article
+  class="story reveal"
+  data-search="russian revolution 1917 russia soviet union communism bolshevik revolution lenin empire"
+>
+  <div class="story-meta">
+    <span class="story-date">1917</span>
+    <i></i>
+    <span>Russia</span>
+  </div>
 
-  <article
-    class="story reveal"
-    data-search="meiji restoration 1868 japan modernization industrialisation industrialization empire asia political transformation"
-  >
-    <div class="story-meta">
-      <span class="date">1868</span>
-      <span class="place">Japan</span>
-    </div>
+  <h2>Russian Revolution</h2>
 
-    <h2>Meiji Restoration</h2>
-
-    <p>
-      Political transformation accelerated
-      centralisation, industrialisation and
-      Japan's emergence as a major modern power.
-    </p>
-  </article>
+  <p>
+    Revolution ended imperial rule and ultimately
+    produced the Soviet Union.
+  </p>
+</article>
 
 
-  <article
-    class="story reveal"
-    data-search="revolutions 1848 europe nationalism constitutionalism social reform uprising revolution"
-  >
-    <div class="story-meta">
-      <span class="date">1848</span>
-      <span class="place">Europe</span>
-    </div>
+<!-- MEIJI -->
 
-    <h2>Revolutions of 1848</h2>
+<article
+  class="story reveal"
+  data-search="meiji restoration 1868 japan industrialisation modernization empire asia political transformation"
+>
+  <div class="story-meta">
+    <span class="story-date">1868</span>
+    <i></i>
+    <span>Japan</span>
+  </div>
 
-    <p>
-      A wave of uprisings placed nationalism,
-      constitutionalism and social reform at the
-      centre of political struggles.
-    </p>
-  </article>
+  <h2>Meiji Restoration</h2>
+
+  <p>
+    Political transformation accelerated
+    centralisation, industrialisation and Japan's
+    emergence as a major modern power.
+  </p>
+</article>
 
 
-  <article
-    class="story reveal"
-    data-search="congress vienna 1814 1815 europe diplomacy napoleon napoleonic balance power international order"
-  >
-    <div class="story-meta">
-      <span class="date">1814–1815</span>
-      <span class="place">Vienna</span>
-    </div>
+<!-- 1848 -->
 
-    <h2>Congress of Vienna</h2>
+<article
+  class="story reveal"
+  data-search="revolutions 1848 europe nationalism constitutionalism social reform uprising revolution"
+>
+  <div class="story-meta">
+    <span class="story-date">1848</span>
+    <i></i>
+    <span>Europe</span>
+  </div>
 
-    <p>
-      European powers constructed a new
-      post-Napoleonic political settlement.
-    </p>
-  </article>
+  <h2>Revolutions of 1848</h2>
 
-</div>
+  <p>
+    A wave of uprisings placed nationalism,
+    constitutionalism and social reform at the
+    centre of political struggles.
+  </p>
+</article>
+
+
+<!-- VIENNA -->
+
+<article
+  class="story reveal"
+  data-search="congress vienna 1814 1815 europe diplomacy napoleon napoleonic balance power international order"
+>
+  <div class="story-meta">
+    <span class="story-date">1814–1815</span>
+    <i></i>
+    <span>Vienna</span>
+  </div>
+
+  <h2>Congress of Vienna</h2>
+
+  <p>
+    European powers constructed a new
+    post-Napoleonic political settlement.
+  </p>
+</article>
 
 
 <!-- AMERICAN INDEPENDENCE -->
 
 <article
-  class="story band band-sage reveal"
+  class="story feature reveal"
   data-search="american independence 1776 north america united states revolution britain sovereignty republic"
 >
-
-  <div class="band-meta">
-    <span class="date">1776</span>
+  <div class="story-meta">
+    <span class="story-date">1776</span>
+    <i></i>
     <span>North America</span>
   </div>
 
   <h2>American Independence</h2>
 
-  <div class="band-copy">
-    <p>
-      The break with Britain created a new republic
-      and influenced later debates about sovereignty
-      and revolution.
-    </p>
-  </div>
-
+  <p>
+    The break with Britain created a new republic
+    and influenced later debates about sovereignty
+    and revolution.
+  </p>
 </article>
 
 
-<!-- WESTPHALIA + REFORMATION -->
+<!-- WESTPHALIA -->
 
-<div class="pair layout-group">
+<article
+  class="story reveal"
+  data-search="peace westphalia 1648 europe thirty years war diplomacy sovereignty state system treaty"
+>
+  <div class="story-meta">
+    <span class="story-date">1648</span>
+    <i></i>
+    <span>Europe</span>
+  </div>
 
-  <article
-    class="story reveal"
-    data-search="peace westphalia 1648 europe thirty years war diplomacy sovereignty state system treaty"
-  >
-    <div class="story-meta">
-      <span class="date">1648</span>
-      <span class="place">Europe</span>
-    </div>
+  <h2>Peace of Westphalia</h2>
 
-    <h2>Peace of Westphalia</h2>
-
-    <p>
-      The settlements ending the Thirty Years' War
-      became a major reference point in histories
-      of the European state system.
-    </p>
-  </article>
+  <p>
+    The settlements ending the Thirty Years' War
+    became a major reference point in histories
+    of the European state system.
+  </p>
+</article>
 
 
-  <article
-    class="story reveal"
-    data-search="protestant reformation 1517 europe religion christianity luther church politics religious fragmentation"
-  >
-    <div class="story-meta">
-      <span class="date">1517</span>
-      <span class="place">Europe</span>
-    </div>
+<!-- REFORMATION -->
 
-    <h2>Protestant Reformation</h2>
+<article
+  class="story reveal"
+  data-search="protestant reformation 1517 europe religion christianity luther church politics religious fragmentation"
+>
+  <div class="story-meta">
+    <span class="story-date">1517</span>
+    <i></i>
+    <span>Europe</span>
+  </div>
 
-    <p>
-      Religious fragmentation reshaped authority
-      and politics across Europe.
-    </p>
-  </article>
+  <h2>Protestant Reformation</h2>
 
-</div>
+  <p>
+    Religious fragmentation reshaped authority
+    and politics across Europe.
+  </p>
+</article>
 
 
 <!-- CONSTANTINOPLE -->
 
 <article
-  class="story dark-feature reveal"
+  class="story reveal"
   data-search="fall constantinople 1453 ottoman empire byzantine empire mehmed conquest istanbul mediterranean"
 >
-
-  <div class="dark-meta">
-    <span>1453</span>
+  <div class="story-meta">
+    <span class="story-date">1453</span>
+    <i></i>
     <span>Constantinople</span>
   </div>
 
-  <div class="dark-main">
-    <h2>Fall of Constantinople</h2>
+  <h2>Fall of Constantinople</h2>
 
-    <p>
-      Ottoman forces captured the Byzantine capital,
-      transforming the political order of the eastern
-      Mediterranean.
-    </p>
-  </div>
-
+  <p>
+    Ottoman forces captured the Byzantine capital,
+    transforming the political order of the eastern
+    Mediterranean.
+  </p>
 </article>
 
 
-<!-- MONGOLS + HIJRA -->
+<!-- MONGOL -->
 
-<div class="pair layout-group">
+<article
+  class="story reveal"
+  data-search="rise mongol empire 1206 mongolia genghis khan empire asia conquest eurasia"
+>
+  <div class="story-meta">
+    <span class="story-date">1206</span>
+    <i></i>
+    <span>Mongolia</span>
+  </div>
 
-  <article
-    class="story reveal"
-    data-search="rise mongol empire 1206 mongolia genghis khan empire asia conquest eurasia"
-  >
-    <div class="story-meta">
-      <span class="date">1206</span>
-      <span class="place">Mongolia</span>
-    </div>
+  <h2>Rise of the Mongol Empire</h2>
 
-    <h2>Rise of the Mongol Empire</h2>
-
-    <p>
-      The unification associated with Genghis Khan
-      preceded the creation of the largest contiguous
-      land empire in history.
-    </p>
-  </article>
+  <p>
+    The unification associated with Genghis Khan
+    preceded the creation of the largest contiguous
+    land empire in history.
+  </p>
+</article>
 
 
-  <article
-    class="story reveal"
-    data-search="hijra 622 arabia mecca medina muhammad islam islamic history migration religion politics"
-  >
-    <div class="story-meta">
-      <span class="date">622</span>
-      <span class="place">Arabia</span>
-    </div>
+<!-- HIJRA -->
 
-    <h2>The Hijra</h2>
+<article
+  class="story reveal"
+  data-search="hijra 622 arabia mecca medina muhammad islam islamic history migration religion politics"
+>
+  <div class="story-meta">
+    <span class="story-date">622</span>
+    <i></i>
+    <span>Arabia</span>
+  </div>
 
-    <p>
-      Muhammad's migration from Mecca to Medina
-      marked a foundational political and religious
-      moment in Islamic history.
-    </p>
-  </article>
+  <h2>The Hijra</h2>
 
-</div>
+  <p>
+    Muhammad's migration from Mecca to Medina
+    marked a foundational political and religious
+    moment in Islamic history.
+  </p>
+</article>
+
+
+<!-- BABYLON -->
+
+<article
+  class="story feature reveal"
+  data-modal="babylon"
+  data-search="fall babylon 539 bce mesopotamia persia achaemenid empire cyrus cyrus the great ancient conquest"
+>
+  <div class="story-meta">
+    <span class="story-date">539 BCE</span>
+    <i></i>
+    <span>Babylon</span>
+  </div>
+
+  <h2>Fall of Babylon</h2>
+
+  <p>
+    Cyrus the Great entered Babylon and incorporated
+    one of the ancient world's most powerful kingdoms
+    into the Achaemenid Empire.
+  </p>
+</article>
 
 
 <!-- ALEXANDER -->
 
 <article
-  class="story band band-blue reveal"
-  data-search="alexander conquests 334 323 bce alexander great macedonia greece persia eurasia central asia empire"
+  class="story reveal"
+  data-search="alexander conquests 334 323 bce alexander the great macedonia greece persia eurasia central asia empire"
 >
-
-  <div class="band-meta">
-    <span class="date">334–323 BCE</span>
+  <div class="story-meta">
+    <span class="story-date">334–323 BCE</span>
+    <i></i>
     <span>Eurasia</span>
   </div>
 
   <h2>Alexander's Conquests</h2>
 
-  <div class="band-copy">
-    <p>
-      Rapid imperial expansion connected political
-      and cultural worlds from Greece to Central
-      and South Asia.
-    </p>
-  </div>
-
+  <p>
+    Rapid imperial expansion connected political
+    and cultural worlds from Greece to Central
+    and South Asia.
+  </p>
 </article>
 
 
-<!-- GRECO-PERSIAN -->
+<!-- GRECO PERSIAN -->
 
-<div class="pair layout-group">
+<article
+  class="story reveal"
+  data-search="greco persian wars 490 479 bce greece persia achaemenid empire mediterranean war ancient"
+>
+  <div class="story-meta">
+    <span class="story-date">490–479 BCE</span>
+    <i></i>
+    <span>Greece</span>
+  </div>
 
-  <article
-    class="story reveal"
-    data-search="greco persian wars 490 479 bce greece persia achaemenid empire mediterranean war ancient"
-  >
-    <div class="story-meta">
-      <span class="date">490–479 BCE</span>
-      <span class="place">Greece</span>
-    </div>
+  <h2>Greco-Persian Wars</h2>
 
-    <h2>Greco-Persian Wars</h2>
-
-    <p>
-      A confrontation with lasting political
-      and cultural consequences across the
-      eastern Mediterranean.
-    </p>
-  </article>
-
-
-  <article
-    class="story reveal"
-    data-modal="babylon"
-    data-search="fall babylon 539 bce mesopotamia persia achaemenid empire cyrus great ancient conquest"
-  >
-    <div class="story-meta">
-      <span class="date">539 BCE</span>
-      <span class="place">Babylon</span>
-    </div>
-
-    <h2>Fall of Babylon</h2>
-
-    <p>
-      Cyrus the Great entered Babylon and incorporated
-      one of the ancient world's most powerful kingdoms
-      into the Achaemenid Empire.
-    </p>
-  </article>
-
-</div>
+  <p>
+    A confrontation with lasting political
+    and cultural consequences across the
+    eastern Mediterranean.
+  </p>
+</article>
 
 
 </div>
 
 
-<div class="no-results" id="noResults">
+<div
+  class="no-results"
+  id="noResults"
+>
   <strong>No matching turning points</strong>
-  <span>Try another event, place, date or keyword.</span>
+
+  <span>
+    Try another event, place, date or keyword.
+  </span>
 </div>
 
 </section>
@@ -1859,13 +2715,18 @@ footer span{
 ======================================================== -->
 
 <footer>
+
   <strong>ATHAR</strong>
-  <span>Across Space &amp; Time</span>
+
+  <span>
+    Across Space &amp; Time
+  </span>
+
 </footer>
 
 
 <!-- ========================================================
-     MODAL
+     FULL SCREEN MODAL
 ======================================================== -->
 
 <div
@@ -1880,7 +2741,7 @@ footer span{
   ></div>
 
 
-  <section
+  <div
     class="modal-panel"
     role="dialog"
     aria-modal="true"
@@ -1897,8 +2758,13 @@ footer span{
 
 
     <div class="modal-meta">
+
       <span id="modalDate"></span>
+
+      <i></i>
+
       <span id="modalPlace"></span>
+
     </div>
 
 
@@ -1916,9 +2782,12 @@ footer span{
       <div class="modal-copy">
 
         <h3>What happened?</h3>
+
         <p id="modalWhat"></p>
 
+
         <h3>Why does it matter?</h3>
+
         <p id="modalWhy"></p>
 
       </div>
@@ -1931,22 +2800,24 @@ footer span{
 
     </div>
 
-  </section>
+  </div>
 
 </div>
 
 
 <script>
 
-/* =========================================================
-   SEARCH
-========================================================= */
+/* ==========================================================
+   ATHAR — TURNING POINTS
+========================================================== */
+
+
+/* ==========================================================
+   LIVE SEARCH
+========================================================== */
 
 const searchInput =
   document.getElementById("archiveSearch");
-
-const stream =
-  document.getElementById("storyGrid");
 
 const stories =
   [...document.querySelectorAll(".story")];
@@ -1982,10 +2853,14 @@ function filterArchive(){
   const query =
     normalizeText(searchInput.value);
 
-  const terms =
-    query
-      .split(/\s+/)
-      .filter(Boolean);
+   const storyGrid =
+  document.getElementById("storyGrid");
+
+storyGrid.classList.toggle(
+  "searching",
+  query.length > 0
+);
+
 
   let visible = 0;
 
@@ -1996,6 +2871,13 @@ function filterArchive(){
       normalizeText(
         `${story.textContent} ${story.dataset.search || ""}`
       );
+
+
+    const terms =
+      query
+        .split(/\s+/)
+        .filter(Boolean);
+
 
     const matches =
       terms.every(term =>
@@ -2010,40 +2892,26 @@ function filterArchive(){
 
 
     if(matches){
+
       visible++;
+
+      if(query){
+
+        story.classList.remove(
+          "search-match"
+        );
+
+        void story.offsetWidth;
+
+        story.classList.add(
+          "search-match"
+        );
+
+      }
+
     }
 
   });
-
-
-  stream.classList.toggle(
-    "searching",
-    query.length > 0
-  );
-
-
-  /*
-     Hide grouped modules when every story inside
-     has been filtered out.
-  */
-
-  document
-    .querySelectorAll(".layout-group")
-    .forEach(group => {
-
-      const visibleChildren =
-        [...group.querySelectorAll(".story")]
-        .filter(story =>
-          !story.classList.contains("hidden")
-        );
-
-
-      group.style.display =
-        query && visibleChildren.length === 0
-          ? "none"
-          : "";
-
-    });
 
 
   updateCount(visible);
@@ -2066,9 +2934,9 @@ searchInput.addEventListener(
 updateCount(stories.length);
 
 
-/* =========================================================
-   REVEAL
-========================================================= */
+/* ==========================================================
+   SCROLL REVEAL
+========================================================== */
 
 const revealItems =
   document.querySelectorAll(".reveal");
@@ -2097,30 +2965,35 @@ const revealObserver =
     },
 
     {
-      threshold:.07
+      threshold:.08
     }
 
   );
 
 
-revealItems.forEach(item =>
-  revealObserver.observe(item)
-);
+revealItems.forEach(item => {
+
+  revealObserver.observe(item);
+
+});
 
 
-/* =========================================================
-   ARTICLE DATA
-========================================================= */
+/* ==========================================================
+   MODAL DATA
+========================================================== */
 
 const topicData = {
 
   september11:{
 
-    title:"September 11",
+    title:
+      "September 11",
 
-    date:"2001",
+    date:
+      "2001",
 
-    place:"United States",
+    place:
+      "United States",
 
     lead:
       "The September 11 attacks became a major turning point in international security and foreign policy at the beginning of the twenty-first century.",
@@ -2143,11 +3016,14 @@ const topicData = {
 
   babylon:{
 
-    title:"Fall of Babylon",
+    title:
+      "Fall of Babylon",
 
-    date:"539 BCE",
+    date:
+      "539 BCE",
 
-    place:"Babylon",
+    place:
+      "Babylon",
 
     lead:
       "In 539 BCE, Babylon passed into the hands of Cyrus II of Persia, ending the Neo-Babylonian Empire and incorporating its territories into the Achaemenid Empire.",
@@ -2170,9 +3046,9 @@ const topicData = {
 };
 
 
-/* =========================================================
-   MODAL
-========================================================= */
+/* ==========================================================
+   MODAL ELEMENTS
+========================================================== */
 
 const modal =
   document.getElementById("topicModal");
@@ -2198,6 +3074,10 @@ const modalWhy =
 const modalFacts =
   document.getElementById("modalFacts");
 
+
+/* ==========================================================
+   OPEN MODAL
+========================================================== */
 
 function openModal(key){
 
@@ -2232,33 +3112,33 @@ function openModal(key){
   modalFacts.innerHTML = "";
 
 
-  data.facts.forEach(([label,value]) => {
+  data.facts.forEach(fact => {
 
-    const fact =
+    const block =
       document.createElement("div");
 
-    fact.className =
+    block.className =
       "fact";
 
 
-    const small =
+    const label =
       document.createElement("small");
 
-    small.textContent =
-      label;
+    label.textContent =
+      fact[0];
 
 
-    const strong =
+    const value =
       document.createElement("strong");
 
-    strong.textContent =
-      value;
+    value.textContent =
+      fact[1];
 
 
-    fact.appendChild(small);
-    fact.appendChild(strong);
+    block.appendChild(label);
+    block.appendChild(value);
 
-    modalFacts.appendChild(fact);
+    modalFacts.appendChild(block);
 
   });
 
@@ -2270,12 +3150,17 @@ function openModal(key){
     "false"
   );
 
+
   document.body
     .classList
     .add("modal-open");
 
 }
 
+
+/* ==========================================================
+   CLOSE MODAL
+========================================================== */
 
 function closeModal(){
 
@@ -2286,6 +3171,7 @@ function closeModal(){
     "true"
   );
 
+
   document.body
     .classList
     .remove("modal-open");
@@ -2293,26 +3179,37 @@ function closeModal(){
 }
 
 
+/* ==========================================================
+   CLICKABLE STORIES
+========================================================== */
+
 document
   .querySelectorAll("[data-modal]")
   .forEach(story => {
 
     story.addEventListener(
       "click",
-      () =>
+      () => {
+
         openModal(
           story.dataset.modal
-        )
+        );
+
+      }
     );
 
   });
 
 
+/* ==========================================================
+   CLOSE CONTROLS
+========================================================== */
+
 document
   .querySelectorAll("[data-close]")
-  .forEach(element => {
+  .forEach(control => {
 
-    element.addEventListener(
+    control.addEventListener(
       "click",
       closeModal
     );
